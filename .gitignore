@@ -36,3 +36,4 @@ obj/
 BubuJumpCocosStudio/cocosstudio/.*
 BubuJumpCocosStudio/res/
 *.xccheckout
+BubuJumpClient/proj.android/assets/
