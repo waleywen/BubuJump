@@ -20,7 +20,7 @@ DerivedData
 .libs
 *.so
 *.so.[0-9]*
-*.a
+#*.a
 *.pyc
 *.pyo
 *.rej
