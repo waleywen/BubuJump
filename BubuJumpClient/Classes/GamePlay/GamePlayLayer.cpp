@@ -6,6 +6,8 @@
 #include "Obstruction/SmallCoinNode.h"
 #include "Obstruction/IndividualIncomeTaxCoinNode.h"
 #include "Obstruction/UrbanMaintenanceAndConstructionTaxCoinNode.h"
+#include "Obstruction/BusinessTaxCoinNode.h"
+#include "Obstruction/BusinessIncomeTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
 #include "Obstruction/HeartNode.h"
 #include "Obstruction/FlyBootNode.h"
@@ -257,7 +259,17 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     else if (UrbanMaintenanceAndConstructionTaxCoinNodeType == nodeType)
     {
         obstructionNode = UrbanMaintenanceAndConstructionTaxCoinNode::create();
-        obstructionNode->setCollisionSize(Size(70.0f, 70.0f));
+        obstructionNode->setCollisionSize(Size(89.0f, 88.0f));
+    }
+    else if (BusinessTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = BusinessTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 88.0f));
+    }
+    else if (BusinessIncomeTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = BusinessIncomeTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 88.0f));
     }
     else if (FootboardNodeType == nodeType)
     {
@@ -304,7 +316,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 8;
+        const int m = 10;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -339,6 +351,14 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 7)
         {
             gameNode = this->getObstructionNode(HeartNodeType);
+        }
+        else if (testI % m == 8)
+        {
+            gameNode = this->getObstructionNode(BusinessTaxCoinNodeType);
+        }
+        else if (testI % m == 9)
+        {
+            gameNode = this->getObstructionNode(BusinessIncomeTaxCoinNodeType);
         }
         ++testI;
         

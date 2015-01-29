@@ -94,6 +94,10 @@
 		FC885C2C1A627DF900000725 /* FootboardNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C291A627DF900000725 /* FootboardNode.cpp */; };
 		FCA3C91C1A64F22C0021963E /* TaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */; };
 		FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */; };
+		FCCC47671A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCC47651A7A582F00680294 /* BusinessTaxCoinNode.cpp */; };
+		FCCC47681A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCC47651A7A582F00680294 /* BusinessTaxCoinNode.cpp */; };
+		FCCC476B1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCC47691A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp */; };
+		FCCC476C1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCC47691A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp */; };
 		FCCF2E521A748F7400CD78F5 /* HeartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCF2E501A748F7400CD78F5 /* HeartNode.cpp */; };
 		FCCF2E531A748F7400CD78F5 /* HeartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCF2E501A748F7400CD78F5 /* HeartNode.cpp */; };
 		FCECC8E11A445CD200C4AEB0 /* 720P in Resources */ = {isa = PBXBuildFile; fileRef = FCECC8E01A445CD200C4AEB0 /* 720P */; };
@@ -225,6 +229,10 @@
 		FC885C2A1A627DF900000725 /* FootboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardNode.h; sourceTree = "<group>"; };
 		FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaxCoinNode.cpp; sourceTree = "<group>"; };
 		FCA3C91B1A64F22C0021963E /* TaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxCoinNode.h; sourceTree = "<group>"; };
+		FCCC47651A7A582F00680294 /* BusinessTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BusinessTaxCoinNode.cpp; sourceTree = "<group>"; };
+		FCCC47661A7A582F00680294 /* BusinessTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTaxCoinNode.h; sourceTree = "<group>"; };
+		FCCC47691A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BusinessIncomeTaxCoinNode.cpp; sourceTree = "<group>"; };
+		FCCC476A1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessIncomeTaxCoinNode.h; sourceTree = "<group>"; };
 		FCCF2E501A748F7400CD78F5 /* HeartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeartNode.cpp; sourceTree = "<group>"; };
 		FCCF2E511A748F7400CD78F5 /* HeartNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartNode.h; sourceTree = "<group>"; };
 		FCECC8D21A445CC200C4AEB0 /* AppMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacros.h; sourceTree = "<group>"; };
@@ -420,6 +428,10 @@
 		FC45F83E1A61083300A708B6 /* Obstruction */ = {
 			isa = PBXGroup;
 			children = (
+				FCCC47691A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp */,
+				FCCC476A1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.h */,
+				FCCC47651A7A582F00680294 /* BusinessTaxCoinNode.cpp */,
+				FCCC47661A7A582F00680294 /* BusinessTaxCoinNode.h */,
 				FC49C3071A6CD1100086D35A /* Effect */,
 				FC49C3101A6CE9280086D35A /* FlyBootNode.cpp */,
 				FC49C3111A6CE9280086D35A /* FlyBootNode.h */,
@@ -643,6 +655,7 @@
 				FCCF2E521A748F7400CD78F5 /* HeartNode.cpp in Sources */,
 				FC885C231A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */,
 				FC5A6C401A78BFBF0045FE1A /* md5.cpp in Sources */,
+				FCCC47671A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */,
 				FC1FF6341A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */,
 				FC45F84B1A61083300A708B6 /* GamePlayUILayer.cpp in Sources */,
 				FC45F8491A61083300A708B6 /* GamePlayScene.cpp in Sources */,
@@ -658,6 +671,7 @@
 				FC45F84D1A61083300A708B6 /* ObstructionNode.cpp in Sources */,
 				FC885C271A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				FCCC476B1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
 				FC45F8431A61083300A708B6 /* CharacterNode.cpp in Sources */,
 				FC45F8471A61083300A708B6 /* GamePlayLayer.cpp in Sources */,
 				FC5A6C3C1A78B0340045FE1A /* NetworkManager.cpp in Sources */,
@@ -683,6 +697,7 @@
 				FC45F84A1A61083300A708B6 /* GamePlayScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */,
+				FCCC476C1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
 				FCCF2E531A748F7400CD78F5 /* HeartNode.cpp in Sources */,
 				FC1FF6311A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */,
 				FC49C30B1A6CD1100086D35A /* BaseEffect.cpp in Sources */,
@@ -693,6 +708,7 @@
 				FC885C2C1A627DF900000725 /* FootboardNode.cpp in Sources */,
 				FC45F8501A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
 				FC45F84E1A61083300A708B6 /* ObstructionNode.cpp in Sources */,
+				FCCC47681A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */,
 				FC49C3171A6D24670086D35A /* RocketEffect.cpp in Sources */,
 				FC5A6C411A78BFBF0045FE1A /* md5.cpp in Sources */,
 				FCFFCBC51A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */,

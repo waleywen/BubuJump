@@ -3,7 +3,7 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <PlistImageFolder PListFile="character.plist" LastPlistWriteTime="2014-12-19T20:18:21+08:00" LastImageWriteTime="2014-01-09T16:52:18+08:00" Name=".character_PList.Dir">
+        <PlistImageFolder PListFile="character.plist" LastPlistWriteTime="2015-01-29T15:59:29+08:00" LastImageWriteTime="2015-01-29T15:59:29+08:00" Name=".character_PList.Dir">
           <PlistImageFile Name="dizzy-0000.png" Key="dizzy-0000.png" />
           <PlistImageFile Name="dizzy-0001.png" Key="dizzy-0001.png" />
           <PlistImageFile Name="dizzy-0002.png" Key="dizzy-0002.png" />
@@ -123,6 +123,10 @@
         <Project Name="HeartNode.csd" />
         <Image Name="MaxDistanceIcon.png" />
         <Image Name="MaxTaxIcon.png" />
+        <Image Name="BusinessIncomeTaxCoin.png" />
+        <Image Name="BusinessTaxCoin.png" />
+        <Project Name="BusinessIncomeTaxCoinNode.csd" />
+        <Project Name="BusinessTaxCoinNode.csd" />
       </RootFolder>
     </Group>
   </SolutionFolder>

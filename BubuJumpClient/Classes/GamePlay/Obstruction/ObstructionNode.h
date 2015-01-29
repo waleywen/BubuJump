@@ -13,6 +13,8 @@ enum ObstructionNodeType
     SmallCoinNodeType,
     IndividualIncomeTaxCoinNodeType,
     UrbanMaintenanceAndConstructionTaxCoinNodeType,
+    BusinessTaxCoinNodeType,
+    BusinessIncomeTaxCoinNodeType,
     FootboardNodeType,
     HeartNodeType,
     FlyBootNodeType,

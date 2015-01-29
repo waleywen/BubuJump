@@ -34,3 +34,5 @@ DerivedData
 bin/
 obj/
 BubuJumpCocosStudio/cocosstudio/.*
+BubuJumpCocosStudio/res/
+*.xccheckout

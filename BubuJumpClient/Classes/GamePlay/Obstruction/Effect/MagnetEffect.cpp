@@ -44,8 +44,10 @@ void MagnetEffect::gameUpdate(float delta)
     for(auto& obstructionNode : *this->getCharacterNode()->getObstructionNodeVector())
     {
         if ((obstructionNode->getNodeType() == SmallCoinNodeType
-            || obstructionNode->getNodeType() == IndividualIncomeTaxCoinNodeType
-            || obstructionNode->getNodeType() == UrbanMaintenanceAndConstructionTaxCoinNodeType)
+             || obstructionNode->getNodeType() == IndividualIncomeTaxCoinNodeType
+             || obstructionNode->getNodeType() == UrbanMaintenanceAndConstructionTaxCoinNodeType
+             || obstructionNode->getNodeType() == BusinessTaxCoinNodeType
+             || obstructionNode->getNodeType() == BusinessIncomeTaxCoinNodeType)
             && ActivatedNodeState == obstructionNode->getState())
         {
             Point obstructionNodePosition = obstructionNode->getPosition();
