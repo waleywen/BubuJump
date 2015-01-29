@@ -20,7 +20,6 @@ DerivedData
 .libs
 *.so
 *.so.[0-9]*
-#*.a
 *.pyc
 *.pyo
 *.rej
@@ -32,6 +31,6 @@ DerivedData
 *.suo
 *.csdef
 *.user
-\csx 
-\bin
-\obj
+bin/
+obj/
+BubuJumpCocosStudio/cocosstudio/.*

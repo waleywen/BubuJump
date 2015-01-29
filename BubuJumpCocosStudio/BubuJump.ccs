@@ -1,0 +1,129 @@
+<Solution>
+  <PropertyGroup Name="BubuJump" Version="2.0.6.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <PlistImageFolder PListFile="character.plist" LastPlistWriteTime="2014-12-19T20:18:21+08:00" LastImageWriteTime="2014-01-09T16:52:18+08:00" Name=".character_PList.Dir">
+          <PlistImageFile Name="dizzy-0000.png" Key="dizzy-0000.png" />
+          <PlistImageFile Name="dizzy-0001.png" Key="dizzy-0001.png" />
+          <PlistImageFile Name="dizzy-0002.png" Key="dizzy-0002.png" />
+          <PlistImageFile Name="dizzy-0003.png" Key="dizzy-0003.png" />
+          <PlistImageFile Name="dizzy-0004.png" Key="dizzy-0004.png" />
+          <PlistImageFile Name="dizzy-0005.png" Key="dizzy-0005.png" />
+          <PlistImageFile Name="dizzy-0006.png" Key="dizzy-0006.png" />
+          <PlistImageFile Name="dizzy-0007.png" Key="dizzy-0007.png" />
+          <PlistImageFile Name="dizzy-0008.png" Key="dizzy-0008.png" />
+          <PlistImageFile Name="dizzy-0009.png" Key="dizzy-0009.png" />
+          <PlistImageFile Name="dizzy-0010.png" Key="dizzy-0010.png" />
+          <PlistImageFile Name="dizzy-0011.png" Key="dizzy-0011.png" />
+          <PlistImageFile Name="dizzy-0012.png" Key="dizzy-0012.png" />
+          <PlistImageFile Name="dizzy-0013.png" Key="dizzy-0013.png" />
+          <PlistImageFile Name="dizzy-0014.png" Key="dizzy-0014.png" />
+          <PlistImageFile Name="dizzy-0015.png" Key="dizzy-0015.png" />
+          <PlistImageFile Name="dizzy-0016.png" Key="dizzy-0016.png" />
+          <PlistImageFile Name="dizzy-0017.png" Key="dizzy-0017.png" />
+          <PlistImageFile Name="dizzy-0018.png" Key="dizzy-0018.png" />
+          <PlistImageFile Name="dizzy-0019.png" Key="dizzy-0019.png" />
+          <PlistImageFile Name="dizzy-0020.png" Key="dizzy-0020.png" />
+          <PlistImageFile Name="dizzy-0021.png" Key="dizzy-0021.png" />
+          <PlistImageFile Name="dizzy-0022.png" Key="dizzy-0022.png" />
+          <PlistImageFile Name="dizzy-0023.png" Key="dizzy-0023.png" />
+          <PlistImageFile Name="dizzy-0024.png" Key="dizzy-0024.png" />
+          <PlistImageFile Name="dizzy-0025.png" Key="dizzy-0025.png" />
+          <PlistImageFile Name="dizzy-0026.png" Key="dizzy-0026.png" />
+          <PlistImageFile Name="dizzy-0027.png" Key="dizzy-0027.png" />
+          <PlistImageFile Name="dizzy-0028.png" Key="dizzy-0028.png" />
+          <PlistImageFile Name="dizzy-0029.png" Key="dizzy-0029.png" />
+          <PlistImageFile Name="dizzy-0030.png" Key="dizzy-0030.png" />
+          <PlistImageFile Name="dizzy-0031.png" Key="dizzy-0031.png" />
+          <PlistImageFile Name="dizzy-0032.png" Key="dizzy-0032.png" />
+          <PlistImageFile Name="dizzy-0033.png" Key="dizzy-0033.png" />
+          <PlistImageFile Name="dizzy-0034.png" Key="dizzy-0034.png" />
+          <PlistImageFile Name="dizzy-0035.png" Key="dizzy-0035.png" />
+          <PlistImageFile Name="dizzy-0036.png" Key="dizzy-0036.png" />
+          <PlistImageFile Name="dizzy-0037.png" Key="dizzy-0037.png" />
+          <PlistImageFile Name="dizzy-0038.png" Key="dizzy-0038.png" />
+          <PlistImageFile Name="dizzy-0039.png" Key="dizzy-0039.png" />
+          <PlistImageFile Name="dizzy-0040.png" Key="dizzy-0040.png" />
+          <PlistImageFile Name="dizzy-0041.png" Key="dizzy-0041.png" />
+          <PlistImageFile Name="dizzy-0042.png" Key="dizzy-0042.png" />
+          <PlistImageFile Name="dizzy-0043.png" Key="dizzy-0043.png" />
+          <PlistImageFile Name="dizzy-0044.png" Key="dizzy-0044.png" />
+          <PlistImageFile Name="dizzy-0045.png" Key="dizzy-0045.png" />
+          <PlistImageFile Name="dizzy-0046.png" Key="dizzy-0046.png" />
+          <PlistImageFile Name="dizzy-0047.png" Key="dizzy-0047.png" />
+          <PlistImageFile Name="dizzy-0048.png" Key="dizzy-0048.png" />
+          <PlistImageFile Name="dizzy-0049.png" Key="dizzy-0049.png" />
+          <PlistImageFile Name="dizzy-0050.png" Key="dizzy-0050.png" />
+          <PlistImageFile Name="dizzy-0051.png" Key="dizzy-0051.png" />
+          <PlistImageFile Name="dizzy-0052.png" Key="dizzy-0052.png" />
+          <PlistImageFile Name="dizzy-0053.png" Key="dizzy-0053.png" />
+          <PlistImageFile Name="dizzy-0054.png" Key="dizzy-0054.png" />
+          <PlistImageFile Name="dizzy-0055.png" Key="dizzy-0055.png" />
+          <PlistImageFile Name="dizzy-0056.png" Key="dizzy-0056.png" />
+          <PlistImageFile Name="dizzy-0057.png" Key="dizzy-0057.png" />
+          <PlistImageFile Name="dizzy-0058.png" Key="dizzy-0058.png" />
+          <PlistImageFile Name="dizzy-0059.png" Key="dizzy-0059.png" />
+          <PlistImageFile Name="dizzy-0060.png" Key="dizzy-0060.png" />
+          <PlistImageFile Name="dizzy-0061.png" Key="dizzy-0061.png" />
+        </PlistImageFolder>
+        <Project Name="CharacterNode.csd" />
+        <Image Name="SmallCoin.png" />
+        <Project Name="SmallCoinNode.csd" />
+        <Image Name="character.png" />
+        <Project Name="Layer2.csd" />
+        <Image Name="branch.png" />
+        <Image Name="stone1.png" />
+        <Image Name="stone2.png" />
+        <Project Name="Layer1.csd" />
+        <Project Name="Layer3.csd" />
+        <Project Name="GamePlayUI.csd" />
+        <Image Name="Pause.png" />
+        <Image Name="ScoreBackground.png" />
+        <Image Name="Sound.png" />
+        <Image Name="jump0.png" />
+        <Image Name="jump1.png" />
+        <Image Name="jump2.png" />
+        <Image Name="run0.png" />
+        <Image Name="run1.png" />
+        <Image Name="run3.png" />
+        <Image Name="run4.png" />
+        <Image Name="run5.png" />
+        <Project Name="Ready.csd" />
+        <Image Name="ready.png" />
+        <Image Name="ready1.png" />
+        <Image Name="ready2.png" />
+        <Image Name="ready3.png" />
+        <Image Name="readyGo.png" />
+        <Project Name="IndividualIncomeTaxCoinNode.csd" />
+        <Image Name="IndividualIncomeTaxCoin.png" />
+        <Project Name="UrbanMaintenanceAndConstructionTaxCoinNode.csd" />
+        <Image Name="UrbanMaintenanceAndConstructionTaxCoin.png" />
+        <Image Name="Footboard.png" />
+        <Project Name="FootboardNode.csd" />
+        <Image Name="IndividualIncomeTaxCoinTips.png" />
+        <Image Name="UrbanMaintenanceAndConstructionTaxTips.png" />
+        <File Name="Arial Black.ttf" />
+        <Project Name="GamePauseUI.csd" />
+        <Image Name="GamePauseUIBackground.png" />
+        <Project Name="GameLeaderboardUI.csd" />
+        <Image Name="GameLeaderboardUIBackground.png" />
+        <Image Name="GameLeaderboardUIHomeButton.png" />
+        <Image Name="GameLeaderboardUIOKButton.png" />
+        <Image Name="ShareButton.png" />
+        <Image Name="FlyBoot.png" />
+        <Image Name="Rocket.png" />
+        <Project Name="FlyBootNode.csd" />
+        <Project Name="RocketNode.csd" />
+        <Image Name="BackToGameButton.png" />
+        <Image Name="GamePauseUIHomeButton.png" />
+        <Project Name="MagnetNode.csd" />
+        <Image Name="Magnet.png" />
+        <Image Name="Heart.png" />
+        <Project Name="HeartNode.csd" />
+        <Image Name="MaxDistanceIcon.png" />
+        <Image Name="MaxTaxIcon.png" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
