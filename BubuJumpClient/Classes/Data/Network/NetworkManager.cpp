@@ -50,12 +50,12 @@ int NetworkManager::submitScore(int score, NetworkCallback callback)
     url += "?type=1";
     url += "&id=";
     url += idString;
-    url += "&name=TestName";
+    url += "&name=UserName";
     url += "&score=";
     url += scoreString;
     url += "&sum=";
     
-    url += md5SumString("1", idString, "TestName", scoreString);
+    url += md5SumString("1", idString, "UserName", scoreString);
     
     int index = this->getRequestIndex();
     NetworkCallbackObject& callbackObject = this->_callbackMap.insert(NetworkCallbackPair(index, {callback, false})).first->second;

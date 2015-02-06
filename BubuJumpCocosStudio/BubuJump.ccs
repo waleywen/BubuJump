@@ -127,6 +127,16 @@
         <Image Name="BusinessTaxCoin.png" />
         <Project Name="BusinessIncomeTaxCoinNode.csd" />
         <Project Name="BusinessTaxCoinNode.csd" />
+        <Project Name="AngelWingNode.csd" />
+        <Image Name="AngelWing.png" />
+        <Project Name="EvilCloudNode.csd" />
+        <Image Name="EvilCloud.png" />
+        <Project Name="ThornFootboardNode.csd" />
+        <Image Name="ThornFootboard.png" />
+        <Project Name="VortexNode.csd" />
+        <Image Name="Vortex.png" />
+        <Image Name="BusinessIncomeTaxTips.png" />
+        <Image Name="BusinessTaxTips.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

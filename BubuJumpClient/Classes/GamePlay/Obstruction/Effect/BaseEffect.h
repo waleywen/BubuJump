@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 
 class CharacterNode;
+class ObstructionNode;
 
 enum EffectType
 {
@@ -11,6 +12,9 @@ enum EffectType
     FlyBootEffectType,
     RocketEffectType,
     MagnetEffectType,
+    AngelWingEffectType,
+    EvilCloudEffectType,
+    VortexEffectType,
 };
 
 enum EffectState
@@ -22,15 +26,17 @@ enum EffectState
 class BaseEffect : public cocos2d::Ref
 {
 public:
-    BaseEffect(EffectType type, int grade) : _type(type), _grade(grade), _time(0), _duration(0), _state(ActivatedEffectState) {};
+    BaseEffect(EffectType type, int grade) : _type(type), _grade(grade), _time(0), _duration(0), _state(ActivatedEffectState), _effectSprite(nullptr) {};
     virtual ~BaseEffect() = 0;
     
-    virtual bool init();
+    virtual bool initWithSpriteName(std::string spriteName);
     virtual void gameUpdate(float delta) = 0;
     virtual void reset() = 0;
     
     virtual float changeSpeed(float speed);
     virtual float changeAcceleration(float acceleration);
+    virtual float changeHorizontalSpeedPercentage(float percentage);
+    virtual bool isFrozen();
 
     CC_SYNTHESIZE(EffectType, _type, Type);
     CC_SYNTHESIZE(int, _grade, Grade);
@@ -39,6 +45,8 @@ public:
     CC_SYNTHESIZE(EffectState, _state, State);
     
     CC_SYNTHESIZE(CharacterNode*, _characterNode, CharacterNode);
+protected:
+    cocos2d::Sprite* _effectSprite;
 };
 
 class EffectFactory
@@ -46,7 +54,7 @@ class EffectFactory
 public:
     static EffectFactory* getInstance();
     
-    BaseEffect* getEffect(EffectType type);
+    BaseEffect* getEffect(EffectType type, ObstructionNode* sender = nullptr);
     
 private:
     cocos2d::Vector<BaseEffect*> _effectVector;

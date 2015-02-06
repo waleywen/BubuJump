@@ -16,10 +16,14 @@ enum ObstructionNodeType
     BusinessTaxCoinNodeType,
     BusinessIncomeTaxCoinNodeType,
     FootboardNodeType,
+    ThornFootboardNodeType,
     HeartNodeType,
     FlyBootNodeType,
     RocketNodeType,
     MagnetNodeType,
+    AngelWingNodeType,
+    EvilCloudNodeType,
+    VortexNodeType,
 };
 
 enum ObstructionNodeState

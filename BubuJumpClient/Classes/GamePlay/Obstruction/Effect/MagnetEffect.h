@@ -8,7 +8,7 @@
 class MagnetEffect : public BaseEffect
 {
 public:
-    MagnetEffect() : BaseEffect(MagnetEffectType, 0), _magnetEffectSprite(nullptr) {};
+    MagnetEffect() : BaseEffect(MagnetEffectType, 0) {};
     virtual ~MagnetEffect();
     
     virtual bool init();
@@ -16,8 +16,6 @@ public:
     virtual void reset() override;
 
     CREATE_FUNC(MagnetEffect);
-private:
-    cocos2d::Sprite* _magnetEffectSprite;
 };
 
 #endif // _MagnetEffect_H_

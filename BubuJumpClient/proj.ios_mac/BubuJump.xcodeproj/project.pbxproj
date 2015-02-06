@@ -86,6 +86,20 @@
 		FC5A6C3D1A78B0340045FE1A /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5A6C3A1A78B0340045FE1A /* NetworkManager.cpp */; };
 		FC5A6C401A78BFBF0045FE1A /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5A6C3E1A78BFBF0045FE1A /* md5.cpp */; };
 		FC5A6C411A78BFBF0045FE1A /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5A6C3E1A78BFBF0045FE1A /* md5.cpp */; };
+		FC70557A1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055781A7DF16F0072C45C /* AngelWingNode.cpp */; };
+		FC70557B1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055781A7DF16F0072C45C /* AngelWingNode.cpp */; };
+		FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC70557C1A7DF1FA0072C45C /* AngelWingEffect.cpp */; };
+		FC70557F1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC70557C1A7DF1FA0072C45C /* AngelWingEffect.cpp */; };
+		FC7055821A7E0B450072C45C /* EvilCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055801A7E0B450072C45C /* EvilCloudNode.cpp */; };
+		FC7055831A7E0B450072C45C /* EvilCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055801A7E0B450072C45C /* EvilCloudNode.cpp */; };
+		FC7055861A7E0C6E0072C45C /* EvilCloudEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055841A7E0C6E0072C45C /* EvilCloudEffect.cpp */; };
+		FC7055871A7E0C6E0072C45C /* EvilCloudEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055841A7E0C6E0072C45C /* EvilCloudEffect.cpp */; };
+		FC70558A1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055881A7E141D0072C45C /* ThornFootboardNode.cpp */; };
+		FC70558B1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055881A7E141D0072C45C /* ThornFootboardNode.cpp */; };
+		FC70558E1A7E52380072C45C /* VortexNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC70558C1A7E52380072C45C /* VortexNode.cpp */; };
+		FC70558F1A7E52380072C45C /* VortexNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC70558C1A7E52380072C45C /* VortexNode.cpp */; };
+		FC7055921A7E56480072C45C /* VortexEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055901A7E56480072C45C /* VortexEffect.cpp */; };
+		FC7055931A7E56480072C45C /* VortexEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7055901A7E56480072C45C /* VortexEffect.cpp */; };
 		FC885C231A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */; };
 		FC885C241A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */; };
 		FC885C271A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */; };
@@ -221,6 +235,20 @@
 		FC5A6C3B1A78B0340045FE1A /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		FC5A6C3E1A78BFBF0045FE1A /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
 		FC5A6C3F1A78BFBF0045FE1A /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		FC7055781A7DF16F0072C45C /* AngelWingNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AngelWingNode.cpp; sourceTree = "<group>"; };
+		FC7055791A7DF16F0072C45C /* AngelWingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngelWingNode.h; sourceTree = "<group>"; };
+		FC70557C1A7DF1FA0072C45C /* AngelWingEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AngelWingEffect.cpp; sourceTree = "<group>"; };
+		FC70557D1A7DF1FA0072C45C /* AngelWingEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngelWingEffect.h; sourceTree = "<group>"; };
+		FC7055801A7E0B450072C45C /* EvilCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvilCloudNode.cpp; sourceTree = "<group>"; };
+		FC7055811A7E0B450072C45C /* EvilCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvilCloudNode.h; sourceTree = "<group>"; };
+		FC7055841A7E0C6E0072C45C /* EvilCloudEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvilCloudEffect.cpp; sourceTree = "<group>"; };
+		FC7055851A7E0C6E0072C45C /* EvilCloudEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvilCloudEffect.h; sourceTree = "<group>"; };
+		FC7055881A7E141D0072C45C /* ThornFootboardNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThornFootboardNode.cpp; sourceTree = "<group>"; };
+		FC7055891A7E141D0072C45C /* ThornFootboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThornFootboardNode.h; sourceTree = "<group>"; };
+		FC70558C1A7E52380072C45C /* VortexNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VortexNode.cpp; sourceTree = "<group>"; };
+		FC70558D1A7E52380072C45C /* VortexNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VortexNode.h; sourceTree = "<group>"; };
+		FC7055901A7E56480072C45C /* VortexEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VortexEffect.cpp; sourceTree = "<group>"; };
+		FC7055911A7E56480072C45C /* VortexEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VortexEffect.h; sourceTree = "<group>"; };
 		FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndividualIncomeTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC885C221A6220FD00000725 /* IndividualIncomeTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualIncomeTaxCoinNode.h; sourceTree = "<group>"; };
 		FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrbanMaintenanceAndConstructionTaxCoinNode.cpp; sourceTree = "<group>"; };
@@ -428,11 +456,15 @@
 		FC45F83E1A61083300A708B6 /* Obstruction */ = {
 			isa = PBXGroup;
 			children = (
+				FC7055781A7DF16F0072C45C /* AngelWingNode.cpp */,
+				FC7055791A7DF16F0072C45C /* AngelWingNode.h */,
 				FCCC47691A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp */,
 				FCCC476A1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.h */,
 				FCCC47651A7A582F00680294 /* BusinessTaxCoinNode.cpp */,
 				FCCC47661A7A582F00680294 /* BusinessTaxCoinNode.h */,
 				FC49C3071A6CD1100086D35A /* Effect */,
+				FC7055801A7E0B450072C45C /* EvilCloudNode.cpp */,
+				FC7055811A7E0B450072C45C /* EvilCloudNode.h */,
 				FC49C3101A6CE9280086D35A /* FlyBootNode.cpp */,
 				FC49C3111A6CE9280086D35A /* FlyBootNode.h */,
 				FC885C291A627DF900000725 /* FootboardNode.cpp */,
@@ -451,8 +483,12 @@
 				FC45F8421A61083300A708B6 /* SmallCoinNode.h */,
 				FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */,
 				FCA3C91B1A64F22C0021963E /* TaxCoinNode.h */,
+				FC7055881A7E141D0072C45C /* ThornFootboardNode.cpp */,
+				FC7055891A7E141D0072C45C /* ThornFootboardNode.h */,
 				FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */,
 				FC885C261A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.h */,
+				FC70558C1A7E52380072C45C /* VortexNode.cpp */,
+				FC70558D1A7E52380072C45C /* VortexNode.h */,
 			);
 			path = Obstruction;
 			sourceTree = "<group>";
@@ -460,14 +496,20 @@
 		FC49C3071A6CD1100086D35A /* Effect */ = {
 			isa = PBXGroup;
 			children = (
+				FC70557C1A7DF1FA0072C45C /* AngelWingEffect.cpp */,
+				FC70557D1A7DF1FA0072C45C /* AngelWingEffect.h */,
 				FC49C3081A6CD1100086D35A /* BaseEffect.cpp */,
 				FC49C3091A6CD1100086D35A /* BaseEffect.h */,
+				FC7055841A7E0C6E0072C45C /* EvilCloudEffect.cpp */,
+				FC7055851A7E0C6E0072C45C /* EvilCloudEffect.h */,
 				FC49C30C1A6CD5F70086D35A /* FlyBootEffect.cpp */,
 				FC49C30D1A6CD5F70086D35A /* FlyBootEffect.h */,
 				FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */,
 				FC1FF6331A6E228A00DC6DE4 /* MagnetEffect.h */,
 				FC49C3141A6D24670086D35A /* RocketEffect.cpp */,
 				FC49C3151A6D24670086D35A /* RocketEffect.h */,
+				FC7055901A7E56480072C45C /* VortexEffect.cpp */,
+				FC7055911A7E56480072C45C /* VortexEffect.h */,
 			);
 			path = Effect;
 			sourceTree = "<group>";
@@ -653,6 +695,8 @@
 			files = (
 				FC885C2B1A627DF900000725 /* FootboardNode.cpp in Sources */,
 				FCCF2E521A748F7400CD78F5 /* HeartNode.cpp in Sources */,
+				FC7055921A7E56480072C45C /* VortexEffect.cpp in Sources */,
+				FC70558E1A7E52380072C45C /* VortexNode.cpp in Sources */,
 				FC885C231A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */,
 				FC5A6C401A78BFBF0045FE1A /* md5.cpp in Sources */,
 				FCCC47671A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */,
@@ -661,11 +705,16 @@
 				FC45F8491A61083300A708B6 /* GamePlayScene.cpp in Sources */,
 				FC49C30E1A6CD5F70086D35A /* FlyBootEffect.cpp in Sources */,
 				FC45F8451A61083300A708B6 /* GameBaseNode.cpp in Sources */,
+				FC7055861A7E0C6E0072C45C /* EvilCloudEffect.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FCA3C91C1A64F22C0021963E /* TaxCoinNode.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				FC1FF6301A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */,
+				FC70557A1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
+				FC70558A1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
+				FC7055821A7E0B450072C45C /* EvilCloudNode.cpp in Sources */,
 				FCF55BAC1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
+				FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
 				FC45F84F1A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FC45F84D1A61083300A708B6 /* ObstructionNode.cpp in Sources */,
@@ -687,6 +736,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC7055931A7E56480072C45C /* VortexEffect.cpp in Sources */,
+				FC7055871A7E0C6E0072C45C /* EvilCloudEffect.cpp in Sources */,
 				FC885C241A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */,
 				FC49C31B1A6D29140086D35A /* RocketNode.cpp in Sources */,
 				FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */,
@@ -698,15 +749,20 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */,
 				FCCC476C1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
+				FC70557F1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
 				FCCF2E531A748F7400CD78F5 /* HeartNode.cpp in Sources */,
 				FC1FF6311A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */,
 				FC49C30B1A6CD1100086D35A /* BaseEffect.cpp in Sources */,
 				FC49C30F1A6CD5F70086D35A /* FlyBootEffect.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				FC70558F1A7E52380072C45C /* VortexNode.cpp in Sources */,
 				FC45F84C1A61083300A708B6 /* GamePlayUILayer.cpp in Sources */,
 				FC5A6C3D1A78B0340045FE1A /* NetworkManager.cpp in Sources */,
 				FC885C2C1A627DF900000725 /* FootboardNode.cpp in Sources */,
 				FC45F8501A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
+				FC7055831A7E0B450072C45C /* EvilCloudNode.cpp in Sources */,
+				FC70557B1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
+				FC70558B1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
 				FC45F84E1A61083300A708B6 /* ObstructionNode.cpp in Sources */,
 				FCCC47681A7A582F00680294 /* BusinessTaxCoinNode.cpp in Sources */,
 				FC49C3171A6D24670086D35A /* RocketEffect.cpp in Sources */,

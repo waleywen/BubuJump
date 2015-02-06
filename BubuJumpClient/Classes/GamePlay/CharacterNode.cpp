@@ -44,9 +44,14 @@ bool CharacterNode::init()
     
 //    this->schedule(schedule_selector(CharacterNode::testAnimation), 3.0f, kRepeatForever, 0);
     
+    EffectFactory::getInstance()->getEffect(FlyBootEffectType);
+    EffectFactory::getInstance()->getEffect(RocketEffectType);
+    EffectFactory::getInstance()->getEffect(MagnetEffectType);
+    EffectFactory::getInstance()->getEffect(AngelWingEffectType);
+    EffectFactory::getInstance()->getEffect(EvilCloudEffectType);
+    EffectFactory::getInstance()->getEffect(VortexEffectType);
+
     this->_characterSpriteNode->setScale(1.3f);
-    
-    this->_currentAcceleration = -1000.0f;
     
 //    auto _rocketEffectSprite = Sprite::create("RocketEffect.png");
 //    _rocketEffectSprite->retain();
@@ -103,53 +108,76 @@ void CharacterNode::gameUpdate(float delta)
     }
     else if (this->getMode() == Playing)
     {
+        bool isFrozen = false;
         if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
         {
             this->getEffect()->gameUpdate(delta);
+            isFrozen = this->getEffect()->isFrozen();
         }
 
-        float newXOffset = this->getHorizontalSpeedPercentage() * this->getMaxHorizontalSpeed();
-        float newYOffset = this->getCurrentSpeed() * delta + (this->getCurrentAcceleration() * delta * delta) / 2;
-        
-        this->_currentSpeed = this->getCurrentSpeed() + this->getCurrentAcceleration() * delta;
-        
-        auto currentPosition = this->getPosition();
-        float newX = currentPosition.x + newXOffset;
-        float newY = currentPosition.y + newYOffset;
-        
-        if (newX > this->getHorizontalMovingRange().end)
+        if (this->_hurtDuration > 0.0f)
         {
-            newX = this->getHorizontalMovingRange().end;
-        }
-        else if (newX < this->getHorizontalMovingRange().start)
-        {
-            newX = this->getHorizontalMovingRange().start;
-        }
-        
-        this->setPosition(Vec2(newX, newY));
-        
-        if (this->getCurrentSpeed() > 0.0f)
-        {
-            if (this->getActionState() != Jumping)
+            this->_hurtDuration -= delta;
+            if ((this->_hurtDuration - (int)this->_hurtDuration) <= 0.25f
+                || ((this->_hurtDuration - (int)this->_hurtDuration) > 0.5f && (this->_hurtDuration - (int)this->_hurtDuration) <= 0.75))
             {
-                this->setActionState(Jumping);
-                this->playJumpAnimation();
+                this->_characterSpriteNode->setVisible(true);
+            }
+            else
+            {
+                this->_characterSpriteNode->setVisible(false);
             }
         }
         else
         {
-            if (this->getActionState() != Downing)
-            {
-                this->setActionState(Downing);
-                this->playDownAnimation();
-            }
+            this->_characterSpriteNode->setVisible(true);
         }
 
-        for(auto& obstructionNode : *this->getObstructionNodeVector())
+        if (false == isFrozen)
         {
-            if ((ActivatedNodeState == obstructionNode->getState()) && this->isCollidedWithNode(*obstructionNode))
+            float newXOffset = this->getHorizontalSpeedPercentage() * this->getMaxHorizontalSpeed();
+            float newYOffset = this->getCurrentSpeed() * delta + (this->getCurrentAcceleration() * delta * delta) / 2;
+            
+            this->_currentSpeed = this->getCurrentSpeed() + this->getCurrentAcceleration() * delta;
+            
+            auto currentPosition = this->getPosition();
+            float newX = currentPosition.x + newXOffset;
+            float newY = currentPosition.y + newYOffset;
+            
+            if (newX > this->getHorizontalMovingRange().end)
             {
-                obstructionNode->collided(this);
+                newX = this->getHorizontalMovingRange().end;
+            }
+            else if (newX < this->getHorizontalMovingRange().start)
+            {
+                newX = this->getHorizontalMovingRange().start;
+            }
+            
+            this->setPosition(Vec2(newX, newY));
+            
+            if (this->getCurrentSpeed() > 0.0f)
+            {
+                if (this->getActionState() != Jumping)
+                {
+                    this->setActionState(Jumping);
+                    this->playJumpAnimation();
+                }
+            }
+            else
+            {
+                if (this->getActionState() != Downing)
+                {
+                    this->setActionState(Downing);
+                    this->playDownAnimation();
+                }
+            }
+            
+            for(auto& obstructionNode : *this->getObstructionNodeVector())
+            {
+                if ((ActivatedNodeState == obstructionNode->getState()) && this->isCollidedWithNode(*obstructionNode))
+                {
+                    obstructionNode->collided(this);
+                }
             }
         }
     }
@@ -163,23 +191,20 @@ void CharacterNode::startPlay()
     this->playJumpAnimation();
 }
 
-float CharacterNode::getCurrentSpeed()
-{
-    return this->_currentSpeed;
-}
-
-void CharacterNode::setCurrentSpeed(float currentSpeed)
-{
-    if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
-    {
-        currentSpeed = this->_effect->changeSpeed(currentSpeed);
-    }
-    this->_currentSpeed = currentSpeed;
-}
-
 void CharacterNode::addHeart(int count)
 {
     this->_heartCount += count;
+    if (this->_heartCount > 3)
+    {
+        this->_heartCount = 3;
+    }
+}
+
+void CharacterNode::dropHeart(int count)
+{
+    this->_heartCount -= count;
+    
+    this->_hurtDuration = 2.0f;
 }
 
 int CharacterNode::getHeartCount()
@@ -219,13 +244,47 @@ BaseEffect* CharacterNode::getEffect()
     return this->_effect;
 }
 
+float CharacterNode::getCurrentSpeed()
+{
+    return this->_currentSpeed;
+}
+
+void CharacterNode::setCurrentSpeed(float currentSpeed)
+{
+    if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
+    {
+        currentSpeed = this->_effect->changeSpeed(currentSpeed);
+    }
+    this->_currentSpeed = currentSpeed;
+}
+
+void CharacterNode::setHorizontalSpeedPercentage(float percentage)
+{
+    this->_horizontalSpeedPercentage = percentage;
+}
+
+float CharacterNode::getHorizontalSpeedPercentage()
+{
+    if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
+    {
+        return this->_effect->changeHorizontalSpeedPercentage(this->_horizontalSpeedPercentage);
+    }
+    else
+    {
+        return this->_horizontalSpeedPercentage;
+    }
+}
+
 float CharacterNode::getCurrentAcceleration()
 {
     if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
     {
-        return this->_effect->changeAcceleration(this->_currentAcceleration);
+        return this->_effect->changeAcceleration(this->getNormalAcceleration());
     }
-    return this->_currentAcceleration;
+    else
+    {
+        return this->getNormalAcceleration();
+    }
 }
 
 void CharacterNode::playIdleAnimation()

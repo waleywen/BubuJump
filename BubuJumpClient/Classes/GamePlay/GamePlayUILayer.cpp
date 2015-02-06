@@ -145,6 +145,14 @@ void GamePlayUILayer::gameUpdate(float delta)
         {
             this->_propSprite->setTexture("Magnet.png");
         }
+        else if (AngelWingEffectType == this->getEffect()->getType())
+        {
+            this->_propSprite->setTexture("AngelWing.png");
+        }
+        else if (EvilCloudEffectType == this->getEffect()->getType())
+        {
+            this->_propSprite->setTexture("EvilCloud.png");
+        }
         
         if (leftTime < 3.0f)
         {

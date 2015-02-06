@@ -32,15 +32,14 @@ struct MovingRange
 class CharacterNode : public GameBaseNode
 {
 public:
-    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}),  _obstructionNodeVector(nullptr), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr), _currentSpeed(0), _currentAcceleration(0), _heartCount(0), _coinAmount(0), _effect(nullptr) {};
+    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}),  _obstructionNodeVector(nullptr), _currentSpeed(0), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr),  _heartCount(0), _coinAmount(0), _hurtDuration(0), _effect(nullptr) {};
     virtual ~CharacterNode();
     
     virtual bool init() override;
-    void gameUpdate(float delta);
+    virtual void gameUpdate(float delta) override;
     void startPlay();
-    float getCurrentSpeed();
-    void setCurrentSpeed(float currentSpeed);
     void addHeart(int count);
+    void dropHeart(int count);
     int getHeartCount();
     void addCoins(int coinCount);
     int getCoinAmount();
@@ -58,8 +57,9 @@ public:
     
     CC_SYNTHESIZE(cocos2d::Vector<ObstructionNode*>*, _obstructionNodeVector, ObstructionNodeVector);
     
-    CC_SYNTHESIZE(float, _horizontalSpeedPercentage, HorizontalSpeedPercentage);
-
+    CC_PROPERTY(float, _currentSpeed, CurrentSpeed);
+    CC_PROPERTY(float, _horizontalSpeedPercentage, HorizontalSpeedPercentage);
+    
 private:
     float getCurrentAcceleration();
     
@@ -73,10 +73,9 @@ private:
     cocos2d::Node* _characterSpriteNode;
     cocostudio::timeline::ActionTimeline* _actionTimeline;
     
-    float _currentSpeed;
-    float _currentAcceleration;
     int _heartCount;
     float _coinAmount;
+    float _hurtDuration;
     
     BaseEffect* _effect;
 };

@@ -8,7 +8,7 @@
 class FlyBootEffect : public BaseEffect
 {
 public:
-    FlyBootEffect() : BaseEffect(FlyBootEffectType, 0), _flyBootEffectSprite(nullptr) {};
+    FlyBootEffect() : BaseEffect(FlyBootEffectType, 0) {};
     virtual ~FlyBootEffect();
     
     virtual bool init();
@@ -18,8 +18,6 @@ public:
     virtual float changeSpeed(float speed) override;
 
     CREATE_FUNC(FlyBootEffect);
-private:
-    cocos2d::Sprite* _flyBootEffectSprite;
 };
 
 #endif // _FlyBootEffect_H_

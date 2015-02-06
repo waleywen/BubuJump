@@ -30,6 +30,11 @@ bool GameBaseNode::init()
     return true;
 }
 
+void GameBaseNode::gameUpdate(float delta)
+{
+    
+}
+
 Rect GameBaseNode::getCollisionRect() const
 {
     Rect collisionRect;

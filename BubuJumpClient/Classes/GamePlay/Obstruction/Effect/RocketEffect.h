@@ -8,7 +8,7 @@
 class RocketEffect : public BaseEffect
 {
 public:
-    RocketEffect() : BaseEffect(RocketEffectType, 1), _rocketEffectSprite(nullptr) {};
+    RocketEffect() : BaseEffect(RocketEffectType, 1) {};
     virtual ~RocketEffect();
     
     virtual bool init();
@@ -19,8 +19,6 @@ public:
     virtual float changeAcceleration(float acceleration) override;
 
     CREATE_FUNC(RocketEffect);
-private:
-    cocos2d::Sprite* _rocketEffectSprite;
 };
 
 #endif // _FlyBootEffect_H_

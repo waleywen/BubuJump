@@ -9,10 +9,14 @@
 #include "Obstruction/BusinessTaxCoinNode.h"
 #include "Obstruction/BusinessIncomeTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
+#include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/HeartNode.h"
 #include "Obstruction/FlyBootNode.h"
 #include "Obstruction/RocketNode.h"
 #include "Obstruction/MagnetNode.h"
+#include "Obstruction/AngelWingNode.h"
+#include "Obstruction/EvilCloudNode.h"
+#include "Obstruction/VortexNode.h"
 
 USING_NS_CC;
 
@@ -81,6 +85,8 @@ bool GamePlayLayer::init()
     this->_characterNode->setCollisionSize(Size(80.0f * 1.3f, 80.0f * 1.3f));
 //    this->_characterNode->setScale(1.3f);
 
+    this->_characterNode->setNormalAcceleration(-1000.0f);
+    
     auto node1 = CSLoader::createNode("Layer1.csb");
     node1->setTag(501);
 //    node1->setVisible(false);
@@ -132,6 +138,14 @@ void GamePlayLayer::gameUpdate(float delta)
     
     double time1 = getCurrentTime();
     
+    for(auto& obstruction : this->_obstructionVector)
+    {
+        if (InactivatedNodeState != obstruction->getState())
+        {
+            obstruction->gameUpdate(delta);
+        }
+    }
+
     this->_characterNode->gameUpdate(delta);
     
     this->followCharacter();
@@ -147,7 +161,9 @@ void GamePlayLayer::gameUpdate(float delta)
     double time2 = getCurrentTime();
     lastUpdateTime = time2 - time1;
     
-    if (this->_characterNode->getPosition().y < 0.0f || this->_characterNode->getPosition().y < (this->getMaxDistance() - 2 * designResolutionSize.height))
+    if (this->_characterNode->getPosition().y < 0.0f
+        || this->_characterNode->getPosition().y < (this->getMaxDistance() - 2 * designResolutionSize.height)
+        || this->_characterNode->getHeartCount() <= 0)
     {
         this->setDead(true);
         cdPlayTime = 0.0f;
@@ -276,6 +292,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = FootboardNode::create();
         obstructionNode->setCollisionSize(Size(150.0f, 92.0f));
     }
+    else if (ThornFootboardNodeType == nodeType)
+    {
+        obstructionNode = ThornFootboardNode::create();
+        obstructionNode->setCollisionSize(Size(166.0f, 74.0f));
+    }
     else if (HeartNodeType == nodeType)
     {
         obstructionNode = HeartNode::create();
@@ -295,6 +316,21 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     {
         obstructionNode = MagnetNode::create();
         obstructionNode->setCollisionSize(Size(90.0f, 132.0f));
+    }
+    else if (AngelWingNodeType == nodeType)
+    {
+        obstructionNode = AngelWingNode::create();
+        obstructionNode->setCollisionSize(Size(91.0f, 62.0f));
+    }
+    else if (EvilCloudNodeType == nodeType)
+    {
+        obstructionNode = EvilCloudNode::create();
+        obstructionNode->setCollisionSize(Size(152.0f, 85.0f));
+    }
+    else if (VortexNodeType == nodeType)
+    {
+        obstructionNode = VortexNode::create();
+        obstructionNode->setCollisionSize(Size(152.0f, 144.0f));
     }
 
     obstructionNode->setPosition(Vec2());
@@ -316,7 +352,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 10;
+        const int m = 14;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -336,17 +372,14 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 4)
         {
             gameNode = this->getObstructionNode((testI % (m * 12)) == 4 ? FlyBootNodeType : SmallCoinNodeType);
-//            gameNode = this->getObstructionNode(MagnetNodeType);
         }
         else if (testI % m == 5)
         {
             gameNode = this->getObstructionNode((testI % (m * 18)) == 5 ? RocketNodeType : SmallCoinNodeType);
-//            gameNode = this->getObstructionNode(MagnetNodeType);
         }
         else if (testI % m == 6)
         {
             gameNode = this->getObstructionNode((testI % (m * 15)) == 6 ? MagnetNodeType : SmallCoinNodeType);
-//            gameNode = this->getObstructionNode(MagnetNodeType);
         }
         else if (testI % m == 7)
         {
@@ -359,6 +392,22 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 9)
         {
             gameNode = this->getObstructionNode(BusinessIncomeTaxCoinNodeType);
+        }
+        else if (testI % m == 10)
+        {
+            gameNode = this->getObstructionNode((testI % (m * 13)) == 10 ? AngelWingNodeType : SmallCoinNodeType);
+        }
+        else if (testI % m == 11)
+        {
+            gameNode = this->getObstructionNode((testI % (m * 14)) == 11 ? EvilCloudNodeType : SmallCoinNodeType);
+        }
+        else if (testI % m == 12)
+        {
+            gameNode = this->getObstructionNode((testI % (m * 5)) == 12 ? ThornFootboardNodeType : SmallCoinNodeType);
+        }
+        else if (testI % m == 13)
+        {
+            gameNode = this->getObstructionNode((testI % (m * 20)) == 13 ? VortexNodeType : SmallCoinNodeType);
         }
         ++testI;
         

@@ -10,6 +10,7 @@ public:
     virtual ~GameBaseNode() = 0;
     
     virtual bool init() override;
+    virtual void gameUpdate(float delta);
     cocos2d::Rect getCollisionRect() const;
     bool isCollidedWithNode(const GameBaseNode& gameBaseNode) const;
     

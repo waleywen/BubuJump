@@ -1,30 +1,31 @@
-#include "RocketEffect.h"
+#include "EvilCloudEffect.h"
 
 #include "../../CharacterNode.h"
+#include "../ObstructionNode.h"
 
 USING_NS_CC;
 
-RocketEffect::~RocketEffect()
+EvilCloudEffect::~EvilCloudEffect()
 {
 }
 
-bool RocketEffect::init()
+bool EvilCloudEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("RocketEffect.png"))
+    if (false == BaseEffect::initWithSpriteName("EvilCloudEffect.png"))
     {
         return false;
     }
     
-    this->_time = 4.0f;
+    this->_time = 10.0f;
     
     return true;
 }
 
-void RocketEffect::gameUpdate(float delta)
+void EvilCloudEffect::gameUpdate(float delta)
 {
     if (nullptr == this->_effectSprite->getParent())
     {
-        this->_effectSprite->setPosition(Vec2(0.0f, -200.0f));
+        this->_effectSprite->setPosition(Vec2(0.0f, 0.0f));
         this->getCharacterNode()->addChild(this->_effectSprite, -10);
     }
     this->_effectSprite->setVisible(true);
@@ -37,19 +38,14 @@ void RocketEffect::gameUpdate(float delta)
     }
 }
 
-void RocketEffect::reset()
+void EvilCloudEffect::reset()
 {
     this->setState(ActivatedEffectState);
     this->setDuration(0.0f);
     this->_effectSprite->setVisible(false);
 }
 
-float RocketEffect::changeSpeed(float speed)
+float EvilCloudEffect::changeHorizontalSpeedPercentage(float percentage)
 {
-    return this->getCharacterNode()->getMaxVerticalSpeed() * 1.5f;
-}
-
-float RocketEffect::changeAcceleration(float acceleration)
-{
-    return 0.0f;
+    return percentage * -1.0f;
 }

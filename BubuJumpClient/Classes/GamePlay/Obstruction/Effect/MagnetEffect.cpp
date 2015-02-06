@@ -7,39 +7,35 @@ USING_NS_CC;
 
 MagnetEffect::~MagnetEffect()
 {
-    if (nullptr != this->_magnetEffectSprite)
-    {
-        this->_magnetEffectSprite->release();
-        this->_magnetEffectSprite = nullptr;
-    }
 }
 
 bool MagnetEffect::init()
 {
-    if (false == BaseEffect::init())
+    if (false == BaseEffect::initWithSpriteName("MagnetEffect.png"))
     {
         return false;
     }
     
     this->_time = 10.0f;
     
-    this->_magnetEffectSprite = Sprite::create("MagnetEffect.png");
-    this->_magnetEffectSprite->retain();
-    auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
-    _magnetEffectSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
-
     return true;
 }
 
 void MagnetEffect::gameUpdate(float delta)
 {
-    if (nullptr == this->_magnetEffectSprite->getParent())
+    if (this->_duration == 0.0f)
     {
-        this->_magnetEffectSprite->setPosition(Vec2(0.0f, 0.0f));
-        this->getCharacterNode()->addChild(this->_magnetEffectSprite, -10);
+        this->_effectSprite->stopAllActions();
+        auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
+        this->_effectSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
     }
-    this->_magnetEffectSprite->setVisible(true);
-    this->setDuration(this->getDuration() + delta);
+    
+    if (nullptr == this->_effectSprite->getParent())
+    {
+        this->_effectSprite->setPosition(Vec2(0.0f, 0.0f));
+        this->getCharacterNode()->addChild(this->_effectSprite, -10);
+    }
+    this->_effectSprite->setVisible(true);
     
     for(auto& obstructionNode : *this->getCharacterNode()->getObstructionNodeVector())
     {
@@ -54,17 +50,18 @@ void MagnetEffect::gameUpdate(float delta)
             Point characterNodePosition = this->getCharacterNode()->getPosition();
             if (characterNodePosition.getDistance(obstructionNodePosition) <= 500.0f)
             {
-                const float moveSpeed = 1000.0f;
-                Point newPosition = obstructionNodePosition - ((obstructionNodePosition - characterNodePosition) * (delta * moveSpeed / (obstructionNodePosition - characterNodePosition).length()));
+                static const float movingSpeed = 1000.0f;
+                Point newPosition = obstructionNodePosition - ((obstructionNodePosition - characterNodePosition) * (delta * movingSpeed / (obstructionNodePosition - characterNodePosition).length()));
                 obstructionNode->setPosition(newPosition);
             }
         }
     }
     
+    this->setDuration(this->getDuration() + delta);
     if (ActivatedEffectState == this->getState() && this->getDuration() >= this->getTime())
     {
         this->setState(InactivatedEffectState);
-        this->_magnetEffectSprite->setVisible(false);
+        this->_effectSprite->setVisible(false);
     }
 }
 
@@ -72,5 +69,5 @@ void MagnetEffect::reset()
 {
     this->setState(ActivatedEffectState);
     this->setDuration(0.0f);
-    this->_magnetEffectSprite->setVisible(false);
+    this->_effectSprite->setVisible(false);
 }
