@@ -27,7 +27,6 @@ public:
     
     CC_SYNTHESIZE(float, _maxDistance, MaxDistance);
     CC_SYNTHESIZE(bool, _dead, Dead);
-    
 private:
     void followCharacter();
     void cleanupUselessObstructions();

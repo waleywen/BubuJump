@@ -22,9 +22,8 @@ public:
     CC_SYNTHESIZE(int, _coinAmount, CoinAmount);
     CC_SYNTHESIZE(float, _maxDistance, MaxDistance);
     CC_SYNTHESIZE(BaseEffect*, _effect, Effect);
-
 private:
-    void pauseButtonClicked(Ref* sender);
+    void pauseButtonClicked(cocos2d::Ref* sender);
 
     cocos2d::ui::Text* _coinAmountLabel;
     cocos2d::ui::Text* _heartLabel;

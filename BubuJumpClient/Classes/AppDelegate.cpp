@@ -3,8 +3,9 @@
 #include <vector>
 #include <string>
 
-#include "GamePlay/GamePlayScene.h"
 #include "AppMacros.h"
+
+#include "MainMenuUILayer.h"
 
 USING_NS_CC;
 using namespace std;
@@ -78,7 +79,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     Device::setAccelerometerInterval(1.0 / 60);
     
     // create a scene. it's an autorelease object
-    auto scene = GamePlayScene::create();
+    auto scene = MainMenuUILayer::createScene();
     
     // run
     director->runWithScene(scene);

@@ -30,7 +30,7 @@ class NetworkManager
 public:
     static NetworkManager* getInstance();
     
-    NetworkManager() : _nextIndex(0) {_testID=0;};
+    NetworkManager() : _nextIndex(0) {};
     
     void cancelRequest(int requestIndex);
     int submitScore(int score, NetworkCallback callback);
@@ -51,8 +51,6 @@ private:
     NetworkCallbackMap _callbackMap;
     
     int _nextIndex;
-    
-    int _testID;
 };
 
 #endif // _NetworkManager_H_

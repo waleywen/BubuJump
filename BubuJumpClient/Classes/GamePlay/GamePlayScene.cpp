@@ -1,13 +1,11 @@
 #include "GamePlayScene.h"
 
-#include "audio/include/SimpleAudioEngine.h"
-
 #include "GamePlayLayer.h"
 #include "GamePlayUILayer.h"
 #include "GameLeaderboardUI.h"
+#include "../Data/Local/LoaclManager.h"
 
 USING_NS_CC;
-using namespace CocosDenshion;
 
 GamePlayScene::~GamePlayScene()
 {
@@ -40,10 +38,6 @@ bool GamePlayScene::init()
 
     this->scheduleUpdate();
 
-    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0f);
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
-    
     return true;
 }
 
@@ -60,6 +54,17 @@ void GamePlayScene::update(float delta)
     
     if (true == this->_gamePlayLayer->getDead())
     {
+        GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+        if (this->_gamePlayLayer->getCoinAmount() > gameSaveData.getMaxCoinCount())
+        {
+            gameSaveData.setMaxCoinCount(this->_gamePlayLayer->getCoinAmount());
+        }
+        if (this->_gamePlayLayer->getMaxDistance() > gameSaveData.getMaxDistance())
+        {
+            gameSaveData.setMaxDistance(this->_gamePlayLayer->getMaxDistance());
+        }
+        LoaclManager::getInstance()->save();
+        
         auto gamePauseUILayer = GameLeaderboardUI::create();
         gamePauseUILayer->setCoinAmount(this->_gamePlayLayer->getCoinAmount());
         gamePauseUILayer->setMaxDistance(this->_gamePlayLayer->getMaxDistance());

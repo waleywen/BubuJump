@@ -202,6 +202,13 @@ void CharacterNode::addHeart(int count)
 
 void CharacterNode::dropHeart(int count)
 {
+    if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
+    {
+        if (this->getEffect()->getType() == RocketEffectType)
+        {
+            return;
+        }
+    }
     this->_heartCount -= count;
     
     this->_hurtDuration = 2.0f;

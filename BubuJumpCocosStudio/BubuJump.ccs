@@ -137,6 +137,23 @@
         <Image Name="Vortex.png" />
         <Image Name="BusinessIncomeTaxTips.png" />
         <Image Name="BusinessTaxTips.png" />
+        <Project Name="UFONode.csd" />
+        <Image Name="UFO.png" />
+        <Project Name="MainMenuUI.csd" />
+        <Image Name="MainMenuUIBackground.png" />
+        <Image Name="MainMenuUILeaderboardButton.png" />
+        <Image Name="MainMenuUIOptionButton.png" />
+        <Image Name="MainMenuUIPlayButton.png" />
+        <Image Name="MainMenuUITaxButton.png" />
+        <Project Name="BuildingTaxCoinNode.csd" />
+        <Project Name="VehicleAndVesselTaxCoinNode.csd" />
+        <Image Name="BuildingTaxCoin.png" />
+        <Image Name="VehicleAndVesselTaxCoin.png" />
+        <Project Name="GameResuscitationUI.csd" />
+        <Project Name="LeaderboardUI.csd" />
+        <Image Name="LeaderboardUIBackground.png" />
+        <Image Name="LeaderboardUIHomeButton.png" />
+        <Image Name="LeaderboardUIOKButton.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -15,6 +15,8 @@ enum ObstructionNodeType
     UrbanMaintenanceAndConstructionTaxCoinNodeType,
     BusinessTaxCoinNodeType,
     BusinessIncomeTaxCoinNodeType,
+    BuildingTaxCoinNodeType,
+    VehicleAndVesselTaxCoinNodeType,
     FootboardNodeType,
     ThornFootboardNodeType,
     HeartNodeType,
@@ -24,6 +26,7 @@ enum ObstructionNodeType
     AngelWingNodeType,
     EvilCloudNodeType,
     VortexNodeType,
+    UFONodeType,
 };
 
 enum ObstructionNodeState

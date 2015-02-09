@@ -5,6 +5,7 @@
 
 #include "../../CommonUtility.h"
 #include "../md5.h"
+#include "../Local/LoaclManager.h"
 
 USING_NS_CC;
 using namespace cocos2d::network;
@@ -42,9 +43,11 @@ void NetworkManager::cancelRequest(int requestIndex)
 
 int NetworkManager::submitScore(int score, NetworkCallback callback)
 {
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+
     std::string scoreString = CommonUtility::convertToString(score);
     
-    std::string idString = CommonUtility::convertToString(this->_testID);
+    std::string idString = CommonUtility::convertToString(gameSaveData.getID());
     
     std::string url = SERVER_ADDRESS + "leaderboard.php";
     url += "?type=1";
@@ -125,7 +128,9 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     int myID = document["myID"].GetInt();
     int myScore = document["myScore"].GetInt();
     
-    this->_testID = myID;
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    gameSaveData.setID(myID);
+    LoaclManager::getInstance()->save();
     
     bool foundMyScore = false;
     int startPlace = sameScorePlace;

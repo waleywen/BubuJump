@@ -14,7 +14,6 @@ public:
     bool initWithCsbNameAndTipsName(const std::string& csbName, const std::string& tipsName);
     virtual void collided(CharacterNode* characterNode) override;
     virtual void reactivate() override;
-
 protected:
     cocos2d::Node* _tipsSpriteNode;
 };

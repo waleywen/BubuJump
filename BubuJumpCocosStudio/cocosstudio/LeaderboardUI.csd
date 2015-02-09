@@ -1,5 +1,5 @@
 <GameProjectFile>
-  <PropertyGroup Type="Layer" Name="GameLeaderboardUI" ID="9652fae3-01df-4ddd-bc23-738ddadca277" Version="2.0.6.0" />
+  <PropertyGroup Type="Layer" Name="LeaderboardUI" ID="9652fae3-01df-4ddd-bc23-738ddadca277" Version="2.0.6.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
@@ -20,7 +20,7 @@
             <Size X="720.0000" Y="1280.0000" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="GameLeaderboardUIBackground.png" />
+            <FileData Type="Normal" Path="LeaderboardUIBackground.png" />
           </NodeObjectData>
           <NodeObjectData Name="distanceLabel" ActionTag="-1355858403" FrameEvent="" Tag="23" ObjectIndex="1" FontSize="48" LabelText="0" ctype="TextObjectData">
             <Position X="177.0000" Y="895.0000" />
@@ -53,7 +53,7 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Normal" Path="GameLeaderboardUIOKButton.png" />
+            <NormalFileData Type="Normal" Path="LeaderboardUIOKButton.png" />
           </NodeObjectData>
           <NodeObjectData Name="shareButton" ActionTag="1262578684" FrameEvent="" Tag="26" ObjectIndex="2" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="118" Scale9Height="93" ctype="ButtonObjectData">
             <Position X="609.9905" Y="999.4938" />
@@ -79,7 +79,7 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Normal" Path="GameLeaderboardUIHomeButton.png" />
+            <NormalFileData Type="Normal" Path="LeaderboardUIHomeButton.png" />
           </NodeObjectData>
           <NodeObjectData Name="MaxDistanceIcon" ActionTag="-283539961" FrameEvent="" Tag="23" ObjectIndex="2" ctype="SpriteObjectData">
             <Position X="105.0000" Y="894.0001" />
@@ -166,60 +166,54 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.4641" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel2" ActionTag="148030263" VisibleForFrame="False" FrameEvent="" Tag="22" ObjectIndex="11" FontSize="48" LabelText="50000" ctype="TextObjectData">
             <Position X="255.0000" Y="518.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.4047" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel3" ActionTag="-1264751643" VisibleForFrame="False" FrameEvent="" Tag="23" ObjectIndex="12" FontSize="48" LabelText="40000" ctype="TextObjectData">
             <Position X="255.0000" Y="445.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.3477" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel4" ActionTag="1554683715" VisibleForFrame="False" FrameEvent="" Tag="24" ObjectIndex="13" FontSize="48" LabelText="30000" ctype="TextObjectData">
             <Position X="255.0000" Y="371.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.2898" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel5" ActionTag="-1635282550" VisibleForFrame="False" FrameEvent="" Tag="25" ObjectIndex="14" FontSize="48" LabelText="20000" ctype="TextObjectData">
             <Position X="255.0000" Y="295.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.2305" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel6" ActionTag="-471024394" VisibleForFrame="False" FrameEvent="" Tag="26" ObjectIndex="15" FontSize="48" LabelText="10000" ctype="TextObjectData">
             <Position X="255.0000" Y="220.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.1719" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardPlaceLabel1" ActionTag="-883700901" VisibleForFrame="False" FrameEvent="" Tag="27" ObjectIndex="16" FontSize="48" LabelText="60000" ctype="TextObjectData">
             <Position X="48.3317" Y="593.9998" />

@@ -59,7 +59,6 @@ public:
     
     CC_PROPERTY(float, _currentSpeed, CurrentSpeed);
     CC_PROPERTY(float, _horizontalSpeedPercentage, HorizontalSpeedPercentage);
-    
 private:
     float getCurrentAcceleration();
     

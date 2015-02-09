@@ -18,7 +18,6 @@ public:
     
     CC_PROPERTY(cocos2d::Size, _collisionSize, CollisionSize);
     CC_PROPERTY(cocos2d::Vec2, _collisionOffset, CollisionOffset);
-    
 private:
     void updateCollisionArea();
     

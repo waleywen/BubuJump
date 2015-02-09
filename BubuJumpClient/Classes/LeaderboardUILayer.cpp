@@ -1,19 +1,18 @@
-#include "GameLeaderboardUI.h"
+#include "LeaderboardUILayer.h"
 
 #include "cocostudio/CocoStudio.h"
 
-#include "../UIHelper.h"
-#include "../CommonUtility.h"
-#include "../Data/Network/NetworkManager.h"
-
-#include "GamePlayScene.h"
+#include "UIHelper.h"
+#include "CommonUtility.h"
+#include "Data/Network/NetworkManager.h"
+#include "Data/Local/LoaclManager.h"
 
 USING_NS_CC;
 using namespace cocostudio;
 using namespace cocos2d::ui;
 using namespace cocostudio::timeline;
 
-GameLeaderboardUI::~GameLeaderboardUI()
+LeaderboardUILayer::~LeaderboardUILayer()
 {
     if (nullptr != this->_loadingSprite)
     {
@@ -32,14 +31,14 @@ GameLeaderboardUI::~GameLeaderboardUI()
     }
 }
 
-bool GameLeaderboardUI::init()
+bool LeaderboardUILayer::init()
 {
     if (false == Layer::init())
     {
         return false;
     }
     
-    auto uiNode = CSLoader::createNode("GameLeaderboardUI.csb");
+    auto uiNode = CSLoader::createNode("LeaderboardUI.csb");
     this->addChild(uiNode);
     
     this->_coinAmountLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "coinAmountLabel"));
@@ -48,39 +47,51 @@ bool GameLeaderboardUI::init()
     this->_distanceLabel->retain();
 
     auto okButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "okButton"));
-    okButton->addClickEventListener(CC_CALLBACK_1(GameLeaderboardUI::okButtonClicked, this));
+    okButton->addClickEventListener(CC_CALLBACK_1(LeaderboardUILayer::okButtonClicked, this));
+    auto homeButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "homeButton"));
+    homeButton->addClickEventListener(CC_CALLBACK_1(LeaderboardUILayer::homeButtonClicked, this));
     
-    this->_loadingSprite = Sprite::create("loading.png");
-    this->_loadingSprite->retain();
-    this->_loadingSprite->setPosition(Vec2(360.0f, 400.0f));
-    auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
-    this->_loadingSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
-    this->addChild(this->_loadingSprite);
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
     
+    if (gameSaveData.getMaxDistance() > 0)
+    {
+        this->_loadingSprite = Sprite::create("loading.png");
+        this->_loadingSprite->retain();
+        this->_loadingSprite->setPosition(Vec2(360.0f, 400.0f));
+        auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
+        this->_loadingSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
+        this->addChild(this->_loadingSprite);
+        
+        this->_requestIndex = NetworkManager::getInstance()->submitScore(gameSaveData.getMaxDistance(), CC_CALLBACK_1(LeaderboardUILayer::scoreSubmitted, this));
+    }
+    
+    this->_coinAmountLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxCoinCount()));
+    this->_distanceLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxDistance()));
+
     return true;
 }
 
-void GameLeaderboardUI::setCoinAmount(int coinAmount)
+void LeaderboardUILayer::setCoinAmount(int coinAmount)
 {
     this->_coinAmountLabel->setString(CommonUtility::convertToString(coinAmount));
 }
 
-void GameLeaderboardUI::setMaxDistance(float maxDistance)
+void LeaderboardUILayer::setMaxDistance(float maxDistance)
 {
     this->_distanceLabel->setString(CommonUtility::convertToString((int)maxDistance));
-    
-    this->_requestIndex = NetworkManager::getInstance()->submitScore((int)maxDistance, CC_CALLBACK_1(GameLeaderboardUI::scoreSubmitted, this));
 }
 
-void GameLeaderboardUI::okButtonClicked(cocos2d::Ref *sender)
+void LeaderboardUILayer::okButtonClicked(cocos2d::Ref *sender)
 {
-    NetworkManager::getInstance()->cancelRequest(this->_requestIndex);
-
-    auto scene = GamePlayScene::create();
-    Director::getInstance()->replaceScene(scene);
+    this->homeButtonClicked(sender);
 }
 
-void GameLeaderboardUI::scoreSubmitted(void *resultData)
+void LeaderboardUILayer::homeButtonClicked(cocos2d::Ref *sender)
+{
+    Director::getInstance()->popScene();
+}
+
+void LeaderboardUILayer::scoreSubmitted(void *resultData)
 {
     this->_loadingSprite->setVisible(false);
     

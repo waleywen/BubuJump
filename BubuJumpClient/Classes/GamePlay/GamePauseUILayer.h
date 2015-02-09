@@ -17,7 +17,6 @@ public:
     void setMaxDistance(float maxDistance);
 
     CREATE_FUNC(GamePauseUILayer);
-    
 private:
     void continueButtonClicked(Ref* sender);
 

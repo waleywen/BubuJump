@@ -55,4 +55,13 @@ static cocos2d::Size designResolutionSize = size720;
 // The font size 24 is designed for small resolution, so we should change it to fit for current design resolution
 #define TITLE_FONT_SIZE  (cocos2d::Director::getInstance()->getOpenGLView()->getDesignResolutionSize().width / smallResource.size.width * 24)
 
+#define CREATE_SCENE_FUNC(__TYPE__) \
+static cocos2d::Scene* createScene() \
+{ \
+    cocos2d::Scene* scene = cocos2d::Scene::create(); \
+    scene->addChild(__TYPE__::create()); \
+    return scene; \
+}
+
+
 #endif /* __APPMACROS_H__ */

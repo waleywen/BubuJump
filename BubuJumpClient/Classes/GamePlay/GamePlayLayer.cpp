@@ -8,6 +8,8 @@
 #include "Obstruction/UrbanMaintenanceAndConstructionTaxCoinNode.h"
 #include "Obstruction/BusinessTaxCoinNode.h"
 #include "Obstruction/BusinessIncomeTaxCoinNode.h"
+#include "Obstruction/BuildingTaxCoinNode.h"
+#include "Obstruction/VehicleAndVesselTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/HeartNode.h"
@@ -17,6 +19,7 @@
 #include "Obstruction/AngelWingNode.h"
 #include "Obstruction/EvilCloudNode.h"
 #include "Obstruction/VortexNode.h"
+#include "Obstruction/UFONode.h"
 
 USING_NS_CC;
 
@@ -89,12 +92,15 @@ bool GamePlayLayer::init()
     
     auto node1 = CSLoader::createNode("Layer1.csb");
     node1->setTag(501);
+    node1->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node1->setVisible(false);
     auto node2 = CSLoader::createNode("Layer2.csb");
     node2->setTag(502);
+    node2->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node2->setVisible(false);
     auto node3 = CSLoader::createNode("Layer3.csb");
     node3->setTag(503);
+    node3->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node3->setVisible(false);
 
     this->_mainGameLayer->addChild(node1, 10);
@@ -287,6 +293,16 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = BusinessIncomeTaxCoinNode::create();
         obstructionNode->setCollisionSize(Size(89.0f, 88.0f));
     }
+    else if (BuildingTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = BuildingTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
+    else if (VehicleAndVesselTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = VehicleAndVesselTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
     else if (FootboardNodeType == nodeType)
     {
         obstructionNode = FootboardNode::create();
@@ -332,6 +348,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = VortexNode::create();
         obstructionNode->setCollisionSize(Size(152.0f, 144.0f));
     }
+    else if (UFONodeType == nodeType)
+    {
+        obstructionNode = UFONode::create();
+        obstructionNode->setCollisionSize(Size(145.0f, 96.0f));
+    }
 
     obstructionNode->setPosition(Vec2());
     obstructionNode->reactivate();
@@ -352,7 +373,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 14;
+        const int m = 17;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -409,6 +430,19 @@ void GamePlayLayer::buildTopperScene()
         {
             gameNode = this->getObstructionNode((testI % (m * 20)) == 13 ? VortexNodeType : SmallCoinNodeType);
         }
+        else if (testI % m == 14)
+        {
+            gameNode = this->getObstructionNode((testI % (m * 11)) == 14 ? UFONodeType : SmallCoinNodeType);
+//            gameNode = this->getObstructionNode(UFONodeType);
+        }
+        else if (testI % m == 15)
+        {
+            gameNode = this->getObstructionNode(BuildingTaxCoinNodeType);
+        }
+        else if (testI % m == 16)
+        {
+            gameNode = this->getObstructionNode(VehicleAndVesselTaxCoinNodeType);
+        }
         ++testI;
         
 //        auto gameNode = this->getObstructionNode(IndividualIncomeTaxCoin);
@@ -428,7 +462,15 @@ void GamePlayLayer::buildTopperScene()
         srand( tsrans + seedTest );
         float t = rand() % 100 / 100.0f;
 
-        gameNode->setPosition(Vec2(t * designResolutionSize.width, this->_lastBuildLine));
+        if (gameNode->getNodeType() != UFONodeType)
+        {
+            gameNode->setPosition(Vec2(t * designResolutionSize.width, this->_lastBuildLine));
+        }
+        else
+        {
+            UFONode* ufoNode = static_cast<UFONode*>(gameNode);
+            ufoNode->moveWithRange(Vec2(0.0f, this->_lastBuildLine), Vec2(designResolutionSize.width, this->_lastBuildLine));
+        }
     }
     
     auto layer1 = this->_mainGameLayer->getChildByTag(501);
