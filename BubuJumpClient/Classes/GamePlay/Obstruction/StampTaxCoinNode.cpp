@@ -9,7 +9,7 @@ StampTaxCoinNode::~StampTaxCoinNode()
 
 bool StampTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("StampTaxCoinNode.csb", "1.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("StampTaxCoinNode.csb", "StampTaxAddTips.png"))
     {
         return false;
     }

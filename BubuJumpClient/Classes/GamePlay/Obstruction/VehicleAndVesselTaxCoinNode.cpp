@@ -9,7 +9,7 @@ VehicleAndVesselTaxCoinNode::~VehicleAndVesselTaxCoinNode()
 
 bool VehicleAndVesselTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("VehicleAndVesselTaxCoinNode.csb", "1.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("VehicleAndVesselTaxCoinNode.csb", "VehicleAndVesselTaxAddTips.png"))
     {
         return false;
     }

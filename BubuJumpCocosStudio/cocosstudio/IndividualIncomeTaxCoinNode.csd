@@ -30,7 +30,7 @@
             <Size X="229.0000" Y="99.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="IndividualIncomeTaxCoinTips.png" />
+            <FileData Type="Normal" Path="IndividualIncomeTaxTips.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

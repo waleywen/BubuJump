@@ -9,7 +9,7 @@ BusinessTaxCoinNode::~BusinessTaxCoinNode()
 
 bool BusinessTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("BusinessTaxCoinNode.csb", "1.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("BusinessTaxCoinNode.csb", "BusinessTaxAddTips.png"))
     {
         return false;
     }

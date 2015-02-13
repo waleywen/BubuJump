@@ -43,7 +43,12 @@ void MagnetEffect::gameUpdate(float delta)
              || obstructionNode->getNodeType() == IndividualIncomeTaxCoinNodeType
              || obstructionNode->getNodeType() == UrbanMaintenanceAndConstructionTaxCoinNodeType
              || obstructionNode->getNodeType() == BusinessTaxCoinNodeType
-             || obstructionNode->getNodeType() == BusinessIncomeTaxCoinNodeType)
+             || obstructionNode->getNodeType() == BusinessIncomeTaxCoinNodeType
+             || obstructionNode->getNodeType() == BuildingTaxCoinNodeType
+             || obstructionNode->getNodeType() == VehicleAndVesselTaxCoinNodeType
+             || obstructionNode->getNodeType() == DeedTaxCoinNodeType
+             || obstructionNode->getNodeType() == StampTaxCoinNodeType
+             )
             && ActivatedNodeState == obstructionNode->getState())
         {
             Point obstructionNodePosition = obstructionNode->getPosition();

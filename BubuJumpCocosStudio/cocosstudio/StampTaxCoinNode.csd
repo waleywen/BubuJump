@@ -23,14 +23,14 @@
             <FileData Type="Normal" Path="StampTaxCoin.png" />
           </NodeObjectData>
           <NodeObjectData Name="UrbanMaintenanceAndConstructionTaxTips" ActionTag="-1720470924" FrameEvent="" Tag="30" ObjectIndex="6" ctype="SpriteObjectData">
-            <Position X="50.9999" Y="-97.0000" />
+            <Position X="28.9999" Y="-84.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="288.0000" Y="102.0000" />
+            <Size X="170.0000" Y="79.0000" />
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="UrbanMaintenanceAndConstructionTaxTips.png" />
+            <FileData Type="Normal" Path="StampTaxTips.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

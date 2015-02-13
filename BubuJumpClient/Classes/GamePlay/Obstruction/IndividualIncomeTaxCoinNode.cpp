@@ -9,7 +9,7 @@ IndividualIncomeTaxCoinNode::~IndividualIncomeTaxCoinNode()
 
 bool IndividualIncomeTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("IndividualIncomeTaxCoinNode.csb", "1.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("IndividualIncomeTaxCoinNode.csb", "IndividualIncomeTaxAddTips.png"))
     {
         return false;
     }

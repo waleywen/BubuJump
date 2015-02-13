@@ -9,7 +9,7 @@ UrbanMaintenanceAndConstructionTaxCoinNode::~UrbanMaintenanceAndConstructionTaxC
 
 bool UrbanMaintenanceAndConstructionTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("UrbanMaintenanceAndConstructionTaxCoinNode.csb", "2.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("UrbanMaintenanceAndConstructionTaxCoinNode.csb", "UrbanMaintenanceAndConstructionTaxAddTips.png"))
     {
         return false;
     }

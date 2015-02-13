@@ -25,7 +25,7 @@ void EvilCloudEffect::gameUpdate(float delta)
 {
     if (nullptr == this->_effectSprite->getParent())
     {
-        this->_effectSprite->setPosition(Vec2(0.0f, 0.0f));
+        this->_effectSprite->setPosition(Vec2(0.0f, 50.0f));
         this->getCharacterNode()->addChild(this->_effectSprite, -10);
     }
     this->_effectSprite->setVisible(true);

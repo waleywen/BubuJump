@@ -9,7 +9,7 @@ DeedTaxCoinNode::~DeedTaxCoinNode()
 
 bool DeedTaxCoinNode::init()
 {
-    if (false == TaxCoinNode::initWithCsbNameAndTipsName("DeedTaxCoinNode.csb", "1.png"))
+    if (false == TaxCoinNode::initWithCsbNameAndTipsName("DeedTaxCoinNode.csb", "DeedTaxAddTips.png"))
     {
         return false;
     }

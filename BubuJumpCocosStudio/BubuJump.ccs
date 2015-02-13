@@ -101,7 +101,7 @@
         <Image Name="UrbanMaintenanceAndConstructionTaxCoin.png" />
         <Image Name="Footboard.png" />
         <Project Name="FootboardNode.csd" />
-        <Image Name="IndividualIncomeTaxCoinTips.png" />
+        <Image Name="IndividualIncomeTaxTips.png" />
         <Image Name="UrbanMaintenanceAndConstructionTaxTips.png" />
         <File Name="Arial Black.ttf" />
         <Project Name="GamePauseUI.csd" />
@@ -171,6 +171,18 @@
         <Project Name="StampTaxCoinNode.csd" />
         <Image Name="DeedTaxCoin.png" />
         <Image Name="StampTaxCoin.png" />
+        <Image Name="BuildingTaxTips.png" />
+        <Image Name="DeedTaxTips.png" />
+        <Image Name="StampTaxTips.png" />
+        <Image Name="VehicleAndVesselTaxTips.png" />
+        <Image Name="BuildingTaxAddTips.png" />
+        <Image Name="BusinessIncomeTaxAddTips.png" />
+        <Image Name="BusinessTaxAddTips.png" />
+        <Image Name="DeedTaxAddTips.png" />
+        <Image Name="IndividualIncomeTaxAddTips.png" />
+        <Image Name="StampTaxAddTips.png" />
+        <Image Name="UrbanMaintenanceAndConstructionTaxAddTips.png" />
+        <Image Name="VehicleAndVesselTaxAddTips.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>
