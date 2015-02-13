@@ -110,6 +110,11 @@ void GamePlayUILayer::gameUpdate(float delta)
         }
         this->_coinAmountLabel->setString(CommonUtility::convertToString(this->_currentCoinAmount));
     }
+    else if (this->_currentCoinAmount > this->_coinAmount)
+    {
+        this->_currentCoinAmount = this->_coinAmount;
+        this->_coinAmountLabel->setString(CommonUtility::convertToString(this->_currentCoinAmount));
+    }
     if (this->_currentDistance < this->_maxDistance)
     {
         float increasement = 0;

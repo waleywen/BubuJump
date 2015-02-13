@@ -41,7 +41,7 @@ void NetworkManager::cancelRequest(int requestIndex)
     }
 }
 
-int NetworkManager::submitScore(int score, NetworkCallback callback)
+int NetworkManager::submitScore(int score, int resultSize, NetworkCallback callback)
 {
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
 
@@ -66,7 +66,14 @@ int NetworkManager::submitScore(int score, NetworkCallback callback)
     HttpRequest* request = new HttpRequest();
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback(CC_CALLBACK_2(NetworkManager::scoreSubmitted, this));
+    if (3 == resultSize)
+    {
+        request->setResponseCallback(CC_CALLBACK_2(NetworkManager::scoreSubmitted3, this));
+    }
+    else if (6 == resultSize)
+    {
+        request->setResponseCallback(CC_CALLBACK_2(NetworkManager::scoreSubmitted6, this));
+    }
     request->setTag("submitScore");
     request->setUserData(&callbackObject);
     HttpClient::getInstance()->send(request);
@@ -80,7 +87,17 @@ int NetworkManager::getRequestIndex()
     return ++_nextIndex;
 }
 
-void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+void NetworkManager::scoreSubmitted3(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+{
+    this->scoreSubmitted(sender, response, 3);
+}
+
+void NetworkManager::scoreSubmitted6(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+{
+    this->scoreSubmitted(sender, response, 6);
+}
+
+void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response, int resultSize)
 {
     if (!response)
     {
@@ -171,7 +188,7 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     myRecord->setName("Me");
 
     LeaderboardRecordVector resultRecordVector;
-    if (leaderboardArray.Size() <= 6)
+    if (leaderboardArray.Size() <= resultSize)
     {
         resultRecordVector = recordVector;
     }
@@ -185,7 +202,7 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
         {
             hasPrevious = false;
         }
-        for (int i = 1; resultRecordVector.size() < 6; ++i)
+        for (int i = 1; resultRecordVector.size() < resultSize; ++i)
         {
             LeaderboardRecordVectorIterator previousIter = iter - i;
             if (true == hasPrevious)

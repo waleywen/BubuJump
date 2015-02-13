@@ -26,7 +26,7 @@ void SmallCoinNode::collided(CharacterNode *characterNode)
 {
     this->setState(PendingNodeState);
     characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
-    characterNode->addCoins(10);
+    characterNode->addCoins(10, this->getNodeType());
     this->setVisible(false);
 
     SimpleAudioEngine::getInstance()->playEffect("Sound/sfx-coin-pickup.wav");

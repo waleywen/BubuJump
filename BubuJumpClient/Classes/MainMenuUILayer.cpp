@@ -47,8 +47,7 @@ bool MainMenuUILayer::init()
 void MainMenuUILayer::playButtonClicked(cocos2d::Ref *sender)
 {
     auto scene = GamePlayScene::create();
-    Director::getInstance()->popToRootScene();
-    Director::getInstance()->replaceScene(scene);
+    Director::getInstance()->pushScene(scene);
 }
 
 void MainMenuUILayer::taxButtonClicked(cocos2d::Ref *sender)

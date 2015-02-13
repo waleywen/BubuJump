@@ -5,8 +5,8 @@
 #include "cocostudio/CocoStudio.h"
 
 #include "GameBaseNode.h"
+#include "Obstruction/ObstructionNode.h"
 
-class ObstructionNode;
 class BaseEffect;
 
 enum CharacterMode
@@ -32,17 +32,22 @@ struct MovingRange
 class CharacterNode : public GameBaseNode
 {
 public:
-    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}),  _obstructionNodeVector(nullptr), _currentSpeed(0), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr),  _heartCount(0), _coinAmount(0), _hurtDuration(0), _effect(nullptr) {};
+    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}), _obstructionNodeVector(nullptr), _taxCoinMap(), _currentSpeed(0), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr),  _heartCount(0), _coinAmount(0), _hurtDuration(0), _effect(nullptr) {};
     virtual ~CharacterNode();
     
     virtual bool init() override;
     virtual void gameUpdate(float delta) override;
+
     void startPlay();
+    void revive();
+    
     void addHeart(int count);
     void dropHeart(int count);
     int getHeartCount();
-    void addCoins(int coinCount);
+    void addCoins(int coinCount, ObstructionNodeType type);
+    void dropCoins(int coinCount);
     int getCoinAmount();
+    int getTaxCoinAmount();
     void setEffect(BaseEffect* effect);
     BaseEffect* getEffect();
 
@@ -56,6 +61,8 @@ public:
     CC_SYNTHESIZE(MovingRange, _horizontalMovingRange, HorizontalMovingRange);
     
     CC_SYNTHESIZE(cocos2d::Vector<ObstructionNode*>*, _obstructionNodeVector, ObstructionNodeVector);
+    
+    CC_SYNTHESIZE_PASS_BY_REF(TaxCoinMap, _taxCoinMap, TaxCoinMap);
     
     CC_PROPERTY(float, _currentSpeed, CurrentSpeed);
     CC_PROPERTY(float, _horizontalSpeedPercentage, HorizontalSpeedPercentage);

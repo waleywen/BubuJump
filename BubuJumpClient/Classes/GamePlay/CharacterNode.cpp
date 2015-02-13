@@ -1,6 +1,5 @@
 #include "CharacterNode.h"
 
-#include "Obstruction/ObstructionNode.h"
 #include "Obstruction/Effect/BaseEffect.h"
 
 USING_NS_CC;
@@ -191,6 +190,15 @@ void CharacterNode::startPlay()
     this->playJumpAnimation();
 }
 
+void CharacterNode::revive()
+{
+    this->_heartCount = 3;
+    BaseEffect* effect = EffectFactory::getInstance()->getEffect(RocketEffectType);
+    effect->setCharacterNode(this);
+    this->setEffect(effect);
+    this->setCurrentSpeed(0.0f);
+}
+
 void CharacterNode::addHeart(int count)
 {
     this->_heartCount += count;
@@ -219,14 +227,42 @@ int CharacterNode::getHeartCount()
     return this->_heartCount;
 }
 
-void CharacterNode::addCoins(int coinCount)
+void CharacterNode::addCoins(int coinCount, ObstructionNodeType type)
 {
+    if (SmallCoinNodeType != type)
+    {
+        TaxCoinMapIterator iter = this->_taxCoinMap.find(type);
+        if (this->_taxCoinMap.end() == iter)
+        {
+            this->_taxCoinMap.insert(TaxCoinPair(type, coinCount));
+        }
+        else
+        {
+            (*iter).second += coinCount;
+        }
+    }
+    
     this->_coinAmount += coinCount;
+}
+
+void CharacterNode::dropCoins(int coinCount)
+{
+    this->_coinAmount = (coinCount >= this->_coinAmount ? 0.0f : (this->_coinAmount - coinCount));
 }
 
 int CharacterNode::getCoinAmount()
 {
     return this->_coinAmount;
+}
+
+int CharacterNode::getTaxCoinAmount()
+{
+    int amount = 0;
+    for (TaxCoinPair taxCoinPair : this->getTaxCoinMap())
+    {
+        amount += taxCoinPair.second;
+    }
+    return amount;
 }
 
 void CharacterNode::setEffect(BaseEffect *effect)

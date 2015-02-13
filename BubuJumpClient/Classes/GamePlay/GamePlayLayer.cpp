@@ -10,6 +10,8 @@
 #include "Obstruction/BusinessIncomeTaxCoinNode.h"
 #include "Obstruction/BuildingTaxCoinNode.h"
 #include "Obstruction/VehicleAndVesselTaxCoinNode.h"
+#include "Obstruction/DeedTaxCoinNode.h"
+#include "Obstruction/StampTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/HeartNode.h"
@@ -85,6 +87,8 @@ bool GamePlayLayer::init()
     
     //Test Code//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    cdPlayTime = 0.0f;
+
     this->_characterNode->setCollisionSize(Size(80.0f * 1.3f, 80.0f * 1.3f));
 //    this->_characterNode->setScale(1.3f);
 
@@ -132,8 +136,6 @@ double getCurrentTime()
     double f = (double)tv.tv_sec + (float)(tv.tv_usec/1000)/(float)1000;
     return f;
 }
-
-float cdPlayTime = 0.0f;
 
 void GamePlayLayer::gameUpdate(float delta)
 {
@@ -196,6 +198,16 @@ void GamePlayLayer::startPlay()
     this->_characterNode->startPlay();
 }
 
+void GamePlayLayer::revive(int coinCount)
+{
+    this->setDead(false);
+    float newY = this->getMaxDistance() - 2 * designResolutionSize.height;
+    newY = newY < 0.0f ? 0.0f : newY;
+    this->_characterNode->dropCoins(coinCount);
+    this->_characterNode->setPosition(Vec2(this->_characterNode->getPosition().x, newY));
+    this->_characterNode->revive();
+}
+
 int GamePlayLayer::getHeartCount()
 {
     return this->_characterNode->getHeartCount();
@@ -204,6 +216,16 @@ int GamePlayLayer::getHeartCount()
 int GamePlayLayer::getCoinAmount()
 {
     return this->_characterNode->getCoinAmount();
+}
+
+int GamePlayLayer::getTaxCoinAmount()
+{
+    return this->_characterNode->getTaxCoinAmount();
+}
+
+const TaxCoinMap& GamePlayLayer::getTaxCoinMap()
+{
+    return this->_characterNode->getTaxCoinMap();
 }
 
 BaseEffect* GamePlayLayer::getEffect()
@@ -303,6 +325,16 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = VehicleAndVesselTaxCoinNode::create();
         obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
     }
+    else if (DeedTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = DeedTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
+    else if (StampTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = StampTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
     else if (FootboardNodeType == nodeType)
     {
         obstructionNode = FootboardNode::create();
@@ -373,7 +405,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 17;
+        const int m = 19;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -442,6 +474,14 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 16)
         {
             gameNode = this->getObstructionNode(VehicleAndVesselTaxCoinNodeType);
+        }
+        else if (testI % m == 17)
+        {
+            gameNode = this->getObstructionNode(DeedTaxCoinNodeType);
+        }
+        else if (testI % m == 18)
+        {
+            gameNode = this->getObstructionNode(StampTaxCoinNodeType);
         }
         ++testI;
         

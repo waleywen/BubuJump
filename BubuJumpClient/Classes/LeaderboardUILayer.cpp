@@ -19,10 +19,10 @@ LeaderboardUILayer::~LeaderboardUILayer()
         this->_loadingSprite->release();
         this->_loadingSprite = nullptr;
     }
-    if (nullptr != this->_coinAmountLabel)
+    if (nullptr != this->_taxCoinAmountLabel)
     {
-        this->_coinAmountLabel->release();
-        this->_coinAmountLabel = nullptr;
+        this->_taxCoinAmountLabel->release();
+        this->_taxCoinAmountLabel = nullptr;
     }
     if (nullptr != this->_distanceLabel)
     {
@@ -41,8 +41,8 @@ bool LeaderboardUILayer::init()
     auto uiNode = CSLoader::createNode("LeaderboardUI.csb");
     this->addChild(uiNode);
     
-    this->_coinAmountLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "coinAmountLabel"));
-    this->_coinAmountLabel->retain();
+    this->_taxCoinAmountLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "taxCoinAmountLabel"));
+    this->_taxCoinAmountLabel->retain();
     this->_distanceLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "distanceLabel"));
     this->_distanceLabel->retain();
 
@@ -62,18 +62,18 @@ bool LeaderboardUILayer::init()
         this->_loadingSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
         this->addChild(this->_loadingSprite);
         
-        this->_requestIndex = NetworkManager::getInstance()->submitScore(gameSaveData.getMaxDistance(), CC_CALLBACK_1(LeaderboardUILayer::scoreSubmitted, this));
+        this->_requestIndex = NetworkManager::getInstance()->submitScore(gameSaveData.getMaxDistance(), 6, CC_CALLBACK_1(LeaderboardUILayer::scoreSubmitted, this));
     }
     
-    this->_coinAmountLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxCoinCount()));
+    this->_taxCoinAmountLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxTaxCoinAmount()));
     this->_distanceLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxDistance()));
 
     return true;
 }
 
-void LeaderboardUILayer::setCoinAmount(int coinAmount)
+void LeaderboardUILayer::setTaxCoinAmount(int taxCoinAmount)
 {
-    this->_coinAmountLabel->setString(CommonUtility::convertToString(coinAmount));
+    this->_taxCoinAmountLabel->setString(CommonUtility::convertToString(taxCoinAmount));
 }
 
 void LeaderboardUILayer::setMaxDistance(float maxDistance)
@@ -88,6 +88,8 @@ void LeaderboardUILayer::okButtonClicked(cocos2d::Ref *sender)
 
 void LeaderboardUILayer::homeButtonClicked(cocos2d::Ref *sender)
 {
+    NetworkManager::getInstance()->cancelRequest(this->_requestIndex);
+
     Director::getInstance()->popScene();
 }
 

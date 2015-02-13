@@ -17,7 +17,7 @@ LoaclManager::LoaclManager() : _data()
     _data.setID(userDefault->getIntegerForKey("id", -1));
     _data.setName(userDefault->getStringForKey("name", "Username"));
     _data.setTotalCoinAmount(userDefault->getIntegerForKey("totalCoinAmount", 0));
-    _data.setMaxCoinCount(userDefault->getIntegerForKey("maxCoinCount", 0));
+    _data.setMaxTaxCoinAmount(userDefault->getIntegerForKey("maxTaxCoinAmount", 0));
     _data.setMaxDistance(userDefault->getIntegerForKey("maxDistance", 0));
 }
 
@@ -28,6 +28,6 @@ void LoaclManager::save()
     userDefault->setIntegerForKey("id", _data.getID());
     userDefault->setStringForKey("name", _data.getName());
     userDefault->setIntegerForKey("totalCoinAmount", _data.getTotalCoinAmount());
-    userDefault->setIntegerForKey("maxCoinCount", _data.getMaxCoinCount());
+    userDefault->setIntegerForKey("maxTaxCoinAmount", _data.getMaxTaxCoinAmount());
     userDefault->setIntegerForKey("maxDistance", _data.getMaxDistance());
 }

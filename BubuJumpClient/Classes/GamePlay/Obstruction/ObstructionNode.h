@@ -17,6 +17,8 @@ enum ObstructionNodeType
     BusinessIncomeTaxCoinNodeType,
     BuildingTaxCoinNodeType,
     VehicleAndVesselTaxCoinNodeType,
+    DeedTaxCoinNodeType,
+    StampTaxCoinNodeType,
     FootboardNodeType,
     ThornFootboardNodeType,
     HeartNodeType,
@@ -35,6 +37,10 @@ enum ObstructionNodeState
     ActivatedNodeState,
     PendingNodeState,
 };
+
+typedef typename std::map<ObstructionNodeType, int> TaxCoinMap;
+typedef typename std::pair<ObstructionNodeType, int> TaxCoinPair;
+typedef typename std::map<ObstructionNodeType, int>::iterator TaxCoinMapIterator;
 
 class ObstructionNode : public GameBaseNode
 {

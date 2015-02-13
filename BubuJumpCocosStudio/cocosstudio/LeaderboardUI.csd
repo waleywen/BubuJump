@@ -32,7 +32,7 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="coinAmountLabel" ActionTag="-1288511176" FrameEvent="" Tag="24" ObjectIndex="2" FontSize="48" LabelText="0" ctype="TextObjectData">
+          <NodeObjectData Name="taxCoinAmountLabel" ActionTag="-1288511176" FrameEvent="" Tag="24" ObjectIndex="2" FontSize="48" LabelText="0" ctype="TextObjectData">
             <Position X="177.0000" Y="715.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />

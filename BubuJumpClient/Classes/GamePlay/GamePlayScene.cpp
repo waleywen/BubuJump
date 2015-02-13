@@ -1,8 +1,10 @@
 #include "GamePlayScene.h"
 
+#include "../AppMacros.h"
+
 #include "GamePlayLayer.h"
 #include "GamePlayUILayer.h"
-#include "GameLeaderboardUI.h"
+#include "GameResuscitationUILayer.h"
 #include "../Data/Local/LoaclManager.h"
 
 USING_NS_CC;
@@ -55,9 +57,9 @@ void GamePlayScene::update(float delta)
     if (true == this->_gamePlayLayer->getDead())
     {
         GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
-        if (this->_gamePlayLayer->getCoinAmount() > gameSaveData.getMaxCoinCount())
+        if (this->_gamePlayLayer->getTaxCoinAmount() > gameSaveData.getMaxTaxCoinAmount())
         {
-            gameSaveData.setMaxCoinCount(this->_gamePlayLayer->getCoinAmount());
+            gameSaveData.setMaxTaxCoinAmount(this->_gamePlayLayer->getCoinAmount());
         }
         if (this->_gamePlayLayer->getMaxDistance() > gameSaveData.getMaxDistance())
         {
@@ -65,13 +67,17 @@ void GamePlayScene::update(float delta)
         }
         LoaclManager::getInstance()->save();
         
-        auto gamePauseUILayer = GameLeaderboardUI::create();
-        gamePauseUILayer->setCoinAmount(this->_gamePlayLayer->getCoinAmount());
-        gamePauseUILayer->setMaxDistance(this->_gamePlayLayer->getMaxDistance());
+        RenderTexture *renderTexture = RenderTexture::create(designResolutionSize.width, designResolutionSize.height);
+        renderTexture->begin();
+        this->visit();
+        renderTexture->end();
+        renderTexture->setPosition(designResolutionSize / 2.0f);
         
+        auto gameResuscitationUILayer = GameResuscitationUILayer::create();
+        gameResuscitationUILayer->setGamePlayLayer(this->_gamePlayLayer);
         auto scene = Scene::create();
-        scene->addChild(gamePauseUILayer);
-
-        Director::getInstance()->replaceScene(scene);
+        scene->addChild(renderTexture);
+        scene->addChild(gameResuscitationUILayer);
+        Director::getInstance()->pushScene(scene);
     }
 }

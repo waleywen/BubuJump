@@ -9,11 +9,11 @@
 class LeaderboardUILayer : public cocos2d::Layer
 {
 public:
-    LeaderboardUILayer() : _loadingSprite(nullptr), _coinAmountLabel(nullptr), _distanceLabel(nullptr), _requestIndex(0) {};
+    LeaderboardUILayer() : _loadingSprite(nullptr), _taxCoinAmountLabel(nullptr), _distanceLabel(nullptr), _requestIndex(0) {};
     virtual ~LeaderboardUILayer();
     
     virtual bool init() override;
-    void setCoinAmount(int coinAmount);
+    void setTaxCoinAmount(int taxCoinAmount);
     void setMaxDistance(float maxDistance);
 
     CREATE_FUNC(LeaderboardUILayer);
@@ -25,7 +25,7 @@ private:
     void scoreSubmitted(void* resultData);
     
     cocos2d::Sprite* _loadingSprite;
-    cocos2d::ui::Text* _coinAmountLabel;
+    cocos2d::ui::Text* _taxCoinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;
     
     int _requestIndex;

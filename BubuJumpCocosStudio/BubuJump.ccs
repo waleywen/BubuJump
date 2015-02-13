@@ -149,11 +149,28 @@
         <Project Name="VehicleAndVesselTaxCoinNode.csd" />
         <Image Name="BuildingTaxCoin.png" />
         <Image Name="VehicleAndVesselTaxCoin.png" />
-        <Project Name="GameResuscitationUI.csd" />
         <Project Name="LeaderboardUI.csd" />
         <Image Name="LeaderboardUIBackground.png" />
         <Image Name="LeaderboardUIHomeButton.png" />
         <Image Name="LeaderboardUIOKButton.png" />
+        <Project Name="GameResuscitationUI.csd" />
+        <Image Name="GameResuscitationUIBackground.png" />
+        <Image Name="GameResuscitationUICloseButton.png" />
+        <Image Name="GameResuscitationUICoinButton.png" />
+        <Image Name="GameResuscitationUIQAButton.png" />
+        <Image Name="GameResuscitationUICoinButtonD.png" />
+        <Project Name="GameTaxQAUI.csd" />
+        <Image Name="GameTaxQAUIBackground.png" />
+        <Image Name="GameTaxQAUICell.png" />
+        <Image Name="GameTaxQAUIHomeButton.png" />
+        <Project Name="GameOverUI.csd" />
+        <Image Name="GameOverUIBackground.png" />
+        <Image Name="GameOverUIRetryButton.png" />
+        <Project Name="GameOverUICell.csd" />
+        <Project Name="DeedTaxCoinNode.csd" />
+        <Project Name="StampTaxCoinNode.csd" />
+        <Image Name="DeedTaxCoin.png" />
+        <Image Name="StampTaxCoin.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -33,11 +33,13 @@ public:
     NetworkManager() : _nextIndex(0) {};
     
     void cancelRequest(int requestIndex);
-    int submitScore(int score, NetworkCallback callback);
+    int submitScore(int score, int resultSize, NetworkCallback callback);
 private:
     int getRequestIndex();
     
-    void scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
+    void scoreSubmitted3(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
+    void scoreSubmitted6(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
+    void scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response, int resultSize);
     
     struct NetworkCallbackObject
     {

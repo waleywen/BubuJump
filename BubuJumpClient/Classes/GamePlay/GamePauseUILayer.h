@@ -4,8 +4,6 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class CharacterNode;
-
 class GamePauseUILayer : public cocos2d::Layer
 {
 public:
@@ -18,7 +16,8 @@ public:
 
     CREATE_FUNC(GamePauseUILayer);
 private:
-    void continueButtonClicked(Ref* sender);
+    void continueButtonClicked(cocos2d::Ref* sender);
+    void homeButtonClicked(cocos2d::Ref* sender);
 
     cocos2d::ui::Text* _coinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;

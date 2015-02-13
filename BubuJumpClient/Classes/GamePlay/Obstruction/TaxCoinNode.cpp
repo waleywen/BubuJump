@@ -34,7 +34,7 @@ void TaxCoinNode::collided(CharacterNode *characterNode)
 {
     this->setState(PendingNodeState);
     characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
-    characterNode->addCoins(100);
+    characterNode->addCoins(100, this->getNodeType());
     
     this->_mainSpriteNode->setVisible(false);
     this->_tipsSpriteNode->setVisible(true);

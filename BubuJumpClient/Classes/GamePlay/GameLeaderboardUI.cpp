@@ -69,7 +69,7 @@ void GameLeaderboardUI::setMaxDistance(float maxDistance)
 {
     this->_distanceLabel->setString(CommonUtility::convertToString((int)maxDistance));
     
-    this->_requestIndex = NetworkManager::getInstance()->submitScore((int)maxDistance, CC_CALLBACK_1(GameLeaderboardUI::scoreSubmitted, this));
+    this->_requestIndex = NetworkManager::getInstance()->submitScore((int)maxDistance, 6, CC_CALLBACK_1(GameLeaderboardUI::scoreSubmitted, this));
 }
 
 void GameLeaderboardUI::okButtonClicked(cocos2d::Ref *sender)

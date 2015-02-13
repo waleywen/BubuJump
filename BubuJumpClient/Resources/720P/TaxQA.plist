@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>question</key>
+		<string>小明勤工助学，外出做家教取得的2000元
+的劳动报酬，需要按照什么所得项目缴纳
+个人所得税？</string>
+		<key>options</key>
+		<array>
+			<string>A、工资薪金所得</string>
+			<string>B、劳务报酬所得</string>
+			<string>C、偶然所得</string>
+			<string>D、财产转让所得</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>question</key>
+		<string>目前我国个人取得所得应缴纳个人所得税
+的项目有多少种？</string>
+		<key>options</key>
+		<array>
+			<string>A、8种</string>
+			<string>B、9种</string>
+			<string>C、11种</string>
+			<string>D、12种</string>
+		</array>
+		<key>answer</key>
+		<integer>3</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>2</integer>
+		<key>question</key>
+		<string>企业所得税是依法对企业取得的所得进行
+征收税款的一个税种。</string>
+		<key>options</key>
+		<array>
+			<string>A、对</string>
+			<string>B、错</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>3</integer>
+		<key>question</key>
+		<string>在深圳，营业税的征收机关是：</string>
+		<key>options</key>
+		<array>
+			<string>A、深圳市国家税务局</string>
+			<string>B、深圳市地方税务局</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>4</integer>
+		<key>question</key>
+		<string>城建税的全称是：</string>
+		<key>options</key>
+		<array>
+			<string>A、城市维护建设税</string>
+			<string>B、城市建设税</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+</array>
+</plist>

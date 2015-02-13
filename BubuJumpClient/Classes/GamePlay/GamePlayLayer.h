@@ -19,8 +19,12 @@ public:
     void accelerated(cocos2d::Acceleration* acceleration, cocos2d::Event* event);
     
     void startPlay();
+    void revive(int coinCount);
+    
     int getHeartCount();
     int getCoinAmount();
+    int getTaxCoinAmount();;
+    const TaxCoinMap& getTaxCoinMap();
     BaseEffect* getEffect();
 
     CREATE_FUNC(GamePlayLayer);
@@ -47,6 +51,8 @@ private:
     typedef typename std::pair<ObstructionNodeType, ObstructionVector> ObstructionPoolPair;
     ObstructionPoolMap _obstructionPoolMap;
     ObstructionVector _obstructionVector;
+
+    float cdPlayTime;
 };
 
 #endif // _GamePlayLayer_H_
