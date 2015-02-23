@@ -64,6 +64,8 @@
 		FC1FF6311A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */; };
 		FC1FF6341A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
 		FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
+		FC45D1481A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */; };
+		FC45D1491A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */; };
 		FC45F8431A61083300A708B6 /* CharacterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45F8341A61083300A708B6 /* CharacterNode.cpp */; };
 		FC45F8441A61083300A708B6 /* CharacterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45F8341A61083300A708B6 /* CharacterNode.cpp */; };
 		FC45F8451A61083300A708B6 /* GameBaseNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45F8361A61083300A708B6 /* GameBaseNode.cpp */; };
@@ -235,6 +237,8 @@
 		FC1FF62F1A6E20E000DC6DE4 /* MagnetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetNode.h; sourceTree = "<group>"; };
 		FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagnetEffect.cpp; sourceTree = "<group>"; };
 		FC1FF6331A6E228A00DC6DE4 /* MagnetEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetEffect.h; sourceTree = "<group>"; };
+		FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftCloudNode.cpp; sourceTree = "<group>"; };
+		FC45D1471A91B2E3000DCA1C /* SoftCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCloudNode.h; sourceTree = "<group>"; };
 		FC45F8341A61083300A708B6 /* CharacterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterNode.cpp; sourceTree = "<group>"; };
 		FC45F8351A61083300A708B6 /* CharacterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterNode.h; sourceTree = "<group>"; };
 		FC45F8361A61083300A708B6 /* GameBaseNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameBaseNode.cpp; sourceTree = "<group>"; };
@@ -533,6 +537,8 @@
 				FC49C3191A6D29140086D35A /* RocketNode.h */,
 				FC45F8411A61083300A708B6 /* SmallCoinNode.cpp */,
 				FC45F8421A61083300A708B6 /* SmallCoinNode.h */,
+				FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */,
+				FC45D1471A91B2E3000DCA1C /* SoftCloudNode.h */,
 				FC1A2D521A8A678F00C97A1E /* StampTaxCoinNode.cpp */,
 				FC1A2D531A8A678F00C97A1E /* StampTaxCoinNode.h */,
 				FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */,
@@ -794,6 +800,7 @@
 				FC70557A1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
 				FC1A2D501A8A66FF00C97A1E /* DeedTaxCoinNode.cpp in Sources */,
 				FC70558A1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
+				FC45D1481A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */,
 				FC7055821A7E0B450072C45C /* EvilCloudNode.cpp in Sources */,
 				FCF55BAC1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
 				FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
@@ -856,6 +863,7 @@
 				FC1A2D4B1A8A4BFB00C97A1E /* GameOverUILayer.cpp in Sources */,
 				FC686B401A8753BB00E4094D /* MainMenuUILayer.cpp in Sources */,
 				FC65F8701A84985C009CA606 /* UFONode.cpp in Sources */,
+				FC45D1491A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */,
 				FC70557B1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
 				FC70558B1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
 				FC45F84E1A61083300A708B6 /* ObstructionNode.cpp in Sources */,

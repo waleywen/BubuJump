@@ -183,6 +183,8 @@
         <Image Name="StampTaxAddTips.png" />
         <Image Name="UrbanMaintenanceAndConstructionTaxAddTips.png" />
         <Image Name="VehicleAndVesselTaxAddTips.png" />
+        <Project Name="SoftCloudNode.csd" />
+        <Image Name="SoftCloud.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -21,6 +21,7 @@ enum ObstructionNodeType
     StampTaxCoinNodeType,
     FootboardNodeType,
     ThornFootboardNodeType,
+    SoftCloudNodeType,
     HeartNodeType,
     FlyBootNodeType,
     RocketNodeType,

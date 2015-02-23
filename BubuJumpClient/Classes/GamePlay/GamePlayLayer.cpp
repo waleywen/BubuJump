@@ -14,6 +14,7 @@
 #include "Obstruction/StampTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
 #include "Obstruction/ThornFootboardNode.h"
+#include "Obstruction/SoftCloudNode.h"
 #include "Obstruction/HeartNode.h"
 #include "Obstruction/FlyBootNode.h"
 #include "Obstruction/RocketNode.h"
@@ -345,6 +346,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = ThornFootboardNode::create();
         obstructionNode->setCollisionSize(Size(166.0f, 74.0f));
     }
+    else if (SoftCloudNodeType == nodeType)
+    {
+        obstructionNode = SoftCloudNode::create();
+        obstructionNode->setCollisionSize(Size(152.0f, 85.0f));
+    }
     else if (HeartNodeType == nodeType)
     {
         obstructionNode = HeartNode::create();
@@ -405,7 +411,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 19;
+        const int m = 20;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -482,6 +488,10 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 18)
         {
             gameNode = this->getObstructionNode(StampTaxCoinNodeType);
+        }
+        else if (testI % m == 19)
+        {
+            gameNode = this->getObstructionNode(SoftCloudNodeType);
         }
         ++testI;
         
