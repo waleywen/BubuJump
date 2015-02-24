@@ -10,7 +10,7 @@ AngelWingEffect::~AngelWingEffect()
 
 bool AngelWingEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("AngelWingEffect.png"))
+    if (false == SpriteBaseEffect::initWithSpriteName("AngelWingEffect.png"))
     {
         return false;
     }

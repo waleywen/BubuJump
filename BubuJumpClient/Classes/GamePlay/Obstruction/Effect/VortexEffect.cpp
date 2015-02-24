@@ -11,7 +11,7 @@ VortexEffect::~VortexEffect()
 
 bool VortexEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("VortexEffect.png"))
+    if (false == SpriteBaseEffect::initWithSpriteName("VortexEffect.png"))
     {
         return false;
     }

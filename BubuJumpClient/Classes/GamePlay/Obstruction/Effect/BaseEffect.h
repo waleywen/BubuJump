@@ -26,10 +26,9 @@ enum EffectState
 class BaseEffect : public cocos2d::Ref
 {
 public:
-    BaseEffect(EffectType type, int grade) : _type(type), _grade(grade), _time(0), _duration(0), _state(ActivatedEffectState), _effectSprite(nullptr) {};
+    BaseEffect(EffectType type, int grade) : _type(type), _grade(grade), _time(0), _duration(0), _state(ActivatedEffectState) {};
     virtual ~BaseEffect() = 0;
     
-    virtual bool initWithSpriteName(std::string spriteName);
     virtual void gameUpdate(float delta) = 0;
     virtual void reset() = 0;
     
@@ -45,8 +44,6 @@ public:
     CC_SYNTHESIZE(EffectState, _state, State);
     
     CC_SYNTHESIZE(CharacterNode*, _characterNode, CharacterNode);
-protected:
-    cocos2d::Sprite* _effectSprite;
 };
 
 class EffectFactory

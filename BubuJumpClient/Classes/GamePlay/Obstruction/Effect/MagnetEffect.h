@@ -3,12 +3,12 @@
 
 #include "cocos2d.h"
 
-#include "BaseEffect.h"
+#include "SpriteBaseEffect.h"
 
-class MagnetEffect : public BaseEffect
+class MagnetEffect : public SpriteBaseEffect
 {
 public:
-    MagnetEffect() : BaseEffect(MagnetEffectType, 0) {};
+    MagnetEffect() : SpriteBaseEffect(MagnetEffectType, 0) {};
     virtual ~MagnetEffect();
     
     virtual bool init();

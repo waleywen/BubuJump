@@ -41,24 +41,68 @@
     
     if ("0" == $type)
     {
+        $id = '';
+        if (isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+            $md5Sum .= $id;
+        }
+
         if (md5($md5Sum) == $clientSum)
 //      if (md5($md5Sum) != $clientSum)
         {
             $conn = mysql_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT, SAE_MYSQL_USER, SAE_MYSQL_PASS);
             mysql_select_db(SAE_MYSQL_DB, $conn);
             
-            $result = mysql_query("SELECT * FROM leaderboard ORDER BY score DESC LIMIT 10");
+            $resultArray = array();
             $rows = array();
-            mysql_data_seek($result, 0);
-            while($row = mysql_fetch_object($result))
+
+            $result1 = mysql_query("SELECT * FROM leaderboard ORDER BY score DESC LIMIT 50");
+            while($row = mysql_fetch_object($result1))
             {
-                array_push($rows, $row);
+                $record = new Record();
+                $record->id = (int)$row->id;
+                $record->name = $row->name;
+                $record->score = (int)$row->score;
+                array_push($rows, $record);
             }
-            echo json_encode($rows);
+            mysql_free_result($result1);
             
-            // 释放资源
-            mysql_free_result($result);
-            // 关闭连接
+            if ('' == $id || 0 > $id )
+            {
+                $place = 0;
+                $id = -1;
+                $score = 0;
+            }
+            else
+            {
+                $result2 = mysql_query("SELECT score FROM `leaderboard` WHERE `id` = ".$id);
+                $numRows = mysql_num_rows($result2);
+                if (1 != $numRows)
+                {
+                    $id = -1;
+                    $score = 0;
+                }
+                else
+                {
+                    $row = mysql_fetch_row($result2);
+                    $score = $row[0];
+                }
+                mysql_free_result($result2);
+                
+                $result3 = mysql_query("SELECT count(*) AS count FROM `leaderboard` WHERE score > ".$score);
+                $row = mysql_fetch_row($result3);
+                $place = (int)($row[0] + 1);
+                mysql_free_result($result3);
+                
+            }
+            $resultArray['sameScorePlace'] = $place;
+            $resultArray['myID'] = (int)$id;
+            $resultArray['myScore'] = (int)$score;
+            $resultArray['leaderboard'] = $rows;
+
+            echo json_encode($resultArray);
+            
             mysql_close($conn);
         }
         else
@@ -177,7 +221,6 @@
             
             echo json_encode($resultArray);
             
-            // 关闭连接
             mysql_close($conn);
         }
         else

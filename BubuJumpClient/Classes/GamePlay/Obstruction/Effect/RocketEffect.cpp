@@ -10,7 +10,7 @@ RocketEffect::~RocketEffect()
 
 bool RocketEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("RocketEffect.png"))
+    if (false == ParticleBaseEffect::initWithParticleName("RocketEffect.plist"))
     {
         return false;
     }
@@ -22,18 +22,22 @@ bool RocketEffect::init()
 
 void RocketEffect::gameUpdate(float delta)
 {
-    if (nullptr == this->_effectSprite->getParent())
+    if (nullptr == this->_particleSystemQuad->getParent())
     {
-        this->_effectSprite->setPosition(Vec2(0.0f, -200.0f));
-        this->getCharacterNode()->addChild(this->_effectSprite, -10);
+        this->_particleSystemQuad->setPosition(Vec2(0.0f, -100.0f));
+        this->getCharacterNode()->addChild(this->_particleSystemQuad, -10);
     }
-    this->_effectSprite->setVisible(true);
+    
+    if (false == this->_particleSystemQuad->isActive())
+    {
+        this->_particleSystemQuad->resetSystem();
+    }
     
     this->setDuration(this->getDuration() + delta);
     if (ActivatedEffectState == this->getState() && this->getDuration() >= this->getTime())
     {
         this->setState(InactivatedEffectState);
-        this->_effectSprite->setVisible(false);
+        this->_particleSystemQuad->stopSystem();
     }
 }
 
@@ -41,7 +45,7 @@ void RocketEffect::reset()
 {
     this->setState(ActivatedEffectState);
     this->setDuration(0.0f);
-    this->_effectSprite->setVisible(false);
+    this->_particleSystemQuad->stopSystem();
 }
 
 float RocketEffect::changeSpeed(float speed)

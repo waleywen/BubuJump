@@ -10,7 +10,7 @@ FlyBootEffect::~FlyBootEffect()
 
 bool FlyBootEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("FlyBootEffect.png"))
+    if (false == ParticleBaseEffect::initWithParticleName("FlyBootEffect.plist"))
     {
         return false;
     }
@@ -22,25 +22,25 @@ bool FlyBootEffect::init()
 
 void FlyBootEffect::gameUpdate(float delta)
 {
-    if (nullptr == this->_effectSprite->getParent())
+    if (nullptr == this->_particleSystemQuad->getParent())
     {
-        this->_effectSprite->setPosition(Vec2(0.0f, -260.0f));
-        this->getCharacterNode()->addChild(this->_effectSprite, -10);
+        this->_particleSystemQuad->setPosition(Vec2(0.0f, -100.0f));
+        this->getCharacterNode()->addChild(this->_particleSystemQuad, -10);
     }
     if (Jumping == this->getCharacterNode()->getActionState())
     {
-        this->_effectSprite->setVisible(true);
+        this->_particleSystemQuad->resetSystem();
     }
     else
     {
-        this->_effectSprite->setVisible(false);
+        this->_particleSystemQuad->stopSystem();
     }
     
     this->setDuration(this->getDuration() + delta);
     if (ActivatedEffectState == this->getState() && this->getDuration() >= this->getTime())
     {
         this->setState(InactivatedEffectState);
-        this->_effectSprite->setVisible(false);
+        this->_particleSystemQuad->stopSystem();
     }
 }
 
@@ -48,7 +48,7 @@ void FlyBootEffect::reset()
 {
     this->setState(ActivatedEffectState);
     this->setDuration(0.0f);
-    this->_effectSprite->setVisible(false);
+    this->_particleSystemQuad->stopSystem();
 }
 
 float FlyBootEffect::changeSpeed(float speed)

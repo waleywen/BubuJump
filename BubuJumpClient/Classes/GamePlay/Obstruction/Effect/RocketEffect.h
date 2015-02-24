@@ -3,12 +3,12 @@
 
 #include "cocos2d.h"
 
-#include "BaseEffect.h"
+#include "ParticleBaseEffect.h"
 
-class RocketEffect : public BaseEffect
+class RocketEffect : public ParticleBaseEffect
 {
 public:
-    RocketEffect() : BaseEffect(RocketEffectType, 1) {};
+    RocketEffect() : ParticleBaseEffect(RocketEffectType, 1) {};
     virtual ~RocketEffect();
     
     virtual bool init();

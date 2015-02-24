@@ -3,14 +3,14 @@
 
 #include "cocos2d.h"
 
-#include "BaseEffect.h"
+#include "SpriteBaseEffect.h"
 
 class ObstructionNode;
 
-class VortexEffect : public BaseEffect
+class VortexEffect : public SpriteBaseEffect
 {
 public:
-    VortexEffect() : BaseEffect(VortexEffectType, 0), _target(nullptr) {};
+    VortexEffect() : SpriteBaseEffect(VortexEffectType, 0), _target(nullptr) {};
     virtual ~VortexEffect();
     
     virtual bool init();

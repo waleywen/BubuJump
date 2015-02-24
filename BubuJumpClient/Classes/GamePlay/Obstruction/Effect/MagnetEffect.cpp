@@ -11,7 +11,7 @@ MagnetEffect::~MagnetEffect()
 
 bool MagnetEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("MagnetEffect.png"))
+    if (false == SpriteBaseEffect::initWithSpriteName("MagnetEffect.png"))
     {
         return false;
     }

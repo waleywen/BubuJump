@@ -11,7 +11,7 @@ EvilCloudEffect::~EvilCloudEffect()
 
 bool EvilCloudEffect::init()
 {
-    if (false == BaseEffect::initWithSpriteName("EvilCloudEffect.png"))
+    if (false == SpriteBaseEffect::initWithSpriteName("EvilCloudEffect.png"))
     {
         return false;
     }

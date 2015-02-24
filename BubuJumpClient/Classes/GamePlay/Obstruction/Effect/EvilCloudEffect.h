@@ -3,12 +3,12 @@
 
 #include "cocos2d.h"
 
-#include "BaseEffect.h"
+#include "SpriteBaseEffect.h"
 
-class EvilCloudEffect : public BaseEffect
+class EvilCloudEffect : public SpriteBaseEffect
 {
 public:
-    EvilCloudEffect() : BaseEffect(EvilCloudEffectType, 0) {};
+    EvilCloudEffect() : SpriteBaseEffect(EvilCloudEffectType, 0) {};
     virtual ~EvilCloudEffect();
     
     virtual bool init();

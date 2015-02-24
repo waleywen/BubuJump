@@ -3,12 +3,12 @@
 
 #include "cocos2d.h"
 
-#include "BaseEffect.h"
+#include "SpriteBaseEffect.h"
 
-class AngelWingEffect : public BaseEffect
+class AngelWingEffect : public SpriteBaseEffect
 {
 public:
-    AngelWingEffect() : BaseEffect(AngelWingEffectType, 0) {};
+    AngelWingEffect() : SpriteBaseEffect(AngelWingEffectType, 0) {};
     virtual ~AngelWingEffect();
     
     virtual bool init();
