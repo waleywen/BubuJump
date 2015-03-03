@@ -81,7 +81,7 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="GameLeaderboardUIHomeButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="taxCoinListView" ActionTag="1750269617" FrameEvent="" Tag="77" ObjectIndex="1" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" ctype="ListViewObjectData">
+          <NodeObjectData Name="taxCoinListView" ActionTag="1750269617" FrameEvent="" Tag="77" ObjectIndex="1" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" VerticalType="0" ctype="ListViewObjectData">
             <Position X="35.0000" Y="517.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint />
@@ -129,30 +129,27 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.3500" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel2" ActionTag="148030263" VisibleForFrame="False" FrameEvent="" Tag="22" ObjectIndex="11" FontSize="48" LabelText="50000" ctype="TextObjectData">
             <Position X="255.0000" Y="372.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.2906" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardNameLabel3" ActionTag="-1264751643" VisibleForFrame="False" FrameEvent="" Tag="23" ObjectIndex="12" FontSize="48" LabelText="40000" ctype="TextObjectData">
             <Position X="255.0000" Y="298.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="133.0000" Y="54.0000" />
             <PrePosition X="0.3542" Y="0.2328" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardPlaceLabel1" ActionTag="-883700901" VisibleForFrame="False" FrameEvent="" Tag="27" ObjectIndex="16" FontSize="48" LabelText="60000" ctype="TextObjectData">
             <Position X="48.3317" Y="448.0000" />

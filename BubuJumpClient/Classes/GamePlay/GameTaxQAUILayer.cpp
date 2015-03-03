@@ -50,6 +50,11 @@ GameTaxQAUILayer::~GameTaxQAUILayer()
         this->_answerLabel4->release();
         this->_answerLabel4 = nullptr;
     }
+    if (nullptr != this->_resultLabel)
+    {
+        this->_resultLabel->release();
+        this->_resultLabel = nullptr;
+    }
 }
 
 bool GameTaxQAUILayer::init()
@@ -87,6 +92,25 @@ bool GameTaxQAUILayer::init()
     this->_answerLabel3->retain();
     this->_answerLabel4 = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "answerLabel4"));
     this->_answerLabel4->retain();
+    
+    this->_resultLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "resultLabel"));
+    this->_resultLabel->retain();
+
+    auto resultNode = this->_resultLabel->getParent();
+    LayerColor* layerColor = LayerColor::create(Color4B(166, 166, 166, 128), designResolutionSize.width, designResolutionSize.height);
+    this->_resultNodeEventListener = EventListenerTouchOneByOne::create();
+    this->_resultNodeEventListener->setSwallowTouches(true);
+    this->_resultNodeEventListener->onTouchBegan = [](Touch* touch, Event* event)
+    {
+        return true;
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(this->_resultNodeEventListener, layerColor);
+    resultNode->addChild(layerColor, -1);
+    resultNode->setPosition(Vec2(-1000.0f, -1000.0f));
+    this->_resultNodeEventListener->setEnabled(false);
+    
+    auto confirmButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "confirmButton"));
+    confirmButton->addClickEventListener(CC_CALLBACK_1(GameTaxQAUILayer::confirmButtonClicked, this));
 
     ValueVector qaVector = FileUtils::getInstance()->getValueVectorFromFile("TaxQA.plist");
     for (Value oneQA : qaVector)
@@ -133,17 +157,41 @@ void GameTaxQAUILayer::cellButtonClicked(cocos2d::Ref *sender)
     }
     if (-1 != this->_qa3Index)
     {
-        if (this->_score > 1)
+        this->_resultLabel->getParent()->setPosition(Vec2::ZERO);
+        this->_resultNodeEventListener->setEnabled(true);
+        switch (this->_score)
         {
-            this->getGamePlayLayer()->revive(0);
-            Director::getInstance()->popScene();
-        }
-        else
-        {
-            Director::getInstance()->popToRootScene();
+            case 0:
+                this->_resultLabel->setString("很遗憾，全部回答错\n误，复活失败。");
+                break;
+            case 1:
+                this->_resultLabel->setString("很遗憾，你只答对1\n题，复活失败。");
+                break;
+            case 2:
+                this->_resultLabel->setString("及格，你答对2题，\n再接再厉。");
+                break;
+            case 3:
+                this->_resultLabel->setString("真棒！你是税务知识\n小达人！");
+                break;
+                
+            default:
+                break;
         }
     }
     this->showQuestion();
+}
+
+void GameTaxQAUILayer::confirmButtonClicked(cocos2d::Ref *sender)
+{
+    if (this->_score > 1)
+    {
+        this->getGamePlayLayer()->revive(0);
+        Director::getInstance()->popScene();
+    }
+    else
+    {
+        Director::getInstance()->popToRootScene();
+    }
 }
 
 void GameTaxQAUILayer::showQuestion()
@@ -246,4 +294,9 @@ void GameTaxQAUILayer::showQuestion()
     }
     
     this->_currentAnswer = qaData.answer;
+}
+
+void GameTaxQAUILayer::showResultPanel()
+{
+    
 }

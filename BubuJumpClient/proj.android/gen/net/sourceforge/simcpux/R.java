@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.bubujump.www;
+package net.sourceforge.simcpux;
 
 public final class R {
     public static final class attr {

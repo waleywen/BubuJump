@@ -28,5 +28,34 @@ package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.os.Bundle;
+
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
 public class AppActivity extends Cocos2dxActivity {
+
+	private static final String APP_ID = "wxd930ea5d5a258f4f";
+
+	private static AppActivity _sCurrentInstance = null;
+
+	private IWXAPI api = null;
+
+	public static AppActivity getCurrentInstance() {
+		return _sCurrentInstance;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		api = WXAPIFactory.createWXAPI(this, APP_ID, false);
+		api.registerApp(APP_ID);
+
+		_sCurrentInstance = this;
+	}
+
+	public IWXAPI getWeChatAPI() {
+		return api;
+	}
+
 }

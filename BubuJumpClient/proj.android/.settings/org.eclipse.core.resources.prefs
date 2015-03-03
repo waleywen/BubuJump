@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//jni/Android.mk=UTF-8
+encoding//src/com/bubujump/www/WeChatClient.java=UTF-8
+encoding//src/com/bubujump/www/wxapi/WXEntryActivity.java=UTF-8
+encoding//src/net/sourceforge/simcpux/wxapi/WXEntryActivity.java=UTF-8

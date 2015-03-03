@@ -19,11 +19,13 @@ public:
     CREATE_FUNC(LeaderboardUILayer);
     CREATE_SCENE_FUNC(LeaderboardUILayer);
 private:
+    void shareButtonClicked(Ref* sender);
     void okButtonClicked(Ref* sender);
     void homeButtonClicked(Ref* sender);
+    void drawButtonClicked(cocos2d::Ref* sender);
 
-    void scoreSubmitted(void* resultData);
-    
+    void leaderboardRequested(void* resultData);
+
     cocos2d::Sprite* _loadingSprite;
     cocos2d::ui::Text* _taxCoinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;

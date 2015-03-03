@@ -3,6 +3,7 @@
 #include "AppMacros.h"
 
 #include "CharacterNode.h"
+#include "Obstruction/Effect/BaseEffect.h"
 #include "Obstruction/SmallCoinNode.h"
 #include "Obstruction/IndividualIncomeTaxCoinNode.h"
 #include "Obstruction/UrbanMaintenanceAndConstructionTaxCoinNode.h"
@@ -32,6 +33,11 @@ GamePlayLayer::~GamePlayLayer()
     {
         this->_mainGameLayer->release();
         this->_mainGameLayer = nullptr;
+    }
+    if (nullptr != this->_transitionBackgroundSprite)
+    {
+        this->_transitionBackgroundSprite->release();
+        this->_transitionBackgroundSprite = nullptr;
     }
     if (nullptr != this->_characterNode)
     {
@@ -70,6 +76,11 @@ bool GamePlayLayer::init()
     groundSprite->setPosition(Vec2(designResolutionSize / 2) + Vec2(0.0f, (designResolutionSize.height - this->_visibleSize.height) / 2.0f));
     this->_mainGameLayer->addChild(groundSprite, 0);
 
+    this->_transitionBackgroundSprite = Sprite::create("TransitionBackground.png");
+    this->_transitionBackgroundSprite->retain();
+    this->_transitionBackgroundSprite->setOpacity(0);
+    this->_mainGameLayer->addChild(this->_transitionBackgroundSprite, 75);
+    
     this->_characterNode = CharacterNode::create();
     this->_characterNode->retain();
     this->_characterNode->setObstructionNodeVector(&this->_obstructionVector);
@@ -126,27 +137,8 @@ bool GamePlayLayer::init()
     return true;
 }
 
-double lastUpdateTime = 0;
-
-double getCurrentTime()
-{
-    struct timeval tv;
-    memset(&tv, 0, sizeof(tv));
-    gettimeofday(&tv, NULL);
-    
-    double f = (double)tv.tv_sec + (float)(tv.tv_usec/1000)/(float)1000;
-    return f;
-}
-
 void GamePlayLayer::gameUpdate(float delta)
 {
-//    if (1.0f / delta < 50.0f)
-//    {
-//        log("%f, %f, %f", 1.0f / delta, delta, lastUpdateTime);
-//    }
-    
-    double time1 = getCurrentTime();
-    
     for(auto& obstruction : this->_obstructionVector)
     {
         if (InactivatedNodeState != obstruction->getState())
@@ -161,17 +153,54 @@ void GamePlayLayer::gameUpdate(float delta)
     this->cleanupUselessObstructions();
     this->buildTopperScene();
     
+    this->_transitionBackgroundSprite->setPosition(Vec2(designResolutionSize.width / 2.0f, this->_characterNode->getPosition().y));
+    int currentTransitionPhase = ((int)this->_characterNode->getPosition().y) / 20000;
+    if (currentTransitionPhase > this->_transitionPhase)
+    {
+        this->_transitionPhase = currentTransitionPhase;
+        
+        FadeIn* fadeIn = FadeIn::create(1.0f);
+        DelayTime* delayTime = DelayTime::create(2.0f);
+        FadeOut* fadeOut = FadeOut::create(1.0f);
+        Sequence* sequence = Sequence::create(fadeIn, delayTime, fadeOut, nullptr);
+        this->_transitionBackgroundSprite->runAction(sequence);
+
+        auto effect = EffectFactory::getInstance()->getEffect(RocketEffectType);
+        effect->setCharacterNode(this->_characterNode);
+        this->_characterNode->setEffect(effect);
+        this->_characterNode->setCurrentSpeed(this->_characterNode->getMaxVerticalSpeed());
+    }
     
     if (this->_characterNode->getPosition().y - 100.0f > this->getMaxDistance())
     {
         this->setMaxDistance(this->_characterNode->getPosition().y - 100.0f);
     }
 
-    double time2 = getCurrentTime();
-    lastUpdateTime = time2 - time1;
+    float lowestLine = 1.7E+308;
+    for(auto& obstruction : this->_obstructionVector)
+    {
+        if (ActivatedNodeState == obstruction->getState())
+        {
+            float newLowestLine = obstruction->getPosition().y - ((obstruction->getCollisionSize().height + this->_characterNode->getCollisionSize().height) / 2.0f) - 100.0f;
+            if (newLowestLine < lowestLine)
+            {
+                lowestLine = newLowestLine;
+            }
+        }
+    }
+    
+    if (this->_characterNode->getPosition().y < lowestLine && this->_characterNode->getPosition().y > (designResolutionSize.height / 2.0f) && Downing == this->_characterNode->getActionState() && this->_characterNode->getCurrentSpeed() < -(this->_characterNode->getMaxVerticalSpeed()))
+    {
+        if (0 == this->_characterNode->getNumberOfRunningActions()
+            && (nullptr == this->_characterNode->getEffect() || InactivatedEffectState == this->_characterNode->getEffect()->getState() || RocketEffectType != this->_characterNode->getEffect()->getType()))
+        {
+            auto sequenceAction = Sequence::create(RotateTo::create(0.25f, 180), RotateTo::create(0.25f, 360), NULL);
+            this->_characterNode->runAction(Repeat::create(sequenceAction, 999));
+        }
+    }
     
     if (this->_characterNode->getPosition().y < 0.0f
-        || this->_characterNode->getPosition().y < (this->getMaxDistance() - 2 * designResolutionSize.height)
+        || this->_characterNode->getPosition().y < (this->getMaxDistance() - 3 * designResolutionSize.height)
         || this->_characterNode->getHeartCount() <= 0)
     {
         this->setDead(true);
@@ -206,6 +235,8 @@ void GamePlayLayer::revive(int coinCount)
     newY = newY < 0.0f ? 0.0f : newY;
     this->_characterNode->dropCoins(coinCount);
     this->_characterNode->setPosition(Vec2(this->_characterNode->getPosition().x, newY));
+    this->_characterNode->stopAllActions();
+    this->_characterNode->setRotation(0.0f);
     this->_characterNode->revive();
 }
 

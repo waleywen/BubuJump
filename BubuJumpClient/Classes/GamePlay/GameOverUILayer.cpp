@@ -4,7 +4,10 @@
 
 #include "../UIHelper.h"
 #include "../CommonUtility.h"
+#include "../JoinLotteryUILayer.h"
 #include "../Data/Network/NetworkManager.h"
+#include "../Data/Local/LoaclManager.h"
+#include "../Social/SocialManager.h"
 
 #include "GamePlayScene.h"
 
@@ -47,6 +50,8 @@ bool GameOverUILayer::init()
     this->_distanceLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "distanceLabel"));
     this->_distanceLabel->retain();
 
+    auto shareButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "shareButton"));
+    shareButton->addClickEventListener(CC_CALLBACK_1(GameOverUILayer::shareButtonClicked, this));
     auto retryButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "retryButton"));
     retryButton->addClickEventListener(CC_CALLBACK_1(GameOverUILayer::retryButtonClicked, this));
     auto homeButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "homeButton"));
@@ -58,6 +63,12 @@ bool GameOverUILayer::init()
     auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
     this->_loadingSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
     this->addChild(this->_loadingSprite);
+    
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    if (true == gameSaveData.getNeedShowJoinLotteryUI())
+    {
+        this->addChild(JoinLotteryUILayer::create());
+    }
     
     return true;
 }
@@ -82,7 +93,7 @@ void GameOverUILayer::setTaxCoinMap(const TaxCoinMap &taxCoinMap)
     int i = 0;
     for (TaxCoinPair taxCoinPair : taxCoinMap)
     {
-        static const Size contentSize = Size(640.0f, 70.0f);
+        static const Size contentSize = Size(taxCoinListView->getContentSize().width, 70.0f);
         Layout *itemLayout = Layout::create();
         itemLayout->setContentSize(contentSize);
         
@@ -150,6 +161,16 @@ void GameOverUILayer::setTaxCoinMap(const TaxCoinMap &taxCoinMap)
         
         ++i;
     }
+    taxCoinListView->refreshView();
+}
+
+void GameOverUILayer::shareButtonClicked(cocos2d::Ref *sender)
+{
+    std::string message = "我爱冲上云霄！！！！！";
+    message += "获得";
+    message += this->_distanceLabel->getString();
+    message += "分！！！";
+    SocialManager::getInstance()->shareMessageToWeChat(message);
 }
 
 void GameOverUILayer::retryButtonClicked(cocos2d::Ref *sender)

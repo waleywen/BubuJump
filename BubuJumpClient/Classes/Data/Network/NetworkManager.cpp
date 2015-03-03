@@ -11,6 +11,7 @@ USING_NS_CC;
 using namespace cocos2d::network;
 
 //const std::string SERVER_ADDRESS = "http://localhost/";
+//const std::string SERVER_ADDRESS = "http://192.168.31.217/";
 const std::string SERVER_ADDRESS = "http://bubujump.sinaapp.com/";
 const std::string MD5_KEY = "1234567890";
 
@@ -41,27 +42,71 @@ void NetworkManager::cancelRequest(int requestIndex)
     }
 }
 
+int NetworkManager::requestLeaderboard(NetworkCallback callback)
+{
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    
+    std::string idString = "";
+    if (-1 != gameSaveData.getLeaderboardID())
+    {
+        idString = CommonUtility::convertToString(gameSaveData.getLeaderboardID());
+    }
+    
+    std::string url = SERVER_ADDRESS + "leaderboard.php";
+    url += "?type=0";
+    if (-1 != gameSaveData.getLeaderboardID())
+    {
+        url += "&id=";
+        url += idString;
+    }
+    url += "&sum=";
+    
+    url += md5SumString("0", idString, "", "");
+    
+    NetworkCallbackObject& callbackObject = this->generateCallbackObject(callback);
+    
+    HttpRequest* request = new HttpRequest();
+    request->setUrl(url.c_str());
+    request->setRequestType(HttpRequest::Type::GET);
+    request->setResponseCallback(CC_CALLBACK_2(NetworkManager::leaderboardRequested, this));
+    request->setTag("requestLeaderboard");
+    request->setUserData(&callbackObject);
+    HttpClient::getInstance()->send(request);
+    request->release();
+    
+    return callbackObject.index;
+}
+
 int NetworkManager::submitScore(int score, int resultSize, NetworkCallback callback)
 {
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
 
     std::string scoreString = CommonUtility::convertToString(score);
     
-    std::string idString = CommonUtility::convertToString(gameSaveData.getID());
+    std::string idString = "";
+    if (-1 != gameSaveData.getLeaderboardID())
+    {
+        idString = CommonUtility::convertToString(gameSaveData.getLeaderboardID());
+    }
+    
+    std::string nameString = gameSaveData.getName();
     
     std::string url = SERVER_ADDRESS + "leaderboard.php";
     url += "?type=1";
-    url += "&id=";
-    url += idString;
-    url += "&name=UserName";
+    if (-1 != gameSaveData.getLeaderboardID())
+    {
+        url += "&id=";
+        url += idString;
+    }
+    url += "&name=";
+    url += nameString;
     url += "&score=";
     url += scoreString;
     url += "&sum=";
     
-    url += md5SumString("1", idString, "UserName", scoreString);
+    url += md5SumString("1", idString, nameString, scoreString);
     
-    int index = this->getRequestIndex();
-    NetworkCallbackObject& callbackObject = this->_callbackMap.insert(NetworkCallbackPair(index, {callback, false})).first->second;
+    NetworkCallbackObject& callbackObject = this->generateCallbackObject(callback);
     
     HttpRequest* request = new HttpRequest();
     request->setUrl(url.c_str());
@@ -79,12 +124,149 @@ int NetworkManager::submitScore(int score, int resultSize, NetworkCallback callb
     HttpClient::getInstance()->send(request);
     request->release();
     
-    return index;
+    return callbackObject.index;
 }
 
-int NetworkManager::getRequestIndex()
+void NetworkManager::joinLottery()
 {
-    return ++_nextIndex;
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    
+    if (0 >= gameSaveData.getPhone().length())
+    {
+        return;
+    }
+    
+    std::string idString = "";
+    if (-1 != gameSaveData.getLotteryID())
+    {
+        idString = CommonUtility::convertToString(gameSaveData.getLotteryID());
+    }
+    
+    std::string nameString = gameSaveData.getName();
+    std::string phoneString = gameSaveData.getPhone();
+
+    std::string url = SERVER_ADDRESS + "lottery.php";
+    url += "?name=";
+    url += nameString;
+    url += "&phone=";
+    url += phoneString;
+    if (-1 != gameSaveData.getLotteryID())
+    {
+        url += "&id=";
+        url += idString;
+    }
+    url += "&sum=";
+    url += md5SumString("", idString, nameString, phoneString);
+    
+    HttpRequest* request = new HttpRequest();
+    request->setUrl(url.c_str());
+    request->setRequestType(HttpRequest::Type::GET);
+    request->setResponseCallback(CC_CALLBACK_2(NetworkManager::lotteryJoined, this));
+    request->setTag("syncMyInfo");
+    HttpClient::getInstance()->send(request);
+    request->release();
+}
+
+NetworkManager::NetworkCallbackObject& NetworkManager::generateCallbackObject(NetworkCallback callback)
+{
+    int index = (++_nextIndex);
+    NetworkCallbackObject& callbackObject = this->_callbackMap.insert(NetworkCallbackPair(index, {index, callback, false})).first->second;
+    return callbackObject;
+}
+
+void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+{
+    if (!response)
+    {
+        return;
+    }
+    
+    NetworkCallbackObject* callbackObject = static_cast<NetworkCallbackObject*>(response->getHttpRequest()->getUserData());
+    if (true == callbackObject->canceled)
+    {
+        return;
+    }
+    
+    // You can get original request type from: response->request->reqType
+    if (0 != strlen(response->getHttpRequest()->getTag()))
+    {
+        log("%s completed", response->getHttpRequest()->getTag());
+    }
+    int statusCode = (int)response->getResponseCode();
+    char statusString[64] = {};
+    sprintf(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+    log("%s", statusString);
+    log("response code: %d", statusCode);
+    if (!response->isSucceed())
+    {
+        log("response failed");
+        log("error buffer: %s", response->getErrorBuffer());
+        return;
+    }
+    // dump data
+    std::vector<char> *buffer = response->getResponseData();
+    std::string json = "";
+    for (unsigned int i = 0; i < buffer->size(); i++)
+    {
+        json += (*buffer)[i];
+    }
+    
+    log("%s", json.c_str());
+    
+    rapidjson::Document document;
+    document.Parse<0>(json.c_str());
+    
+    LeaderboardRecordVector resultRecordVector;
+    
+    int sameScorePlace = document["sameScorePlace"].GetInt();
+    int myID = document["myID"].GetInt();
+    int myScore = document["myScore"].GetInt();
+    
+    bool isTop50Player = false;
+    
+    rapidjson::Value& leaderboardArray = document["leaderboard"];
+    for(int i = 0; i < leaderboardArray.Capacity(); ++i)
+    {
+        rapidjson::Value &recordJson = leaderboardArray[i];
+        
+        LeaderboardRecord* record = LeaderboardRecord::create();
+        record->setID(recordJson["id"].GetInt());
+        record->setName(recordJson["name"].GetString());
+        record->setScore(recordJson["score"].GetInt());
+        record->setPlace(i + 1);
+        
+        resultRecordVector.pushBack(record);
+        
+        if (record->getID() == myID)
+        {
+            isTop50Player = true;
+            record->setName("我");
+        }
+    }
+    
+    if (false == isTop50Player && -1 != myID)
+    {
+        LeaderboardRecord* record = LeaderboardRecord::create();
+        record->setID(myID);
+        record->setName("我");
+        record->setScore(myScore);
+
+        if (50 >= sameScorePlace)
+        {
+            record->setPlace(51);
+        }
+        else
+        {
+            record->setPlace(sameScorePlace);
+        }
+        
+        resultRecordVector.pushBack(record);
+    }
+    
+    if (false == callbackObject->canceled)
+    {
+        callbackObject->callback(&resultRecordVector);
+    }
 }
 
 void NetworkManager::scoreSubmitted3(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
@@ -146,7 +328,7 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     int myScore = document["myScore"].GetInt();
     
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
-    gameSaveData.setID(myID);
+    gameSaveData.setLeaderboardID(myID);
     LoaclManager::getInstance()->save();
     
     bool foundMyScore = false;
@@ -185,7 +367,7 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
         theRecord->setPlace(startPlace++);
     }
     
-    myRecord->setName("Me");
+    myRecord->setName("我");
 
     LeaderboardRecordVector resultRecordVector;
     if (leaderboardArray.Size() <= resultSize)
@@ -232,4 +414,51 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     {
         callbackObject->callback(&resultRecordVector);
     }
+}
+
+void NetworkManager::lotteryJoined(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+{
+    if (!response)
+    {
+        return;
+    }
+    
+    // You can get original request type from: response->request->reqType
+    if (0 != strlen(response->getHttpRequest()->getTag()))
+    {
+        log("%s completed", response->getHttpRequest()->getTag());
+    }
+    int statusCode = (int)response->getResponseCode();
+    char statusString[64] = {};
+    sprintf(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+    log("%s", statusString);
+    log("response code: %d", statusCode);
+    if (!response->isSucceed())
+    {
+        log("response failed");
+        log("error buffer: %s", response->getErrorBuffer());
+        return;
+    }
+    // dump data
+    std::vector<char> *buffer = response->getResponseData();
+    std::string json = "";
+    for (unsigned int i = 0; i < buffer->size(); i++)
+    {
+        json += (*buffer)[i];
+    }
+    
+    log("%s", json.c_str());
+    
+    rapidjson::Document document;
+    document.Parse<0>(json.c_str());
+    
+    int myID = document["myID"].GetInt();
+    std::string name = document["name"].GetString();
+    std::string phone = document["phone"].GetString();
+    
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    gameSaveData.setLotteryID(myID);
+    gameSaveData.setName(name);
+    gameSaveData.setPhone(phone);
+    LoaclManager::getInstance()->save();
 }

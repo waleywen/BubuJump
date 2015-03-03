@@ -11,7 +11,7 @@ class BaseEffect;
 class GamePlayLayer : public cocos2d::Layer
 {
 public:
-    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _characterNode(nullptr), _lastBuildLine(0.0f), _obstructionPoolMap(), _obstructionVector() {};
+    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _transitionBackgroundSprite(nullptr), _characterNode(nullptr), _transitionPhase(0), _lastBuildLine(0.0f), _obstructionPoolMap(), _obstructionVector() {};
     virtual ~GamePlayLayer();
     
     virtual bool init() override;
@@ -41,8 +41,10 @@ private:
     cocos2d::Vec2 _origin;
     
     cocos2d::Layer* _mainGameLayer;
+    cocos2d::Sprite* _transitionBackgroundSprite;
     CharacterNode* _characterNode;
     
+    int _transitionPhase;
     float _lastBuildLine;
     
     typedef typename cocos2d::Vector<ObstructionNode*> ObstructionVector;

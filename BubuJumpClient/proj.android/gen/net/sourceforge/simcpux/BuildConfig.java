@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.bubujump.www;
+package net.sourceforge.simcpux;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

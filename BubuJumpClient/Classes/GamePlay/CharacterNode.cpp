@@ -332,22 +332,22 @@ float CharacterNode::getCurrentAcceleration()
 
 void CharacterNode::playIdleAnimation()
 {
-    this->_actionTimeline->gotoFrameAndPlay(35, 35, false);
+    this->_actionTimeline->gotoFrameAndPlay(10, 10, false);
 }
 
 void CharacterNode::playRunAnimation()
 {
-    this->_actionTimeline->gotoFrameAndPlay(285, 305, true);
+    this->_actionTimeline->gotoFrameAndPlay(50, 70, true);
 }
 
 void CharacterNode::playJumpAnimation()
 {
-    this->_actionTimeline->gotoFrameAndPlay(20, 40, false);
+    this->_actionTimeline->gotoFrameAndPlay(0, 20, false);
 }
 
 void CharacterNode::playDownAnimation()
 {
-    this->_actionTimeline->gotoFrameAndPlay(65, 85, false);
+    this->_actionTimeline->gotoFrameAndPlay(25, 45, false);
 }
 
 void CharacterNode::testAnimation(float t)

@@ -19,6 +19,7 @@ public:
 
     CREATE_FUNC(GameOverUILayer);
 private:
+    void shareButtonClicked(Ref* sender);
     void retryButtonClicked(Ref* sender);
     void homeButtonClicked(cocos2d::Ref* sender);
 

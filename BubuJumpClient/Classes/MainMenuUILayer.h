@@ -20,7 +20,10 @@ private:
     void playButtonClicked(cocos2d::Ref* sender);
     void taxButtonClicked(cocos2d::Ref* sender);
     void leaderboardButtonClicked(cocos2d::Ref* sender);
+    void helpButtonClicked(cocos2d::Ref* sender);
     void optionButtonClicked(cocos2d::Ref* sender);
+    void shareButtonClicked(cocos2d::Ref* sender);
+    void drawButtonClicked(cocos2d::Ref* sender);
 };
 
 #endif // _MainMenuUILayer_H_

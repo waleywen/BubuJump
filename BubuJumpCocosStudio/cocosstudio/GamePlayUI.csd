@@ -73,7 +73,7 @@
             <PreSize X="0.0000" Y="0.0000" />
             <Children>
               <NodeObjectData Name="heartLabel" ActionTag="-1551018922" FrameEvent="" Tag="12" ObjectIndex="2" FontSize="30" LabelText="9999" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
-                <Position X="-30.0001" Y="0.0001" />
+                <Position X="-265.0001" Y="4.3000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
@@ -83,7 +83,7 @@
                 <FontResource Type="Normal" Path="Arial Black.ttf" />
               </NodeObjectData>
               <NodeObjectData Name="Heart" ActionTag="-2084880983" FrameEvent="" Tag="13" ObjectIndex="3" ctype="SpriteObjectData">
-                <Position X="-77.0000" Y="0.0000" />
+                <Position X="-310.0000" Y="4.3000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />

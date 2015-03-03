@@ -6,13 +6,17 @@
 class GameSaveData : public cocos2d::Ref
 {
 public:
-    GameSaveData() : _id(-1), _name(), _totalCoinAmount(0), _maxTaxCoinAmount(0), _maxDistance(0) {};
+    GameSaveData() : _leaderboardID(-1), _lotteryID(-1), _name(), _phone(), _totalCoinAmount(0), _maxTaxCoinAmount(0), _maxDistance(0), _needShowJoinLotteryUI(true) {};
+    bool isDefaultName();
     
-    CC_SYNTHESIZE(int, _id, ID);
+    CC_SYNTHESIZE(int, _leaderboardID, LeaderboardID);
+    CC_SYNTHESIZE(int, _lotteryID, LotteryID);
     CC_SYNTHESIZE(std::string, _name, Name);
+    CC_SYNTHESIZE(std::string, _phone, Phone);
     CC_SYNTHESIZE(int, _totalCoinAmount, TotalCoinAmount);
     CC_SYNTHESIZE(int, _maxTaxCoinAmount, MaxTaxCoinAmount);
     CC_SYNTHESIZE(int, _maxDistance, MaxDistance);
+    CC_SYNTHESIZE(bool, _needShowJoinLotteryUI, NeedShowJoinLotteryUI);
 };
 
 class LoaclManager

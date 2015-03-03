@@ -33,19 +33,26 @@ public:
     NetworkManager() : _nextIndex(0) {};
     
     void cancelRequest(int requestIndex);
+    int requestLeaderboard(NetworkCallback callback);
     int submitScore(int score, int resultSize, NetworkCallback callback);
+    void joinLottery();
 private:
-    int getRequestIndex();
+    struct NetworkCallbackObject
+    {
+        int index;
+        NetworkCallback callback;
+        bool canceled;
+    };
+
+    NetworkManager::NetworkCallbackObject& generateCallbackObject(NetworkCallback callback);
     
+    void leaderboardRequested(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
+
     void scoreSubmitted3(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
     void scoreSubmitted6(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
     void scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response, int resultSize);
     
-    struct NetworkCallbackObject
-    {
-        NetworkCallback callback;
-        bool canceled;
-    };
+    void lotteryJoined(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
     
     typedef typename std::map<int, NetworkCallbackObject> NetworkCallbackMap;
     typedef typename std::pair<int, NetworkCallbackObject> NetworkCallbackPair;

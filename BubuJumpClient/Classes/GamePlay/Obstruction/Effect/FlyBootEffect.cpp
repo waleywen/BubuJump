@@ -29,11 +29,17 @@ void FlyBootEffect::gameUpdate(float delta)
     }
     if (Jumping == this->getCharacterNode()->getActionState())
     {
-        this->_particleSystemQuad->resetSystem();
+        if (false == this->_particleSystemQuad->isActive())
+        {
+            this->_particleSystemQuad->resetSystem();
+        }
     }
     else
     {
-        this->_particleSystemQuad->stopSystem();
+        if (true == this->_particleSystemQuad->isActive())
+        {
+            this->_particleSystemQuad->stopSystem();
+        }
     }
     
     this->setDuration(this->getDuration() + delta);

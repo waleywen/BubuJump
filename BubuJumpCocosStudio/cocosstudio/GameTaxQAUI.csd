@@ -195,6 +195,49 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="GameTaxQAUIHomeButton.png" />
           </NodeObjectData>
+          <NodeObjectData Name="resultNode" ActionTag="-1980450447" FrameEvent="" Tag="51" ObjectIndex="5" IconVisible="True" ctype="SingleNodeObjectData">
+            <Position X="0.0000" Y="0.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="0.0000" Y="0.0000" />
+            <PrePosition X="0.0000" Y="0.0000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <Children>
+              <NodeObjectData Name="GameTaxQAUIResultBackground" ActionTag="874136296" FrameEvent="" Tag="49" ObjectIndex="1" Scale9Enable="True" LeftEage="13" RightEage="13" TopEage="11" BottomEage="11" Scale9OriginX="9" Scale9OriginY="11" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+                <Position X="360.0000" Y="640.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="523.0000" Y="314.0000" />
+                <PrePosition X="0.5000" Y="0.5000" />
+                <PreSize X="0.7264" Y="0.2453" />
+                <FileData Type="Normal" Path="GameTaxQAUIResultBackground.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="resultLabel" ActionTag="-464093838" FrameEvent="" Tag="52" ObjectIndex="7" FontSize="50" LabelText="Result" ctype="TextObjectData">
+                <Position X="360.0011" Y="699.9991" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="141.0000" Y="57.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+              </NodeObjectData>
+              <NodeObjectData Name="confirmButton" ActionTag="-916279085" FrameEvent="" Tag="50" ObjectIndex="6" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="264" Scale9Height="98" ctype="ButtonObjectData">
+                <Position X="360.0000" Y="565.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="264.0000" Y="98.0000" />
+                <PrePosition X="0.5000" Y="0.4414" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+                <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+                <NormalFileData Type="Normal" Path="GameTaxQAUIConfirmButton.png" />
+              </NodeObjectData>
+            </Children>
+          </NodeObjectData>
         </Children>
       </ObjectData>
     </Content>
