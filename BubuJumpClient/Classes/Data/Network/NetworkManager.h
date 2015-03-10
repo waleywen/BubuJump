@@ -46,6 +46,8 @@ private:
 
     NetworkManager::NetworkCallbackObject& generateCallbackObject(NetworkCallback callback);
     
+    void errorReturnMyRecord(NetworkCallbackObject* callbackObject);
+    
     void leaderboardRequested(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
 
     void scoreSubmitted3(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);

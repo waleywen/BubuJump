@@ -19,9 +19,12 @@ private:
     void closeButtonClicked(Ref* sender);
     void submitButtonClicked(Ref* sender);
     void waitButtonClicked(Ref* sender);
+    void changeButtonClicked(Ref* sender);
     
-    cocos2d::ui::EditBox* _nameEditBox;
-    cocos2d::ui::EditBox* _phoneEditBox;
+    void textFieldTapped(cocos2d::Ref*, cocos2d::ui::TextField::EventType eventType);
+
+    cocos2d::ui::Widget* _nameEditBox;
+    cocos2d::ui::Widget* _phoneEditBox;
 
     cocos2d::LayerColor* _backLayerColor;
 };

@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package net.sourceforge.simcpux;
+package com.touchthesky.www;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

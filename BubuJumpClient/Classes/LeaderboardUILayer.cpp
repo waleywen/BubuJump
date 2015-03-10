@@ -31,6 +31,11 @@ LeaderboardUILayer::~LeaderboardUILayer()
         this->_distanceLabel->release();
         this->_distanceLabel = nullptr;
     }
+    if (nullptr != this->_myNameLabel)
+    {
+        this->_myNameLabel->release();
+        this->_myNameLabel = nullptr;
+    }
 }
 
 bool LeaderboardUILayer::init()
@@ -71,7 +76,21 @@ bool LeaderboardUILayer::init()
     this->_taxCoinAmountLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxTaxCoinAmount()));
     this->_distanceLabel->setString(CommonUtility::convertToString(gameSaveData.getMaxDistance()));
 
+    this->scheduleUpdate();
+    
     return true;
+}
+
+void LeaderboardUILayer::update(float delta)
+{
+    if (nullptr != this->_myNameLabel)
+    {
+        GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+        if (false == gameSaveData.isDefaultName())
+        {
+            this->_myNameLabel->setString(gameSaveData.getName());
+        }
+    }
 }
 
 void LeaderboardUILayer::setTaxCoinAmount(int taxCoinAmount)
@@ -108,6 +127,8 @@ void LeaderboardUILayer::drawButtonClicked(cocos2d::Ref *sender)
 
 void LeaderboardUILayer::leaderboardRequested(void *resultData)
 {
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+
     this->_loadingSprite->setVisible(false);
 
     LeaderboardRecordVector* recordVector = static_cast<LeaderboardRecordVector*>(resultData);
@@ -129,6 +150,12 @@ void LeaderboardUILayer::leaderboardRequested(void *resultData)
             LayerColor* blankLayerColor = LayerColor::create(Color4B(22, 138, 221, 255));
             blankLayerColor->setContentSize(contentSize);
             blankLayout->addChild(blankLayerColor);
+            
+            Text* pointLabel = Text::create();
+            blankLayout->addChild(pointLabel);
+            pointLabel->setString("- - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            pointLabel->setPosition(contentSize / 2.0f);
+            pointLabel->setFontSize(30);
             
             leaderboardListView->addChild(blankLayout);
 
@@ -163,6 +190,13 @@ void LeaderboardUILayer::leaderboardRequested(void *resultData)
         scoreLabel->setString(CommonUtility::convertToString(record->getScore()));
         
         leaderboardListView->addChild(itemLayout);
+        
+        if (record->getID() == gameSaveData.getLeaderboardID())
+        {
+            this->_myNameLabel = nameLabel;
+            this->_myNameLabel->retain();
+            this->_myNameLabel->setTextColor(Color4B::YELLOW);
+        }
     }
     
     leaderboardListView->refreshView();

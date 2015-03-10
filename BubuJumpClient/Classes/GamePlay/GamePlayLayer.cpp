@@ -5,6 +5,7 @@
 #include "CharacterNode.h"
 #include "Obstruction/Effect/BaseEffect.h"
 #include "Obstruction/SmallCoinNode.h"
+#include "Obstruction/InvisibleCoinNode.h"
 #include "Obstruction/IndividualIncomeTaxCoinNode.h"
 #include "Obstruction/UrbanMaintenanceAndConstructionTaxCoinNode.h"
 #include "Obstruction/BusinessTaxCoinNode.h"
@@ -13,6 +14,8 @@
 #include "Obstruction/VehicleAndVesselTaxCoinNode.h"
 #include "Obstruction/DeedTaxCoinNode.h"
 #include "Obstruction/StampTaxCoinNode.h"
+#include "Obstruction/LandValueIncrementTaxCoinNode.h"
+#include "Obstruction/UrbanLandUseTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/SoftCloudNode.h"
@@ -34,10 +37,20 @@ GamePlayLayer::~GamePlayLayer()
         this->_mainGameLayer->release();
         this->_mainGameLayer = nullptr;
     }
-    if (nullptr != this->_transitionBackgroundSprite)
+    if (nullptr != this->_transitionNode)
     {
-        this->_transitionBackgroundSprite->release();
-        this->_transitionBackgroundSprite = nullptr;
+        this->_transitionNode->release();
+        this->_transitionNode = nullptr;
+    }
+    if (nullptr != this->_transitionLightsNode)
+    {
+        this->_transitionLightsNode->release();
+        this->_transitionLightsNode = nullptr;
+    }
+    if (nullptr != this->_lightLayerColor)
+    {
+        this->_lightLayerColor->release();
+        this->_lightLayerColor = nullptr;
     }
     if (nullptr != this->_characterNode)
     {
@@ -76,10 +89,25 @@ bool GamePlayLayer::init()
     groundSprite->setPosition(Vec2(designResolutionSize / 2) + Vec2(0.0f, (designResolutionSize.height - this->_visibleSize.height) / 2.0f));
     this->_mainGameLayer->addChild(groundSprite, 0);
 
-    this->_transitionBackgroundSprite = Sprite::create("TransitionBackground.png");
-    this->_transitionBackgroundSprite->retain();
-    this->_transitionBackgroundSprite->setOpacity(0);
-    this->_mainGameLayer->addChild(this->_transitionBackgroundSprite, 75);
+    this->_transitionNode = Node::create();
+    this->_transitionNode->retain();
+    this->_transitionNode->setVisible(false);
+    this->_mainGameLayer->addChild(this->_transitionNode, 25);
+    for (int i = 0; i < 10; ++i)
+    {
+        auto transitionBackgroundSprite = Sprite::create("TransitionBackground.png");
+        transitionBackgroundSprite->setPosition(Vec2(0.0f, 1024.0f * i - 128.0f));
+        this->_transitionNode->addChild(transitionBackgroundSprite);
+    }
+    this->_transitionLightsNode = Node::create();
+    this->_transitionLightsNode->retain();
+    this->_transitionNode->addChild(this->_transitionLightsNode);
+    
+    this->_lightLayerColor = LayerColor::create(Color4B::WHITE);
+    this->_lightLayerColor->retain();
+    this->_lightLayerColor->setContentSize(designResolutionSize);
+    this->_lightLayerColor->setOpacity(0);
+    this->_mainGameLayer->addChild(this->_lightLayerColor, 100);
     
     this->_characterNode = CharacterNode::create();
     this->_characterNode->retain();
@@ -153,19 +181,42 @@ void GamePlayLayer::gameUpdate(float delta)
     this->cleanupUselessObstructions();
     this->buildTopperScene();
     
-    this->_transitionBackgroundSprite->setPosition(Vec2(designResolutionSize.width / 2.0f, this->_characterNode->getPosition().y));
     int currentTransitionPhase = ((int)this->_characterNode->getPosition().y) / 20000;
+    this->_lightLayerColor->setPosition(Vec2(0.0f, this->_characterNode->getPosition().y - designResolutionSize.height / 2.0f));
     if (currentTransitionPhase > this->_transitionPhase)
     {
         this->_transitionPhase = currentTransitionPhase;
         
-        FadeIn* fadeIn = FadeIn::create(1.0f);
-        DelayTime* delayTime = DelayTime::create(2.0f);
-        FadeOut* fadeOut = FadeOut::create(1.0f);
-        Sequence* sequence = Sequence::create(fadeIn, delayTime, fadeOut, nullptr);
-        this->_transitionBackgroundSprite->runAction(sequence);
+        this->_transitionNode->setPosition(Vec2(designResolutionSize.width / 2.0f, this->_characterNode->getPosition().y));
+        this->_transitionNode->setVisible(true);
+        
+        timeval psv;
+        gettimeofday( &psv, NULL );
+        unsigned int tsrans = psv.tv_sec * 1000 + psv.tv_usec / 1000;
+        static int seedTest = 0;
+        srand( tsrans + seedTest );
+        for (int i = 15120; i > 0; i -= 200)
+        {
+            float t = rand() % 100 / 100.0f;
+            
+            Sprite* lightSprite = Sprite::create("TransitionLight.png");
+            lightSprite->setPosition(Vec2(t * designResolutionSize.width - designResolutionSize.width / 2.0f, i));
+            log("%f, %d", t * designResolutionSize.width, i);
+            this->_transitionLightsNode->addChild(lightSprite);
+        }
+        this->_transitionLightsNode->setPosition(Vec2(0.0f, -512.0f));
+        this->_transitionLightsNode->runAction(MoveBy::create(4.0f, Vec2(0.0f, -2000.0f)));
+        
+        this->_lightLayerColor->setOpacity(255);
+        FadeOut* fadeOut1 = FadeOut::create(1.0f);
+        DelayTime* delayTime = DelayTime::create(3.0f);
+        FadeIn* fadeIn = FadeIn::create(0.0f);
+        CallFunc* transitionFinishedCallFunc = CallFunc::create(CC_CALLBACK_0(GamePlayLayer::transitionFinished, this));
+        FadeOut* fadeOut2 = FadeOut::create(1.0f);
+        Sequence* sequence = Sequence::create(fadeOut1, delayTime, fadeIn, transitionFinishedCallFunc, fadeOut2, nullptr);
+        this->_lightLayerColor->runAction(sequence);
 
-        auto effect = EffectFactory::getInstance()->getEffect(RocketEffectType);
+        auto effect = EffectFactory::getInstance()->getEffect(TransitionEffectType);
         effect->setCharacterNode(this->_characterNode);
         this->_characterNode->setEffect(effect);
         this->_characterNode->setCurrentSpeed(this->_characterNode->getMaxVerticalSpeed());
@@ -327,6 +378,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = SmallCoinNode::create();
         obstructionNode->setCollisionSize(Size(60.0f, 60.0f));
     }
+    else if (InvisibleCoinNodeType == nodeType)
+    {
+        obstructionNode = InvisibleCoinNode::create();
+        obstructionNode->setCollisionSize(Size(60.0f, 60.0f));
+    }
     else if (IndividualIncomeTaxCoinNodeType == nodeType)
     {
         obstructionNode = IndividualIncomeTaxCoinNode::create();
@@ -367,6 +423,16 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = StampTaxCoinNode::create();
         obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
     }
+    else if (LandValueIncrementTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = LandValueIncrementTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
+    else if (UrbanLandUseTaxCoinNodeType == nodeType)
+    {
+        obstructionNode = UrbanLandUseTaxCoinNode::create();
+        obstructionNode->setCollisionSize(Size(89.0f, 89.0f));
+    }
     else if (FootboardNodeType == nodeType)
     {
         obstructionNode = FootboardNode::create();
@@ -380,7 +446,7 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     else if (SoftCloudNodeType == nodeType)
     {
         obstructionNode = SoftCloudNode::create();
-        obstructionNode->setCollisionSize(Size(152.0f, 85.0f));
+        obstructionNode->setCollisionSize(Size(152.0f, 71.0f));
     }
     else if (HeartNodeType == nodeType)
     {
@@ -442,7 +508,7 @@ void GamePlayLayer::buildTopperScene()
         
         ObstructionNode* gameNode = nullptr;
         static int testI = 0;
-        const int m = 20;
+        const int m = 23;
         if (testI % m == 0)
         {
             gameNode = this->getObstructionNode(SmallCoinNodeType);
@@ -502,7 +568,6 @@ void GamePlayLayer::buildTopperScene()
         else if (testI % m == 14)
         {
             gameNode = this->getObstructionNode((testI % (m * 11)) == 14 ? UFONodeType : SmallCoinNodeType);
-//            gameNode = this->getObstructionNode(UFONodeType);
         }
         else if (testI % m == 15)
         {
@@ -524,6 +589,18 @@ void GamePlayLayer::buildTopperScene()
         {
             gameNode = this->getObstructionNode(SoftCloudNodeType);
         }
+        else if (testI % m == 20)
+        {
+            gameNode = this->getObstructionNode(LandValueIncrementTaxCoinNodeType);
+        }
+        else if (testI % m == 21)
+        {
+            gameNode = this->getObstructionNode(UrbanLandUseTaxCoinNodeType);
+        }
+        else if (testI % m == 22)
+        {
+            gameNode = this->getObstructionNode(InvisibleCoinNodeType);
+        }
         ++testI;
         
 //        auto gameNode = this->getObstructionNode(IndividualIncomeTaxCoin);
@@ -543,14 +620,19 @@ void GamePlayLayer::buildTopperScene()
         srand( tsrans + seedTest );
         float t = rand() % 100 / 100.0f;
 
-        if (gameNode->getNodeType() != UFONodeType)
-        {
-            gameNode->setPosition(Vec2(t * designResolutionSize.width, this->_lastBuildLine));
-        }
-        else
+        if (UFONodeType == gameNode->getNodeType())
         {
             UFONode* ufoNode = static_cast<UFONode*>(gameNode);
             ufoNode->moveWithRange(Vec2(0.0f, this->_lastBuildLine), Vec2(designResolutionSize.width, this->_lastBuildLine));
+        }
+        else
+        {
+            if (InvisibleCoinNodeType == gameNode->getNodeType())
+            {
+                InvisibleCoinNode* invisibleCoinNode = static_cast<InvisibleCoinNode*>(gameNode);
+                invisibleCoinNode->setCharacterNode(this->_characterNode);
+            }
+            gameNode->setPosition(Vec2(t * designResolutionSize.width, this->_lastBuildLine));
         }
     }
     
@@ -585,4 +667,11 @@ void GamePlayLayer::buildTopperScene()
     }
     
     layer1->setVisible(factor > 0);
+}
+
+void GamePlayLayer::transitionFinished()
+{
+    this->_transitionNode->setVisible(false);
+    this->_transitionLightsNode->stopAllActions();
+    this->_transitionLightsNode->removeAllChildren();
 }

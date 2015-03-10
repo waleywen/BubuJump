@@ -61,37 +61,91 @@ bool JoinLotteryUILayer::init()
     submitButton->addClickEventListener(CC_CALLBACK_1(JoinLotteryUILayer::submitButtonClicked, this));
     auto waitButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "waitButton"));
     waitButton->addClickEventListener(CC_CALLBACK_1(JoinLotteryUILayer::waitButtonClicked, this));
+    auto changeButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "changeButton"));
+    changeButton->addClickEventListener(CC_CALLBACK_1(JoinLotteryUILayer::changeButtonClicked, this));
 
-    this->_nameEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
-    this->_nameEditBox->retain();
-    this->_nameEditBox->setPosition(Point(415.0f, 644.0f));
-    this->_nameEditBox->setFontSize(24);
-    this->_nameEditBox->setPlaceHolder("请输入姓名");
-    this->_nameEditBox->setInputMode(EditBox::InputMode::ANY);
-    this->_nameEditBox->setFontColor(Color3B::BLACK);
-    this->_nameEditBox->setText("");
-    this->_nameEditBox->setMaxLength(12);
-    this->addChild(this->_nameEditBox);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EditBox* nameEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
+    nameEditBox->retain();
+    nameEditBox->setPosition(Point(415.0f, 644.0f));
+    nameEditBox->setFontSize(24);
+    nameEditBox->setPlaceHolder("请输入姓名");
+    nameEditBox->setInputMode(EditBox::InputMode::ANY);
+    nameEditBox->setFontColor(Color3B::BLACK);
+    nameEditBox->setText("");
+    nameEditBox->setMaxLength(12);
+    this->addChild(nameEditBox);
+    this->_nameEditBox = nameEditBox;
     
-    this->_phoneEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
-    this->_phoneEditBox->retain();
-    this->_phoneEditBox->setPosition(Point(415.0f, 554.0f));
-    this->_phoneEditBox->setFontSize(24);
-    this->_phoneEditBox->setPlaceHolder("请输入数字");
-    this->_phoneEditBox->setInputMode(EditBox::InputMode::NUMERIC);
-    this->_phoneEditBox->setFontColor(Color3B::BLACK);
-    this->_phoneEditBox->setText("");
-    this->_phoneEditBox->setMaxLength(11);
-    this->addChild(this->_phoneEditBox);
+    EditBox* phoneEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
+    phoneEditBox->retain();
+    phoneEditBox->setPosition(Point(415.0f, 554.0f));
+    phoneEditBox->setFontSize(24);
+    phoneEditBox->setPlaceHolder("请输入数字");
+    phoneEditBox->setInputMode(EditBox::InputMode::NUMERIC);
+    phoneEditBox->setFontColor(Color3B::BLACK);
+    phoneEditBox->setText("");
+    phoneEditBox->setMaxLength(11);
+    this->addChild(phoneEditBox);
+    this->_phoneEditBox = phoneEditBox;
+#else
+    TextField* nameEditBox = TextField::create();
+    nameEditBox->retain();
+    nameEditBox->ignoreContentAdaptWithSize(false);
+    nameEditBox->setTextAreaSize(Size(250.0f, 40.0f));
+    nameEditBox->setPosition(Point(415.0f, 644.0f));
+    nameEditBox->setFontSize(24);
+    nameEditBox->setPlaceHolder("请输入姓名");
+    nameEditBox->setTextColor(Color4B::BLACK);
+    nameEditBox->setString("");
+    nameEditBox->setTextHorizontalAlignment(TextHAlignment::LEFT);
+    nameEditBox->setTextVerticalAlignment(TextVAlignment::CENTER);
+    nameEditBox->setMaxLengthEnabled(true);
+    nameEditBox->setMaxLength(12);
+    nameEditBox->addEventListener(CC_CALLBACK_2(JoinLotteryUILayer::textFieldTapped, this));
+    uiNode->addChild(nameEditBox);
+    this->_nameEditBox = nameEditBox;
+    
+    TextField* phoneEditBox = TextField::create();
+    phoneEditBox->retain();
+    phoneEditBox->ignoreContentAdaptWithSize(false);
+    phoneEditBox->setTextAreaSize(Size(250.0f, 40.0f));
+    phoneEditBox->setPosition(Point(415.0f, 554.0f));
+    phoneEditBox->setFontSize(24);
+    phoneEditBox->setPlaceHolder("请输入数字");
+    phoneEditBox->setTextColor(Color4B::BLACK);
+    phoneEditBox->setString("");
+    phoneEditBox->setTextHorizontalAlignment(TextHAlignment::LEFT);
+    phoneEditBox->setTextVerticalAlignment(TextVAlignment::CENTER);
+    phoneEditBox->setMaxLengthEnabled(true);
+    phoneEditBox->setMaxLength(11);
+    phoneEditBox->addEventListener(CC_CALLBACK_2(JoinLotteryUILayer::textFieldTapped, this));
+    uiNode->addChild(phoneEditBox);
+    this->_phoneEditBox = phoneEditBox;
+#endif
 
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
     if (false == gameSaveData.isDefaultName())
     {
-        this->_nameEditBox->setText(gameSaveData.getName().c_str());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        static_cast<EditBox*>(this->_nameEditBox)->setText(gameSaveData.getName().c_str());
+#else
+        static_cast<TextField*>(this->_nameEditBox)->setString(gameSaveData.getName());
+#endif
+        submitButton->setVisible(false);
+        waitButton->setVisible(false);
+    }
+    else
+    {
+        changeButton->setVisible(false);
     }
     if (gameSaveData.getPhone().length() > 0)
     {
-        this->_phoneEditBox->setText(gameSaveData.getPhone().c_str());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        static_cast<EditBox*>(this->_phoneEditBox)->setText(gameSaveData.getPhone().c_str());
+#else
+        static_cast<TextField*>(this->_phoneEditBox)->setString(gameSaveData.getPhone());
+#endif
     }
     
     return true;
@@ -104,8 +158,13 @@ void JoinLotteryUILayer::closeButtonClicked(cocos2d::Ref *sender)
 
 void JoinLotteryUILayer::submitButtonClicked(cocos2d::Ref *sender)
 {
-    std::string name = this->_nameEditBox->getText();
-    std::string phone = this->_phoneEditBox->getText();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string name = static_cast<EditBox*>(this->_nameEditBox)->getText();
+    std::string phone = static_cast<EditBox*>(this->_phoneEditBox)->getText();
+#else
+    std::string name = static_cast<TextField*>(this->_nameEditBox)->getString();
+    std::string phone = static_cast<TextField*>(this->_phoneEditBox)->getString();
+#endif
     CommonUtility::trim(name);
     CommonUtility::trim(phone);
     
@@ -119,13 +178,14 @@ void JoinLotteryUILayer::submitButtonClicked(cocos2d::Ref *sender)
     }
     else if (false == CommonUtility::checkMobilePhoneNumber(phone))
     {
-        MessageUILayer::create(2.0f, this, "您填写的手机号码有误", Size(500.0f, 250.0f));
+        MessageUILayer::create(2.0f, this, "您填写的手机号码\n有误", Size(500.0f, 250.0f));
     }
     else
     {
         GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
         gameSaveData.setName(name);
         gameSaveData.setPhone(phone);
+        gameSaveData.setNeedShowJoinLotteryUI(false);
         LoaclManager::getInstance()->save();
         NetworkManager::getInstance()->joinLottery();
                 
@@ -141,4 +201,21 @@ void JoinLotteryUILayer::waitButtonClicked(cocos2d::Ref *sender)
     LoaclManager::getInstance()->save();
     
     this->removeFromParent();
+}
+
+void JoinLotteryUILayer::changeButtonClicked(cocos2d::Ref *sender)
+{
+    this->submitButtonClicked(sender);
+}
+
+void JoinLotteryUILayer::textFieldTapped(cocos2d::Ref *, cocos2d::ui::TextField::EventType eventType)
+{
+    if (TextField::EventType::ATTACH_WITH_IME == eventType)
+    {
+        this->_nameEditBox->getParent()->setPosition(Vec2(0.0f, 300.0f));
+    }
+    else if (TextField::EventType::DETACH_WITH_IME == eventType)
+    {
+        this->_nameEditBox->getParent()->setPosition(Vec2(0.0f, 0.0f));
+    }
 }

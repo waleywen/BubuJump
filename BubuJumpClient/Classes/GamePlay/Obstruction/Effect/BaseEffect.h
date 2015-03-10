@@ -15,6 +15,7 @@ enum EffectType
     AngelWingEffectType,
     EvilCloudEffectType,
     VortexEffectType,
+    TransitionEffectType,
 };
 
 enum EffectState

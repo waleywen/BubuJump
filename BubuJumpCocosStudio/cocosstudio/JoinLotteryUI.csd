@@ -35,31 +35,44 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="JoinLotteryUICloseButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="submitButton" ActionTag="540649829" FrameEvent="" Tag="79" ObjectIndex="8" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="298" Scale9Height="77" ctype="ButtonObjectData">
-            <Position X="360.0000" Y="465.0000" />
+          <NodeObjectData Name="submitButton" ActionTag="540649829" FrameEvent="" Tag="79" ObjectIndex="8" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="300" Scale9Height="76" ctype="ButtonObjectData">
+            <Position X="360.0000" Y="468.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="298.0000" Y="77.0000" />
-            <PrePosition X="0.5000" Y="0.3633" />
+            <Size X="300.0000" Y="76.0000" />
+            <PrePosition X="0.5000" Y="0.3656" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="JoinLotteryUISubmitButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="waitButton" ActionTag="-1636017090" FrameEvent="" Tag="81" ObjectIndex="9" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="298" Scale9Height="76" ctype="ButtonObjectData">
-            <Position X="360.0006" Y="384.4455" />
+          <NodeObjectData Name="waitButton" ActionTag="-1636017090" FrameEvent="" Tag="81" ObjectIndex="9" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="300" Scale9Height="76" ctype="ButtonObjectData">
+            <Position X="360.0006" Y="387.4455" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="298.0000" Y="76.0000" />
-            <PrePosition X="0.5000" Y="0.3003" />
+            <Size X="300.0000" Y="76.0000" />
+            <PrePosition X="0.5000" Y="0.3027" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="JoinLotteryUIWaitButton.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="changeButton" ActionTag="-2020492073" FrameEvent="" Tag="7" ObjectIndex="10" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="303" Scale9Height="79" ctype="ButtonObjectData">
+            <Position X="360.0000" Y="426.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="303.0000" Y="79.0000" />
+            <PrePosition X="0.5000" Y="0.3328" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+            <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+            <NormalFileData Type="Normal" Path="JoinLotteryUIChangeButton.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

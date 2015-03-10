@@ -9,6 +9,8 @@
 #include "LeaderboardUILayer.h"
 #include "HelpUILayer.h"
 #include "JoinLotteryUILayer.h"
+#include "TaxBibleUILayer.h"
+#include "SettingUILayer.h"
 #include "Social/SocialManager.h"
 #include "Data/Network/NetworkManager.h"
 #include "Data/Local/LoaclManager.h"
@@ -54,8 +56,10 @@ bool MainMenuUILayer::init()
         NetworkManager::getInstance()->joinLottery();
     }
     
+    SimpleAudioEngine::getInstance()->setEffectsVolume(true == gameSaveData.getSoundEnabled() ? 1.0f : 0.0f);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(true == gameSaveData.getMusicEnabled() ? 1.0f : 0.0f);
+    
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0f);
     SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
 
     return true;
@@ -69,7 +73,8 @@ void MainMenuUILayer::playButtonClicked(cocos2d::Ref *sender)
 
 void MainMenuUILayer::taxButtonClicked(cocos2d::Ref *sender)
 {
-    
+    auto scene = TaxBibleUILayer::createScene();
+    Director::getInstance()->pushScene(scene);
 }
 
 void MainMenuUILayer::leaderboardButtonClicked(cocos2d::Ref *sender)
@@ -86,7 +91,8 @@ void MainMenuUILayer::helpButtonClicked(cocos2d::Ref *sender)
 
 void MainMenuUILayer::optionButtonClicked(cocos2d::Ref *sender)
 {
-
+    auto scene = SettingUILayer::createScene();
+    Director::getInstance()->pushScene(scene);
 }
 
 void MainMenuUILayer::shareButtonClicked(cocos2d::Ref *sender)

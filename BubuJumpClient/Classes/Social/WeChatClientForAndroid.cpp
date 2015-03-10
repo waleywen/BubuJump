@@ -3,7 +3,12 @@
 
 USING_NS_CC;
 
-const char* CLASS_NAME = "com/bubujump/www/WeChatClient";
+const char* CLASS_NAME = "com/touchthesky/www/WeChatClient";
+
+JNIEXPORT void JNICALL Java_org_cocos2dx_cpp_AppActivity_quitGame(JNIEnv* env, jobject thiz)
+{
+    cocos2d::Director::getInstance()->end();
+}
 
 WeChatClientForAndroid::WeChatClientForAndroid()
 {

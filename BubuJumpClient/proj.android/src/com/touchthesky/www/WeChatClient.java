@@ -1,4 +1,4 @@
-package com.bubujump.www;
+package com.touchthesky.www;
 
 import org.cocos2dx.cpp.AppActivity;
 

@@ -1,4 +1,4 @@
-package com.bubujump.www.wxapi;
+package com.touchthesky.www.wxapi;
 
 import org.cocos2dx.cpp.AppActivity;
 

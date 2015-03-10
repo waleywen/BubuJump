@@ -159,24 +159,34 @@ void GameTaxQAUILayer::cellButtonClicked(cocos2d::Ref *sender)
     {
         this->_resultLabel->getParent()->setPosition(Vec2::ZERO);
         this->_resultNodeEventListener->setEnabled(true);
+        
+        auto faceSprite1 = static_cast<Sprite*>(UIHelper::seekNodeByName(this, "faceSprite1"));
+        auto faceSprite2 = static_cast<Sprite*>(UIHelper::seekNodeByName(this, "faceSprite2"));
+        auto faceSprite3 = static_cast<Sprite*>(UIHelper::seekNodeByName(this, "faceSprite3"));
+        
         switch (this->_score)
         {
             case 0:
-                this->_resultLabel->setString("很遗憾，全部回答错\n误，复活失败。");
+                this->_resultLabel->setString("很遗憾，全部回答\n错误，复活失败。");
+                faceSprite3->setVisible(true);
                 break;
             case 1:
-                this->_resultLabel->setString("很遗憾，你只答对1\n题，复活失败。");
+                this->_resultLabel->setString("很遗憾，你只答对\n1题，复活失败。");
+                faceSprite3->setVisible(true);
                 break;
             case 2:
-                this->_resultLabel->setString("及格，你答对2题，\n再接再厉。");
+                this->_resultLabel->setString("及格，你答对2\n题，再接再厉。");
+                faceSprite2->setVisible(true);
                 break;
             case 3:
-                this->_resultLabel->setString("真棒！你是税务知识\n小达人！");
+                this->_resultLabel->setString("真棒！你是税务知\n识小达人！");
+                faceSprite1->setVisible(true);
                 break;
                 
             default:
                 break;
         }
+        return;
     }
     this->showQuestion();
 }
@@ -257,6 +267,34 @@ void GameTaxQAUILayer::showQuestion()
         case 4:
             this->_taxCoinSprite->setTexture("UrbanMaintenanceAndConstructionTaxCoin.png");
             this->_titleLabel->setString("城市维护建设税");
+            break;
+        case 5:
+            this->_taxCoinSprite->setTexture("StampTaxCoin.png");
+            this->_titleLabel->setString("印花税");
+            break;
+        case 6:
+            this->_taxCoinSprite->setTexture("VehicleAndVesselTaxCoin.png");
+            this->_titleLabel->setString("车船税");
+            break;
+        case 7:
+            this->_taxCoinSprite->setTexture("BuildingTaxCoin.png");
+            this->_titleLabel->setString("房产税");
+            break;
+        case 8:
+            this->_taxCoinSprite->setTexture("DeedTaxCoin.png");
+            this->_titleLabel->setString("契税");
+            break;
+        case 9:
+            this->_taxCoinSprite->setTexture("UrbanLandUseTaxCoin.png");
+            this->_titleLabel->setString("城镇土地使用税");
+            break;
+        case 10:
+            this->_taxCoinSprite->setTexture("LandValueIncrementTaxCoin.png");
+            this->_titleLabel->setString("土地增值税");
+            break;
+        case 11:
+            this->_taxCoinSprite->setTexture("SmallCoin.png");
+            this->_titleLabel->setString("其它");
             break;
         default:
             break;

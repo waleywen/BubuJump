@@ -9,6 +9,11 @@
 #include "platform/android/jni/JniHelper.h"
 #include "cocos2d.h"
 
+extern "C"
+{
+    JNIEXPORT void JNICALL Java_org_cocos2dx_cpp_AppActivity_quitGame(JNIEnv* env, jobject thiz);
+}
+
 class WeChatClientForAndroid : public WeChatClient
 {
 public:

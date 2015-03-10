@@ -45,5 +45,5 @@ void UFONode::moveWithRange(cocos2d::Vec2 startPoint, cocos2d::Vec2 endPoint)
     this->setPosition(startPoint);
     auto moveTo1 = MoveTo::create(duration, endPoint);
     auto moveTo2 = MoveTo::create(duration, startPoint);
-    this->runAction(Sequence::create(moveTo1, moveTo2, nullptr));
+    this->runAction(Repeat::create(Sequence::create(moveTo1, moveTo2, nullptr), pow(2,30)));
 }

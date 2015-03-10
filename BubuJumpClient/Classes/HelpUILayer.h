@@ -23,15 +23,17 @@ private:
     void confirmButtonClicked(Ref* sender);
 
     void showPage(int index);
-        
+    
+    void textFieldTapped(cocos2d::Ref*, cocos2d::ui::TextField::EventType eventType);
+    
     cocos2d::Node* _pageNode1;
     cocos2d::Node* _pageNode2;
     cocos2d::Node* _pageNode3;
     cocos2d::Node* _lotteryNode;
     cocos2d::ui::Button* _leftArrowButton;
     cocos2d::ui::Button* _rightArrowButton;
-    cocos2d::ui::EditBox* _nameEditBox;
-    cocos2d::ui::EditBox* _phoneEditBox;
+    cocos2d::ui::Widget* _nameEditBox;
+    cocos2d::ui::Widget* _phoneEditBox;
     
     int _currentPageIndex;
 };

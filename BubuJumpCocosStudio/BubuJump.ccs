@@ -146,6 +146,41 @@
         <Image Name="JoinLotteryUISubmitButton.png" />
         <Image Name="JoinLotteryUIWaitButton.png" />
         <Image Name="LeaderboardUIDrawButton.png" />
+        <Image Name="GameTaxQAUIResultFace1.png" />
+        <Image Name="GameTaxQAUIResultFace2.png" />
+        <Image Name="GameTaxQAUIResultFace3.png" />
+        <Image Name="JoinLotteryUIChangeButton.png" />
+        <Project Name="TaxBibleUI.csd" />
+        <Image Name="TaxBibleUIButton1.png" />
+        <Image Name="TaxBibleUIButton10.png" />
+        <Image Name="TaxBibleUIButton11.png" />
+        <Image Name="TaxBibleUIButton2.png" />
+        <Image Name="TaxBibleUIButton3.png" />
+        <Image Name="TaxBibleUIButton4.png" />
+        <Image Name="TaxBibleUIButton5.png" />
+        <Image Name="TaxBibleUIButton6.png" />
+        <Image Name="TaxBibleUIButton7.png" />
+        <Image Name="TaxBibleUIButton8.png" />
+        <Image Name="TaxBibleUIButton9.png" />
+        <Image Name="TaxBibleUIBackground.png" />
+        <Image Name="TaxBibleUIBackButton.png" />
+        <Project Name="TaxBibleContentUI.csd" />
+        <Image Name="TaxBibleContentUIBackground.png" />
+        <Project Name="LandValueIncrementTaxCoinNode.csd" />
+        <Image Name="LandValueIncrementTaxCoin.png" />
+        <Image Name="LandValueIncrementTaxAddTips.png" />
+        <Image Name="LandValueIncrementTaxTips.png" />
+        <Project Name="UrbanLandUseTaxCoinNode.csd" />
+        <Image Name="UrbanLandUseTaxAddTips.png" />
+        <Image Name="UrbanLandUseTaxCoin.png" />
+        <Image Name="UrbanLandUseTaxTips.png" />
+        <Project Name="SettingUI.csd" />
+        <Image Name="SettingUIBackButton.png" />
+        <Image Name="SettingUIBackground.png" />
+        <Image Name="SettingUITurnOffButton.png" />
+        <Image Name="SettingUITurnOnButton.png" />
+        <Project Name="InvisibleCoinNode.csd" />
+        <Image Name="InvisibleCoin.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

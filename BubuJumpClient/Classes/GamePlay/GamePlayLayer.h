@@ -11,7 +11,7 @@ class BaseEffect;
 class GamePlayLayer : public cocos2d::Layer
 {
 public:
-    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _transitionBackgroundSprite(nullptr), _characterNode(nullptr), _transitionPhase(0), _lastBuildLine(0.0f), _obstructionPoolMap(), _obstructionVector() {};
+    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _transitionNode(nullptr), _transitionLightsNode(nullptr), _lightLayerColor(nullptr), _characterNode(nullptr), _transitionPhase(0), _lastBuildLine(0.0f), _obstructionPoolMap(), _obstructionVector() {};
     virtual ~GamePlayLayer();
     
     virtual bool init() override;
@@ -37,11 +37,15 @@ private:
     ObstructionNode* getObstructionNode(ObstructionNodeType nodeType);
     void buildTopperScene();
     
+    void transitionFinished();
+    
     cocos2d::Size _visibleSize;
     cocos2d::Vec2 _origin;
     
     cocos2d::Layer* _mainGameLayer;
-    cocos2d::Sprite* _transitionBackgroundSprite;
+    cocos2d::Node* _transitionNode;
+    cocos2d::Node* _transitionLightsNode;
+    cocos2d::LayerColor* _lightLayerColor;
     CharacterNode* _characterNode;
     
     int _transitionPhase;

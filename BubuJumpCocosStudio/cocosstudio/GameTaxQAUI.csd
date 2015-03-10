@@ -209,17 +209,17 @@
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="523.0000" Y="314.0000" />
+                <Size X="505.0000" Y="300.0000" />
                 <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.7264" Y="0.2453" />
+                <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="GameTaxQAUIResultBackground.png" />
               </NodeObjectData>
-              <NodeObjectData Name="resultLabel" ActionTag="-464093838" FrameEvent="" Tag="52" ObjectIndex="7" FontSize="50" LabelText="Result" ctype="TextObjectData">
-                <Position X="360.0011" Y="699.9991" />
+              <NodeObjectData Name="resultLabel" ActionTag="-464093838" FrameEvent="" Tag="52" ObjectIndex="7" FontSize="36" LabelText="Result" ctype="TextObjectData">
+                <Position X="434.9998" Y="692.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="141.0000" Y="57.0000" />
+                <Size X="102.0000" Y="42.0000" />
                 <PrePosition X="0.0000" Y="0.0000" />
                 <PreSize X="0.0000" Y="0.0000" />
               </NodeObjectData>
@@ -235,6 +235,36 @@
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                 <NormalFileData Type="Normal" Path="GameTaxQAUIConfirmButton.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="faceSprite1" ActionTag="1241361946" VisibleForFrame="False" FrameEvent="" Tag="24" ObjectIndex="11" ctype="SpriteObjectData">
+                <Position X="202.0000" Y="692.9998" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="132.0000" Y="144.0000" />
+                <PrePosition X="0.2806" Y="0.5414" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="GameTaxQAUIResultFace1.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="faceSprite2" ActionTag="1879503415" VisibleForFrame="False" FrameEvent="" Tag="25" ObjectIndex="12" ctype="SpriteObjectData">
+                <Position X="202.0000" Y="693.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="131.0000" Y="143.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="GameTaxQAUIResultFace2.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="faceSprite3" ActionTag="-316769277" VisibleForFrame="False" FrameEvent="" Tag="26" ObjectIndex="13" ctype="SpriteObjectData">
+                <Position X="202.0000" Y="693.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="131.0000" Y="143.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="GameTaxQAUIResultFace3.png" />
               </NodeObjectData>
             </Children>
           </NodeObjectData>

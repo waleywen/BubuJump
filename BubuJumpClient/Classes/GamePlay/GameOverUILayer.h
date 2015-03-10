@@ -9,10 +9,12 @@
 class GameOverUILayer : public cocos2d::Layer
 {
 public:
-    GameOverUILayer() : _loadingSprite(nullptr), _taxCoinAmountLabel(nullptr), _distanceLabel(nullptr), _requestIndex(0) {};
+    GameOverUILayer() : _loadingSprite(nullptr), _taxCoinAmountLabel(nullptr), _distanceLabel(nullptr), _myNameLabel(nullptr), _requestIndex(0) {};
     virtual ~GameOverUILayer();
     
     virtual bool init() override;
+    virtual void update(float delta) override;
+
     void setTaxCoinAmount(int taxCoinAmount);
     void setMaxDistance(float maxDistance);
     void setTaxCoinMap(const TaxCoinMap& taxCoinMap);
@@ -29,6 +31,8 @@ private:
     cocos2d::ui::Text* _taxCoinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;
     
+    cocos2d::ui::Text* _myNameLabel;
+
     int _requestIndex;
 };
 

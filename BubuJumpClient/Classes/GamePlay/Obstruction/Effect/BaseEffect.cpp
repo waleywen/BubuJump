@@ -6,6 +6,7 @@
 #include "AngelWingEffect.h"
 #include "EvilCloudEffect.h"
 #include "VortexEffect.h"
+#include "TransitionEffect.h"
 
 USING_NS_CC;
 
@@ -82,6 +83,10 @@ BaseEffect* EffectFactory::getEffect(EffectType type, ObstructionNode* sender)
         VortexEffect* tempEffect = VortexEffect::create();
         tempEffect->setTarget(sender);
         tEffect = tempEffect;
+    }
+    else if (TransitionEffectType == type)
+    {
+        tEffect = TransitionEffect::create();
     }
     
     tEffect->reset();

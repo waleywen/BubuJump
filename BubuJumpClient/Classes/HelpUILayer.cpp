@@ -89,27 +89,65 @@ bool HelpUILayer::init()
     auto confirmButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "confirmButton"));
     confirmButton->addClickEventListener(CC_CALLBACK_1(HelpUILayer::confirmButtonClicked, this));
     
-    this->_nameEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
-    this->_nameEditBox->retain();
-    this->_nameEditBox->setPosition(Point(415.0f, 302.0f));
-    this->_nameEditBox->setFontSize(24);
-    this->_nameEditBox->setPlaceHolder("请输入姓名");
-    this->_nameEditBox->setInputMode(EditBox::InputMode::ANY);
-    this->_nameEditBox->setFontColor(Color3B::BLACK);
-    this->_nameEditBox->setText("");
-    this->_nameEditBox->setMaxLength(12);
-    this->_lotteryNode->addChild(this->_nameEditBox);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EditBox* nameEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
+    nameEditBox->retain();
+    nameEditBox->setPosition(Point(415.0f, 302.0f));
+    nameEditBox->setFontSize(24);
+    nameEditBox->setPlaceHolder("请输入姓名");
+    nameEditBox->setInputMode(EditBox::InputMode::ANY);
+    nameEditBox->setFontColor(Color3B::BLACK);
+    nameEditBox->setText("");
+    nameEditBox->setMaxLength(12);
+    this->_lotteryNode->addChild(nameEditBox);
+    this->_nameEditBox = nameEditBox;
     
-    this->_phoneEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
-    this->_phoneEditBox->retain();
-    this->_phoneEditBox->setPosition(Point(415.0f, 213.0f));
-    this->_phoneEditBox->setFontSize(24);
-    this->_phoneEditBox->setPlaceHolder("请输入数字");
-    this->_phoneEditBox->setInputMode(EditBox::InputMode::NUMERIC);
-    this->_phoneEditBox->setFontColor(Color3B::BLACK);
-    this->_phoneEditBox->setText("");
-    this->_phoneEditBox->setMaxLength(11);
-    this->_lotteryNode->addChild(this->_phoneEditBox);
+    EditBox* phoneEditBox = EditBox::create(Size(250.0f, 40.0f), Scale9Sprite::create());
+    phoneEditBox->retain();
+    phoneEditBox->setPosition(Point(415.0f, 213.0f));
+    phoneEditBox->setFontSize(24);
+    phoneEditBox->setPlaceHolder("请输入数字");
+    phoneEditBox->setInputMode(EditBox::InputMode::NUMERIC);
+    phoneEditBox->setFontColor(Color3B::BLACK);
+    phoneEditBox->setText("");
+    phoneEditBox->setMaxLength(11);
+    this->_lotteryNode->addChild(phoneEditBox);
+    this->_phoneEditBox = phoneEditBox;    
+#else
+    TextField* nameEditBox = TextField::create();
+    nameEditBox->retain();
+    nameEditBox->ignoreContentAdaptWithSize(false);
+    nameEditBox->setTextAreaSize(Size(250.0f, 40.0f));
+    nameEditBox->setPosition(Point(415.0f, 302.0f));
+    nameEditBox->setFontSize(24);
+    nameEditBox->setPlaceHolder("请输入姓名");
+    nameEditBox->setTextColor(Color4B::BLACK);
+    nameEditBox->setString("");
+    nameEditBox->setTextHorizontalAlignment(TextHAlignment::LEFT);
+    nameEditBox->setTextVerticalAlignment(TextVAlignment::CENTER);
+    nameEditBox->setMaxLengthEnabled(true);
+    nameEditBox->setMaxLength(12);
+    nameEditBox->addEventListener(CC_CALLBACK_2(HelpUILayer::textFieldTapped, this));
+    this->_lotteryNode->addChild(nameEditBox);
+    this->_nameEditBox = nameEditBox;
+    
+    TextField* phoneEditBox = TextField::create();
+    phoneEditBox->retain();
+    phoneEditBox->ignoreContentAdaptWithSize(false);
+    phoneEditBox->setTextAreaSize(Size(250.0f, 40.0f));
+    phoneEditBox->setPosition(Point(415.0f, 213.0f));
+    phoneEditBox->setFontSize(24);
+    phoneEditBox->setPlaceHolder("请输入数字");
+    phoneEditBox->setTextColor(Color4B::BLACK);
+    phoneEditBox->setString("");
+    phoneEditBox->setTextHorizontalAlignment(TextHAlignment::LEFT);
+    phoneEditBox->setTextVerticalAlignment(TextVAlignment::CENTER);
+    phoneEditBox->setMaxLengthEnabled(true);
+    phoneEditBox->setMaxLength(11);
+    phoneEditBox->addEventListener(CC_CALLBACK_2(HelpUILayer::textFieldTapped, this));
+    this->_lotteryNode->addChild(phoneEditBox);
+    this->_phoneEditBox = phoneEditBox;
+#endif
 
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
     if (false == gameSaveData.isDefaultName() || gameSaveData.getPhone().length() > 0)
@@ -139,8 +177,13 @@ void HelpUILayer::rightArrowButtonClicked(cocos2d::Ref *sender)
 
 void HelpUILayer::confirmButtonClicked(cocos2d::Ref *sender)
 {
-    std::string name = this->_nameEditBox->getText();
-    std::string phone = this->_phoneEditBox->getText();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string name = static_cast<EditBox*>(this->_nameEditBox)->getText();
+    std::string phone = static_cast<EditBox*>(this->_phoneEditBox)->getText();
+#else
+    std::string name = static_cast<TextField*>(this->_nameEditBox)->getString();
+    std::string phone = static_cast<TextField*>(this->_phoneEditBox)->getString();
+#endif
     CommonUtility::trim(name);
     CommonUtility::trim(phone);
 
@@ -154,13 +197,14 @@ void HelpUILayer::confirmButtonClicked(cocos2d::Ref *sender)
     }
     else if (false == CommonUtility::checkMobilePhoneNumber(phone))
     {
-        MessageUILayer::create(2.0f, this, "您填写的手机号码有误", Size(500.0f, 250.0f));
+        MessageUILayer::create(2.0f, this, "您填写的手机号码\n有误", Size(500.0f, 250.0f));
     }
     else
     {
         GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
         gameSaveData.setName(name);
         gameSaveData.setPhone(phone);
+        gameSaveData.setNeedShowJoinLotteryUI(false);
         LoaclManager::getInstance()->save();
         NetworkManager::getInstance()->joinLottery();
         
@@ -214,5 +258,17 @@ void HelpUILayer::showPage(int index)
             
         default:
             break;
+    }
+}
+
+void HelpUILayer::textFieldTapped(cocos2d::Ref *, cocos2d::ui::TextField::EventType eventType)
+{
+    if (TextField::EventType::ATTACH_WITH_IME == eventType)
+    {
+        this->setPosition(Vec2(0.0f, 550.0f));
+    }
+    else if (TextField::EventType::DETACH_WITH_IME == eventType)
+    {
+        this->setPosition(Vec2(0.0f, 0.0f));
     }
 }

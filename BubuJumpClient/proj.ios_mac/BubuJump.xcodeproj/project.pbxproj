@@ -54,6 +54,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FC1121841AA94099001E35BA /* TransitionEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121821AA94099001E35BA /* TransitionEffect.cpp */; };
+		FC1121851AA94099001E35BA /* TransitionEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121821AA94099001E35BA /* TransitionEffect.cpp */; };
+		FC1121881AA9D5FF001E35BA /* SettingUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */; };
+		FC1121891AA9D5FF001E35BA /* SettingUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */; };
 		FC1A2D4A1A8A4BFB00C97A1E /* GameOverUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1A2D481A8A4BFB00C97A1E /* GameOverUILayer.cpp */; };
 		FC1A2D4B1A8A4BFB00C97A1E /* GameOverUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1A2D481A8A4BFB00C97A1E /* GameOverUILayer.cpp */; };
 		FC1A2D501A8A66FF00C97A1E /* DeedTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1A2D4E1A8A66FF00C97A1E /* DeedTaxCoinNode.cpp */; };
@@ -64,6 +68,12 @@
 		FC1FF6311A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */; };
 		FC1FF6341A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
 		FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
+		FC3F3D321AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */; };
+		FC3F3D331AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */; };
+		FC3F3D361AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */; };
+		FC3F3D371AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */; };
+		FC3F3D3A1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D381AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp */; };
+		FC3F3D3B1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D381AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp */; };
 		FC45D1481A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */; };
 		FC45D1491A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */; };
 		FC45F8431A61083300A708B6 /* CharacterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC45F8341A61083300A708B6 /* CharacterNode.cpp */; };
@@ -118,6 +128,8 @@
 		FC76FEE21A9E0168006AF3D7 /* SocialManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC76FEDF1A9E0168006AF3D7 /* SocialManager.cpp */; };
 		FC76FEE71A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC76FEE61A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp */; };
 		FC76FEE81A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC76FEE61A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp */; };
+		FC7D75D71AAAC493006EA330 /* InvisibleCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */; };
+		FC7D75D81AAAC493006EA330 /* InvisibleCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */; };
 		FC885C231A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */; };
 		FC885C241A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */; };
 		FC885C271A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */; };
@@ -241,6 +253,10 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FC1121821AA94099001E35BA /* TransitionEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionEffect.cpp; sourceTree = "<group>"; };
+		FC1121831AA94099001E35BA /* TransitionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionEffect.h; sourceTree = "<group>"; };
+		FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingUILayer.cpp; sourceTree = "<group>"; };
+		FC1121871AA9D5FF001E35BA /* SettingUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingUILayer.h; sourceTree = "<group>"; };
 		FC1A2D481A8A4BFB00C97A1E /* GameOverUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverUILayer.cpp; sourceTree = "<group>"; };
 		FC1A2D491A8A4BFB00C97A1E /* GameOverUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverUILayer.h; sourceTree = "<group>"; };
 		FC1A2D4E1A8A66FF00C97A1E /* DeedTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeedTaxCoinNode.cpp; sourceTree = "<group>"; };
@@ -251,6 +267,12 @@
 		FC1FF62F1A6E20E000DC6DE4 /* MagnetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetNode.h; sourceTree = "<group>"; };
 		FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagnetEffect.cpp; sourceTree = "<group>"; };
 		FC1FF6331A6E228A00DC6DE4 /* MagnetEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetEffect.h; sourceTree = "<group>"; };
+		FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaxBibleUILayer.cpp; sourceTree = "<group>"; };
+		FC3F3D311AA7FB02000106E0 /* TaxBibleUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxBibleUILayer.h; sourceTree = "<group>"; };
+		FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LandValueIncrementTaxCoinNode.cpp; sourceTree = "<group>"; };
+		FC3F3D351AA8362C000106E0 /* LandValueIncrementTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandValueIncrementTaxCoinNode.h; sourceTree = "<group>"; };
+		FC3F3D381AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrbanLandUseTaxCoinNode.cpp; sourceTree = "<group>"; };
+		FC3F3D391AA836A1000106E0 /* UrbanLandUseTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrbanLandUseTaxCoinNode.h; sourceTree = "<group>"; };
 		FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftCloudNode.cpp; sourceTree = "<group>"; };
 		FC45D1471A91B2E3000DCA1C /* SoftCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCloudNode.h; sourceTree = "<group>"; };
 		FC45F8341A61083300A708B6 /* CharacterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterNode.cpp; sourceTree = "<group>"; };
@@ -307,6 +329,8 @@
 		FC76FEE41A9E04B7006AF3D7 /* WeChatClientForAndroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatClientForAndroid.h; sourceTree = "<group>"; };
 		FC76FEE51A9E04B7006AF3D7 /* WeChatClientForiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatClientForiOS.h; sourceTree = "<group>"; };
 		FC76FEE61A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeChatClientForAndroid.cpp; sourceTree = "<group>"; };
+		FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InvisibleCoinNode.cpp; sourceTree = "<group>"; };
+		FC7D75D61AAAC493006EA330 /* InvisibleCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibleCoinNode.h; sourceTree = "<group>"; };
 		FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndividualIncomeTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC885C221A6220FD00000725 /* IndividualIncomeTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualIncomeTaxCoinNode.h; sourceTree = "<group>"; };
 		FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrbanMaintenanceAndConstructionTaxCoinNode.cpp; sourceTree = "<group>"; };
@@ -488,7 +512,11 @@
 				FC686B3E1A8753BB00E4094D /* MainMenuUILayer.h */,
 				FCBF5D021AA4631800FBF0C0 /* MessageUILayer.cpp */,
 				FCBF5D031AA4631800FBF0C0 /* MessageUILayer.h */,
+				FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */,
+				FC1121871AA9D5FF001E35BA /* SettingUILayer.h */,
 				FC76FEDE1A9E0168006AF3D7 /* Social */,
+				FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */,
+				FC3F3D311AA7FB02000106E0 /* TaxBibleUILayer.h */,
 				FCF55BAE1A69025100FCA018 /* UIHelper.h */,
 			);
 			name = Classes;
@@ -566,6 +594,10 @@
 				FCCF2E511A748F7400CD78F5 /* HeartNode.h */,
 				FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */,
 				FC885C221A6220FD00000725 /* IndividualIncomeTaxCoinNode.h */,
+				FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */,
+				FC7D75D61AAAC493006EA330 /* InvisibleCoinNode.h */,
+				FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */,
+				FC3F3D351AA8362C000106E0 /* LandValueIncrementTaxCoinNode.h */,
 				FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */,
 				FC1FF62F1A6E20E000DC6DE4 /* MagnetNode.h */,
 				FC45F83F1A61083300A708B6 /* ObstructionNode.cpp */,
@@ -584,6 +616,8 @@
 				FC7055891A7E141D0072C45C /* ThornFootboardNode.h */,
 				FC65F86D1A84985C009CA606 /* UFONode.cpp */,
 				FC65F86E1A84985C009CA606 /* UFONode.h */,
+				FC3F3D381AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp */,
+				FC3F3D391AA836A1000106E0 /* UrbanLandUseTaxCoinNode.h */,
 				FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */,
 				FC885C261A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.h */,
 				FC99C0A31A88538E00D18018 /* VehicleAndVesselTaxCoinNode.cpp */,
@@ -613,6 +647,8 @@
 				FC49C3151A6D24670086D35A /* RocketEffect.h */,
 				FCC4E8421A9C1309008458C7 /* SpriteBaseEffect.cpp */,
 				FCC4E8431A9C1309008458C7 /* SpriteBaseEffect.h */,
+				FC1121821AA94099001E35BA /* TransitionEffect.cpp */,
+				FC1121831AA94099001E35BA /* TransitionEffect.h */,
 				FC7055901A7E56480072C45C /* VortexEffect.cpp */,
 				FC7055911A7E56480072C45C /* VortexEffect.h */,
 			);
@@ -855,12 +891,15 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				FC99C0A91A88547400D18018 /* BuildingTaxCoinNode.cpp in Sources */,
 				FC1A2D541A8A678F00C97A1E /* StampTaxCoinNode.cpp in Sources */,
+				FC1121881AA9D5FF001E35BA /* SettingUILayer.cpp in Sources */,
 				FC1FF6301A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */,
 				FC70557A1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
 				FC1A2D501A8A66FF00C97A1E /* DeedTaxCoinNode.cpp in Sources */,
 				FC70558A1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
 				FC45D1481A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */,
+				FC7D75D71AAAC493006EA330 /* InvisibleCoinNode.cpp in Sources */,
 				FC7055821A7E0B450072C45C /* EvilCloudNode.cpp in Sources */,
+				FC3F3D321AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */,
 				FCF55BAC1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
 				FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
 				FC45F84F1A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
@@ -872,6 +911,7 @@
 				FC99C0AD1A8888A600D18018 /* LeaderboardUILayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				FCCC476B1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
+				FC3F3D361AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */,
 				FC45F8431A61083300A708B6 /* CharacterNode.cpp in Sources */,
 				FC45F8471A61083300A708B6 /* GamePlayLayer.cpp in Sources */,
 				FC5A6C3C1A78B0340045FE1A /* NetworkManager.cpp in Sources */,
@@ -879,8 +919,10 @@
 				FC49C3121A6CE9280086D35A /* FlyBootNode.cpp in Sources */,
 				FC49C31A1A6D29140086D35A /* RocketNode.cpp in Sources */,
 				FCFFCBC41A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */,
+				FC3F3D3A1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */,
 				FCD6C5EB1A89E58A002C2BB7 /* GameTaxQAUILayer.cpp in Sources */,
 				FC49C30A1A6CD1100086D35A /* BaseEffect.cpp in Sources */,
+				FC1121841AA94099001E35BA /* TransitionEffect.cpp in Sources */,
 				FC686B3F1A8753BB00E4094D /* MainMenuUILayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -898,11 +940,13 @@
 				FC49C31B1A6D29140086D35A /* RocketNode.cpp in Sources */,
 				FC1A2D551A8A678F00C97A1E /* StampTaxCoinNode.cpp in Sources */,
 				FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */,
+				FC3F3D371AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */,
 				FC45F8461A61083300A708B6 /* GameBaseNode.cpp in Sources */,
 				FC45F8481A61083300A708B6 /* GamePlayLayer.cpp in Sources */,
 				FC49C3131A6CE9280086D35A /* FlyBootNode.cpp in Sources */,
 				FC76FEE21A9E0168006AF3D7 /* SocialManager.cpp in Sources */,
 				FC99C0AA1A88547400D18018 /* BuildingTaxCoinNode.cpp in Sources */,
+				FC1121851AA94099001E35BA /* TransitionEffect.cpp in Sources */,
 				FC885C281A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp in Sources */,
 				FC45F84A1A61083300A708B6 /* GamePlayScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
@@ -915,6 +959,8 @@
 				FC49C30B1A6CD1100086D35A /* BaseEffect.cpp in Sources */,
 				FC49C30F1A6CD5F70086D35A /* FlyBootEffect.cpp in Sources */,
 				FC99C0B91A88F75200D18018 /* GameResuscitationUILayer.cpp in Sources */,
+				FC3F3D331AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */,
+				FC7D75D81AAAC493006EA330 /* InvisibleCoinNode.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				FC70558F1A7E52380072C45C /* VortexNode.cpp in Sources */,
 				FC45F84C1A61083300A708B6 /* GamePlayUILayer.cpp in Sources */,
@@ -930,6 +976,7 @@
 				FCC4E8491A9C14E0008458C7 /* ParticleBaseEffect.cpp in Sources */,
 				FC65F8701A84985C009CA606 /* UFONode.cpp in Sources */,
 				FC76FEE81A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp in Sources */,
+				FC1121891AA9D5FF001E35BA /* SettingUILayer.cpp in Sources */,
 				FC45D1491A91B2E3000DCA1C /* SoftCloudNode.cpp in Sources */,
 				FC70557B1A7DF16F0072C45C /* AngelWingNode.cpp in Sources */,
 				FC70558B1A7E141D0072C45C /* ThornFootboardNode.cpp in Sources */,
@@ -939,6 +986,7 @@
 				FC5A6C411A78BFBF0045FE1A /* md5.cpp in Sources */,
 				FCFFCBC51A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */,
 				FCBF5D051AA4631800FBF0C0 /* MessageUILayer.cpp in Sources */,
+				FC3F3D3B1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */,
 				FCF55BAD1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
 				FC45F8441A61083300A708B6 /* CharacterNode.cpp in Sources */,
 				FC99C0B31A888F1800D18018 /* LoaclManager.cpp in Sources */,

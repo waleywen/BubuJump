@@ -33,6 +33,11 @@ GameOverUILayer::~GameOverUILayer()
         this->_distanceLabel->release();
         this->_distanceLabel = nullptr;
     }
+    if (nullptr != this->_myNameLabel)
+    {
+        this->_myNameLabel->release();
+        this->_myNameLabel = nullptr;
+    }
 }
 
 bool GameOverUILayer::init()
@@ -68,9 +73,23 @@ bool GameOverUILayer::init()
     if (true == gameSaveData.getNeedShowJoinLotteryUI())
     {
         this->addChild(JoinLotteryUILayer::create());
+        
+        this->scheduleUpdate();
     }
     
     return true;
+}
+
+void GameOverUILayer::update(float delta)
+{
+    if (nullptr != this->_myNameLabel)
+    {
+        GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+        if (false == gameSaveData.isDefaultName())
+        {
+            this->_myNameLabel->setString(gameSaveData.getName());
+        }
+    }
 }
 
 void GameOverUILayer::setTaxCoinAmount(int taxCoinAmount)
@@ -150,6 +169,14 @@ void GameOverUILayer::setTaxCoinMap(const TaxCoinMap &taxCoinMap)
                 taxNameLabel->setString("印花税");
                 taxCoinSprite->setTexture("StampTaxCoin.png");
                 break;
+            case LandValueIncrementTaxCoinNodeType:
+                taxNameLabel->setString("土地增值税");
+                taxCoinSprite->setTexture("LandValueIncrementTaxCoin.png");
+                break;
+            case UrbanLandUseTaxCoinNodeType:
+                taxNameLabel->setString("城镇土地使用税");
+                taxCoinSprite->setTexture("UrbanLandUseTaxCoin.png");
+                break;
                 
             default:
                 break;
@@ -189,6 +216,8 @@ void GameOverUILayer::homeButtonClicked(cocos2d::Ref *sender)
 
 void GameOverUILayer::scoreSubmitted(void *resultData)
 {
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+
     this->_loadingSprite->setVisible(false);
     
     auto leaderboardPlaceLabel1 = static_cast<Text*>(UIHelper::seekNodeByName(this, "leaderboardPlaceLabel1"));
@@ -213,6 +242,12 @@ void GameOverUILayer::scoreSubmitted(void *resultData)
         leaderboardPlaceLabel1->setVisible(true);
         leaderboardNameLabel1->setVisible(true);
         leaderboardScoreLabel1->setVisible(true);
+        
+        if (record->getID() == gameSaveData.getLeaderboardID())
+        {
+            this->_myNameLabel = leaderboardNameLabel1;
+            this->_myNameLabel->retain();
+        }
     }
     if (recordVector->size() > 1)
     {
@@ -223,6 +258,12 @@ void GameOverUILayer::scoreSubmitted(void *resultData)
         leaderboardPlaceLabel2->setVisible(true);
         leaderboardNameLabel2->setVisible(true);
         leaderboardScoreLabel2->setVisible(true);
+        
+        if (record->getID() == gameSaveData.getLeaderboardID())
+        {
+            this->_myNameLabel = leaderboardNameLabel2;
+            this->_myNameLabel->retain();
+        }
     }
     if (recordVector->size() > 2)
     {
@@ -233,5 +274,15 @@ void GameOverUILayer::scoreSubmitted(void *resultData)
         leaderboardPlaceLabel3->setVisible(true);
         leaderboardNameLabel3->setVisible(true);
         leaderboardScoreLabel3->setVisible(true);
+        
+        if (record->getID() == gameSaveData.getLeaderboardID())
+        {
+            this->_myNameLabel = leaderboardNameLabel3;
+            this->_myNameLabel->retain();
+        }
+    }
+    if (nullptr != this->_myNameLabel)
+    {
+        this->_myNameLabel->setTextColor(Color4B::YELLOW);
     }
 }

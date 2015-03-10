@@ -12,7 +12,8 @@ using namespace cocos2d::network;
 
 //const std::string SERVER_ADDRESS = "http://localhost/";
 //const std::string SERVER_ADDRESS = "http://192.168.31.217/";
-const std::string SERVER_ADDRESS = "http://bubujump.sinaapp.com/";
+//const std::string SERVER_ADDRESS = "http://bubujump.sinaapp.com/";
+const std::string SERVER_ADDRESS = "http://touchthesky.sinaapp.com/";
 const std::string MD5_KEY = "1234567890";
 
 std::string md5SumString(const std::string& type, const std::string& id, const std::string& name, const std::string& score)
@@ -174,16 +175,43 @@ NetworkManager::NetworkCallbackObject& NetworkManager::generateCallbackObject(Ne
     return callbackObject;
 }
 
+void NetworkManager::errorReturnMyRecord(NetworkManager::NetworkCallbackObject *callbackObject)
+{
+    if (nullptr != callbackObject && false == callbackObject->canceled)
+    {
+        LeaderboardRecordVector resultRecordVector;
+        
+        GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+
+        LeaderboardRecord* record = LeaderboardRecord::create();
+        record->setID(gameSaveData.getLeaderboardID());
+        if (false == gameSaveData.isDefaultName())
+        {
+            record->setName(gameSaveData.getName());
+        }
+        else
+        {
+            record->setName("我");
+        }
+        record->setScore(gameSaveData.getMaxDistance());
+        record->setPlace(1);
+        resultRecordVector.pushBack(record);
+
+        callbackObject->callback(&resultRecordVector);
+    }
+}
+
 void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
 {
-    if (!response)
+    NetworkCallbackObject* callbackObject = static_cast<NetworkCallbackObject*>(response->getHttpRequest()->getUserData());
+    if (true == callbackObject->canceled)
     {
         return;
     }
     
-    NetworkCallbackObject* callbackObject = static_cast<NetworkCallbackObject*>(response->getHttpRequest()->getUserData());
-    if (true == callbackObject->canceled)
+    if (!response)
     {
+        this->errorReturnMyRecord(callbackObject);
         return;
     }
     
@@ -201,6 +229,7 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
     {
         log("response failed");
         log("error buffer: %s", response->getErrorBuffer());
+        this->errorReturnMyRecord(callbackObject);
         return;
     }
     // dump data
@@ -224,6 +253,18 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
     
     bool isTop50Player = false;
     
+    GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
+    std::string myName = "";
+    if (false == gameSaveData.isDefaultName())
+    {
+        myName = gameSaveData.getName();
+    }
+    else
+    {
+        myName = "我";
+    }
+
+    
     rapidjson::Value& leaderboardArray = document["leaderboard"];
     for(int i = 0; i < leaderboardArray.Capacity(); ++i)
     {
@@ -240,7 +281,7 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
         if (record->getID() == myID)
         {
             isTop50Player = true;
-            record->setName("我");
+            record->setName(myName);
         }
     }
     
@@ -248,7 +289,7 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
     {
         LeaderboardRecord* record = LeaderboardRecord::create();
         record->setID(myID);
-        record->setName("我");
+        record->setName(myName);
         record->setScore(myScore);
 
         if (50 >= sameScorePlace)
@@ -281,14 +322,15 @@ void NetworkManager::scoreSubmitted6(cocos2d::network::HttpClient *sender, cocos
 
 void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response, int resultSize)
 {
-    if (!response)
+    NetworkCallbackObject* callbackObject = static_cast<NetworkCallbackObject*>(response->getHttpRequest()->getUserData());
+    if (true == callbackObject->canceled)
     {
         return;
     }
     
-    NetworkCallbackObject* callbackObject = static_cast<NetworkCallbackObject*>(response->getHttpRequest()->getUserData());
-    if (true == callbackObject->canceled)
+    if (!response)
     {
+        this->errorReturnMyRecord(callbackObject);
         return;
     }
     
@@ -306,6 +348,7 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     {
         log("response failed");
         log("error buffer: %s", response->getErrorBuffer());
+        this->errorReturnMyRecord(callbackObject);
         return;
     }
     // dump data
@@ -367,7 +410,14 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
         theRecord->setPlace(startPlace++);
     }
     
-    myRecord->setName("我");
+    if (false == gameSaveData.isDefaultName())
+    {
+        myRecord->setName(gameSaveData.getName());
+    }
+    else
+    {
+        myRecord->setName("我");
+    }
 
     LeaderboardRecordVector resultRecordVector;
     if (leaderboardArray.Size() <= resultSize)

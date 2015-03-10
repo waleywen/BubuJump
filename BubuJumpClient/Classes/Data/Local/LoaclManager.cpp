@@ -27,6 +27,8 @@ LoaclManager::LoaclManager() : _data()
     _data.setMaxTaxCoinAmount(userDefault->getIntegerForKey("maxTaxCoinAmount", 0));
     _data.setMaxDistance(userDefault->getIntegerForKey("maxDistance", 0));
     _data.setNeedShowJoinLotteryUI(userDefault->getBoolForKey("needShowJoinLotteryUI", true));
+    _data.setSoundEnabled(userDefault->getBoolForKey("soundEnabled", true));
+    _data.setMusicEnabled(userDefault->getBoolForKey("musicEnabled", true));
 }
 
 void LoaclManager::save()
@@ -41,4 +43,6 @@ void LoaclManager::save()
     userDefault->setIntegerForKey("maxTaxCoinAmount", _data.getMaxTaxCoinAmount());
     userDefault->setIntegerForKey("maxDistance", _data.getMaxDistance());
     userDefault->setBoolForKey("needShowJoinLotteryUI", _data.getNeedShowJoinLotteryUI());
+    userDefault->setBoolForKey("soundEnabled", _data.getSoundEnabled());
+    userDefault->setBoolForKey("musicEnabled", _data.getMusicEnabled());
 }

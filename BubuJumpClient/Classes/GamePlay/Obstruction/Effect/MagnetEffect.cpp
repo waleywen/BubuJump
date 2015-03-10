@@ -40,6 +40,7 @@ void MagnetEffect::gameUpdate(float delta)
     for(auto& obstructionNode : *this->getCharacterNode()->getObstructionNodeVector())
     {
         if ((obstructionNode->getNodeType() == SmallCoinNodeType
+             || obstructionNode->getNodeType() == InvisibleCoinNodeType
              || obstructionNode->getNodeType() == IndividualIncomeTaxCoinNodeType
              || obstructionNode->getNodeType() == UrbanMaintenanceAndConstructionTaxCoinNodeType
              || obstructionNode->getNodeType() == BusinessTaxCoinNodeType
@@ -48,6 +49,8 @@ void MagnetEffect::gameUpdate(float delta)
              || obstructionNode->getNodeType() == VehicleAndVesselTaxCoinNodeType
              || obstructionNode->getNodeType() == DeedTaxCoinNodeType
              || obstructionNode->getNodeType() == StampTaxCoinNodeType
+             || obstructionNode->getNodeType() == LandValueIncrementTaxCoinNodeType
+             || obstructionNode->getNodeType() == UrbanLandUseTaxCoinNodeType
              )
             && ActivatedNodeState == obstructionNode->getState())
         {

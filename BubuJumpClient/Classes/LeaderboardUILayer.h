@@ -9,10 +9,12 @@
 class LeaderboardUILayer : public cocos2d::Layer
 {
 public:
-    LeaderboardUILayer() : _loadingSprite(nullptr), _taxCoinAmountLabel(nullptr), _distanceLabel(nullptr), _requestIndex(0) {};
+    LeaderboardUILayer() : _loadingSprite(nullptr), _taxCoinAmountLabel(nullptr), _distanceLabel(nullptr), _myNameLabel(nullptr), _requestIndex(0) {};
     virtual ~LeaderboardUILayer();
     
     virtual bool init() override;
+    virtual void update(float delta) override;
+
     void setTaxCoinAmount(int taxCoinAmount);
     void setMaxDistance(float maxDistance);
 
@@ -29,6 +31,8 @@ private:
     cocos2d::Sprite* _loadingSprite;
     cocos2d::ui::Text* _taxCoinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;
+    
+    cocos2d::ui::Text* _myNameLabel;
     
     int _requestIndex;
 };

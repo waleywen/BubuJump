@@ -138,6 +138,7 @@ void GamePlayUILayer::gameUpdate(float delta)
     {
         float leftTime = this->getEffect()->getTime() - this->getEffect()->getDuration();
         
+        bool shouldShowIcon = true;
         if (FlyBootEffectType == this->getEffect()->getType())
         {
             this->_propSprite->setTexture("FlyBoot.png");
@@ -158,21 +159,32 @@ void GamePlayUILayer::gameUpdate(float delta)
         {
             this->_propSprite->setTexture("EvilCloud.png");
         }
-        
-        if (leftTime < 3.0f)
+        else
         {
-            if ((leftTime - (int)leftTime) <= 0.5f)
+            shouldShowIcon = false;
+        }
+        
+        if (true == shouldShowIcon)
+        {
+            if (leftTime < 3.0f)
             {
-                this->_propSprite->setVisible(true);
+                if ((leftTime - (int)leftTime) <= 0.5f)
+                {
+                    this->_propSprite->setVisible(true);
+                }
+                else
+                {
+                    this->_propSprite->setVisible(false);
+                }
             }
             else
             {
-                this->_propSprite->setVisible(false);
+                this->_propSprite->setVisible(true);
             }
         }
         else
         {
-            this->_propSprite->setVisible(true);
+            this->_propSprite->setVisible(false);
         }
     }
     else
