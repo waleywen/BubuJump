@@ -57,6 +57,7 @@ HelpUILayer::~HelpUILayer()
         this->_phoneEditBox->release();
         this->_phoneEditBox = nullptr;
     }
+    this->_eventDispatcher->removeEventListenersForTarget(this);
 }
 
 bool HelpUILayer::init()
@@ -157,11 +158,52 @@ bool HelpUILayer::init()
     
     this->showPage(0);
     
+    auto resultNodeEventListener = EventListenerTouchOneByOne::create();
+    resultNodeEventListener->setSwallowTouches(true);
+    resultNodeEventListener->onTouchBegan = CC_CALLBACK_2(HelpUILayer::touchBegan, this);
+    resultNodeEventListener->onTouchEnded = CC_CALLBACK_2(HelpUILayer::touchEnded, this);
+    this->_eventDispatcher->addEventListenerWithSceneGraphPriority(resultNodeEventListener, this);
+    
     return true;
 }
 
+bool HelpUILayer::touchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    this->_beginPoint = touch->getLocation();
+    return true;
+}
+
+void HelpUILayer::touchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    Point endPoint = touch->getLocation();
+    
+    float d = (this->_beginPoint - endPoint).length();
+    if (d > 20.0f)
+    {
+        if (this->_beginPoint.x-endPoint.x<0&&this->_beginPoint.x-endPoint.x<this->_beginPoint.y-endPoint.y&&endPoint.x-this->_beginPoint.x>this->_beginPoint.y-endPoint.y)
+        {
+//            touchRight();
+            this->leftArrowButtonClicked(nullptr);
+        }
+        if (this->_beginPoint.x-endPoint.x>0&&this->_beginPoint.x-endPoint.x>this->_beginPoint.y-endPoint.y&&endPoint.x-this->_beginPoint.x<this->_beginPoint.y-endPoint.y)
+        {
+//            touchLeft();
+            this->rightArrowButtonClicked(nullptr);
+        }
+        
+        if (this->_beginPoint.y-endPoint.y<0&&this->_beginPoint.y-endPoint.y<this->_beginPoint.x-endPoint.x&&endPoint.y-this->_beginPoint.y>this->_beginPoint.x-endPoint.x)
+        {
+//            touchUp();
+        }
+        if (this->_beginPoint.y-endPoint.y>0&&this->_beginPoint.y-endPoint.y>this->_beginPoint.x-endPoint.x&&endPoint.y-this->_beginPoint.y<this->_beginPoint.x-endPoint.x)
+        {
+//            touchDown();
+        }
+    }
+}
+
 void HelpUILayer::backButtonClicked(cocos2d::Ref *sender)
-{    
+{
     Director::getInstance()->popScene();
 }
 

@@ -82,8 +82,22 @@ bool GameTaxQAUILayer::init()
     this->_taxCoinSprite->retain();
     this->_titleLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "titleLabel"));
     this->_titleLabel->retain();
-    this->_questionLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "questionLabel"));
+    
+//    this->_questionLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "questionLabel"));
+//    this->_questionLabel->retain();
+    auto questionLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "questionLabel"));
+    questionLabel->setVisible(false);
+    this->_questionLabel = Label::create();
+    this->_questionLabel->setDimensions(620.0f, 0.0f);
     this->_questionLabel->retain();
+    this->_questionLabel->setPosition(questionLabel->getPosition());
+    this->_questionLabel->setSystemFontSize(questionLabel->getFontSize());
+    this->_questionLabel->setTextColor(Color4B::BLACK);
+    this->_questionLabel->setHorizontalAlignment(questionLabel->getTextHorizontalAlignment());
+    this->_questionLabel->setVerticalAlignment(questionLabel->getTextVerticalAlignment());
+    this->_questionLabel->setAnchorPoint(questionLabel->getAnchorPoint());
+    questionLabel->getParent()->addChild(this->_questionLabel);
+    
     this->_answerLabel1 = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "answerLabel1"));
     this->_answerLabel1->retain();
     this->_answerLabel2 = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "answerLabel2"));
@@ -107,6 +121,7 @@ bool GameTaxQAUILayer::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(this->_resultNodeEventListener, layerColor);
     resultNode->addChild(layerColor, -1);
     resultNode->setPosition(Vec2(-1000.0f, -1000.0f));
+    resultNode->setLocalZOrder(100);
     this->_resultNodeEventListener->setEnabled(false);
     
     auto confirmButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "confirmButton"));

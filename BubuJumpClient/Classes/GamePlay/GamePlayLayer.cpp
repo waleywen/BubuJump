@@ -2,6 +2,8 @@
 
 #include "AppMacros.h"
 
+#include "../CommonUtility.h"
+
 #include "CharacterNode.h"
 #include "Obstruction/Effect/BaseEffect.h"
 #include "Obstruction/SmallCoinNode.h"
@@ -30,12 +32,30 @@
 
 USING_NS_CC;
 
+const int PHASE_DISTANCE = 64000;
+//const int PHASE_DISTANCE = 10000;
+
 GamePlayLayer::~GamePlayLayer()
 {
     if (nullptr != this->_mainGameLayer)
     {
         this->_mainGameLayer->release();
         this->_mainGameLayer = nullptr;
+    }
+    if (nullptr != this->_backgroundSprite)
+    {
+        this->_backgroundSprite->release();
+        this->_backgroundSprite = nullptr;
+    }
+    if (nullptr != this->_finishLineSprite)
+    {
+        this->_finishLineSprite->release();
+        this->_finishLineSprite = nullptr;
+    }
+    if (nullptr != this->_clearanceSprite)
+    {
+        this->_clearanceSprite->release();
+        this->_clearanceSprite = nullptr;
     }
     if (nullptr != this->_transitionNode)
     {
@@ -74,11 +94,11 @@ bool GamePlayLayer::init()
     this->_visibleSize = Director::getInstance()->getVisibleSize();
     this->_origin = Director::getInstance()->getVisibleOrigin();
     
-    auto backgroundSprite = Sprite::create("Background.png");
-//    backgroundSprite->setVisible(false);
-    backgroundSprite->setScale(1.25f, 1.25f);
-    backgroundSprite->setPosition(Vec2(designResolutionSize / 2));
-    this->addChild(backgroundSprite);
+    this->_backgroundSprite = Sprite::create("Background1.png");
+    this->_backgroundSprite->retain();
+    this->_backgroundSprite->setScale(1.25f, 1.25f);
+    this->_backgroundSprite->setPosition(Vec2(designResolutionSize / 2));
+    this->addChild(this->_backgroundSprite, 0);
     
     this->_mainGameLayer = Layer::create();
     this->_mainGameLayer->retain();
@@ -89,11 +109,22 @@ bool GamePlayLayer::init()
     groundSprite->setPosition(Vec2(designResolutionSize / 2) + Vec2(0.0f, (designResolutionSize.height - this->_visibleSize.height) / 2.0f));
     this->_mainGameLayer->addChild(groundSprite, 0);
 
+    this->_finishLineSprite = Sprite::create("FinishLine.png");
+    this->_finishLineSprite->retain();
+    this->_finishLineSprite->setPosition(Vec2(0.0f, -1000.0f));
+    this->_mainGameLayer->addChild(this->_finishLineSprite, 75);
+    
+    this->_clearanceSprite = Sprite::create("Clearance.png");
+    this->_clearanceSprite->retain();
+    this->_clearanceSprite->setOpacity(0);
+    this->_clearanceSprite->setPosition(Vec2(designResolutionSize.width / 2.0f, this->_visibleSize.height / 4 * 3));
+    this->addChild(this->_clearanceSprite, 10);
+    
     this->_transitionNode = Node::create();
     this->_transitionNode->retain();
     this->_transitionNode->setVisible(false);
     this->_mainGameLayer->addChild(this->_transitionNode, 25);
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 100; ++i)
     {
         auto transitionBackgroundSprite = Sprite::create("TransitionBackground.png");
         transitionBackgroundSprite->setPosition(Vec2(0.0f, 1024.0f * i - 128.0f));
@@ -134,15 +165,15 @@ bool GamePlayLayer::init()
 
     this->_characterNode->setNormalAcceleration(-1000.0f);
     
-    auto node1 = CSLoader::createNode("Layer1.csb");
+    auto node1 = CSLoader::createNode("Phase1.1.csb");
     node1->setTag(501);
     node1->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node1->setVisible(false);
-    auto node2 = CSLoader::createNode("Layer2.csb");
+    auto node2 = CSLoader::createNode("Phase1.2.csb");
     node2->setTag(502);
     node2->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node2->setVisible(false);
-    auto node3 = CSLoader::createNode("Layer3.csb");
+    auto node3 = CSLoader::createNode("Phase1.3.csb");
     node3->setTag(503);
     node3->setPosition(Vec2(-1000.0f, -1000.0f));
 //    node3->setVisible(false);
@@ -151,6 +182,16 @@ bool GamePlayLayer::init()
     this->_mainGameLayer->addChild(node2, 10);
     this->_mainGameLayer->addChild(node3, 10);
     
+    groundSprite = Sprite::create("Background2.png");
+    node1 = CSLoader::createNode("Phase2.1.csb");
+    node2 = CSLoader::createNode("Phase2.2.csb");
+    node3 = CSLoader::createNode("Phase2.3.csb");
+
+    groundSprite = Sprite::create("Background3.png");
+    node1 = CSLoader::createNode("Phase3.1.csb");
+    node2 = CSLoader::createNode("Phase3.2.csb");
+    node3 = CSLoader::createNode("Phase3.3.csb");
+
 //    auto subNode = uiNode->getChildByTag(7);
 //    subNode->setPosition(Vec2(subNode->getPosition().x, subNode->getPosition().y - (designResolutionSize.height - this->_visibleSize.height) / 2.0f));
 //    subNode = uiNode->getChildByTag(8);
@@ -161,6 +202,86 @@ bool GamePlayLayer::init()
     this->_characterNode->setPosition(Vec2(designResolutionSize.width / 2, this->_origin.y + 100.0f));
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    GamePlayDataVectors& level0GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(0, GamePlayDataVectors())).first->second;
+
+    GamePlayDataVectors& level1GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(1, GamePlayDataVectors())).first->second;
+
+    GamePlayDataVectors& level2GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(2, GamePlayDataVectors())).first->second;
+
+    GamePlayDataVectors& level3GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(3, GamePlayDataVectors())).first->second;
+
+//    std::string path = "/mnt/sdcard/BubuJump/";
+//    auto sharedFileUtils = FileUtils::getInstance();
+//    if (true == sharedFileUtils->isDirectoryExist(path))
+//    {
+//        for (int i = 1; i <= 99999; i++)
+//        {
+//            std::string filePath = path + "Level0." + CommonUtility::convertToString(i) + ".csb";
+//            if (true == sharedFileUtils->isFileExist(filePath))
+//            {
+//                level0GamePlayDataVectors.push_back(GamePlayDataVector());
+//                GamePlayDataVector& level0_xGamePlayDataVector = level0GamePlayDataVectors.back();
+//                this->readGamePlayDataToVector(filePath, level0_xGamePlayDataVector);
+//            }
+//            else
+//            {
+//                break;
+//            }
+//        }
+//
+//        for (int i = 1; i <= 99999; i++)
+//        {
+//            std::string filePath = path + "Level1." + CommonUtility::convertToString(i) + ".csb";
+//            if (true == sharedFileUtils->isFileExist(filePath))
+//            {
+//                level1GamePlayDataVectors.push_back(GamePlayDataVector());
+//                GamePlayDataVector& level1_xGamePlayDataVector = level1GamePlayDataVectors.back();
+//                this->readGamePlayDataToVector(filePath, level1_xGamePlayDataVector);
+//            }
+//            else
+//            {
+//                break;
+//            }
+//        }
+//    }
+    
+    if (level0GamePlayDataVectors.size() == 0)
+    {
+        for (int i = 1; i <= 1; i++)
+        {
+            level0GamePlayDataVectors.push_back(GamePlayDataVector());
+            GamePlayDataVector& level1_xGamePlayDataVector = level0GamePlayDataVectors.back();
+            this->readGamePlayDataToVector(std::string("Levels/EditorData/Level0.") + CommonUtility::convertToString(i) + ".csb", level1_xGamePlayDataVector);
+        }
+    }
+    if (level1GamePlayDataVectors.size() == 0)
+    {
+        for (int i = 1; i <= 9; i++)
+        {
+            level1GamePlayDataVectors.push_back(GamePlayDataVector());
+            GamePlayDataVector& level1_xGamePlayDataVector = level1GamePlayDataVectors.back();
+            this->readGamePlayDataToVector(std::string("Levels/EditorData/Level1.") + CommonUtility::convertToString(i) + ".csb", level1_xGamePlayDataVector);
+        }
+    }
+    if (level2GamePlayDataVectors.size() == 0)
+    {
+        for (int i = 1; i <= 6; i++)
+        {
+            level2GamePlayDataVectors.push_back(GamePlayDataVector());
+            GamePlayDataVector& level2_xGamePlayDataVector = level2GamePlayDataVectors.back();
+            this->readGamePlayDataToVector(std::string("Levels/EditorData/Level2.") + CommonUtility::convertToString(i) + ".csb", level2_xGamePlayDataVector);
+        }
+    }
+    if (level3GamePlayDataVectors.size() == 0)
+    {
+        for (int i = 1; i <= 1; i++)
+        {
+            level3GamePlayDataVectors.push_back(GamePlayDataVector());
+            GamePlayDataVector& level3_xGamePlayDataVector = level3GamePlayDataVectors.back();
+            this->readGamePlayDataToVector(std::string("Levels/EditorData/Level3.") + CommonUtility::convertToString(i) + ".csb", level3_xGamePlayDataVector);
+        }
+    }
 
     return true;
 }
@@ -181,10 +302,20 @@ void GamePlayLayer::gameUpdate(float delta)
     this->cleanupUselessObstructions();
     this->buildTopperScene();
     
-    int currentTransitionPhase = ((int)this->_characterNode->getPosition().y) / 20000;
+    int currentTransitionPhase = ((int)(this->_characterNode->getPosition().y - (this->_transitionPhase * 15000.0f))) / PHASE_DISTANCE;
+    this->_finishLineSprite->setPosition(designResolutionSize.width / 2.0f, (this->_transitionPhase + 1) * PHASE_DISTANCE + this->_transitionPhase * 15000.0f + 80.0f);
     this->_lightLayerColor->setPosition(Vec2(0.0f, this->_characterNode->getPosition().y - designResolutionSize.height / 2.0f));
     if (currentTransitionPhase > this->_transitionPhase)
     {
+        this->_isTransiting = true;
+        for(auto& obstruction : this->_obstructionVector)
+        {
+            obstruction->setState(InactivatedNodeState);
+            obstruction->setVisible(false);
+        }
+        this->_lastBuildLine = this->_characterNode->getPosition().y;
+        this->_currentPatternGamePlayDataVector.clear();
+        
         this->_transitionPhase = currentTransitionPhase;
         
         this->_transitionNode->setPosition(Vec2(designResolutionSize.width / 2.0f, this->_characterNode->getPosition().y));
@@ -201,15 +332,17 @@ void GamePlayLayer::gameUpdate(float delta)
             
             Sprite* lightSprite = Sprite::create("TransitionLight.png");
             lightSprite->setPosition(Vec2(t * designResolutionSize.width - designResolutionSize.width / 2.0f, i));
-            log("%f, %d", t * designResolutionSize.width, i);
             this->_transitionLightsNode->addChild(lightSprite);
         }
         this->_transitionLightsNode->setPosition(Vec2(0.0f, -512.0f));
         this->_transitionLightsNode->runAction(MoveBy::create(4.0f, Vec2(0.0f, -2000.0f)));
         
+        const static int testDuration = 10;
+//        const static int testDuration = FileUtils::getInstance()->getValueVectorFromFile("/mnt/sdcard/BubuJump/Duration.plist").at(0).asInt();
+        
         this->_lightLayerColor->setOpacity(255);
         FadeOut* fadeOut1 = FadeOut::create(1.0f);
-        DelayTime* delayTime = DelayTime::create(3.0f);
+        DelayTime* delayTime = DelayTime::create(testDuration - 2);
         FadeIn* fadeIn = FadeIn::create(0.0f);
         CallFunc* transitionFinishedCallFunc = CallFunc::create(CC_CALLBACK_0(GamePlayLayer::transitionFinished, this));
         FadeOut* fadeOut2 = FadeOut::create(1.0f);
@@ -220,6 +353,65 @@ void GamePlayLayer::gameUpdate(float delta)
         effect->setCharacterNode(this->_characterNode);
         this->_characterNode->setEffect(effect);
         this->_characterNode->setCurrentSpeed(this->_characterNode->getMaxVerticalSpeed());
+        
+        fadeIn = FadeIn::create(1.0f);
+        delayTime = DelayTime::create(1.0f);
+        fadeOut1 = FadeOut::create(1.0f);
+        sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
+        this->_clearanceSprite->runAction(sequence);
+        
+        if (currentTransitionPhase < 2)
+        {
+            this->_backgroundSprite->setTexture("Background2.png");
+            
+            auto layer1 = this->_mainGameLayer->getChildByTag(501);
+            layer1->removeFromParent();
+            auto layer2 = this->_mainGameLayer->getChildByTag(502);
+            layer2->removeFromParent();
+            auto layer3 = this->_mainGameLayer->getChildByTag(503);
+            layer3->removeFromParent();
+
+            auto node1 = CSLoader::createNode("Phase2.1.csb");
+            node1->setTag(501);
+            node1->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node2 = CSLoader::createNode("Phase2.2.csb");
+            node2->setTag(502);
+            node2->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node3 = CSLoader::createNode("Phase2.3.csb");
+            node3->setTag(503);
+            node3->setPosition(Vec2(-1000.0f, -1000.0f));
+            
+            this->_mainGameLayer->addChild(node1, 10);
+            this->_mainGameLayer->addChild(node2, 10);
+            this->_mainGameLayer->addChild(node3, 10);
+
+        }
+        else if (currentTransitionPhase < 3)
+        {
+            this->_backgroundSprite->setTexture("Background3.png");
+            
+            auto layer1 = this->_mainGameLayer->getChildByTag(501);
+            layer1->removeFromParent();
+            auto layer2 = this->_mainGameLayer->getChildByTag(502);
+            layer2->removeFromParent();
+            auto layer3 = this->_mainGameLayer->getChildByTag(503);
+            layer3->removeFromParent();
+            
+            auto node1 = CSLoader::createNode("Phase3.1.csb");
+            node1->setTag(501);
+            node1->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node2 = CSLoader::createNode("Phase3.2.csb");
+            node2->setTag(502);
+            node2->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node3 = CSLoader::createNode("Phase3.3.csb");
+            node3->setTag(503);
+            node3->setPosition(Vec2(-1000.0f, -1000.0f));
+            
+            this->_mainGameLayer->addChild(node1, 10);
+            this->_mainGameLayer->addChild(node2, 10);
+            this->_mainGameLayer->addChild(node3, 10);
+            
+        }
     }
     
     if (this->_characterNode->getPosition().y - 100.0f > this->getMaxDistance())
@@ -500,167 +692,210 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
 
 void GamePlayLayer::buildTopperScene()
 {
-    const float buildLineInterval = 180.0f;
+    const float buildLineInterval = 120.0f;
     float targetLine = this->_characterNode->getPosition().y + designResolutionSize.height * 1.5f;
     while (targetLine > this->_lastBuildLine + buildLineInterval)
     {
         this->_lastBuildLine += buildLineInterval;
-        
-        ObstructionNode* gameNode = nullptr;
-        static int testI = 0;
-        const int m = 23;
-        if (testI % m == 0)
-        {
-            gameNode = this->getObstructionNode(SmallCoinNodeType);
-        }
-        else if (testI % m == 1)
-        {
-            gameNode = this->getObstructionNode(IndividualIncomeTaxCoinNodeType);
-        }
-        else if (testI % m == 2)
-        {
-            gameNode = this->getObstructionNode(UrbanMaintenanceAndConstructionTaxCoinNodeType);
-        }
-        else if (testI % m == 3)
-        {
-            gameNode = this->getObstructionNode(FootboardNodeType);
-        }
-        else if (testI % m == 4)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 12)) == 4 ? FlyBootNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 5)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 18)) == 5 ? RocketNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 6)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 15)) == 6 ? MagnetNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 7)
-        {
-            gameNode = this->getObstructionNode(HeartNodeType);
-        }
-        else if (testI % m == 8)
-        {
-            gameNode = this->getObstructionNode(BusinessTaxCoinNodeType);
-        }
-        else if (testI % m == 9)
-        {
-            gameNode = this->getObstructionNode(BusinessIncomeTaxCoinNodeType);
-        }
-        else if (testI % m == 10)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 13)) == 10 ? AngelWingNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 11)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 14)) == 11 ? EvilCloudNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 12)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 5)) == 12 ? ThornFootboardNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 13)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 20)) == 13 ? VortexNodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 14)
-        {
-            gameNode = this->getObstructionNode((testI % (m * 11)) == 14 ? UFONodeType : SmallCoinNodeType);
-        }
-        else if (testI % m == 15)
-        {
-            gameNode = this->getObstructionNode(BuildingTaxCoinNodeType);
-        }
-        else if (testI % m == 16)
-        {
-            gameNode = this->getObstructionNode(VehicleAndVesselTaxCoinNodeType);
-        }
-        else if (testI % m == 17)
-        {
-            gameNode = this->getObstructionNode(DeedTaxCoinNodeType);
-        }
-        else if (testI % m == 18)
-        {
-            gameNode = this->getObstructionNode(StampTaxCoinNodeType);
-        }
-        else if (testI % m == 19)
-        {
-            gameNode = this->getObstructionNode(SoftCloudNodeType);
-        }
-        else if (testI % m == 20)
-        {
-            gameNode = this->getObstructionNode(LandValueIncrementTaxCoinNodeType);
-        }
-        else if (testI % m == 21)
-        {
-            gameNode = this->getObstructionNode(UrbanLandUseTaxCoinNodeType);
-        }
-        else if (testI % m == 22)
-        {
-            gameNode = this->getObstructionNode(InvisibleCoinNodeType);
-        }
-        ++testI;
-        
-//        auto gameNode = this->getObstructionNode(IndividualIncomeTaxCoin);
-        
-//        struct  timeval tv;
-//        gettimeofday(&tv,NULL);
-//        float t = tv.tv_usec / 1000000.0f;
-        
-        timeval psv;
-        gettimeofday( &psv, NULL );
-        unsigned int tsrans = psv.tv_sec * 1000 + psv.tv_usec / 1000;
-        static int seedTest = 0;
-        seedTest += 1330;
-        seedTest %= 123;
-        seedTest += 1560;
-        seedTest %= 200;
-        srand( tsrans + seedTest );
-        float t = rand() % 100 / 100.0f;
 
-        if (UFONodeType == gameNode->getNodeType())
+        if (0 == this->_currentPatternGamePlayDataVector.size())
         {
-            UFONode* ufoNode = static_cast<UFONode*>(gameNode);
-            ufoNode->moveWithRange(Vec2(0.0f, this->_lastBuildLine), Vec2(designResolutionSize.width, this->_lastBuildLine));
+            int levelPatternIndex = 0;
+            if (false == this->_isTransiting)
+            {
+                levelPatternIndex = this->_transitionPhase + 1;
+                if (levelPatternIndex >= this->_gamePlayDataLevelMap.size())
+                {
+                    levelPatternIndex = (int)this->_gamePlayDataLevelMap.size() - 1;
+                }
+            }
+            GamePlayDataVectors& gamePlayDataVectors = (*this->_gamePlayDataLevelMap.find(levelPatternIndex)).second;
+            
+            static int seed = 0;
+            if (0 == seed)
+            {
+                timeval psv;
+                gettimeofday( &psv, NULL );
+                unsigned int tsrans = psv.tv_sec * 1000 + psv.tv_usec / 1000;
+                seed = tsrans;
+            }
+            srand(seed);
+            double start = 0;
+            double end = gamePlayDataVectors.size();
+            int random = rand();
+            int r = start + (end - start) * random / (RAND_MAX + 1.0);
+            seed = random;
+            
+            this->_currentPatternGamePlayDataVector = gamePlayDataVectors.at(r);
+            
+            this->_patternLowestLine = 99999999.0f;
+            for (GamePlayData& gamePlayData : this->_currentPatternGamePlayDataVector)
+            {
+                if (gamePlayData.position.y < this->_patternLowestLine)
+                {
+                    this->_patternLowestLine = gamePlayData.position.y;
+                }
+            }
+            
+            this->_patternStartLine = this->_lastBuildLine;
         }
         else
         {
-            if (InvisibleCoinNodeType == gameNode->getNodeType())
+            float patternBuildLine = this->_patternLowestLine + (this->_lastBuildLine - this->_patternStartLine);
+            for (GamePlayDataVectorIter iter = this->_currentPatternGamePlayDataVector.begin(); iter != this->_currentPatternGamePlayDataVector.end();)
             {
-                InvisibleCoinNode* invisibleCoinNode = static_cast<InvisibleCoinNode*>(gameNode);
-                invisibleCoinNode->setCharacterNode(this->_characterNode);
+                GamePlayData& gamePlayData = *iter;
+                if (gamePlayData.position.y <= patternBuildLine)
+                {
+                    ObstructionNode* gameNode = nullptr;
+
+                    if (CommonUtility::isStringStartWith(gamePlayData.typeName, "SmallCoin"))
+                    {
+                        gameNode = this->getObstructionNode(SmallCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "InvisibleCoin"))
+                    {
+                        gameNode = this->getObstructionNode(InvisibleCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "IndividualIncomeTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(IndividualIncomeTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "UrbanMaintenanceAndConstructionTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(UrbanMaintenanceAndConstructionTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "BusinessTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(BusinessTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "BusinessIncomeTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(BusinessIncomeTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "BuildingTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(BuildingTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "VehicleAndVesselTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(VehicleAndVesselTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "DeedTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(DeedTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "StampTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(StampTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "LandValueIncrementTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(LandValueIncrementTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "UrbanLandUseTaxCoin"))
+                    {
+                        gameNode = this->getObstructionNode(UrbanLandUseTaxCoinNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Footboard"))
+                    {
+                        gameNode = this->getObstructionNode(FootboardNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "ThornFootboard"))
+                    {
+                        gameNode = this->getObstructionNode(ThornFootboardNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "SoftCloud"))
+                    {
+                        gameNode = this->getObstructionNode(SoftCloudNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Heart"))
+                    {
+                        gameNode = this->getObstructionNode(HeartNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FlyBoot"))
+                    {
+                        gameNode = this->getObstructionNode(FlyBootNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Rocket"))
+                    {
+                        gameNode = this->getObstructionNode(RocketNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Magnet"))
+                    {
+                        gameNode = this->getObstructionNode(MagnetNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "AngelWing"))
+                    {
+                        gameNode = this->getObstructionNode(AngelWingNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "EvilCloud"))
+                    {
+                        gameNode = this->getObstructionNode(EvilCloudNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Vortex"))
+                    {
+                        gameNode = this->getObstructionNode(VortexNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "UFO"))
+                    {
+                        gameNode = this->getObstructionNode(UFONodeType);
+                    }
+                    
+                    Vec2 newPosition = Vec2(gamePlayData.position.x, gamePlayData.position.y - this->_patternLowestLine + this->_patternStartLine);
+                    
+                    if (UFONodeType == gameNode->getNodeType())
+                    {
+                        UFONode* ufoNode = static_cast<UFONode*>(gameNode);
+                        ufoNode->moveWithRange(Vec2(0.0f, newPosition.y), Vec2(designResolutionSize.width, newPosition.y));
+                    }
+                    else
+                    {
+                        if (InvisibleCoinNodeType == gameNode->getNodeType())
+                        {
+                            InvisibleCoinNode* invisibleCoinNode = static_cast<InvisibleCoinNode*>(gameNode);
+                            invisibleCoinNode->setCharacterNode(this->_characterNode);
+                        }
+                        gameNode->setPosition(newPosition);
+                    }
+                    
+                    iter = this->_currentPatternGamePlayDataVector.erase(iter);
+                }
+                else
+                {
+                    ++iter;
+                }
             }
-            gameNode->setPosition(Vec2(t * designResolutionSize.width, this->_lastBuildLine));
         }
     }
+    
+    const static int shiftHeight = 2560;
     
     auto layer1 = this->_mainGameLayer->getChildByTag(501);
     auto layer2 = this->_mainGameLayer->getChildByTag(502);
     auto layer3 = this->_mainGameLayer->getChildByTag(503);
-    int factor = (((int)this->_characterNode->getPosition().y) - 640) / 1280;
+    int factor = (((int)this->_characterNode->getPosition().y) - 640) / shiftHeight;
     
     int phase =  factor % 3;
     switch (phase)
     {
         case 0:
             // 2 1 3
-            layer2->setPosition(Vec2(0.0f, 1280.0f * (factor + 1)));
-            layer1->setPosition(Vec2(0.0f, 1280.0f * factor));
-            layer3->setPosition(Vec2(0.0f, 1280.0f * (factor - 1)));
+            layer2->setPosition(Vec2(0.0f, shiftHeight * (factor + 1)));
+            layer1->setPosition(Vec2(0.0f, shiftHeight * factor));
+            layer3->setPosition(Vec2(0.0f, shiftHeight * (factor - 1)));
             break;
         case 1:
             // 3 2 1
-            layer3->setPosition(Vec2(0.0f, 1280.0f * (factor + 1)));
-            layer2->setPosition(Vec2(0.0f, 1280.0f * factor));
-            layer1->setPosition(Vec2(0.0f, 1280.0f * (factor - 1)));
+            layer3->setPosition(Vec2(0.0f, shiftHeight * (factor + 1)));
+            layer2->setPosition(Vec2(0.0f, shiftHeight * factor));
+            layer1->setPosition(Vec2(0.0f, shiftHeight * (factor - 1)));
             break;
         case 2:
             // 1 3 2
-            layer1->setPosition(Vec2(0.0f, 1280.0f * (factor + 1)));
-            layer3->setPosition(Vec2(0.0f, 1280.0f * factor));
-            layer2->setPosition(Vec2(0.0f, 1280.0f * (factor - 1)));
+            layer1->setPosition(Vec2(0.0f, shiftHeight * (factor + 1)));
+            layer3->setPosition(Vec2(0.0f, shiftHeight * factor));
+            layer2->setPosition(Vec2(0.0f, shiftHeight * (factor - 1)));
             break;
         default:
             break;
@@ -671,7 +906,29 @@ void GamePlayLayer::buildTopperScene()
 
 void GamePlayLayer::transitionFinished()
 {
+    this->_isTransiting = false;
+
+    for(auto& obstruction : this->_obstructionVector)
+    {
+        obstruction->setState(InactivatedNodeState);
+        obstruction->setVisible(false);
+    }
+    this->_lastBuildLine = this->_characterNode->getPosition().y;
+    this->_currentPatternGamePlayDataVector.clear();
+
     this->_transitionNode->setVisible(false);
     this->_transitionLightsNode->stopAllActions();
     this->_transitionLightsNode->removeAllChildren();
+}
+
+void GamePlayLayer::readGamePlayDataToVector(std::string csbName, GamePlayDataVector &gamePlayDataVector)
+{
+    auto uiNode = CSLoader::createNode(csbName);
+    for (Node* node : uiNode->getChildren())
+    {
+        GamePlayData gamePlayData;
+        gamePlayData.typeName = node->getName();
+        gamePlayData.position = node->getPosition();
+        gamePlayDataVector.push_back(gamePlayData);
+    }
 }

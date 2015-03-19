@@ -75,6 +75,7 @@ void GamePlayScene::update(float delta)
         
         auto gameResuscitationUILayer = GameResuscitationUILayer::create();
         gameResuscitationUILayer->setGamePlayLayer(this->_gamePlayLayer);
+        gameResuscitationUILayer->updateFee();
         auto scene = Scene::create();
         scene->addChild(renderTexture);
         scene->addChild(gameResuscitationUILayer);

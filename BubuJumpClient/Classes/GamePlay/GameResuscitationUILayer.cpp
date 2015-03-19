@@ -17,6 +17,11 @@ using namespace cocostudio::timeline;
 
 GameResuscitationUILayer::~GameResuscitationUILayer()
 {
+    if (nullptr != this->_coinLabel)
+    {
+        this->_coinLabel->release();
+        this->_coinLabel = nullptr;
+    }
     if (nullptr != this->_countDownSprite)
     {
         this->_countDownSprite->release();
@@ -44,6 +49,8 @@ bool GameResuscitationUILayer::init()
     auto qaButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "qaButton"));
     qaButton->addClickEventListener(CC_CALLBACK_1(GameResuscitationUILayer::qaButtonClicked, this));
 
+    this->_coinLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "coinLabel"));
+    this->_coinLabel->retain();
     this->_countDownSprite = static_cast<Sprite*>(UIHelper::seekNodeByName(uiNode, "countDownSprite"));
     this->_countDownSprite->retain();
     
@@ -63,7 +70,7 @@ void GameResuscitationUILayer::update(float delta)
         return;
     }
 
-    if (this->getGamePlayLayer()->getCoinAmount() < 6000)
+    if (this->getGamePlayLayer()->getCoinAmount() < this->getCurrentFee())
     {
         auto coinButton = static_cast<Button*>(UIHelper::seekNodeByName(this, "coinButton"));
         coinButton->setBright(false);
@@ -71,6 +78,11 @@ void GameResuscitationUILayer::update(float delta)
     }
     
     this->_countDownSprite->setTexture(std::string("ready") + CommonUtility::convertToString(((int)(this->_countDown + 1))) + ".png");
+}
+
+void GameResuscitationUILayer::updateFee()
+{
+    this->_coinLabel->setString(CommonUtility::convertToString(this->getCurrentFee()));
 }
 
 void GameResuscitationUILayer::closeButtonClicked(cocos2d::Ref *sender)
@@ -87,7 +99,7 @@ void GameResuscitationUILayer::closeButtonClicked(cocos2d::Ref *sender)
 
 void GameResuscitationUILayer::coinButtonClicked(cocos2d::Ref *sender)
 {
-    this->getGamePlayLayer()->revive(6000);
+    this->getGamePlayLayer()->revive(this->getCurrentFee());
     
     Director::getInstance()->popScene();
 }
@@ -100,4 +112,21 @@ void GameResuscitationUILayer::qaButtonClicked(cocos2d::Ref *sender)
     scene->addChild(layer);
     
     Director::getInstance()->replaceScene(scene);
+}
+
+int GameResuscitationUILayer::getCurrentFee()
+{
+    int phase = this->getGamePlayLayer()->getTransitionPhase();
+    if (0 == phase)
+    {
+        return 8000;
+    }
+    else if (1 == phase)
+    {
+        return 16000;
+    }
+    else
+    {
+        return 25000;
+    }
 }

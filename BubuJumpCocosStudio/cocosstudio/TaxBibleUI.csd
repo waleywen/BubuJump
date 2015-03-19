@@ -22,12 +22,12 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="TaxBibleUIBackground.png" />
           </NodeObjectData>
-          <NodeObjectData Name="backButton" ActionTag="-135040499" FrameEvent="" Tag="29" ObjectIndex="19" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="151" Scale9Height="87" ctype="ButtonObjectData">
+          <NodeObjectData Name="backButton" ActionTag="-135040499" FrameEvent="" Tag="29" ObjectIndex="19" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="135" Scale9Height="75" ctype="ButtonObjectData">
             <Position X="90.0000" Y="1215.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="151.0000" Y="87.0000" />
+            <Size X="135.0000" Y="75.0000" />
             <PrePosition X="0.1250" Y="0.9492" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />

@@ -46,9 +46,24 @@ bool TaxBibleContentUILayer::init()
     
     auto backButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "backButton"));
     backButton->addClickEventListener(CC_CALLBACK_1(TaxBibleContentUILayer::backButtonClicked, this));
-    
-    this->_contentLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "contentLabel"));
+
+//    this->_contentLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "contentLabel"));
+//    this->_contentLabel->retain();
+//    this->_contentLabel->ignoreContentAdaptWithSize(true);
+//    this->_contentLabel->setTextAreaSize(Size(620.0f, 0.0f));
+
+    auto textLabel = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "contentLabel"));
+    textLabel->setVisible(false);
+    this->_contentLabel = Label::create();
+    this->_contentLabel->setDimensions(620.0f, 0.0f);
     this->_contentLabel->retain();
+    this->_contentLabel->setPosition(textLabel->getPosition());
+    this->_contentLabel->setSystemFontSize(textLabel->getFontSize());
+    this->_contentLabel->setTextColor(textLabel->getTextColor());
+    this->_contentLabel->setHorizontalAlignment(textLabel->getTextHorizontalAlignment());
+    this->_contentLabel->setVerticalAlignment(textLabel->getTextVerticalAlignment());
+    this->_contentLabel->setAnchorPoint(textLabel->getAnchorPoint());
+    this->_scrollView->addChild(this->_contentLabel);
     
     return true;
 }
@@ -117,55 +132,52 @@ void TaxBibleUILayer::taxButtonClicked(cocos2d::Ref *sender)
     
     std::string contentString = "";
     
-//    for (int i = 0; i < 30; ++i)
-//    {
-//        contentString += "Test\n";
-//    }
+    ValueVector taxBibleVector = FileUtils::getInstance()->getValueVectorFromFile("TaxBible.plist");
     
     std::string taxButtonName = static_cast<Button*>(sender)->getName();
     if ("taxBibleUIButton1" == taxButtonName)
     {
-        contentString = "一、个人所得税：\n\n1、目前我国个人取得所得应缴纳个\n人所得税的项目有11种\n\n2、取得的工资需要缴纳个人所得税\n\n3、单位发放的购物礼品卡要缴纳个\n人所得税\n\n4、年所得超过12万元万元的纳税人\n需要自行申报纳税";
+        contentString = taxBibleVector.at(0).asString();
     }
     else if ("taxBibleUIButton2" == taxButtonName)
     {
-        contentString = "二、企业所得税\n\n6、企业所得税是依法对企业取得的\n所得进行征收税款的一个税种\n\n8、法人企业是企业所得税的纳税人\n\n9、企业所得税的税率为25%。\n\n10、企业所得税的征税对象是对所\n得征收";
+        contentString = taxBibleVector.at(1).asString();
     }
     else if ("taxBibleUIButton3" == taxButtonName)
     {
-        contentString = "三、营业税\n\n11、在深圳，深圳市地方税务局是\n营业税的征收机关\n\n13、1%不属于营业税税率\n\n14、深圳饮食、娱乐业有奖发票的最\n高奖金是20万元\n\n16、根据相关规定，月营业额不超过\n3万元的营业税纳税人免征营业税。";
+        contentString = taxBibleVector.at(2).asString();
     }
     else if ("taxBibleUIButton4" == taxButtonName)
     {
-        contentString = "四、城市维护建设税\n\n18、城建税的全称是城市维护建设\n税。\n\n21、营改增的全称是营业税改征增值\n税。\n\n22、营业税是对在中国境内提供应税\n劳务、转让无形资产或销售不动产的\n单位和个人，就其所取得的营业额征\n收的一种税。\n\n23、城建税是以增值税、消费税、营\n业税“三税”实际缴纳的税额为计算依\n据，随“三税”同时附征。";
+        contentString = taxBibleVector.at(3).asString();
     }
     else if ("taxBibleUIButton5" == taxButtonName)
     {
-        contentString = "五、印花税\n\n24、个人购买住房不需要缴纳印花税\n\n25、个人购买商铺缴纳印花税的税率\n是万分之五\n\n26、身份证属于印花税的征税范围\n\n27、购销合同印花税的税率是万分之\n三\n\n28、按税法规定可以免缴印花税的凭\n证是无息贷款合同\n\n29、财产所有人将财产捐给私营企业\n所书立的书据，应该缴纳印花税\n\n30、个人将财产赠与学校所书立的合\n同，免征印花税\n\n31、个人将财产赠与朋友所书立的合\n同，应征印花税\n\n32、书立各类经济合同时，以合同当\n事人为印花税的纳税人\n\n35、商品买卖合同按照购销合同征收\n印花税\n\n36、借款合同的印花税税率为万分之\n零点五\n\n37、印花税主要是针对部分经济合同\n征收的一种税\n\n38、印花税票是以人民币为单位的\n\n39、财产租赁合同需要征收印花税";
+        contentString = taxBibleVector.at(4).asString();
     }
     else if ("taxBibleUIButton6" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(5).asString();
     }
     else if ("taxBibleUIButton7" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(6).asString();
     }
     else if ("taxBibleUIButton8" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(7).asString();
     }
     else if ("taxBibleUIButton9" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(8).asString();
     }
     else if ("taxBibleUIButton10" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(9).asString();
     }
     else if ("taxBibleUIButton11" == taxButtonName)
     {
-        contentString = "";
+        contentString = taxBibleVector.at(10).asString();
     }
     
     layer->setContentString(contentString);

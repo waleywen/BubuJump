@@ -6,12 +6,12 @@
         <Project Name="CharacterNode.csd" />
         <Image Name="SmallCoin.png" />
         <Project Name="SmallCoinNode.csd" />
-        <Project Name="Layer2.csd" />
-        <Image Name="branch.png" />
-        <Image Name="stone1.png" />
-        <Image Name="stone2.png" />
-        <Project Name="Layer1.csd" />
-        <Project Name="Layer3.csd" />
+        <Project Name="Phase1.2.csd" />
+        <Image Name="Phase1Branch.png" />
+        <Image Name="Phase1Stone1.png" />
+        <Image Name="Phase1Stone2.png" />
+        <Project Name="Phase1.1.csd" />
+        <Project Name="Phase1.3.csd" />
         <Project Name="GamePlayUI.csd" />
         <Image Name="Pause.png" />
         <Image Name="ScoreBackground.png" />
@@ -181,6 +181,25 @@
         <Image Name="SettingUITurnOnButton.png" />
         <Project Name="InvisibleCoinNode.csd" />
         <Image Name="InvisibleCoin.png" />
+        <Project Name="Phase2.1.csd" />
+        <Image Name="Phase2Balloon1.png" />
+        <Image Name="Phase2Balloon2.png" />
+        <Image Name="Phase2Balloon3.png" />
+        <Image Name="Phase2Balloon4.png" />
+        <Image Name="Phase2Cloud1.png" />
+        <Image Name="Phase2Cloud2.png" />
+        <Image Name="Phase2Cloud3.png" />
+        <Image Name="Phase2Light.png" />
+        <Project Name="Phase2.2.csd" />
+        <Project Name="Phase2.3.csd" />
+        <Image Name="InvisibleTips.png" />
+        <Project Name="Phase3.1.csd" />
+        <Project Name="Phase3.2.csd" />
+        <Project Name="Phase3.3.csd" />
+        <Image Name="Phase3Comet.png" />
+        <Image Name="HelpUIInvisibleCoinGuide.png" />
+        <Image Name="Phase3Planet1.png" />
+        <Image Name="Phase3Planet2.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

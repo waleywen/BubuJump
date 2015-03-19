@@ -42,12 +42,12 @@
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
           <NodeObjectData Name="questionLabel" ActionTag="-2139206027" FrameEvent="" Tag="7" ObjectIndex="2" FontSize="36" LabelText="Question" ctype="TextObjectData">
-            <Position X="28.5448" Y="917.6656" />
+            <Position X="50.0000" Y="917.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="1.0000" />
             <CColor A="255" R="0" G="0" B="0" />
             <Size X="144.0000" Y="42.0000" />
-            <PrePosition X="0.0396" Y="0.7169" />
+            <PrePosition X="0.0694" Y="0.7164" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
           <NodeObjectData Name="cellNode1" ActionTag="545228995" FrameEvent="" Tag="9" ObjectIndex="1" IconVisible="True" ctype="SingleNodeObjectData">

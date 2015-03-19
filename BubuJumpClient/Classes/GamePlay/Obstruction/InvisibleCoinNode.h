@@ -8,7 +8,7 @@
 class InvisibleCoinNode : public ObstructionNode
 {
 public:
-    InvisibleCoinNode() : ObstructionNode(InvisibleCoinNodeType), _characterNode(nullptr) {};
+    InvisibleCoinNode() : ObstructionNode(InvisibleCoinNodeType), _characterNode(nullptr), _tipsSpriteNode(nullptr) {};
     virtual ~InvisibleCoinNode();
     
     virtual bool init() override;
@@ -19,6 +19,8 @@ public:
     CREATE_FUNC(InvisibleCoinNode);
 
     CC_SYNTHESIZE(CharacterNode*, _characterNode, CharacterNode);
+private:
+    cocos2d::Node* _tipsSpriteNode;
 };
 
 #endif // _InvisibleCoinNode_H_

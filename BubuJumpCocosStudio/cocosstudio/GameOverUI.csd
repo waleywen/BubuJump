@@ -94,92 +94,86 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardScoreLabel1" ActionTag="785451222" VisibleForFrame="False" FrameEvent="" Tag="45" ObjectIndex="4" FontSize="48" LabelText="60000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardScoreLabel1" ActionTag="785451222" VisibleForFrame="False" FrameEvent="" Tag="45" ObjectIndex="4" FontSize="36" LabelText="60000" ctype="TextObjectData">
             <Position X="650.0000" Y="448.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.9028" Y="0.3500" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardScoreLabel2" ActionTag="-32335104" VisibleForFrame="False" FrameEvent="" Tag="46" ObjectIndex="5" FontSize="48" LabelText="50000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardScoreLabel2" ActionTag="-32335104" VisibleForFrame="False" FrameEvent="" Tag="46" ObjectIndex="5" FontSize="36" LabelText="50000" ctype="TextObjectData">
             <Position X="650.0000" Y="372.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.9028" Y="0.2906" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardScoreLabel3" ActionTag="-1402885383" VisibleForFrame="False" FrameEvent="" Tag="47" ObjectIndex="6" FontSize="48" LabelText="40000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardScoreLabel3" ActionTag="-1402885383" VisibleForFrame="False" FrameEvent="" Tag="47" ObjectIndex="6" FontSize="36" LabelText="40000" ctype="TextObjectData">
             <Position X="650.0000" Y="298.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.9028" Y="0.2328" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardNameLabel1" ActionTag="1615641538" VisibleForFrame="False" FrameEvent="" Tag="21" ObjectIndex="10" FontSize="48" LabelText="60000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardNameLabel1" ActionTag="1615641538" VisibleForFrame="False" FrameEvent="" Tag="21" ObjectIndex="10" FontSize="36" LabelText="60000" ctype="TextObjectData">
             <Position X="255.0000" Y="448.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="133.0000" Y="54.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.3542" Y="0.3500" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardNameLabel2" ActionTag="148030263" VisibleForFrame="False" FrameEvent="" Tag="22" ObjectIndex="11" FontSize="48" LabelText="50000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardNameLabel2" ActionTag="148030263" VisibleForFrame="False" FrameEvent="" Tag="22" ObjectIndex="11" FontSize="36" LabelText="50000" ctype="TextObjectData">
             <Position X="255.0000" Y="372.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="133.0000" Y="54.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.3542" Y="0.2906" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardNameLabel3" ActionTag="-1264751643" VisibleForFrame="False" FrameEvent="" Tag="23" ObjectIndex="12" FontSize="48" LabelText="40000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardNameLabel3" ActionTag="-1264751643" VisibleForFrame="False" FrameEvent="" Tag="23" ObjectIndex="12" FontSize="36" LabelText="40000" ctype="TextObjectData">
             <Position X="255.0000" Y="298.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="133.0000" Y="54.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.3542" Y="0.2328" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardPlaceLabel1" ActionTag="-883700901" VisibleForFrame="False" FrameEvent="" Tag="27" ObjectIndex="16" FontSize="48" LabelText="60000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardPlaceLabel1" ActionTag="-883700901" VisibleForFrame="False" FrameEvent="" Tag="27" ObjectIndex="16" FontSize="36" LabelText="60000" ctype="TextObjectData">
             <Position X="48.3317" Y="448.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.0671" Y="0.3500" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardPlaceLabel2" ActionTag="1910030796" VisibleForFrame="False" FrameEvent="" Tag="28" ObjectIndex="17" FontSize="48" LabelText="50000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardPlaceLabel2" ActionTag="1910030796" VisibleForFrame="False" FrameEvent="" Tag="28" ObjectIndex="17" FontSize="36" LabelText="50000" ctype="TextObjectData">
             <Position X="48.3317" Y="372.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.0671" Y="0.2906" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
-          <NodeObjectData Name="leaderboardPlaceLabel3" ActionTag="1696171050" VisibleForFrame="False" FrameEvent="" Tag="29" ObjectIndex="18" FontSize="48" LabelText="40000" ctype="TextObjectData">
+          <NodeObjectData Name="leaderboardPlaceLabel3" ActionTag="1696171050" VisibleForFrame="False" FrameEvent="" Tag="29" ObjectIndex="18" FontSize="36" LabelText="40000" ctype="TextObjectData">
             <Position X="48.3317" Y="298.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="160.0000" Y="68.0000" />
+            <Size X="100.0000" Y="42.0000" />
             <PrePosition X="0.0671" Y="0.2328" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FontResource Type="Normal" Path="Arial Black.ttf" />
           </NodeObjectData>
         </Children>
       </ObjectData>

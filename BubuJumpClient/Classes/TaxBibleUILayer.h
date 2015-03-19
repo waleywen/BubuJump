@@ -21,7 +21,8 @@ private:
     void backButtonClicked(Ref* sender);
     
     cocos2d::ui::ScrollView* _scrollView;
-    cocos2d::ui::Text* _contentLabel;
+//    cocos2d::ui::Text* _contentLabel;
+    cocos2d::Label* _contentLabel;
 };
 
 class TaxBibleUILayer : public cocos2d::Layer

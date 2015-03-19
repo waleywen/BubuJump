@@ -40,7 +40,7 @@ public class AppActivity extends Cocos2dxActivity {
 
 	public static native void quitGame();
 
-	private static final String APP_ID = "wxa6c701f4df826362";
+	private static final String APP_ID = "wxb9f9949293ac8391";
 
 	private static AppActivity _sCurrentInstance = null;
 

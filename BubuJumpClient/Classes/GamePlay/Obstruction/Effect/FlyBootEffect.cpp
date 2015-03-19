@@ -15,7 +15,7 @@ bool FlyBootEffect::init()
         return false;
     }
     
-    this->_time = 10.0f;
+    this->_time = 4.0f;
     
     return true;
 }

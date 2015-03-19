@@ -40,7 +40,8 @@ private:
     
     cocos2d::Sprite* _taxCoinSprite;
     cocos2d::ui::Text* _titleLabel;
-    cocos2d::ui::Text* _questionLabel;
+//    cocos2d::ui::Text* _questionLabel;
+    cocos2d::Label* _questionLabel;
     cocos2d::ui::Text* _answerLabel1;
     cocos2d::ui::Text* _answerLabel2;
     cocos2d::ui::Text* _answerLabel3;

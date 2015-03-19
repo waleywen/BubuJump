@@ -80,6 +80,16 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="HelpUIControlGuide.png" />
               </NodeObjectData>
+              <NodeObjectData Name="HelpUIInvisibleCoinGuide" ActionTag="-2017021354" FrameEvent="" Tag="637" ObjectIndex="15" ctype="SpriteObjectData">
+                <Position X="349.9775" Y="218.9995" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="525.0000" Y="141.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="HelpUIInvisibleCoinGuide.png" />
+              </NodeObjectData>
             </Children>
           </NodeObjectData>
           <NodeObjectData Name="pageNode2" ActionTag="-1693359250" FrameEvent="" Tag="49" ObjectIndex="2" IconVisible="True" ctype="SingleNodeObjectData">
@@ -182,22 +192,22 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <Children>
                   <NodeObjectData Name="HelpUILotteryBackground" ActionTag="1648252422" FrameEvent="" Tag="59" ObjectIndex="14" ctype="SpriteObjectData">
-                    <Position X="360.0000" Y="350.0000" />
+                    <Position X="350.0000" Y="341.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <Size X="525.0000" Y="615.0000" />
+                    <Size X="518.0000" Y="582.0000" />
                     <PrePosition X="0.0000" Y="0.0000" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <FileData Type="Normal" Path="HelpUILotteryBackground.png" />
                   </NodeObjectData>
                   <NodeObjectData Name="confirmButton" ActionTag="-1201182660" FrameEvent="" Tag="60" ObjectIndex="7" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="336" Scale9Height="89" ctype="ButtonObjectData">
-                    <Position X="363.0000" Y="117.0000" />
+                    <Position X="360.0000" Y="121.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <Size X="336.0000" Y="89.0000" />
-                    <PrePosition X="0.5042" Y="0.0914" />
+                    <PrePosition X="0.0000" Y="0.0000" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <TextColor A="255" R="65" G="65" B="70" />
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />

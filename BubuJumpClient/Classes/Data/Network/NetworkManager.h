@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "network/HttpClient.h"
 
+#include "CommonUtility.h"
+
 class LeaderboardRecord : public cocos2d::Ref
 {
 public:
@@ -15,9 +17,46 @@ public:
     CREATE_FUNC(LeaderboardRecord);
 
     CC_SYNTHESIZE(int, _id, ID);
-    CC_SYNTHESIZE(std::string, _name, Name);
+//    CC_SYNTHESIZE(std::string, _name, Name);
     CC_SYNTHESIZE(int, _score, Score);
     CC_SYNTHESIZE(int, _place, Place);
+    void setName(std::string name) { this->_name = name; };
+    std::string getName()
+    {
+        if ("Username" == _name)
+        {
+            if (this->getID() < 10)
+            {
+                return std::string("Player00000") + CommonUtility::convertToString(this->getID());
+            }
+            else if (this->getID() < 100)
+            {
+                return std::string("Player0000") + CommonUtility::convertToString(this->getID());
+            }
+            else if (this->getID() < 1000)
+            {
+                return std::string("Player000") + CommonUtility::convertToString(this->getID());
+            }
+            else if (this->getID() < 10000)
+            {
+                return std::string("Player00") + CommonUtility::convertToString(this->getID());
+            }
+            else if (this->getID() < 100000)
+            {
+                return std::string("Player0") + CommonUtility::convertToString(this->getID());
+            }
+            else
+            {
+                return std::string("Player") + CommonUtility::convertToString(this->getID());
+            }
+        }
+        else
+        {
+            return _name;
+        }
+    };
+private:
+    std::string _name;
 };
 
 typedef typename cocos2d::Vector<LeaderboardRecord*> LeaderboardRecordVector;

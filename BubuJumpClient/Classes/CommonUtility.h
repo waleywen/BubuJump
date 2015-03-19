@@ -24,6 +24,11 @@ public:
         return text;
     }
     
+    static bool isStringStartWith(const std::string& source, const std::string& target)
+    {
+        return source.compare(0, target.size(), target) == 0;
+    }
+    
     static bool checkMobilePhoneNumber(std::string phoneNumber)
     {
         regex_t match_regex;

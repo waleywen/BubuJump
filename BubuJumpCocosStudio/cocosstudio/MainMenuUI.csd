@@ -23,12 +23,12 @@
             <FileData Type="Normal" Path="MainMenuUIBackground.png" />
           </NodeObjectData>
           <NodeObjectData Name="playButton" ActionTag="-2012239773" FrameEvent="" Tag="53" ObjectIndex="4" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="311" Scale9Height="107" ctype="ButtonObjectData">
-            <Position X="360.0039" Y="260.0001" />
+            <Position X="359.9963" Y="196.9986" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="311.0000" Y="107.0000" />
-            <PrePosition X="0.5000" Y="0.2031" />
+            <PrePosition X="0.5000" Y="0.1539" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
@@ -36,12 +36,12 @@
             <NormalFileData Type="Normal" Path="MainMenuUIPlayButton.png" />
           </NodeObjectData>
           <NodeObjectData Name="taxButton" ActionTag="-71870699" FrameEvent="" Tag="54" ObjectIndex="5" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="202" Scale9Height="69" ctype="ButtonObjectData">
-            <Position X="133.0000" Y="107.0005" />
+            <Position X="133.0000" Y="75.9983" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="202.0000" Y="69.0000" />
-            <PrePosition X="0.1847" Y="0.0836" />
+            <PrePosition X="0.1847" Y="0.0594" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
@@ -49,12 +49,12 @@
             <NormalFileData Type="Normal" Path="MainMenuUITaxButton.png" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardButton" ActionTag="1020676746" FrameEvent="" Tag="55" ObjectIndex="6" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="202" Scale9Height="69" ctype="ButtonObjectData">
-            <Position X="357.9999" Y="107.0005" />
+            <Position X="357.9883" Y="75.9983" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="202.0000" Y="69.0000" />
-            <PrePosition X="0.4972" Y="0.0836" />
+            <PrePosition X="0.4972" Y="0.0594" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
@@ -88,24 +88,24 @@
             <NormalFileData Type="Normal" Path="MainMenuUIShareButton.png" />
           </NodeObjectData>
           <NodeObjectData Name="helpButton" ActionTag="-856404736" FrameEvent="" Tag="21" ObjectIndex="9" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="208" Scale9Height="75" ctype="ButtonObjectData">
-            <Position X="581.0001" Y="107.0008" />
+            <Position X="580.9885" Y="75.9986" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="208.0000" Y="75.0000" />
-            <PrePosition X="0.8069" Y="0.0836" />
+            <PrePosition X="0.8069" Y="0.0594" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="MainMenuUIHelpButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="drawButton" ActionTag="-970345907" FrameEvent="" Tag="22" ObjectIndex="10" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="208" Scale9Height="79" ctype="ButtonObjectData">
+          <NodeObjectData Name="drawButton" ActionTag="-970345907" FrameEvent="" Tag="22" ObjectIndex="10" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="200" Scale9Height="71" ctype="ButtonObjectData">
             <Position X="586.0000" Y="1210.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="208.0000" Y="79.0000" />
+            <Size X="200.0000" Y="71.0000" />
             <PrePosition X="0.8139" Y="0.9453" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />

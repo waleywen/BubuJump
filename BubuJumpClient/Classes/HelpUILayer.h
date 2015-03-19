@@ -17,6 +17,9 @@ public:
     CREATE_FUNC(HelpUILayer);
     CREATE_SCENE_FUNC(HelpUILayer);
 private:
+    bool touchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+    void touchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+    
     void backButtonClicked(Ref* sender);
     void leftArrowButtonClicked(Ref* sender);
     void rightArrowButtonClicked(Ref* sender);
@@ -36,6 +39,9 @@ private:
     cocos2d::ui::Widget* _phoneEditBox;
     
     int _currentPageIndex;
+    
+    cocos2d::Point _beginPoint;
+    cocos2d::Point _endPoint;
 };
 
 #endif // _HelpUILayer_H_

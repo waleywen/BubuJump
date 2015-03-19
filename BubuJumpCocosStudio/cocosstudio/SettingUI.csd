@@ -48,13 +48,13 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="SettingUITurnOffButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="backButton" ActionTag="1371840112" FrameEvent="" Tag="107" ObjectIndex="3" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="92" Scale9Height="51" ctype="ButtonObjectData">
-            <Position X="74.9999" Y="1217.0001" />
+          <NodeObjectData Name="backButton" ActionTag="1371840112" FrameEvent="" Tag="107" ObjectIndex="3" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="135" Scale9Height="75" ctype="ButtonObjectData">
+            <Position X="90.0000" Y="1215.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="92.0000" Y="51.0000" />
-            <PrePosition X="0.1042" Y="0.9508" />
+            <Size X="135.0000" Y="75.0000" />
+            <PrePosition X="0.1250" Y="0.9492" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />

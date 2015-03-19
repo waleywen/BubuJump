@@ -35,12 +35,12 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="GameResuscitationUICloseButton.png" />
           </NodeObjectData>
-          <NodeObjectData Name="coinButton" ActionTag="1067826701" FrameEvent="" Tag="39" ObjectIndex="5" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="371" Scale9Height="87" ctype="ButtonObjectData">
-            <Position X="360.0000" Y="687.0030" />
+          <NodeObjectData Name="coinButton" ActionTag="1067826701" FrameEvent="" Tag="39" ObjectIndex="5" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="362" Scale9Height="80" ctype="ButtonObjectData">
+            <Position X="359.9999" Y="687.0030" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="371.0000" Y="87.0000" />
+            <Size X="362.0000" Y="80.0000" />
             <PrePosition X="0.5000" Y="0.5367" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
@@ -70,6 +70,15 @@
             <PrePosition X="0.5000" Y="0.3781" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="ready3.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="coinLabel" ActionTag="-1799886622" FrameEvent="" Tag="14" ObjectIndex="1" FontSize="40" LabelText="Coin" ctype="TextObjectData">
+            <Position X="414.9999" Y="690.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="82.0000" Y="45.0000" />
+            <PrePosition X="0.5764" Y="0.5391" />
+            <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
         </Children>
       </ObjectData>
