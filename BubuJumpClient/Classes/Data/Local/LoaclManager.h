@@ -3,7 +3,14 @@
 
 #include "cocos2d.h"
 
-class GameSaveData : public cocos2d::Ref
+class GameConfigData
+{
+    CC_SYNTHESIZE(float, _maxVerticalSpeed, MaxVerticalSpeed);
+    CC_SYNTHESIZE(float, _maxHorizontalSpeed, MaxHorizontalSpeed);
+    CC_SYNTHESIZE(float, _normalAcceleration, NormalAcceleration);
+};
+
+class GameSaveData
 {
 public:
     GameSaveData() : _leaderboardID(-1), _lotteryID(-1), _name(), _phone(), _totalCoinAmount(0), _maxTaxCoinAmount(0), _maxDistance(0), _needShowJoinLotteryUI(true), _soundEnabled(true), _musicEnabled(true) {};
@@ -28,10 +35,12 @@ public:
     
     LoaclManager();
     
-    GameSaveData& getGameSaveData() {return _data;};
+    inline GameConfigData& getGameConfigData() { return _configData; };
+    inline GameSaveData& getGameSaveData() { return _saveData; };
     void save();
 private:
-    GameSaveData _data;
+    GameConfigData _configData;
+    GameSaveData _saveData;
 };
 
 #endif // _LoaclManager_H_

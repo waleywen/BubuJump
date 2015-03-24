@@ -13,22 +13,22 @@
         <PreSize X="0.0000" Y="0.0000" />
         <Children>
           <NodeObjectData Name="JoinLotteryUIBackground" ActionTag="783516815" FrameEvent="" Tag="75" ObjectIndex="11" ctype="SpriteObjectData">
-            <Position X="360.0000" Y="638.0000" />
+            <Position X="357.0000" Y="613.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="500.0000" Y="640.0000" />
-            <PrePosition X="0.5000" Y="0.4984" />
+            <Size X="500.0000" Y="596.0000" />
+            <PrePosition X="0.4958" Y="0.4789" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="JoinLotteryUIBackground.png" />
           </NodeObjectData>
           <NodeObjectData Name="closeButton" ActionTag="2004836553" FrameEvent="" Tag="78" ObjectIndex="7" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="93" Scale9Height="86" ctype="ButtonObjectData">
-            <Position X="603.0001" Y="954.9989" />
+            <Position X="603.0001" Y="903.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="93.0000" Y="86.0000" />
-            <PrePosition X="0.8375" Y="0.7461" />
+            <PrePosition X="0.8375" Y="0.7055" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />

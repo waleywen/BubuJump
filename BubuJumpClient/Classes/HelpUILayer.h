@@ -9,7 +9,7 @@
 class HelpUILayer : public cocos2d::Layer
 {
 public:
-    HelpUILayer() : _pageNode1(nullptr), _pageNode2(nullptr), _pageNode3(nullptr), _lotteryNode(nullptr), _leftArrowButton(nullptr), _rightArrowButton(nullptr), _nameEditBox(nullptr), _phoneEditBox(nullptr), _currentPageIndex(0) {};
+    HelpUILayer() : _pageNode1(nullptr), _pageNode2(nullptr), _pageNode3(nullptr), _pageNode4(nullptr), _lotteryNode(nullptr), _leftArrowButton(nullptr), _rightArrowButton(nullptr), _nameEditBox(nullptr), _phoneEditBox(nullptr), _currentPageIndex(0) {};
     virtual ~HelpUILayer();
     
     virtual bool init() override;
@@ -32,6 +32,7 @@ private:
     cocos2d::Node* _pageNode1;
     cocos2d::Node* _pageNode2;
     cocos2d::Node* _pageNode3;
+    cocos2d::Node* _pageNode4;
     cocos2d::Node* _lotteryNode;
     cocos2d::ui::Button* _leftArrowButton;
     cocos2d::ui::Button* _rightArrowButton;

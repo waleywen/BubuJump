@@ -170,6 +170,8 @@
 		FCF55BAD1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCF55BAA1A68FC8300FCA018 /* GamePauseUILayer.cpp */; };
 		FCFFCBC41A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCFFCBC21A6A95EA008BABFA /* GameLeaderboardUI.cpp */; };
 		FCFFCBC51A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCFFCBC21A6A95EA008BABFA /* GameLeaderboardUI.cpp */; };
+		FF2AB6C31ABE938500597181 /* FootboardCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */; };
+		FF2AB6C41ABE938500597181 /* FootboardCloudNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +375,8 @@
 		FCFFCBC11A6A4273008BABFA /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		FCFFCBC21A6A95EA008BABFA /* GameLeaderboardUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLeaderboardUI.cpp; sourceTree = "<group>"; };
 		FCFFCBC31A6A95EA008BABFA /* GameLeaderboardUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLeaderboardUI.h; sourceTree = "<group>"; };
+		FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FootboardCloudNode.cpp; sourceTree = "<group>"; };
+		FF2AB6C21ABE938500597181 /* FootboardCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardCloudNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -588,6 +592,8 @@
 				FC7055811A7E0B450072C45C /* EvilCloudNode.h */,
 				FC49C3101A6CE9280086D35A /* FlyBootNode.cpp */,
 				FC49C3111A6CE9280086D35A /* FlyBootNode.h */,
+				FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */,
+				FF2AB6C21ABE938500597181 /* FootboardCloudNode.h */,
 				FC885C291A627DF900000725 /* FootboardNode.cpp */,
 				FC885C2A1A627DF900000725 /* FootboardNode.h */,
 				FCCF2E501A748F7400CD78F5 /* HeartNode.cpp */,
@@ -901,6 +907,7 @@
 				FC7055821A7E0B450072C45C /* EvilCloudNode.cpp in Sources */,
 				FC3F3D321AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */,
 				FCF55BAC1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
+				FF2AB6C31ABE938500597181 /* FootboardCloudNode.cpp in Sources */,
 				FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
 				FC45F84F1A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -951,6 +958,7 @@
 				FC45F84A1A61083300A708B6 /* GamePlayScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FC99B6F01AA050E3006CEF12 /* HelpUILayer.cpp in Sources */,
+				FF2AB6C41ABE938500597181 /* FootboardCloudNode.cpp in Sources */,
 				FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */,
 				FCCC476C1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
 				FC70557F1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,

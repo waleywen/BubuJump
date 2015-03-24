@@ -23,6 +23,7 @@ enum ObstructionNodeType
     LandValueIncrementTaxCoinNodeType,
     UrbanLandUseTaxCoinNodeType,
     FootboardNodeType,
+    FootboardCloudNodeType,
     ThornFootboardNodeType,
     SoftCloudNodeType,
     HeartNodeType,

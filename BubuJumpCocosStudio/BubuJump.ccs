@@ -200,6 +200,11 @@
         <Image Name="HelpUIInvisibleCoinGuide.png" />
         <Image Name="Phase3Planet1.png" />
         <Image Name="Phase3Planet2.png" />
+        <Image Name="HelpUIEvilCloudGuide.png" />
+        <Image Name="HelpUIVortexGuide.png" />
+        <Image Name="HelpUICoinGuide.png" />
+        <Image Name="FootboardCloud.png" />
+        <Project Name="FootboardCloudNode.csd" />
       </RootFolder>
     </Group>
   </SolutionFolder>

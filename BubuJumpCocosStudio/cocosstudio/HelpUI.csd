@@ -80,16 +80,6 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="HelpUIControlGuide.png" />
               </NodeObjectData>
-              <NodeObjectData Name="HelpUIInvisibleCoinGuide" ActionTag="-2017021354" FrameEvent="" Tag="637" ObjectIndex="15" ctype="SpriteObjectData">
-                <Position X="349.9775" Y="218.9995" />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <Size X="525.0000" Y="141.0000" />
-                <PrePosition X="0.0000" Y="0.0000" />
-                <PreSize X="0.0000" Y="0.0000" />
-                <FileData Type="Normal" Path="HelpUIInvisibleCoinGuide.png" />
-              </NodeObjectData>
             </Children>
           </NodeObjectData>
           <NodeObjectData Name="pageNode2" ActionTag="-1693359250" FrameEvent="" Tag="49" ObjectIndex="2" IconVisible="True" ctype="SingleNodeObjectData">
@@ -146,14 +136,14 @@
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="538.0000" Y="154.0000" />
+                <Size X="532.0000" Y="164.0000" />
                 <PrePosition X="0.0000" Y="0.0000" />
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="HelpUIHeartGuide.png" />
               </NodeObjectData>
             </Children>
           </NodeObjectData>
-          <NodeObjectData Name="pageNode3" ActionTag="1784896464" FrameEvent="" Tag="58" ObjectIndex="3" IconVisible="True" ctype="SingleNodeObjectData">
+          <NodeObjectData Name="pageNode3" ActionTag="931663327" FrameEvent="" Tag="51" ObjectIndex="5" IconVisible="True" ctype="SingleNodeObjectData">
             <Position X="-3000.0000" Y="0.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint />
@@ -162,22 +152,73 @@
             <PrePosition X="-4.1667" Y="0.0000" />
             <PreSize X="0.0000" Y="0.0000" />
             <Children>
-              <NodeObjectData Name="HelpUITaxCoinGuide" ActionTag="2058508828" FrameEvent="" Tag="56" ObjectIndex="12" ctype="SpriteObjectData">
+              <NodeObjectData Name="HelpUICoinGuide" ActionTag="-1222190678" FrameEvent="" Tag="54" ObjectIndex="18" ctype="SpriteObjectData">
                 <Position X="350.0000" Y="945.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="593.0000" Y="169.0000" />
+                <Size X="532.0000" Y="152.0000" />
                 <PrePosition X="0.0000" Y="0.0000" />
                 <PreSize X="0.0000" Y="0.0000" />
-                <FileData Type="Normal" Path="HelpUITaxCoinGuide.png" />
+                <FileData Type="Normal" Path="HelpUICoinGuide.png" />
               </NodeObjectData>
-              <NodeObjectData Name="HelpUIHeightGuide" ActionTag="-1356460410" FrameEvent="" Tag="53" ObjectIndex="9" ctype="SpriteObjectData">
+              <NodeObjectData Name="HelpUIInvisibleCoinGuide" ActionTag="-2017021354" FrameEvent="" Tag="637" ObjectIndex="15" ctype="SpriteObjectData">
                 <Position X="350.0000" Y="745.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="580.0000" Y="204.0000" />
+                <Size X="532.0000" Y="152.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="HelpUIInvisibleCoinGuide.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="HelpUITaxCoinGuide" ActionTag="2058508828" FrameEvent="" Tag="56" ObjectIndex="12" ctype="SpriteObjectData">
+                <Position X="350.0000" Y="545.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="524.0000" Y="142.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="HelpUITaxCoinGuide.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="HelpUIEvilCloudGuide" ActionTag="-1544664097" FrameEvent="" Tag="52" ObjectIndex="16" ctype="SpriteObjectData">
+                <Position X="350.0000" Y="345.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="532.0000" Y="152.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="HelpUIEvilCloudGuide.png" />
+              </NodeObjectData>
+              <NodeObjectData Name="HelpUIVortexGuide" ActionTag="324894079" FrameEvent="" Tag="53" ObjectIndex="17" ctype="SpriteObjectData">
+                <Position X="350.0000" Y="145.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="532.0000" Y="152.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <FileData Type="Normal" Path="HelpUIVortexGuide.png" />
+              </NodeObjectData>
+            </Children>
+          </NodeObjectData>
+          <NodeObjectData Name="pageNode4" ActionTag="1784896464" FrameEvent="" Tag="58" ObjectIndex="3" IconVisible="True" ctype="SingleNodeObjectData">
+            <Position X="-4000.0000" Y="0.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="0.0000" Y="0.0000" />
+            <PrePosition X="-5.5556" Y="0.0000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <Children>
+              <NodeObjectData Name="HelpUIHeightGuide" ActionTag="-1356460410" FrameEvent="" Tag="53" ObjectIndex="9" ctype="SpriteObjectData">
+                <Position X="350.0000" Y="945.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="527.0000" Y="190.0000" />
                 <PrePosition X="0.0000" Y="0.0000" />
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="HelpUIHeightGuide.png" />
@@ -192,7 +233,7 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <Children>
                   <NodeObjectData Name="HelpUILotteryBackground" ActionTag="1648252422" FrameEvent="" Tag="59" ObjectIndex="14" ctype="SpriteObjectData">
-                    <Position X="350.0000" Y="341.0000" />
+                    <Position X="350.0000" Y="545.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <CColor A="255" R="255" G="255" B="255" />
@@ -202,7 +243,7 @@
                     <FileData Type="Normal" Path="HelpUILotteryBackground.png" />
                   </NodeObjectData>
                   <NodeObjectData Name="confirmButton" ActionTag="-1201182660" FrameEvent="" Tag="60" ObjectIndex="7" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="336" Scale9Height="89" ctype="ButtonObjectData">
-                    <Position X="360.0000" Y="121.0000" />
+                    <Position X="360.0000" Y="321.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <CColor A="255" R="255" G="255" B="255" />

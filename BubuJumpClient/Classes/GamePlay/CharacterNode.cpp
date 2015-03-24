@@ -229,7 +229,7 @@ int CharacterNode::getHeartCount()
 
 void CharacterNode::addCoins(int coinCount, ObstructionNodeType type)
 {
-    if (SmallCoinNodeType != type)
+    if (SmallCoinNodeType != type && InvisibleCoinNodeType != type)
     {
         TaxCoinMapIterator iter = this->_taxCoinMap.find(type);
         if (this->_taxCoinMap.end() == iter)

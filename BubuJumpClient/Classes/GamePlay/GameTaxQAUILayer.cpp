@@ -7,6 +7,7 @@
 #include "../CommonUtility.h"
 
 #include "GamePlayLayer.h"
+#include "GameOverUILayer.h"
 
 USING_NS_CC;
 using namespace cocostudio;
@@ -215,7 +216,15 @@ void GameTaxQAUILayer::confirmButtonClicked(cocos2d::Ref *sender)
     }
     else
     {
-        Director::getInstance()->popToRootScene();
+        GameOverUILayer* layer = GameOverUILayer::create();
+        layer->setTaxCoinAmount(this->getGamePlayLayer()->getTaxCoinAmount());
+        layer->setMaxDistance(this->getGamePlayLayer()->getMaxDistance());
+        layer->setTaxCoinMap(this->getGamePlayLayer()->getTaxCoinMap());
+        auto scene = Scene::create();
+        scene->addChild(layer);
+        
+        Director::getInstance()->popScene();
+        Director::getInstance()->replaceScene(scene);
     }
 }
 

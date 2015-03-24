@@ -4,6 +4,8 @@
 
 #include "../CommonUtility.h"
 
+#include "../Data/Local/LoaclManager.h"
+
 #include "CharacterNode.h"
 #include "Obstruction/Effect/BaseEffect.h"
 #include "Obstruction/SmallCoinNode.h"
@@ -19,6 +21,7 @@
 #include "Obstruction/LandValueIncrementTaxCoinNode.h"
 #include "Obstruction/UrbanLandUseTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
+#include "Obstruction/FootboardCloudNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/SoftCloudNode.h"
 #include "Obstruction/HeartNode.h"
@@ -32,8 +35,8 @@
 
 USING_NS_CC;
 
-const int PHASE_DISTANCE = 64000;
-//const int PHASE_DISTANCE = 10000;
+//const int PHASE_DISTANCE = 64000;
+const int PHASE_DISTANCE = 9000;
 
 GamePlayLayer::~GamePlayLayer()
 {
@@ -140,6 +143,8 @@ bool GamePlayLayer::init()
     this->_lightLayerColor->setOpacity(0);
     this->_mainGameLayer->addChild(this->_lightLayerColor, 100);
     
+    this->_lastBuildLine = 200.0f;
+    
     this->_characterNode = CharacterNode::create();
     this->_characterNode->retain();
     this->_characterNode->setObstructionNodeVector(&this->_obstructionVector);
@@ -147,8 +152,9 @@ bool GamePlayLayer::init()
     this->_characterNode->setCollisionSize(Size(80.0f, 80.0f));
     this->_characterNode->setCollisionOffset(Vec2(0.0f, -3.0f));
     
-    this->_characterNode->setMaxVerticalSpeed(1000.0f);
-    this->_characterNode->setMaxHorizontalSpeed(30.0f);
+    this->_characterNode->setMaxVerticalSpeed(LoaclManager::getInstance()->getGameConfigData().getMaxVerticalSpeed());
+    this->_characterNode->setMaxHorizontalSpeed(LoaclManager::getInstance()->getGameConfigData().getMaxHorizontalSpeed());
+    this->_characterNode->setNormalAcceleration(LoaclManager::getInstance()->getGameConfigData().getNormalAcceleration());
     
     this->_characterNode->setHorizontalMovingRange({0.0f, designResolutionSize.width});
     
@@ -163,8 +169,6 @@ bool GamePlayLayer::init()
     this->_characterNode->setCollisionSize(Size(80.0f * 1.3f, 80.0f * 1.3f));
 //    this->_characterNode->setScale(1.3f);
 
-    this->_characterNode->setNormalAcceleration(-1000.0f);
-    
     auto node1 = CSLoader::createNode("Phase1.1.csb");
     node1->setTag(501);
     node1->setPosition(Vec2(-1000.0f, -1000.0f));
@@ -210,6 +214,8 @@ bool GamePlayLayer::init()
     GamePlayDataVectors& level2GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(2, GamePlayDataVectors())).first->second;
 
     GamePlayDataVectors& level3GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(3, GamePlayDataVectors())).first->second;
+
+    GamePlayDataVectors& level4GamePlayDataVectors = this->_gamePlayDataLevelMap.insert(IntGamePlayDataVectorPair(4, GamePlayDataVectors())).first->second;
 
 //    std::string path = "/mnt/sdcard/BubuJump/";
 //    auto sharedFileUtils = FileUtils::getInstance();
@@ -280,6 +286,15 @@ bool GamePlayLayer::init()
             level3GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level3_xGamePlayDataVector = level3GamePlayDataVectors.back();
             this->readGamePlayDataToVector(std::string("Levels/EditorData/Level3.") + CommonUtility::convertToString(i) + ".csb", level3_xGamePlayDataVector);
+        }
+    }
+    if (level4GamePlayDataVectors.size() == 0)
+    {
+        for (int i = 1; i <= 1; i++)
+        {
+            level4GamePlayDataVectors.push_back(GamePlayDataVector());
+            GamePlayDataVector& level4_xGamePlayDataVector = level4GamePlayDataVectors.back();
+            this->readGamePlayDataToVector(std::string("Levels/EditorData/Level4.") + CommonUtility::convertToString(i) + ".csb", level4_xGamePlayDataVector);
         }
     }
 
@@ -358,6 +373,7 @@ void GamePlayLayer::gameUpdate(float delta)
         delayTime = DelayTime::create(1.0f);
         fadeOut1 = FadeOut::create(1.0f);
         sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
+        this->_clearanceSprite->setTexture("Clearance.png");
         this->_clearanceSprite->runAction(sequence);
         
         if (currentTransitionPhase < 2)
@@ -372,12 +388,21 @@ void GamePlayLayer::gameUpdate(float delta)
             layer3->removeFromParent();
 
             auto node1 = CSLoader::createNode("Phase2.1.csb");
+            auto actionTimeline1 = CSLoader::createTimeline("Phase2.1.csb");
+            node1->runAction(actionTimeline1);
+            actionTimeline1->gotoFrameAndPlay(0, true);
             node1->setTag(501);
             node1->setPosition(Vec2(-1000.0f, -1000.0f));
             auto node2 = CSLoader::createNode("Phase2.2.csb");
+            auto actionTimeline2 = CSLoader::createTimeline("Phase2.2.csb");
+            node2->runAction(actionTimeline2);
+            actionTimeline2->gotoFrameAndPlay(0, true);
             node2->setTag(502);
             node2->setPosition(Vec2(-1000.0f, -1000.0f));
             auto node3 = CSLoader::createNode("Phase2.3.csb");
+            auto actionTimeline3 = CSLoader::createTimeline("Phase2.3.csb");
+            node3->runAction(actionTimeline3);
+            actionTimeline3->gotoFrameAndPlay(0, true);
             node3->setTag(503);
             node3->setPosition(Vec2(-1000.0f, -1000.0f));
             
@@ -447,7 +472,7 @@ void GamePlayLayer::gameUpdate(float delta)
         || this->_characterNode->getHeartCount() <= 0)
     {
         this->setDead(true);
-        cdPlayTime = 0.0f;
+//        cdPlayTime = 0.0f;
     }
     else
     {
@@ -468,6 +493,14 @@ void GamePlayLayer::accelerated(cocos2d::Acceleration *acceleration, cocos2d::Ev
 
 void GamePlayLayer::startPlay()
 {
+    auto fadeIn = FadeIn::create(1.0f);
+    auto delayTime = DelayTime::create(1.0f);
+    auto fadeOut1 = FadeOut::create(1.0f);
+    auto sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
+    int indexNo = this->_transitionPhase <= 3 ? this->_transitionPhase : 3;
+    this->_clearanceSprite->setTexture("Welcome" + CommonUtility::convertToString(indexNo + 1) + ".png");
+    this->_clearanceSprite->runAction(sequence);
+
     this->_characterNode->startPlay();
 }
 
@@ -628,6 +661,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     else if (FootboardNodeType == nodeType)
     {
         obstructionNode = FootboardNode::create();
+        obstructionNode->setCollisionSize(Size(150.0f, 92.0f));
+    }
+    else if (FootboardCloudNodeType == nodeType)
+    {
+        obstructionNode = FootboardCloudNode::create();
         obstructionNode->setCollisionSize(Size(150.0f, 92.0f));
     }
     else if (ThornFootboardNodeType == nodeType)
@@ -801,6 +839,10 @@ void GamePlayLayer::buildTopperScene()
                     {
                         gameNode = this->getObstructionNode(FootboardNodeType);
                     }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FootboardCloud"))
+                    {
+                        gameNode = this->getObstructionNode(FootboardCloudNodeType);
+                    }
                     else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "ThornFootboard"))
                     {
                         gameNode = this->getObstructionNode(ThornFootboardNodeType);
@@ -915,6 +957,14 @@ void GamePlayLayer::transitionFinished()
     }
     this->_lastBuildLine = this->_characterNode->getPosition().y;
     this->_currentPatternGamePlayDataVector.clear();
+
+    auto fadeIn = FadeIn::create(1.0f);
+    auto delayTime = DelayTime::create(1.0f);
+    auto fadeOut1 = FadeOut::create(1.0f);
+    auto sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
+    int indexNo = this->_transitionPhase <= 3 ? this->_transitionPhase : 3;
+    this->_clearanceSprite->setTexture("Welcome" + CommonUtility::convertToString(indexNo + 1) + ".png");
+    this->_clearanceSprite->runAction(sequence);
 
     this->_transitionNode->setVisible(false);
     this->_transitionLightsNode->stopAllActions();
