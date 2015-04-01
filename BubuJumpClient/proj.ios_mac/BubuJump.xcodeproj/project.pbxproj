@@ -54,6 +54,10 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FC0EF1921AC4F25F00444087 /* FootboardAirNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC0EF1901AC4F25F00444087 /* FootboardAirNode.cpp */; };
+		FC0EF1931AC4F25F00444087 /* FootboardAirNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC0EF1901AC4F25F00444087 /* FootboardAirNode.cpp */; };
+		FC0EF1961AC4F38D00444087 /* FootboardSpaceNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC0EF1941AC4F38D00444087 /* FootboardSpaceNode.cpp */; };
+		FC0EF1971AC4F38D00444087 /* FootboardSpaceNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC0EF1941AC4F38D00444087 /* FootboardSpaceNode.cpp */; };
 		FC1121841AA94099001E35BA /* TransitionEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121821AA94099001E35BA /* TransitionEffect.cpp */; };
 		FC1121851AA94099001E35BA /* TransitionEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121821AA94099001E35BA /* TransitionEffect.cpp */; };
 		FC1121881AA9D5FF001E35BA /* SettingUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */; };
@@ -68,6 +72,10 @@
 		FC1FF6311A6E20E000DC6DE4 /* MagnetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */; };
 		FC1FF6341A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
 		FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */; };
+		FC39F8F91AC1809D00B0FC93 /* FootboardMoveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC39F8F71AC1809D00B0FC93 /* FootboardMoveNode.cpp */; };
+		FC39F8FA1AC1809D00B0FC93 /* FootboardMoveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC39F8F71AC1809D00B0FC93 /* FootboardMoveNode.cpp */; };
+		FC39F8FD1AC180A800B0FC93 /* SmallCoinMoveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC39F8FB1AC180A800B0FC93 /* SmallCoinMoveNode.cpp */; };
+		FC39F8FE1AC180A800B0FC93 /* SmallCoinMoveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC39F8FB1AC180A800B0FC93 /* SmallCoinMoveNode.cpp */; };
 		FC3F3D321AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */; };
 		FC3F3D331AA7FB02000106E0 /* TaxBibleUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */; };
 		FC3F3D361AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */; };
@@ -152,6 +160,8 @@
 		FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */; };
 		FCBF5D041AA4631800FBF0C0 /* MessageUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCBF5D021AA4631800FBF0C0 /* MessageUILayer.cpp */; };
 		FCBF5D051AA4631800FBF0C0 /* MessageUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCBF5D021AA4631800FBF0C0 /* MessageUILayer.cpp */; };
+		FCC0EB831AC2552D006BA0CA /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC0EB811AC2552D006BA0CA /* AudioManager.cpp */; };
+		FCC0EB841AC2552D006BA0CA /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC0EB811AC2552D006BA0CA /* AudioManager.cpp */; };
 		FCC4E8441A9C1309008458C7 /* SpriteBaseEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E8421A9C1309008458C7 /* SpriteBaseEffect.cpp */; };
 		FCC4E8451A9C1309008458C7 /* SpriteBaseEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E8421A9C1309008458C7 /* SpriteBaseEffect.cpp */; };
 		FCC4E8481A9C14E0008458C7 /* ParticleBaseEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E8461A9C14E0008458C7 /* ParticleBaseEffect.cpp */; };
@@ -255,6 +265,10 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FC0EF1901AC4F25F00444087 /* FootboardAirNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FootboardAirNode.cpp; sourceTree = "<group>"; };
+		FC0EF1911AC4F25F00444087 /* FootboardAirNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardAirNode.h; sourceTree = "<group>"; };
+		FC0EF1941AC4F38D00444087 /* FootboardSpaceNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FootboardSpaceNode.cpp; sourceTree = "<group>"; };
+		FC0EF1951AC4F38D00444087 /* FootboardSpaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardSpaceNode.h; sourceTree = "<group>"; };
 		FC1121821AA94099001E35BA /* TransitionEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionEffect.cpp; sourceTree = "<group>"; };
 		FC1121831AA94099001E35BA /* TransitionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionEffect.h; sourceTree = "<group>"; };
 		FC1121861AA9D5FF001E35BA /* SettingUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingUILayer.cpp; sourceTree = "<group>"; };
@@ -265,17 +279,21 @@
 		FC1A2D4F1A8A66FF00C97A1E /* DeedTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeedTaxCoinNode.h; sourceTree = "<group>"; };
 		FC1A2D521A8A678F00C97A1E /* StampTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StampTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC1A2D531A8A678F00C97A1E /* StampTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StampTaxCoinNode.h; sourceTree = "<group>"; };
-		FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagnetNode.cpp; sourceTree = "<group>"; };
+		FC1FF62E1A6E20E000DC6DE4 /* MagnetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = MagnetNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC1FF62F1A6E20E000DC6DE4 /* MagnetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetNode.h; sourceTree = "<group>"; };
 		FC1FF6321A6E228A00DC6DE4 /* MagnetEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagnetEffect.cpp; sourceTree = "<group>"; };
 		FC1FF6331A6E228A00DC6DE4 /* MagnetEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnetEffect.h; sourceTree = "<group>"; };
+		FC39F8F71AC1809D00B0FC93 /* FootboardMoveNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = FootboardMoveNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		FC39F8F81AC1809D00B0FC93 /* FootboardMoveNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardMoveNode.h; sourceTree = "<group>"; };
+		FC39F8FB1AC180A800B0FC93 /* SmallCoinMoveNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = SmallCoinMoveNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		FC39F8FC1AC180A800B0FC93 /* SmallCoinMoveNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallCoinMoveNode.h; sourceTree = "<group>"; };
 		FC3F3D301AA7FB02000106E0 /* TaxBibleUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaxBibleUILayer.cpp; sourceTree = "<group>"; };
 		FC3F3D311AA7FB02000106E0 /* TaxBibleUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxBibleUILayer.h; sourceTree = "<group>"; };
 		FC3F3D341AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LandValueIncrementTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC3F3D351AA8362C000106E0 /* LandValueIncrementTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandValueIncrementTaxCoinNode.h; sourceTree = "<group>"; };
 		FC3F3D381AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrbanLandUseTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC3F3D391AA836A1000106E0 /* UrbanLandUseTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrbanLandUseTaxCoinNode.h; sourceTree = "<group>"; };
-		FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftCloudNode.cpp; sourceTree = "<group>"; };
+		FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = SoftCloudNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC45D1471A91B2E3000DCA1C /* SoftCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCloudNode.h; sourceTree = "<group>"; };
 		FC45F8341A61083300A708B6 /* CharacterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterNode.cpp; sourceTree = "<group>"; };
 		FC45F8351A61083300A708B6 /* CharacterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterNode.h; sourceTree = "<group>"; };
@@ -289,7 +307,7 @@
 		FC45F83D1A61083300A708B6 /* GamePlayUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayUILayer.h; sourceTree = "<group>"; };
 		FC45F83F1A61083300A708B6 /* ObstructionNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObstructionNode.cpp; sourceTree = "<group>"; };
 		FC45F8401A61083300A708B6 /* ObstructionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstructionNode.h; sourceTree = "<group>"; };
-		FC45F8411A61083300A708B6 /* SmallCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallCoinNode.cpp; sourceTree = "<group>"; };
+		FC45F8411A61083300A708B6 /* SmallCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = SmallCoinNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC45F8421A61083300A708B6 /* SmallCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallCoinNode.h; sourceTree = "<group>"; };
 		FC4854541AA30AAF002BEE1B /* JoinLotteryUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoinLotteryUILayer.cpp; sourceTree = "<group>"; };
 		FC4854551AA30AAF002BEE1B /* JoinLotteryUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinLotteryUILayer.h; sourceTree = "<group>"; };
@@ -301,7 +319,7 @@
 		FC49C3111A6CE9280086D35A /* FlyBootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyBootNode.h; sourceTree = "<group>"; };
 		FC49C3141A6D24670086D35A /* RocketEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RocketEffect.cpp; sourceTree = "<group>"; };
 		FC49C3151A6D24670086D35A /* RocketEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RocketEffect.h; sourceTree = "<group>"; };
-		FC49C3181A6D29140086D35A /* RocketNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RocketNode.cpp; sourceTree = "<group>"; };
+		FC49C3181A6D29140086D35A /* RocketNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = RocketNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC49C3191A6D29140086D35A /* RocketNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RocketNode.h; sourceTree = "<group>"; };
 		FC5A6C3A1A78B0340045FE1A /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManager.cpp; sourceTree = "<group>"; };
 		FC5A6C3B1A78B0340045FE1A /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
@@ -331,13 +349,13 @@
 		FC76FEE41A9E04B7006AF3D7 /* WeChatClientForAndroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatClientForAndroid.h; sourceTree = "<group>"; };
 		FC76FEE51A9E04B7006AF3D7 /* WeChatClientForiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatClientForiOS.h; sourceTree = "<group>"; };
 		FC76FEE61A9E0CC8006AF3D7 /* WeChatClientForAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WeChatClientForAndroid.cpp; sourceTree = "<group>"; };
-		FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InvisibleCoinNode.cpp; sourceTree = "<group>"; };
+		FC7D75D51AAAC493006EA330 /* InvisibleCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = InvisibleCoinNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC7D75D61AAAC493006EA330 /* InvisibleCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibleCoinNode.h; sourceTree = "<group>"; };
 		FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndividualIncomeTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC885C221A6220FD00000725 /* IndividualIncomeTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualIncomeTaxCoinNode.h; sourceTree = "<group>"; };
 		FC885C251A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrbanMaintenanceAndConstructionTaxCoinNode.cpp; sourceTree = "<group>"; };
 		FC885C261A62526100000725 /* UrbanMaintenanceAndConstructionTaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrbanMaintenanceAndConstructionTaxCoinNode.h; sourceTree = "<group>"; };
-		FC885C291A627DF900000725 /* FootboardNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FootboardNode.cpp; sourceTree = "<group>"; };
+		FC885C291A627DF900000725 /* FootboardNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = FootboardNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FC885C2A1A627DF900000725 /* FootboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardNode.h; sourceTree = "<group>"; };
 		FC99B6ED1AA050E3006CEF12 /* HelpUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelpUILayer.cpp; sourceTree = "<group>"; };
 		FC99B6EE1AA050E3006CEF12 /* HelpUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpUILayer.h; sourceTree = "<group>"; };
@@ -351,10 +369,12 @@
 		FC99C0B11A888F1800D18018 /* LoaclManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaclManager.h; sourceTree = "<group>"; };
 		FC99C0B61A88F75200D18018 /* GameResuscitationUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameResuscitationUILayer.cpp; sourceTree = "<group>"; };
 		FC99C0B71A88F75200D18018 /* GameResuscitationUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResuscitationUILayer.h; sourceTree = "<group>"; };
-		FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaxCoinNode.cpp; sourceTree = "<group>"; };
+		FCA3C91A1A64F22C0021963E /* TaxCoinNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = TaxCoinNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FCA3C91B1A64F22C0021963E /* TaxCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxCoinNode.h; sourceTree = "<group>"; };
 		FCBF5D021AA4631800FBF0C0 /* MessageUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageUILayer.cpp; sourceTree = "<group>"; };
 		FCBF5D031AA4631800FBF0C0 /* MessageUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageUILayer.h; sourceTree = "<group>"; };
+		FCC0EB811AC2552D006BA0CA /* AudioManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
+		FCC0EB821AC2552D006BA0CA /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
 		FCC4E8421A9C1309008458C7 /* SpriteBaseEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBaseEffect.cpp; sourceTree = "<group>"; };
 		FCC4E8431A9C1309008458C7 /* SpriteBaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBaseEffect.h; sourceTree = "<group>"; };
 		FCC4E8461A9C14E0008458C7 /* ParticleBaseEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleBaseEffect.cpp; sourceTree = "<group>"; };
@@ -375,7 +395,7 @@
 		FCFFCBC11A6A4273008BABFA /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		FCFFCBC21A6A95EA008BABFA /* GameLeaderboardUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLeaderboardUI.cpp; sourceTree = "<group>"; };
 		FCFFCBC31A6A95EA008BABFA /* GameLeaderboardUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLeaderboardUI.h; sourceTree = "<group>"; };
-		FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FootboardCloudNode.cpp; sourceTree = "<group>"; };
+		FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = FootboardCloudNode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		FF2AB6C21ABE938500597181 /* FootboardCloudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootboardCloudNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -503,6 +523,7 @@
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				FCECC8D21A445CC200C4AEB0 /* AppMacros.h */,
+				FCC0EB801AC2552D006BA0CA /* Audio */,
 				FCFFCBC11A6A4273008BABFA /* CommonUtility.h */,
 				FC5A6C381A78B0340045FE1A /* Data */,
 				FCECC8D31A445CC200C4AEB0 /* GamePlay */,
@@ -592,10 +613,16 @@
 				FC7055811A7E0B450072C45C /* EvilCloudNode.h */,
 				FC49C3101A6CE9280086D35A /* FlyBootNode.cpp */,
 				FC49C3111A6CE9280086D35A /* FlyBootNode.h */,
+				FC0EF1901AC4F25F00444087 /* FootboardAirNode.cpp */,
+				FC0EF1911AC4F25F00444087 /* FootboardAirNode.h */,
 				FF2AB6C11ABE938500597181 /* FootboardCloudNode.cpp */,
 				FF2AB6C21ABE938500597181 /* FootboardCloudNode.h */,
+				FC39F8F71AC1809D00B0FC93 /* FootboardMoveNode.cpp */,
+				FC39F8F81AC1809D00B0FC93 /* FootboardMoveNode.h */,
 				FC885C291A627DF900000725 /* FootboardNode.cpp */,
 				FC885C2A1A627DF900000725 /* FootboardNode.h */,
+				FC0EF1941AC4F38D00444087 /* FootboardSpaceNode.cpp */,
+				FC0EF1951AC4F38D00444087 /* FootboardSpaceNode.h */,
 				FCCF2E501A748F7400CD78F5 /* HeartNode.cpp */,
 				FCCF2E511A748F7400CD78F5 /* HeartNode.h */,
 				FC885C211A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp */,
@@ -610,6 +637,8 @@
 				FC45F8401A61083300A708B6 /* ObstructionNode.h */,
 				FC49C3181A6D29140086D35A /* RocketNode.cpp */,
 				FC49C3191A6D29140086D35A /* RocketNode.h */,
+				FC39F8FB1AC180A800B0FC93 /* SmallCoinMoveNode.cpp */,
+				FC39F8FC1AC180A800B0FC93 /* SmallCoinMoveNode.h */,
 				FC45F8411A61083300A708B6 /* SmallCoinNode.cpp */,
 				FC45F8421A61083300A708B6 /* SmallCoinNode.h */,
 				FC45D1461A91B2E3000DCA1C /* SoftCloudNode.cpp */,
@@ -701,6 +730,15 @@
 				FC99C0B11A888F1800D18018 /* LoaclManager.h */,
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		FCC0EB801AC2552D006BA0CA /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0EB811AC2552D006BA0CA /* AudioManager.cpp */,
+				FCC0EB821AC2552D006BA0CA /* AudioManager.h */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		FCECC8D31A445CC200C4AEB0 /* GamePlay */ = {
@@ -872,6 +910,8 @@
 				FC885C2B1A627DF900000725 /* FootboardNode.cpp in Sources */,
 				FCCF2E521A748F7400CD78F5 /* HeartNode.cpp in Sources */,
 				FC99B6EF1AA050E3006CEF12 /* HelpUILayer.cpp in Sources */,
+				FC0EF1921AC4F25F00444087 /* FootboardAirNode.cpp in Sources */,
+				FC39F8F91AC1809D00B0FC93 /* FootboardMoveNode.cpp in Sources */,
 				FC7055921A7E56480072C45C /* VortexEffect.cpp in Sources */,
 				FC70558E1A7E52380072C45C /* VortexNode.cpp in Sources */,
 				FC885C231A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */,
@@ -909,6 +949,7 @@
 				FCF55BAC1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
 				FF2AB6C31ABE938500597181 /* FootboardCloudNode.cpp in Sources */,
 				FC70557E1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
+				FC39F8FD1AC180A800B0FC93 /* SmallCoinMoveNode.cpp in Sources */,
 				FC45F84F1A61083300A708B6 /* SmallCoinNode.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FC45F84D1A61083300A708B6 /* ObstructionNode.cpp in Sources */,
@@ -925,9 +966,11 @@
 				FC49C3161A6D24670086D35A /* RocketEffect.cpp in Sources */,
 				FC49C3121A6CE9280086D35A /* FlyBootNode.cpp in Sources */,
 				FC49C31A1A6D29140086D35A /* RocketNode.cpp in Sources */,
+				FC0EF1961AC4F38D00444087 /* FootboardSpaceNode.cpp in Sources */,
 				FCFFCBC41A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */,
 				FC3F3D3A1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */,
 				FCD6C5EB1A89E58A002C2BB7 /* GameTaxQAUILayer.cpp in Sources */,
+				FCC0EB831AC2552D006BA0CA /* AudioManager.cpp in Sources */,
 				FC49C30A1A6CD1100086D35A /* BaseEffect.cpp in Sources */,
 				FC1121841AA94099001E35BA /* TransitionEffect.cpp in Sources */,
 				FC686B3F1A8753BB00E4094D /* MainMenuUILayer.cpp in Sources */,
@@ -938,13 +981,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC0EB841AC2552D006BA0CA /* AudioManager.cpp in Sources */,
 				FCC4E8451A9C1309008458C7 /* SpriteBaseEffect.cpp in Sources */,
 				FC7055931A7E56480072C45C /* VortexEffect.cpp in Sources */,
 				FC7055871A7E0C6E0072C45C /* EvilCloudEffect.cpp in Sources */,
 				FC1A2D511A8A66FF00C97A1E /* DeedTaxCoinNode.cpp in Sources */,
 				FC885C241A6220FD00000725 /* IndividualIncomeTaxCoinNode.cpp in Sources */,
 				FC4854571AA30AAF002BEE1B /* JoinLotteryUILayer.cpp in Sources */,
+				FC0EF1931AC4F25F00444087 /* FootboardAirNode.cpp in Sources */,
 				FC49C31B1A6D29140086D35A /* RocketNode.cpp in Sources */,
+				FC0EF1971AC4F38D00444087 /* FootboardSpaceNode.cpp in Sources */,
 				FC1A2D551A8A678F00C97A1E /* StampTaxCoinNode.cpp in Sources */,
 				FC1FF6351A6E228A00DC6DE4 /* MagnetEffect.cpp in Sources */,
 				FC3F3D371AA8362C000106E0 /* LandValueIncrementTaxCoinNode.cpp in Sources */,
@@ -959,6 +1005,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FC99B6F01AA050E3006CEF12 /* HelpUILayer.cpp in Sources */,
 				FF2AB6C41ABE938500597181 /* FootboardCloudNode.cpp in Sources */,
+				FC39F8FE1AC180A800B0FC93 /* SmallCoinMoveNode.cpp in Sources */,
 				FCA3C91D1A64F22C0021963E /* TaxCoinNode.cpp in Sources */,
 				FCCC476C1A7A58BB00680294 /* BusinessIncomeTaxCoinNode.cpp in Sources */,
 				FC70557F1A7DF1FA0072C45C /* AngelWingEffect.cpp in Sources */,
@@ -995,6 +1042,7 @@
 				FCFFCBC51A6A95EA008BABFA /* GameLeaderboardUI.cpp in Sources */,
 				FCBF5D051AA4631800FBF0C0 /* MessageUILayer.cpp in Sources */,
 				FC3F3D3B1AA836A1000106E0 /* UrbanLandUseTaxCoinNode.cpp in Sources */,
+				FC39F8FA1AC1809D00B0FC93 /* FootboardMoveNode.cpp in Sources */,
 				FCF55BAD1A68FC8300FCA018 /* GamePauseUILayer.cpp in Sources */,
 				FC45F8441A61083300A708B6 /* CharacterNode.cpp in Sources */,
 				FC99C0B31A888F1800D18018 /* LoaclManager.cpp in Sources */,

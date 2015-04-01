@@ -16,7 +16,7 @@ bool MagnetEffect::init()
         return false;
     }
     
-    this->_time = 4.0f;
+    this->_time = 5.0f;
     
     return true;
 }
@@ -58,7 +58,7 @@ void MagnetEffect::gameUpdate(float delta)
             Point characterNodePosition = this->getCharacterNode()->getPosition();
             if (characterNodePosition.getDistance(obstructionNodePosition) <= 500.0f)
             {
-                static const float movingSpeed = 1000.0f;
+                static const float movingSpeed = 1600.0f;
                 Point newPosition = obstructionNodePosition - ((obstructionNodePosition - characterNodePosition) * (delta * movingSpeed / (obstructionNodePosition - characterNodePosition).length()));
                 obstructionNode->setPosition(newPosition);
             }

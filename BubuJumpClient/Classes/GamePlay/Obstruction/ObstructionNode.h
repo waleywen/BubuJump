@@ -11,6 +11,7 @@ enum ObstructionNodeType
 {
     NoneNodeType,
     SmallCoinNodeType,
+    SmallCoinMoveNodeType,
     InvisibleCoinNodeType,
     IndividualIncomeTaxCoinNodeType,
     UrbanMaintenanceAndConstructionTaxCoinNodeType,
@@ -23,7 +24,10 @@ enum ObstructionNodeType
     LandValueIncrementTaxCoinNodeType,
     UrbanLandUseTaxCoinNodeType,
     FootboardNodeType,
+    FootboardAirNodeType,
+    FootboardSpaceNodeType,
     FootboardCloudNodeType,
+    FootboardMoveNodeType,
     ThornFootboardNodeType,
     SoftCloudNodeType,
     HeartNodeType,

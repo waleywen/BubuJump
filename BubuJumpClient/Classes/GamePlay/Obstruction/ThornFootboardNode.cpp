@@ -1,5 +1,7 @@
 #include "ThornFootboardNode.h"
 
+#include "../../Audio/AudioManager.h"
+
 #include "../CharacterNode.h"
 
 USING_NS_CC;
@@ -21,17 +23,12 @@ bool ThornFootboardNode::init()
 
 void ThornFootboardNode::collided(CharacterNode *characterNode)
 {
-    if (Downing == characterNode->getActionState())
-    {
-        float v = characterNode->getCurrentSpeed();
-        float a = -1000;
-        float distance = -(v * v / 2.0f / a);
-        if (characterNode->getPosition().y + distance - this->getPosition().y > (this->getCollisionSize().height + characterNode->getCollisionSize().height) / 2.0f)
-        {
-            characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
-            characterNode->dropHeart(1);
-        }
-    }
+    this->setState(PendingNodeState);
+    characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
+    characterNode->dropHeart(1);
+    this->setVisible(false);
+    
+    AudioManager::getInstance()->playEffect("Sound/sfx-thorn-footboard.aac");
 }
 
 void ThornFootboardNode::reactivate()

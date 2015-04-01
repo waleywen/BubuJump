@@ -1,5 +1,7 @@
 #include "FlyBootEffect.h"
 
+#include "../../../Audio/AudioManager.h"
+
 #include "../../CharacterNode.h"
 
 USING_NS_CC;
@@ -15,7 +17,7 @@ bool FlyBootEffect::init()
         return false;
     }
     
-    this->_time = 4.0f;
+    this->_time = 5.0f;
     
     return true;
 }
@@ -32,6 +34,8 @@ void FlyBootEffect::gameUpdate(float delta)
         if (false == this->_particleSystemQuad->isActive())
         {
             this->_particleSystemQuad->resetSystem();
+
+            AudioManager::getInstance()->playEffect("Sound/sfx-fly-boot.aac");
         }
     }
     else
@@ -59,5 +63,5 @@ void FlyBootEffect::reset()
 
 float FlyBootEffect::changeSpeed(float speed)
 {
-    return speed * 1.5f;
+    return speed * 1.2f;
 }

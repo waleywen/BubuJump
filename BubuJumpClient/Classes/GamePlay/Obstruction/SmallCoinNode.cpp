@@ -2,6 +2,8 @@
 
 #include "audio/include/SimpleAudioEngine.h"
 
+#include "../../Audio/AudioManager.h"
+
 #include "../CharacterNode.h"
 
 USING_NS_CC;
@@ -19,6 +21,10 @@ bool SmallCoinNode::init()
         return false;
     }
     
+    auto actionTimeline = CSLoader::createTimeline("SmallCoinNode.csb");
+    actionTimeline->gotoFrameAndPlay(0, true);
+    this->_mainSpriteNode->runAction(actionTimeline);
+
     return true;
 }
 
@@ -29,7 +35,7 @@ void SmallCoinNode::collided(CharacterNode *characterNode)
     characterNode->addCoins(10, this->getNodeType());
     this->setVisible(false);
 
-    SimpleAudioEngine::getInstance()->playEffect("Sound/sfx-coin-pickup.wav");
+    AudioManager::getInstance()->playEffect("Sound/sfx-coin-pickup.wav");
 }
 
 void SmallCoinNode::reactivate()

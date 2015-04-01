@@ -32,6 +32,9 @@ THE SOFTWARE.
 #include "base/CCEventDispatcher.h"
 #include "ui/UILayoutComponent.h"
 
+#include "audio/include/SimpleAudioEngine.h"
+#include "ui/UIButton.h"
+
 NS_CC_BEGIN
 
 namespace ui {
@@ -841,6 +844,10 @@ void Widget::releaseUpEvent()
     }
     
     if (_clickEventListener) {
+        Button* button = static_cast<Button*>(this);
+        if (nullptr != button) {
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/sfx-button.wav");
+        }
         _clickEventListener(this);
     }
     this->release();

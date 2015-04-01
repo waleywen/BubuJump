@@ -15,6 +15,8 @@
 #include "Data/Network/NetworkManager.h"
 #include "Data/Local/LoaclManager.h"
 
+#include "Audio/AudioManager.h"
+
 USING_NS_CC;
 using namespace cocos2d::ui;
 using namespace cocostudio;
@@ -59,8 +61,20 @@ bool MainMenuUILayer::init()
     SimpleAudioEngine::getInstance()->setEffectsVolume(true == gameSaveData.getSoundEnabled() ? 1.0f : 0.0f);
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(true == gameSaveData.getMusicEnabled() ? 1.0f : 0.0f);
     
-    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+    AudioManager::getInstance()->playBackgroundMusic("music.mp3", true);
+    
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-button.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-coin-pickup.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-count-down.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-fly-boot.aac");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-cloud.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-move.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-magnet.wav");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-player-die.aac");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-rocket.aac");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-soft-cloud.aac");
+    SimpleAudioEngine::getInstance()->preloadEffect("sfx-thorn-footboard.aac");
 
     return true;
 }

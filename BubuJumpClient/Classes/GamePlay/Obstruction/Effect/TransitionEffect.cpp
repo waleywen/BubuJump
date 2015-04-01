@@ -51,7 +51,7 @@ void TransitionEffect::reset()
 
 float TransitionEffect::changeSpeed(float speed)
 {
-    return this->getCharacterNode()->getMaxVerticalSpeed() * 1.5f;
+    return 1500.0f;
 }
 
 float TransitionEffect::changeAcceleration(float acceleration)

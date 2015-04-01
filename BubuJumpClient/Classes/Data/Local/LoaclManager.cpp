@@ -30,21 +30,21 @@ LoaclManager::LoaclManager() : _configData(), _saveData()
     _saveData.setSoundEnabled(userDefault->getBoolForKey("soundEnabled", true));
     _saveData.setMusicEnabled(userDefault->getBoolForKey("musicEnabled", true));
     
-    std::string filePath = "/mnt/sdcard/BubuJump/Config.plist";
-    auto sharedFileUtils = FileUtils::getInstance();
-    if (true == sharedFileUtils->isFileExist(filePath))
+//    std::string filePath = "/mnt/sdcard/BubuJump/Config.plist";
+//    auto sharedFileUtils = FileUtils::getInstance();
+//    if (true == sharedFileUtils->isFileExist(filePath))
+//    {
+//        ValueVector configVector = FileUtils::getInstance()->getValueVectorFromFile(filePath);
+//
+//        _configData.setMaxVerticalSpeed(configVector.at(0).asInt());
+//        _configData.setMaxHorizontalSpeed(configVector.at(1).asInt());
+//        _configData.setNormalAcceleration(configVector.at(2).asInt());
+//    }
+//    else
     {
-        ValueVector configVector = FileUtils::getInstance()->getValueVectorFromFile(filePath);
-
-        _configData.setMaxVerticalSpeed(configVector.at(0).asInt());
-        _configData.setMaxHorizontalSpeed(configVector.at(1).asInt());
-        _configData.setNormalAcceleration(configVector.at(2).asInt());
-    }
-    else
-    {
-        _configData.setMaxVerticalSpeed(1000);
-        _configData.setMaxHorizontalSpeed(30);
-        _configData.setNormalAcceleration(-1000);
+        _configData.setMaxVerticalSpeed(1500);
+        _configData.setMaxHorizontalSpeed(70);
+        _configData.setNormalAcceleration(-2000);
     }
 }
 

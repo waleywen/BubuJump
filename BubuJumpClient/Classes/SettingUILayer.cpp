@@ -7,6 +7,8 @@
 
 #include "Data/Local/LoaclManager.h"
 
+#include "Audio/AudioManager.h"
+
 USING_NS_CC;
 using namespace cocos2d::ui;
 using namespace cocostudio;
@@ -68,4 +70,7 @@ void SettingUILayer::musicButtonClicked(cocos2d::Ref *sender)
     
     auto musicButton = static_cast<Button*>(sender);
     musicButton->loadTextureNormal(true == gameSaveData.getMusicEnabled() ? "SettingUITurnOnButton.png" : "SettingUITurnOffButton.png");
+    
+//    AudioManager::getInstance()->stopAll();
+//    AudioManager::getInstance()->playBackgroundMusic("music.mp3", true);
 }

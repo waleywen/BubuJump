@@ -2,6 +2,8 @@
 
 #include "audio/include/SimpleAudioEngine.h"
 
+#include "../../Audio/AudioManager.h"
+
 #include "../CharacterNode.h"
 
 USING_NS_CC;
@@ -46,7 +48,7 @@ void TaxCoinNode::collided(CharacterNode *characterNode)
     this->_tipsSpriteNode->runAction(sequence);
     
 
-    SimpleAudioEngine::getInstance()->playEffect("Sound/sfx-coin-pickup.wav");
+    AudioManager::getInstance()->playEffect("Sound/sfx-coin-pickup.wav");
 }
 
 void TaxCoinNode::reactivate()

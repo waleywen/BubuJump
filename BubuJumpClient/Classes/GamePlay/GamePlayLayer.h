@@ -12,6 +12,7 @@ struct GamePlayData
 {
     std::string typeName;
     cocos2d::Vec2 position;
+    float moveDistance;
 };
 
 class GamePlayLayer : public cocos2d::Layer

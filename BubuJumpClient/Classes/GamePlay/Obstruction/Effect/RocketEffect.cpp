@@ -50,7 +50,7 @@ void RocketEffect::reset()
 
 float RocketEffect::changeSpeed(float speed)
 {
-    return this->getCharacterNode()->getMaxVerticalSpeed() * 1.5f;
+    return 1500.0f;
 }
 
 float RocketEffect::changeAcceleration(float acceleration)

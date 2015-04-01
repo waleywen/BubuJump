@@ -6,9 +6,12 @@
 
 #include "../Data/Local/LoaclManager.h"
 
+#include "../Audio/AudioManager.h"
+
 #include "CharacterNode.h"
 #include "Obstruction/Effect/BaseEffect.h"
 #include "Obstruction/SmallCoinNode.h"
+#include "Obstruction/SmallCoinMoveNode.h"
 #include "Obstruction/InvisibleCoinNode.h"
 #include "Obstruction/IndividualIncomeTaxCoinNode.h"
 #include "Obstruction/UrbanMaintenanceAndConstructionTaxCoinNode.h"
@@ -21,7 +24,10 @@
 #include "Obstruction/LandValueIncrementTaxCoinNode.h"
 #include "Obstruction/UrbanLandUseTaxCoinNode.h"
 #include "Obstruction/FootboardNode.h"
+#include "Obstruction/FootboardAirNode.h"
+#include "Obstruction/FootboardSpaceNode.h"
 #include "Obstruction/FootboardCloudNode.h"
+#include "Obstruction/FootboardMoveNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/SoftCloudNode.h"
 #include "Obstruction/HeartNode.h"
@@ -35,8 +41,8 @@
 
 USING_NS_CC;
 
-//const int PHASE_DISTANCE = 64000;
-const int PHASE_DISTANCE = 9000;
+const int PHASE_DISTANCE = 64000;
+//const int PHASE_DISTANCE = 9000;
 
 GamePlayLayer::~GamePlayLayer()
 {
@@ -254,7 +260,7 @@ bool GamePlayLayer::init()
     
     if (level0GamePlayDataVectors.size() == 0)
     {
-        for (int i = 1; i <= 1; i++)
+        for (int i = 1; i <= 3; i++)
         {
             level0GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level1_xGamePlayDataVector = level0GamePlayDataVectors.back();
@@ -263,7 +269,7 @@ bool GamePlayLayer::init()
     }
     if (level1GamePlayDataVectors.size() == 0)
     {
-        for (int i = 1; i <= 9; i++)
+        for (int i = 1; i <= 10; i++)
         {
             level1GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level1_xGamePlayDataVector = level1GamePlayDataVectors.back();
@@ -272,7 +278,7 @@ bool GamePlayLayer::init()
     }
     if (level2GamePlayDataVectors.size() == 0)
     {
-        for (int i = 1; i <= 6; i++)
+        for (int i = 1; i <= 10; i++)
         {
             level2GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level2_xGamePlayDataVector = level2GamePlayDataVectors.back();
@@ -281,7 +287,7 @@ bool GamePlayLayer::init()
     }
     if (level3GamePlayDataVectors.size() == 0)
     {
-        for (int i = 1; i <= 1; i++)
+        for (int i = 1; i <= 10; i++)
         {
             level3GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level3_xGamePlayDataVector = level3GamePlayDataVectors.back();
@@ -290,7 +296,7 @@ bool GamePlayLayer::init()
     }
     if (level4GamePlayDataVectors.size() == 0)
     {
-        for (int i = 1; i <= 1; i++)
+        for (int i = 1; i <= 10; i++)
         {
             level4GamePlayDataVectors.push_back(GamePlayDataVector());
             GamePlayDataVector& level4_xGamePlayDataVector = level4GamePlayDataVectors.back();
@@ -369,6 +375,8 @@ void GamePlayLayer::gameUpdate(float delta)
         this->_characterNode->setEffect(effect);
         this->_characterNode->setCurrentSpeed(this->_characterNode->getMaxVerticalSpeed());
         
+        AudioManager::getInstance()->playEffect("Sound/sfx-rocket.aac");
+
         fadeIn = FadeIn::create(1.0f);
         delayTime = DelayTime::create(1.0f);
         fadeOut1 = FadeOut::create(1.0f);
@@ -423,19 +431,61 @@ void GamePlayLayer::gameUpdate(float delta)
             layer3->removeFromParent();
             
             auto node1 = CSLoader::createNode("Phase3.1.csb");
+            auto actionTimeline1 = CSLoader::createTimeline("Phase3.1.csb");
+            node1->runAction(actionTimeline1);
+            actionTimeline1->gotoFrameAndPlay(0, true);
             node1->setTag(501);
             node1->setPosition(Vec2(-1000.0f, -1000.0f));
             auto node2 = CSLoader::createNode("Phase3.2.csb");
+            auto actionTimeline2 = CSLoader::createTimeline("Phase3.2.csb");
+            node2->runAction(actionTimeline2);
+            actionTimeline2->gotoFrameAndPlay(0, true);
             node2->setTag(502);
             node2->setPosition(Vec2(-1000.0f, -1000.0f));
             auto node3 = CSLoader::createNode("Phase3.3.csb");
+            auto actionTimeline3 = CSLoader::createTimeline("Phase3.3.csb");
+            node3->runAction(actionTimeline3);
+            actionTimeline3->gotoFrameAndPlay(0, true);
             node3->setTag(503);
             node3->setPosition(Vec2(-1000.0f, -1000.0f));
             
             this->_mainGameLayer->addChild(node1, 10);
             this->_mainGameLayer->addChild(node2, 10);
             this->_mainGameLayer->addChild(node3, 10);
+        }
+        else if (currentTransitionPhase < 4)
+        {
+            this->_backgroundSprite->setTexture("Background3.png");
             
+            auto layer1 = this->_mainGameLayer->getChildByTag(501);
+            layer1->removeFromParent();
+            auto layer2 = this->_mainGameLayer->getChildByTag(502);
+            layer2->removeFromParent();
+            auto layer3 = this->_mainGameLayer->getChildByTag(503);
+            layer3->removeFromParent();
+            
+            auto node1 = CSLoader::createNode("Phase4.1.csb");
+            auto actionTimeline1 = CSLoader::createTimeline("Phase4.1.csb");
+            node1->runAction(actionTimeline1);
+            actionTimeline1->gotoFrameAndPlay(0, true);
+            node1->setTag(501);
+            node1->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node2 = CSLoader::createNode("Phase4.2.csb");
+            auto actionTimeline2 = CSLoader::createTimeline("Phase4.2.csb");
+            node2->runAction(actionTimeline2);
+            actionTimeline2->gotoFrameAndPlay(0, true);
+            node2->setTag(502);
+            node2->setPosition(Vec2(-1000.0f, -1000.0f));
+            auto node3 = CSLoader::createNode("Phase4.3.csb");
+            auto actionTimeline3 = CSLoader::createTimeline("Phase4.3.csb");
+            node3->runAction(actionTimeline3);
+            actionTimeline3->gotoFrameAndPlay(0, true);
+            node3->setTag(503);
+            node3->setPosition(Vec2(-1000.0f, -1000.0f));
+            
+            this->_mainGameLayer->addChild(node1, 10);
+            this->_mainGameLayer->addChild(node2, 10);
+            this->_mainGameLayer->addChild(node3, 10);
         }
     }
     
@@ -464,6 +514,8 @@ void GamePlayLayer::gameUpdate(float delta)
         {
             auto sequenceAction = Sequence::create(RotateTo::create(0.25f, 180), RotateTo::create(0.25f, 360), NULL);
             this->_characterNode->runAction(Repeat::create(sequenceAction, 999));
+            
+            AudioManager::getInstance()->playEffect("Sound/sfx-player-die.aac");
         }
     }
     
@@ -493,13 +545,13 @@ void GamePlayLayer::accelerated(cocos2d::Acceleration *acceleration, cocos2d::Ev
 
 void GamePlayLayer::startPlay()
 {
-    auto fadeIn = FadeIn::create(1.0f);
-    auto delayTime = DelayTime::create(1.0f);
-    auto fadeOut1 = FadeOut::create(1.0f);
-    auto sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
-    int indexNo = this->_transitionPhase <= 3 ? this->_transitionPhase : 3;
-    this->_clearanceSprite->setTexture("Welcome" + CommonUtility::convertToString(indexNo + 1) + ".png");
-    this->_clearanceSprite->runAction(sequence);
+//    auto fadeIn = FadeIn::create(1.0f);
+//    auto delayTime = DelayTime::create(1.0f);
+//    auto fadeOut1 = FadeOut::create(1.0f);
+//    auto sequence = Sequence::create(fadeIn, delayTime, fadeOut1, nullptr);
+//    int indexNo = this->_transitionPhase <= 3 ? this->_transitionPhase : 3;
+//    this->_clearanceSprite->setTexture("Welcome" + CommonUtility::convertToString(indexNo + 1) + ".png");
+//    this->_clearanceSprite->runAction(sequence);
 
     this->_characterNode->startPlay();
 }
@@ -514,6 +566,8 @@ void GamePlayLayer::revive(int coinCount)
     this->_characterNode->stopAllActions();
     this->_characterNode->setRotation(0.0f);
     this->_characterNode->revive();
+    
+    AudioManager::getInstance()->playEffect("Sound/sfx-rocket.aac");
 }
 
 int GamePlayLayer::getHeartCount()
@@ -603,6 +657,11 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = SmallCoinNode::create();
         obstructionNode->setCollisionSize(Size(60.0f, 60.0f));
     }
+    else if (SmallCoinMoveNodeType == nodeType)
+    {
+        obstructionNode = SmallCoinMoveNode::create();
+        obstructionNode->setCollisionSize(Size(60.0f, 60.0f));
+    }
     else if (InvisibleCoinNodeType == nodeType)
     {
         obstructionNode = InvisibleCoinNode::create();
@@ -663,10 +722,25 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
         obstructionNode = FootboardNode::create();
         obstructionNode->setCollisionSize(Size(150.0f, 92.0f));
     }
+    else if (FootboardAirNodeType == nodeType)
+    {
+        obstructionNode = FootboardAirNode::create();
+        obstructionNode->setCollisionSize(Size(186.0f, 83.0f));
+    }
+    else if (FootboardSpaceNodeType == nodeType)
+    {
+        obstructionNode = FootboardSpaceNode::create();
+        obstructionNode->setCollisionSize(Size(185.0f, 86.0f));
+    }
     else if (FootboardCloudNodeType == nodeType)
     {
         obstructionNode = FootboardCloudNode::create();
         obstructionNode->setCollisionSize(Size(150.0f, 92.0f));
+    }
+    else if (FootboardMoveNodeType == nodeType)
+    {
+        obstructionNode = FootboardMoveNode::create();
+        obstructionNode->setCollisionSize(Size(138.0f, 93.0f));
     }
     else if (ThornFootboardNodeType == nodeType)
     {
@@ -787,7 +861,11 @@ void GamePlayLayer::buildTopperScene()
                 {
                     ObstructionNode* gameNode = nullptr;
 
-                    if (CommonUtility::isStringStartWith(gamePlayData.typeName, "SmallCoin"))
+                    if (CommonUtility::isStringStartWith(gamePlayData.typeName, "SmallCoinMove"))
+                    {
+                        gameNode = this->getObstructionNode(SmallCoinMoveNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "SmallCoin"))
                     {
                         gameNode = this->getObstructionNode(SmallCoinNodeType);
                     }
@@ -835,13 +913,25 @@ void GamePlayLayer::buildTopperScene()
                     {
                         gameNode = this->getObstructionNode(UrbanLandUseTaxCoinNodeType);
                     }
-                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Footboard"))
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FootboardAir"))
                     {
-                        gameNode = this->getObstructionNode(FootboardNodeType);
+                        gameNode = this->getObstructionNode(FootboardAirNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FootboardSpace"))
+                    {
+                        gameNode = this->getObstructionNode(FootboardSpaceNodeType);
                     }
                     else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FootboardCloud"))
                     {
                         gameNode = this->getObstructionNode(FootboardCloudNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "FootboardMove"))
+                    {
+                        gameNode = this->getObstructionNode(FootboardMoveNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Footboard"))
+                    {
+                        gameNode = this->getObstructionNode(FootboardNodeType);
                     }
                     else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "ThornFootboard"))
                     {
@@ -890,6 +980,32 @@ void GamePlayLayer::buildTopperScene()
                     {
                         UFONode* ufoNode = static_cast<UFONode*>(gameNode);
                         ufoNode->moveWithRange(Vec2(0.0f, newPosition.y), Vec2(designResolutionSize.width, newPosition.y));
+                    }
+                    else if (SmallCoinMoveNodeType == gameNode->getNodeType())
+                    {
+                        SmallCoinMoveNode* smallCoinMoveNode = static_cast<SmallCoinMoveNode*>(gameNode);
+                        if (gamePlayData.moveDistance > 0.1f || gamePlayData.moveDistance < -0.1f)
+                        {
+                            smallCoinMoveNode->moveWithRange(newPosition, newPosition + Vec2(gamePlayData.moveDistance, 0.0f));
+                        }
+                        else
+                        {
+                            smallCoinMoveNode->stopAllActions();
+                            smallCoinMoveNode->setPosition(newPosition);
+                        }
+                    }
+                    else if (FootboardMoveNodeType == gameNode->getNodeType())
+                    {
+                        FootboardMoveNode* footboardMoveNode = static_cast<FootboardMoveNode*>(gameNode);
+                        if (gamePlayData.moveDistance > 0.1f || gamePlayData.moveDistance < -0.1f)
+                        {
+                            footboardMoveNode->moveWithRange(newPosition, newPosition + Vec2(gamePlayData.moveDistance, 0.0f));
+                        }
+                        else
+                        {
+                            footboardMoveNode->stopAllActions();
+                            footboardMoveNode->setPosition(newPosition);
+                        }
                     }
                     else
                     {
@@ -979,6 +1095,7 @@ void GamePlayLayer::readGamePlayDataToVector(std::string csbName, GamePlayDataVe
         GamePlayData gamePlayData;
         gamePlayData.typeName = node->getName();
         gamePlayData.position = node->getPosition();
+        gamePlayData.moveDistance = node->getRotationSkewX();
         gamePlayDataVector.push_back(gamePlayData);
     }
 }

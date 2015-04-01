@@ -10,7 +10,7 @@ class BaseEffect;
 class GamePlayUILayer : public cocos2d::Layer
 {
 public:
-    GamePlayUILayer() : _heartCount(0), _coinAmount(0), _maxDistance(0), _effect(nullptr), _coinAmountLabel(nullptr), _heartLabel(nullptr), _distanceLabel(nullptr), _propSprite(nullptr), _currentCoinAmount(0), _currentDistance(0) {};
+    GamePlayUILayer() : _heartCount(0), _coinAmount(0), _maxDistance(0), _effect(nullptr), _coinAmountLabel(nullptr), _heartLabel(nullptr), _distanceLabel(nullptr), _propSprite(nullptr), _currentCoinAmount(0), _currentDistance(0), _readyDuration(0), _nextPhase(1) {};
     virtual ~GamePlayUILayer();
     
     virtual bool init() override;
@@ -33,6 +33,9 @@ private:
 
     int _currentCoinAmount;
     float _currentDistance;
+    
+    float _readyDuration;
+    int _nextPhase;
 };
 
 #endif // _GamePlayUILayer_H_

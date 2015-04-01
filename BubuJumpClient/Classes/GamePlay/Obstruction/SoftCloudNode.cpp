@@ -1,8 +1,13 @@
 #include "SoftCloudNode.h"
 
+#include "audio/include/SimpleAudioEngine.h"
+
+#include "../../Audio/AudioManager.h"
+
 #include "../CharacterNode.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 SoftCloudNode::~SoftCloudNode()
 {
@@ -31,6 +36,8 @@ void SoftCloudNode::collided(CharacterNode *characterNode)
             characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
             this->setState(InactivatedNodeState);
             this->setVisible(false);
+            
+            AudioManager::getInstance()->playEffect("Sound/sfx-soft-cloud.aac");
         }
     }
 }

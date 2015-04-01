@@ -4,6 +4,8 @@
 
 #include "cocostudio/CocoStudio.h"
 
+#include "../Audio/AudioManager.h"
+
 #include "../UIHelper.h"
 #include "../CommonUtility.h"
 #include "GamePauseUILayer.h"
@@ -88,6 +90,16 @@ bool GamePlayUILayer::init()
 
 void GamePlayUILayer::gameUpdate(float delta)
 {
+    if (this->_readyDuration < 4)
+    {
+        this->_readyDuration += delta;
+        if (this->_readyDuration > this->_nextPhase)
+        {
+            ++this->_nextPhase;
+            AudioManager::getInstance()->playEffect("Sound/sfx-count-down.wav");
+        }
+    }
+    
     this->_heartLabel->setString(CommonUtility::convertToString(this->_heartCount));
 
     const int addCoinPerSecond = 100;
