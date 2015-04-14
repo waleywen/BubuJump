@@ -13,11 +13,12 @@ enum CharacterMode
 {
     Waiting = 0,
     Playing = 1,
+    Dead    = 2,
 };
 
 enum CharacterActionState
 {
-    Idling = 0,
+    Idling  = 0,
     Running = 1,
     Jumping = 2,
     Downing = 3,
@@ -32,7 +33,7 @@ struct MovingRange
 class CharacterNode : public GameBaseNode
 {
 public:
-    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}), _obstructionNodeVector(nullptr), _taxCoinMap(), _currentSpeed(0), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr),  _heartCount(0), _coinAmount(0), _hurtDuration(0), _effect(nullptr) {};
+    CharacterNode() : _mode(Waiting), _actionState(Idling), _maxVerticalSpeed(0), _maxHorizontalSpeed(0), _normalAcceleration(0), _horizontalMovingRange({0, 0}), _obstructionNodeVector(nullptr), _taxCoinMap(), _currentSpeed(0), _horizontalSpeedPercentage(0), _characterSpriteNode(nullptr), _actionTimeline(nullptr),  _heartCount(0), _coinAmount(0), _hurtDuration(0), _jumped(false), _effect(nullptr) {};
     virtual ~CharacterNode();
     
     virtual bool init() override;
@@ -40,6 +41,7 @@ public:
 
     void startPlay();
     void revive();
+    void goJump();
     
     void addHeart(int count);
     void dropHeart(int count);
@@ -64,7 +66,8 @@ public:
     
     CC_SYNTHESIZE_PASS_BY_REF(TaxCoinMap, _taxCoinMap, TaxCoinMap);
     
-    CC_PROPERTY(float, _currentSpeed, CurrentSpeed);
+    float getCurrentSpeed();
+    void setCurrentSpeed(float currentSpeed, bool jumped = false);
     CC_PROPERTY(float, _horizontalSpeedPercentage, HorizontalSpeedPercentage);
 private:
     float getCurrentAcceleration();
@@ -79,9 +82,13 @@ private:
     cocos2d::Node* _characterSpriteNode;
     cocostudio::timeline::ActionTimeline* _actionTimeline;
     
+    float _currentSpeed;
+    
     int _heartCount;
     float _coinAmount;
     float _hurtDuration;
+    
+    bool _jumped;
     
     BaseEffect* _effect;
 };

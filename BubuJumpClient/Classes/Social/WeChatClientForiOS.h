@@ -11,6 +11,7 @@ public:
     virtual ~WeChatClientForiOS() {};
     
     virtual void sendMessage(std::string message) override {};
+    virtual void sendPhoto(std::string imagePath) override {};
 };
 
 #endif

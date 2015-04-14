@@ -18,7 +18,7 @@ struct GamePlayData
 class GamePlayLayer : public cocos2d::Layer
 {
 public:
-    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _backgroundSprite(nullptr), _finishLineSprite(nullptr), _clearanceSprite(nullptr), _transitionNode(nullptr), _transitionLightsNode(nullptr), _lightLayerColor(nullptr), _characterNode(nullptr), _isTransiting(false), _transitionPhase(0), _lastBuildLine(0.0f), _obstructionPoolMap(), _obstructionVector(), _gamePlayDataLevelMap(), _currentPatternGamePlayDataVector(), _patternLowestLine(0.0f), _patternStartLine(0.0f) {};
+    GamePlayLayer() : _maxDistance(0), _dead(false), _visibleSize(), _origin(), _mainGameLayer(nullptr), _backgroundSprite(nullptr), _finishLineSprite(nullptr), _clearanceSprite(nullptr), _transitionNode(nullptr), _transitionLightsNode(nullptr), _lightLayerColor(nullptr), _characterNode(nullptr), _isTransiting(false), _transitionPhase(0), _lastBuildLine(0.0f), _qaReviveCount(0), _obstructionPoolMap(), _obstructionVector(), _gamePlayDataLevelMap(), _currentPatternGamePlayDataVector(), _patternLowestLine(0.0f), _patternStartLine(0.0f) {};
     virtual ~GamePlayLayer();
     
     virtual bool init() override;
@@ -27,6 +27,8 @@ public:
     
     void startPlay();
     void revive(int coinCount);
+    inline int getQAReviveCount() { return this->_qaReviveCount; };
+    void goJump();
     
     int getHeartCount();
     int getCoinAmount();
@@ -62,6 +64,7 @@ private:
     bool _isTransiting;
     int _transitionPhase;
     float _lastBuildLine;
+    int _qaReviveCount;
     
     typedef typename cocos2d::Vector<ObstructionNode*> ObstructionVector;
     typedef typename std::map<ObstructionNodeType, ObstructionVector> ObstructionPoolMap;

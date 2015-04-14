@@ -22,6 +22,49 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="GameOverUIBackground.png" />
           </NodeObjectData>
+          <NodeObjectData Name="GameOverUIBackgroun2" ActionTag="948298" FrameEvent="" Tag="20" ObjectIndex="6" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="514.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="297.0000" />
+            <PrePosition X="0.0000" Y="0.4016" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="GameOverUIBackgroun2.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="taxCoinListView" ActionTag="1750269617" FrameEvent="" Tag="77" ObjectIndex="1" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" VerticalType="0" ctype="ListViewObjectData">
+            <Position X="35.0000" Y="514.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="645.0000" Y="297.0000" />
+            <PrePosition X="0.0486" Y="0.4016" />
+            <PreSize X="0.8958" Y="0.2320" />
+            <SingleColor A="255" R="150" G="150" B="255" />
+            <FirstColor A="255" R="150" G="150" B="255" />
+            <EndColor A="255" R="255" G="255" B="255" />
+            <ColorVector ScaleY="1.0000" />
+          </NodeObjectData>
+          <NodeObjectData Name="GameOverUIBackground1" ActionTag="724360790" FrameEvent="" Tag="19" ObjectIndex="5" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="811.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="469.0000" />
+            <PrePosition X="0.0000" Y="0.6336" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="GameOverUIBackground1.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="GameOverUIBackgroun3" ActionTag="-200367284" FrameEvent="" Tag="21" ObjectIndex="7" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="0.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="514.0000" />
+            <PrePosition X="0.0000" Y="0.0000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="GameOverUIBackgroun3.png" />
+          </NodeObjectData>
           <NodeObjectData Name="distanceLabel" ActionTag="-1355858403" FrameEvent="" Tag="23" ObjectIndex="1" FontSize="48" LabelText="0" ctype="TextObjectData">
             <Position X="245.0000" Y="980.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
@@ -80,19 +123,6 @@
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="GameLeaderboardUIHomeButton.png" />
-          </NodeObjectData>
-          <NodeObjectData Name="taxCoinListView" ActionTag="1750269617" FrameEvent="" Tag="77" ObjectIndex="1" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" VerticalType="0" ctype="ListViewObjectData">
-            <Position X="35.0000" Y="517.0000" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="645.0000" Y="288.0000" />
-            <PrePosition X="0.0486" Y="0.4039" />
-            <PreSize X="0.8958" Y="0.2250" />
-            <SingleColor A="255" R="150" G="150" B="255" />
-            <FirstColor A="255" R="150" G="150" B="255" />
-            <EndColor A="255" R="255" G="255" B="255" />
-            <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
           <NodeObjectData Name="leaderboardScoreLabel1" ActionTag="785451222" VisibleForFrame="False" FrameEvent="" Tag="45" ObjectIndex="4" FontSize="36" LabelText="60000" ctype="TextObjectData">
             <Position X="650.0000" Y="448.0000" />

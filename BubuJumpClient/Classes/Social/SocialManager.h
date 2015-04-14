@@ -15,6 +15,7 @@ public:
     ~SocialManager();
     
     void shareMessageToWeChat(std::string message);
+    void sharePhotoToWeChat(std::string imagePath);
 private:
     WeChatClient* _weChatClient;
 };

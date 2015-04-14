@@ -33,4 +33,14 @@ void WeChatClientForAndroid::sendMessage(std::string message)
     }
 }
 
+void WeChatClientForAndroid::sendPhoto(std::string imagePath)
+{
+    if(JniHelper::getMethodInfo(this->_info, CLASS_NAME, "sendPhoto", "(Ljava/lang/String;)V"))
+    {
+        jstring jMessage = this->_info.env->NewStringUTF(imagePath.c_str());
+        this->_info.env->CallVoidMethod(this->_javaClient, this->_info.methodID, jMessage);
+        this->_info.env->DeleteLocalRef(jMessage);
+    }
+}
+
 #endif

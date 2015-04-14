@@ -54,6 +54,11 @@ void GamePlayScene::update(float delta)
     
     this->_gamePlayUILayer->gameUpdate(delta);
     
+    if (true == this->_gamePlayUILayer->getShouldJump())
+    {
+        this->_gamePlayLayer->goJump();
+    }
+    
     if (true == this->_gamePlayLayer->getDead())
     {
         GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();

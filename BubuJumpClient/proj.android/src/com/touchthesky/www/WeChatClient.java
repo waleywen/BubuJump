@@ -1,13 +1,18 @@
 package com.touchthesky.www;
 
+import java.io.ByteArrayOutputStream;
+
 import org.cocos2dx.cpp.AppActivity;
 
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXTextObject;
 import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.modelmsg.WXImageObject;
 
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 
 public class WeChatClient {
 
@@ -47,7 +52,25 @@ public class WeChatClient {
 
 		// 调用api接口发送数据到微信
 		api.sendReq(req);
+	}
 
+	public void sendPhoto(String imagePath) {
+		// respond with image message
+		Bitmap bmp = BitmapFactory.decodeFile(imagePath);
+		WXImageObject imgObj = new WXImageObject(bmp);
+
+		WXMediaMessage msg = new WXMediaMessage();
+		msg.mediaObject = imgObj;
+
+		Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, 150, 150, true);
+		bmp.recycle();
+		msg.thumbData = WeChatClient.bmpToByteArray(thumbBmp, true); // 设置缩略图
+
+		SendMessageToWX.Req req = new SendMessageToWX.Req();
+		req.transaction = buildTransaction("img");
+		req.message = msg;
+		req.scene = SendMessageToWX.Req.WXSceneTimeline;
+		api.sendReq(req);
 	}
 
 	private String buildTransaction(final String type) {
@@ -55,4 +78,21 @@ public class WeChatClient {
 				: type + System.currentTimeMillis();
 	}
 
+	private static byte[] bmpToByteArray(final Bitmap bmp,
+			final boolean needRecycle) {
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		bmp.compress(CompressFormat.PNG, 100, output);
+		if (needRecycle) {
+			bmp.recycle();
+		}
+
+		byte[] result = output.toByteArray();
+		try {
+			output.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 }

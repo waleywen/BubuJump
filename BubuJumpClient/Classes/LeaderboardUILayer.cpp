@@ -143,7 +143,7 @@ void LeaderboardUILayer::leaderboardRequested(void *resultData)
         
         LeaderboardRecord* record = recordVector->at(i);
 
-        if (50 == i)
+        if (50 == i && record->getPlace() != 51)
         {
             Layout* blankLayout = Layout::create();
             blankLayout->setContentSize(contentSize);

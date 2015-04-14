@@ -75,7 +75,6 @@
         <Project Name="UFONode.csd" />
         <Image Name="UFO.png" />
         <Project Name="MainMenuUI.csd" />
-        <Image Name="MainMenuUIBackground.png" />
         <Image Name="MainMenuUILeaderboardButton.png" />
         <Image Name="MainMenuUIOptionButton.png" />
         <Image Name="MainMenuUIPlayButton.png" />
@@ -231,6 +230,21 @@
         <Image Name="SmallCoin3.png" />
         <Image Name="SmallCoin4.png" />
         <Image Name="SmallCoin5.png" />
+        <Project Name="TaxBalloonNode.csd" />
+        <Image Name="TaxBalloon.png" />
+        <Project Name="ThornFootboardMoveNode.csd" />
+        <Image Name="ThornFootboardMove.png" />
+        <Project Name="MeteoriteNode.csd" />
+        <Image Name="Meteorite.png" />
+        <Image Name="GameResuscitationUIQAButtonD.png" />
+        <Image Name="HelpUIMovingCoinGuide.png" />
+        <Image Name="HelpUIMeteoriteGuide.png" />
+        <Image Name="HelpUITaxBalloonGuide.png" />
+        <Image Name="HelpUIThornFootboardGuide.png" />
+        <Image Name="HelpUIUFOGuide.png" />
+        <Image Name="GameOverUIBackgroun2.png" />
+        <Image Name="GameOverUIBackgroun3.png" />
+        <Image Name="GameOverUIBackground1.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

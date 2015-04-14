@@ -3,6 +3,7 @@
 #include "../../Audio/AudioManager.h"
 
 #include "../CharacterNode.h"
+#include "Effect/BaseEffect.h"
 
 USING_NS_CC;
 
@@ -25,10 +26,13 @@ void ThornFootboardNode::collided(CharacterNode *characterNode)
 {
     this->setState(PendingNodeState);
     characterNode->setCurrentSpeed(characterNode->getMaxVerticalSpeed());
-    characterNode->dropHeart(1);
+    characterNode->dropHeart(3);
     this->setVisible(false);
     
-    AudioManager::getInstance()->playEffect("Sound/sfx-thorn-footboard.aac");
+    if (nullptr == characterNode->getEffect() || InactivatedEffectState == characterNode->getEffect()->getState() || RocketEffectType != characterNode->getEffect()->getType())
+    {
+        AudioManager::getInstance()->playEffect("Sound/sfx-thorn-footboard.aac");
+    }
 }
 
 void ThornFootboardNode::reactivate()

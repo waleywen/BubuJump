@@ -6,7 +6,7 @@
 		<key>type</key>
 		<integer>1</integer>
 		<key>question</key>
-		<string>小明勤工助学，外出做家教取得的2000元的劳动报酬，需要按照什么所得项目缴纳个人所得税？</string>
+		<string>牛牛勤工助学，外出做家教取得2000元劳动报酬，需要按照什么项目缴纳个人所得税？</string>
 		<key>options</key>
 		<array>
 			<string>A、工资薪金所得</string>
@@ -21,22 +21,7 @@
 		<key>type</key>
 		<integer>1</integer>
 		<key>question</key>
-		<string>目前我国个人取得所得应缴纳个人所得税的项目有多少种？</string>
-		<key>options</key>
-		<array>
-			<string>A、8种</string>
-			<string>B、9种</string>
-			<string>C、11种</string>
-			<string>D、12种</string>
-		</array>
-		<key>answer</key>
-		<integer>3</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>1</integer>
-		<key>question</key>
-		<string>爸爸工作取得的工资是否要缴纳个人所得税？</string>
+		<string>牛牛的妈妈每月工资6000元，是否要缴纳个人所得税？</string>
 		<key>options</key>
 		<array>
 			<string>A、要</string>
@@ -49,7 +34,20 @@
 		<key>type</key>
 		<integer>1</integer>
 		<key>question</key>
-		<string>年所得超过多少万元的纳税人需要自行申报纳税？</string>
+		<string>过年了，牛牛爸爸单位发放购物礼品卡，是否要缴纳个人所得税？</string>
+		<key>options</key>
+		<array>
+			<string>A、要</string>
+			<string>B、不要</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>question</key>
+		<string>牛牛爸爸一年收入超过多少，就需要自行申报缴纳个人所得税？</string>
 		<key>options</key>
 		<array>
 			<string>A、10万元</string>
@@ -64,78 +62,11 @@
 		<key>type</key>
 		<integer>2</integer>
 		<key>question</key>
-		<string>企业所得税是依法对企业取得的所得进行征收税款的一个税种。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>2</integer>
-		<key>question</key>
-		<string>个人是企业所得税的纳税人。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>2</integer>
-		<key>question</key>
-		<string>法人企业是企业所得税的纳税人。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>2</integer>
-		<key>question</key>
-		<string>企业所得税的税率为25%。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>2</integer>
-		<key>question</key>
 		<string>企业所得税的征税对象是对（  ）征收。</string>
 		<key>options</key>
 		<array>
-			<string>A、收入</string>
-			<string>B、成本</string>
-			<string>C、利润</string>
-			<string>D、所得</string>
-		</array>
-		<key>answer</key>
-		<integer>4</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>在深圳，营业税的征收机关是：</string>
-		<key>options</key>
-		<array>
-			<string>A、深圳市国家税务局</string>
-			<string>B、深圳市地方税务局</string>
+			<string>A、成本</string>
+			<string>B、所得</string>
 		</array>
 		<key>answer</key>
 		<integer>2</integer>
@@ -144,33 +75,7 @@
 		<key>type</key>
 		<integer>3</integer>
 		<key>question</key>
-		<string>老王经营一家干洗店，主要经营项目是向顾客提供洗衣服务等。日常老王需申报以下哪种税费？</string>
-		<key>options</key>
-		<array>
-			<string>A、消费税</string>
-			<string>B、营业税</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>以下哪个不属于营业税税率：</string>
-		<key>options</key>
-		<array>
-			<string>A、1%</string>
-			<string>B、5%</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>深圳饮食、娱乐业有奖发票的最高奖金是：</string>
+		<string>牛牛和爸爸妈妈在深圳一家餐厅吃饭，有奖发票刮奖的最高奖金是（  ）。</string>
 		<key>options</key>
 		<array>
 			<string>A、10万元</string>
@@ -181,568 +86,9 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>某建筑公司12月份取得营业收入250万元，对照建筑业营业税税率是3%，该公司应该缴纳营业税：</string>
-		<key>options</key>
-		<array>
-			<string>A、125000元</string>
-			<string>B、75000元</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>根据相关规定，月营业额不超过3万元的营业税纳税人免征营业税。某小吃店11月取得营业收入2.5万元，服务业营业税税率是5%，其应该缴纳多少营业税：</string>
-		<key>options</key>
-		<array>
-			<string>A、0元</string>
-			<string>B、1250元</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>3</integer>
-		<key>question</key>
-		<string>小张是一名公司职员，每月工资1万元，需要缴纳多少营业税：</string>
-		<key>options</key>
-		<array>
-			<string>A、无需缴纳营业税</string>
-			<string>B、650元</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
 		<integer>4</integer>
 		<key>question</key>
-		<string>城建税的全称是：</string>
-		<key>options</key>
-		<array>
-			<string>A、城市维护建设税</string>
-			<string>B、城市建设税</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>4</integer>
-		<key>question</key>
-		<string>某公司某月需缴纳营业税1万元、增值税4万元，以城建税的税率为7%计算，当月需缴纳城建税多少元：</string>
-		<key>options</key>
-		<array>
-			<string>A、700元</string>
-			<string>B、3500元</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>4</integer>
-		<key>question</key>
-		<string>某小区门口有家烟酒杂货店，主要经营范围是向居民销售生活日用品，需要缴纳营业税。</string>
-		<key>options</key>
-		<array>
-			<string>A、正确</string>
-			<string>B、错误</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>4</integer>
-		<key>question</key>
-		<string>营改增的全称是营业税改征增值税。</string>
-		<key>options</key>
-		<array>
-			<string>A、正确</string>
-			<string>B、错误</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>4</integer>
-		<key>question</key>
-		<string>营业税是对在中国境内提供应税劳务、转让无形资产或销售不动产的单位和个人，就其所取得的营业额征收的一种税。</string>
-		<key>options</key>
-		<array>
-			<string>A、正确</string>
-			<string>B、错误</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>4</integer>
-		<key>question</key>
-		<string>城建税是以增值税、消费税、营业税“三税”实际缴纳的税额为计算依据，随“三税”同时附征。</string>
-		<key>options</key>
-		<array>
-			<string>A、正确</string>
-			<string>B、错误</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>个人购买住房是否需要缴纳印花税？</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>个人购买商铺缴纳印花税的税率是多少？</string>
-		<key>options</key>
-		<array>
-			<string>A、千分之五</string>
-			<string>B、万分之五</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>下列哪项属于印花税的征税范围。</string>
-		<key>options</key>
-		<array>
-			<string>A、身份证</string>
-			<string>B、房产产权证</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>购销合同印花税的税率是（  ）</string>
-		<key>options</key>
-		<array>
-			<string>A、万分之三</string>
-			<string>B、百分之十</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>按税法规定可以免缴印花税的凭证是（  ）</string>
-		<key>options</key>
-		<array>
-			<string>A、财产保险合同</string>
-			<string>B、无息贷款合同</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>财产所有人将财产捐给（  ）所书立的书据，应该缴纳印花税。</string>
-		<key>options</key>
-		<array>
-			<string>A、私营企业</string>
-			<string>B、政府</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>个人将财产赠与学校所书立的合同，免征印花税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>个人将财产赠与朋友所书立的合同，应征印花税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>书立各类经济合同时，以合同当事人为印花税的纳税人。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>凡多贴印花税票者，不可申请退税，但可申请下期抵扣。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>商品买卖合同按照购销合同征收印花税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>借款合同的印花税税率为万分之零点五。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>印花税主要是针对部分经济合同征收的一种税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>印花税票是以人民币为单位的。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>财产租赁合同需要征收印花税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>5</integer>
-		<key>question</key>
-		<string>印花税是对所有经济合同征收的一种税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>摩托车是否需要交纳车船税。</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>游艇是否需要交纳车船税。</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>在一个纳税年度内，已经缴纳车船税的车辆被偷了，不可以申请退税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>拖拉机需要缴纳车船税吗？</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>新能源车可以免征或者减半征收车船税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>乘用车的年缴税额跟车辆的排气量有关。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>车船税是对我国境内的车辆、船舶征收的一种税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>警用车船也需要缴纳车船税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>公共交通车船可以减免车船税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>车船税是按（  ）申报缴纳。</string>
-		<key>options</key>
-		<array>
-			<string>A、年</string>
-			<string>B、月</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>乘用车的排气量越大，应缴纳的车船税就越多。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>6</integer>
-		<key>question</key>
-		<string>车船税是财产税的一种。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>个人出租房子需要缴纳房产税吗？</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>个人自住的房屋需要缴纳房产税吗？</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>出租房屋的房产税是根据租金收入来计算的。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>房产税是财产税的一种。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>学校自用的房产要征房产税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>7</integer>
-		<key>question</key>
-		<string>房产税的税额是根据房产售价计算的。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>8</integer>
-		<key>question</key>
-		<string>契税是由购房人缴纳的。</string>
+		<string>城建税是随增值税、消费税、营业税“三税”同时附征的税。</string>
 		<key>options</key>
 		<array>
 			<string>A、是</string>
@@ -753,13 +99,65 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>8</integer>
+		<integer>7</integer>
 		<key>question</key>
-		<string>我市的契税税率是？</string>
+		<string>牛牛的叔叔将房屋出租需要缴纳房产税吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、3%</string>
-			<string>B、5%</string>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>7</integer>
+		<key>question</key>
+		<string>牛牛家自己居住的房屋需要缴纳房产税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>7</integer>
+		<key>question</key>
+		<string>牛牛的叔叔出租房屋的房产税是根据（  ）来计算的。</string>
+		<key>options</key>
+		<array>
+			<string>A、租金收入</string>
+			<string>B、房产售价</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>7</integer>
+		<key>question</key>
+		<string>牛牛所在学校自用的房产（  ）缴纳房产税。</string>
+		<key>options</key>
+		<array>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>8</integer>
+		<key>question</key>
+		<string>牛牛爸爸向朋友购买了一套房子，由（  ）缴纳契税。</string>
+		<key>options</key>
+		<array>
+			<string>A、牛牛爸爸</string>
+			<string>B、朋友</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -768,7 +166,7 @@
 		<key>type</key>
 		<integer>8</integer>
 		<key>question</key>
-		<string>契税的应纳税额是根据（  ）计算的？</string>
+		<string>契税的应纳税额是根据（  ）计算的。</string>
 		<key>options</key>
 		<array>
 			<string>A、成交价</string>
@@ -781,7 +179,7 @@
 		<key>type</key>
 		<integer>8</integer>
 		<key>question</key>
-		<string>如果我购买的是我家庭的唯一住房，可以减免契税吗？</string>
+		<string>如果牛牛爸爸购买的是家庭的唯一住房，可以减免契税吗？</string>
 		<key>options</key>
 		<array>
 			<string>A、可以</string>
@@ -807,7 +205,7 @@
 		<key>type</key>
 		<integer>8</integer>
 		<key>question</key>
-		<string>爸爸的房产赠送给我，需要交契税吗？</string>
+		<string>爸爸的房产赠送给牛牛，需要交契税吗？</string>
 		<key>options</key>
 		<array>
 			<string>A、需要</string>
@@ -818,178 +216,9 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>9</integer>
+		<integer>6</integer>
 		<key>question</key>
-		<string>个人所有的居住房屋需要缴纳城镇土地使用税吗？</string>
-		<key>options</key>
-		<array>
-			<string>A、需要</string>
-			<string>B、不需要</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>9</integer>
-		<key>question</key>
-		<string>城镇土地使用税的应纳税额和实际占用的土地面积多少有关。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>9</integer>
-		<key>question</key>
-		<string>土地等级越高，城镇土地使用税的适用税额就越高。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>9</integer>
-		<key>question</key>
-		<string>城镇土地使用税的征税范围只包括城市的土地。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>9</integer>
-		<key>question</key>
-		<string>城镇土地使用税是财产税的一种。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>9</integer>
-		<key>question</key>
-		<string>学校用地可以免征城镇土地使用税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>10</integer>
-		<key>question</key>
-		<string>个人转让国有土地使用权需要缴纳土地增值税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>10</integer>
-		<key>question</key>
-		<string>个人出租房产需要缴纳土地增值税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>10</integer>
-		<key>question</key>
-		<string>个人销售住房暂免征收土地增值税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>10</integer>
-		<key>question</key>
-		<string>征收土地增值税可以调节土地增值收益，规范房地产交易秩序。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>税收管辖权的基本形式有居民管辖权、地域管辖权，我国实行双重管辖。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>税收协定可以有效避免和消除对跨国纳税人的重复征税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>只有中国企业和个人才能开具《中国税收居民身份证明》。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>某外国企业转让深圳市福田区的一处房产取得所得，需不需要在当地缴纳税款。</string>
+		<string>牛牛的妈妈拥有一辆摩托车，她需要缴纳车船税吗？</string>
 		<key>options</key>
 		<array>
 			<string>A、需要</string>
@@ -1000,24 +229,9 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>11</integer>
+		<integer>6</integer>
 		<key>question</key>
-		<string>两国税务主管当局之间根据约定，以批量形式相互向对方提供有关纳税人取得专项收入的税收情报的行为是（  ）</string>
-		<key>options</key>
-		<array>
-			<string>A、专项情报交换</string>
-			<string>B、自动情报交换</string>
-			<string>C、自发情报交换</string>
-			<string>D、直接情报交换</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>“走出去”企业就来源于境外的所得需不需要缴纳企业所得税（  ）</string>
+		<string>牛牛的叔叔拥有一艘游艇，他需要缴纳车船税吗？</string>
 		<key>options</key>
 		<array>
 			<string>A、需要</string>
@@ -1028,22 +242,9 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>11</integer>
+		<integer>6</integer>
 		<key>question</key>
-		<string>“走出去”企业已在境外缴纳的所得税额不可以在国内抵免。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>“走出去”企业境外业务的盈亏可以相互弥补吗？(  )</string>
+		<string>牛牛爸爸想买一辆新能源车，可以免征或者减半征收车船税吗？</string>
 		<key>options</key>
 		<array>
 			<string>A、可以</string>
@@ -1054,26 +255,130 @@
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>11</integer>
+		<integer>6</integer>
 		<key>question</key>
-		<string>非居民企业税款缴纳方式有源泉扣缴和自行申报缴纳两种方式。</string>
+		<string>警用车船需要缴纳车船税吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>6</integer>
+		<key>question</key>
+		<string>乘用车的排气量越大，车船税就要缴纳（  ）。</string>
+		<key>options</key>
+		<array>
+			<string>A、越多</string>
+			<string>B、越少</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>type</key>
-		<integer>11</integer>
+		<integer>5</integer>
 		<key>question</key>
-		<string>只要在境外注册成立的企业都是非居民企业。</string>
+		<string>下列哪项属于印花税的征税范围（  ）。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、牛牛的身份证</string>
+			<string>B、牛牛家房产的产权证</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>5</integer>
+		<key>question</key>
+		<string>牛牛的叔叔将个人财产赠与学校所签订的合同，免征印花税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、是</string>
+			<string>B、否</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>5</integer>
+		<key>question</key>
+		<string>牛牛的叔叔将财产赠与朋友所签订的合同，需要缴纳印花税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>5</integer>
+		<key>question</key>
+		<string>印花税票（  ）以人民币为单位的</string>
+		<key>options</key>
+		<array>
+			<string>A、是</string>
+			<string>B、不是</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>5</integer>
+		<key>question</key>
+		<string>如果多贴了印花税票，（  ）申请退税。</string>
+		<key>options</key>
+		<array>
+			<string>A、可以</string>
+			<string>B、不可以</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>9</integer>
+		<key>question</key>
+		<string>牛牛家居住的房屋需要缴纳城镇土地使用税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、需要</string>
+			<string>B、不需要</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>9</integer>
+		<key>question</key>
+		<string>牛牛学校的用地可以免征城镇土地使用税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、可以</string>
+			<string>B、不能</string>
+		</array>
+		<key>answer</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>10</integer>
+		<key>question</key>
+		<string>牛牛的叔叔出租房产或销售住房需要缴纳土地增值税吗？</string>
+		<key>options</key>
+		<array>
+			<string>A、需要</string>
+			<string>B、不需要</string>
 		</array>
 		<key>answer</key>
 		<integer>2</integer>
@@ -1082,7 +387,7 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>税务局为纳税人提供纳税咨询服务是（  ）</string>
+		<string>税务局为纳税人提供纳税咨询服务是（  ）。</string>
 		<key>options</key>
 		<array>
 			<string>A、收费的</string>
@@ -1095,11 +400,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>纳税人在进行纳税申报时，必须本人亲自申报。</string>
+		<string>牛牛爸爸在进行纳税申报时，必须本人亲自申报吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、是</string>
+			<string>B、否</string>
 		</array>
 		<key>answer</key>
 		<integer>2</integer>
@@ -1108,11 +413,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>目前我们国家共有几部税收法律（  ）</string>
+		<string>牛牛爸爸在进行纳税申报时，可以采取邮寄申报的方式吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、4部</string>
-			<string>B、3部</string>
+			<string>A、可以</string>
+			<string>B、不可以</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -1121,11 +426,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>国家向纳税人收税是无偿的。</string>
+		<string>国家向纳税人收税是（  ）。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、无偿的</string>
+			<string>B、有偿的</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -1134,11 +439,24 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>如果没有税收，政府机关将无法正常运转。</string>
+		<string>如果没有税收，政府机关能正常运转吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、能</string>
+			<string>B、不能</string>
+		</array>
+		<key>answer</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>11</integer>
+		<key>question</key>
+		<string>牛牛爸爸买了一台新电脑，商家拒绝向他开具发票（  ）违法行为。</string>
+		<key>options</key>
+		<array>
+			<string>A、是</string>
+			<string>B、不是</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -1147,24 +465,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>我们在商场里买的每一件东西都是要收税的。</string>
+		<string>按照税种的不同，可以将发票分为增值税发票和普通发票。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>目前我国负责税收征管的主要政府机关是各地的国家税务局和地方税务局。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、是</string>
+			<string>B、否</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -1173,11 +478,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>在税务局工作的税务人员不需要纳税。</string>
+		<string>牛牛爸爸的公司（  ）转借、转让发票给牛牛叔叔的公司。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、可以</string>
+			<string>B、不能</string>
 		</array>
 		<key>answer</key>
 		<integer>2</integer>
@@ -1186,118 +491,12 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>如果你要开办一家企业，你需要在规定的时间内到税务局办理登记手续。</string>
+		<string>目前我国负责税收征管的主要政府机关是各地的（  ）。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>目前我国只针对个人收税，对公司不收税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>税务机关可以不经纳税人申报，直接到纳税人的银行账号里扣款收税。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>纳税人必须无条件接受税务机关作出的处罚，没有上诉的权利。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>可以从不同角度，按照不同的管理要求对发票进行分类。按照税种的不同，可分为增值税发票和普通发票。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>发票的存根联是开票方作为记账的原始凭证。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>开具发票的单位和个人应当按照税务机关的规定存放和保管发票，不得擅自损毁。开具的发票存根联和发票登记簿，应当保存（  ）年。保存期满，报经税务机关查验后销毁。</string>
-		<key>options</key>
-		<array>
-			<string>A、3年</string>
-			<string>B、5年</string>
-			<string>C、10年</string>
-			<string>D、20年</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>商家拒绝像消费者开具发票不是违法行为。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>开具发票应当按照规定的时限、顺序、栏目，全部连词一次性如实开具，并加盖（  ）。</string>
-		<key>options</key>
-		<array>
-			<string>A、公章</string>
-			<string>B、法人签章</string>
-			<string>C、发票专用章</string>
+			<string>A、国家税务局</string>
+			<string>B、地方税务局</string>
+			<string>C、国家税务局和地方税务局</string>
 		</array>
 		<key>answer</key>
 		<integer>3</integer>
@@ -1306,11 +505,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>任何单位和个人不得转借、转让、代开发票。</string>
+		<string>牛牛的叔叔要开办一家企业，就需要在规定的时间内到（  ）办理税务登记手续。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、税务局</string>
+			<string>B、工商局</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>
@@ -1319,24 +518,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>不符合规定的发票，不得作为财务报销凭证，任何单位和个人（  ）。</string>
+		<string>税务机关可以不经纳税人申报，直接到纳税人的银行账号里扣款收税吗？</string>
 		<key>options</key>
 		<array>
-			<string>A、有权拒收</string>
-			<string>B、无权拒收</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>不须经纳税机关批准，纳税人可拆本使用发票，但不得自行扩大发票使用范围。</string>
-		<key>options</key>
-		<array>
-			<string>A、对</string>
-			<string>B、错</string>
+			<string>A、可以</string>
+			<string>B、不能</string>
 		</array>
 		<key>answer</key>
 		<integer>2</integer>
@@ -1345,24 +531,11 @@
 		<key>type</key>
 		<integer>11</integer>
 		<key>question</key>
-		<string>逾期申报最高罚款金额为1万元。</string>
+		<string>纳税人对税务机关作出的处罚，（  ）上诉的权利。</string>
 		<key>options</key>
 		<array>
-			<string>A、对</string>
-			<string>B、错</string>
-		</array>
-		<key>answer</key>
-		<integer>1</integer>
-	</dict>
-	<dict>
-		<key>type</key>
-		<integer>11</integer>
-		<key>question</key>
-		<string>邮寄申报的申报日期是以（  ）为实际申报日期。</string>
-		<key>options</key>
-		<array>
-			<string>A、寄出的邮戳日期</string>
-			<string>B、税务机关收到的当日</string>
+			<string>A、有</string>
+			<string>B、没有</string>
 		</array>
 		<key>answer</key>
 		<integer>1</integer>

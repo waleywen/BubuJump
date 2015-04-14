@@ -28,6 +28,7 @@
 #include "Obstruction/FootboardSpaceNode.h"
 #include "Obstruction/FootboardCloudNode.h"
 #include "Obstruction/FootboardMoveNode.h"
+#include "Obstruction/ThornFootboardMoveNode.h"
 #include "Obstruction/ThornFootboardNode.h"
 #include "Obstruction/SoftCloudNode.h"
 #include "Obstruction/HeartNode.h"
@@ -38,10 +39,12 @@
 #include "Obstruction/EvilCloudNode.h"
 #include "Obstruction/VortexNode.h"
 #include "Obstruction/UFONode.h"
+#include "Obstruction/TaxBalloonNode.h"
+#include "Obstruction/MeteoriteNode.h"
 
 USING_NS_CC;
 
-const int PHASE_DISTANCE = 64000;
+const int PHASE_DISTANCE = 83000;
 //const int PHASE_DISTANCE = 9000;
 
 GamePlayLayer::~GamePlayLayer()
@@ -375,7 +378,8 @@ void GamePlayLayer::gameUpdate(float delta)
         this->_characterNode->setEffect(effect);
         this->_characterNode->setCurrentSpeed(this->_characterNode->getMaxVerticalSpeed());
         
-        AudioManager::getInstance()->playEffect("Sound/sfx-rocket.aac");
+        AudioManager::getInstance()->playEffect("Sound/sfx-success.wav");
+        AudioManager::getInstance()->setLowEffectVolume(true);
 
         fadeIn = FadeIn::create(1.0f);
         delayTime = DelayTime::create(1.0f);
@@ -452,10 +456,13 @@ void GamePlayLayer::gameUpdate(float delta)
             this->_mainGameLayer->addChild(node1, 10);
             this->_mainGameLayer->addChild(node2, 10);
             this->_mainGameLayer->addChild(node3, 10);
+            
+            this->_characterNode->setMaxVerticalSpeed(2000.0f);
+            this->_characterNode->setNormalAcceleration(-3500.0f);
         }
         else if (currentTransitionPhase < 4)
         {
-            this->_backgroundSprite->setTexture("Background3.png");
+            this->_backgroundSprite->setTexture("Background4.png");
             
             auto layer1 = this->_mainGameLayer->getChildByTag(501);
             layer1->removeFromParent();
@@ -512,6 +519,19 @@ void GamePlayLayer::gameUpdate(float delta)
         if (0 == this->_characterNode->getNumberOfRunningActions()
             && (nullptr == this->_characterNode->getEffect() || InactivatedEffectState == this->_characterNode->getEffect()->getState() || RocketEffectType != this->_characterNode->getEffect()->getType()))
         {
+            this->_characterNode->setMode(Dead);
+            
+            auto sequenceAction = Sequence::create(RotateTo::create(0.25f, 180), RotateTo::create(0.25f, 360), NULL);
+            this->_characterNode->runAction(Repeat::create(sequenceAction, 999));
+            
+            AudioManager::getInstance()->playEffect("Sound/sfx-player-die.aac");
+        }
+    }
+    
+    if (this->_characterNode->getMode() == Dead)
+    {
+        if (0 == this->_characterNode->getNumberOfRunningActions())
+        {
             auto sequenceAction = Sequence::create(RotateTo::create(0.25f, 180), RotateTo::create(0.25f, 360), NULL);
             this->_characterNode->runAction(Repeat::create(sequenceAction, 999));
             
@@ -520,8 +540,7 @@ void GamePlayLayer::gameUpdate(float delta)
     }
     
     if (this->_characterNode->getPosition().y < 0.0f
-        || this->_characterNode->getPosition().y < (this->getMaxDistance() - 3 * designResolutionSize.height)
-        || this->_characterNode->getHeartCount() <= 0)
+        || this->_characterNode->getPosition().y < (this->getMaxDistance() - 3 * designResolutionSize.height))
     {
         this->setDead(true);
 //        cdPlayTime = 0.0f;
@@ -553,11 +572,24 @@ void GamePlayLayer::startPlay()
 //    this->_clearanceSprite->setTexture("Welcome" + CommonUtility::convertToString(indexNo + 1) + ".png");
 //    this->_clearanceSprite->runAction(sequence);
 
+    auto tapJumpTipsSprite = Sprite::create("TapJumpTips.png");
+    this->getParent()->addChild(tapJumpTipsSprite);
+    tapJumpTipsSprite->setPosition((designResolutionSize / 2.0f) - Size(0.0f, 200.0f));
+    auto delayTime = DelayTime::create(5.0f);
+    auto fadeOut = FadeOut::create(1.0f);
+    auto sequence = Sequence::create(delayTime, fadeOut, NULL);
+    tapJumpTipsSprite->runAction(sequence);
+    
     this->_characterNode->startPlay();
 }
 
 void GamePlayLayer::revive(int coinCount)
 {
+    if (coinCount < 10)
+    {
+        ++(this->_qaReviveCount);
+    }
+    
     this->setDead(false);
     float newY = this->getMaxDistance() - 2 * designResolutionSize.height;
     newY = newY < 0.0f ? 0.0f : newY;
@@ -568,6 +600,11 @@ void GamePlayLayer::revive(int coinCount)
     this->_characterNode->revive();
     
     AudioManager::getInstance()->playEffect("Sound/sfx-rocket.aac");
+}
+
+void GamePlayLayer::goJump()
+{
+    this->_characterNode->goJump();
 }
 
 int GamePlayLayer::getHeartCount()
@@ -745,7 +782,12 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     else if (ThornFootboardNodeType == nodeType)
     {
         obstructionNode = ThornFootboardNode::create();
-        obstructionNode->setCollisionSize(Size(166.0f, 74.0f));
+        obstructionNode->setCollisionSize(Size(150.0f, 60.0f));
+    }
+    else if (ThornFootboardMoveNodeType == nodeType)
+    {
+        obstructionNode = ThornFootboardMoveNode::create();
+        obstructionNode->setCollisionSize(Size(150.0f, 60.0f));
     }
     else if (SoftCloudNodeType == nodeType)
     {
@@ -791,6 +833,16 @@ ObstructionNode* GamePlayLayer::getObstructionNode(ObstructionNodeType nodeType)
     {
         obstructionNode = UFONode::create();
         obstructionNode->setCollisionSize(Size(145.0f, 96.0f));
+    }
+    else if (TaxBalloonNodeType == nodeType)
+    {
+        obstructionNode = TaxBalloonNode::create();
+        obstructionNode->setCollisionSize(Size(107.0f, 133.0f));
+    }
+    else if (MeteoriteNodeType == nodeType)
+    {
+        obstructionNode = MeteoriteNode::create();
+        obstructionNode->setCollisionSize(Size(99.0f, 99.0f));
     }
 
     obstructionNode->setPosition(Vec2());
@@ -933,6 +985,10 @@ void GamePlayLayer::buildTopperScene()
                     {
                         gameNode = this->getObstructionNode(FootboardNodeType);
                     }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "ThornFootboardMove"))
+                    {
+                        gameNode = this->getObstructionNode(ThornFootboardMoveNodeType);
+                    }
                     else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "ThornFootboard"))
                     {
                         gameNode = this->getObstructionNode(ThornFootboardNodeType);
@@ -973,6 +1029,14 @@ void GamePlayLayer::buildTopperScene()
                     {
                         gameNode = this->getObstructionNode(UFONodeType);
                     }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "TaxBalloon"))
+                    {
+                        gameNode = this->getObstructionNode(TaxBalloonNodeType);
+                    }
+                    else if (CommonUtility::isStringStartWith(gamePlayData.typeName, "Meteorite"))
+                    {
+                        gameNode = this->getObstructionNode(MeteoriteNodeType);
+                    }
                     
                     Vec2 newPosition = Vec2(gamePlayData.position.x, gamePlayData.position.y - this->_patternLowestLine + this->_patternStartLine);
                     
@@ -1005,6 +1069,45 @@ void GamePlayLayer::buildTopperScene()
                         {
                             footboardMoveNode->stopAllActions();
                             footboardMoveNode->setPosition(newPosition);
+                        }
+                    }
+                    else if (ThornFootboardMoveNodeType == gameNode->getNodeType())
+                    {
+                        ThornFootboardMoveNode* thornFootboardMoveNode = static_cast<ThornFootboardMoveNode*>(gameNode);
+                        if (gamePlayData.moveDistance > 0.1f || gamePlayData.moveDistance < -0.1f)
+                        {
+                            thornFootboardMoveNode->moveWithRange(newPosition, newPosition + Vec2(gamePlayData.moveDistance, 0.0f));
+                        }
+                        else
+                        {
+                            thornFootboardMoveNode->stopAllActions();
+                            thornFootboardMoveNode->setPosition(newPosition);
+                        }
+                    }
+                    else if (TaxBalloonNodeType == gameNode->getNodeType())
+                    {
+                        TaxBalloonNode* taxBalloonNode = static_cast<TaxBalloonNode*>(gameNode);
+                        if (gamePlayData.moveDistance > 0.1f || gamePlayData.moveDistance < -0.1f)
+                        {
+                            taxBalloonNode->moveWithRange(newPosition, newPosition + Vec2(gamePlayData.moveDistance, 0.0f));
+                        }
+                        else
+                        {
+                            taxBalloonNode->stopAllActions();
+                            taxBalloonNode->setPosition(newPosition);
+                        }
+                    }
+                    else if (MeteoriteNodeType == gameNode->getNodeType())
+                    {
+                        MeteoriteNode* meteoriteNode = static_cast<MeteoriteNode*>(gameNode);
+                        if (gamePlayData.moveDistance > 0.1f || gamePlayData.moveDistance < -0.1f)
+                        {
+                            meteoriteNode->moveWithRange(newPosition, newPosition + Vec2(gamePlayData.moveDistance, 0.0f));
+                        }
+                        else
+                        {
+                            meteoriteNode->stopAllActions();
+                            meteoriteNode->setPosition(newPosition);
                         }
                     }
                     else
@@ -1064,6 +1167,8 @@ void GamePlayLayer::buildTopperScene()
 
 void GamePlayLayer::transitionFinished()
 {
+    AudioManager::getInstance()->setLowEffectVolume(false);
+
     this->_isTransiting = false;
 
     for(auto& obstruction : this->_obstructionVector)

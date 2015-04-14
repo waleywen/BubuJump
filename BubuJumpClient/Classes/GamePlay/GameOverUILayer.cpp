@@ -107,8 +107,8 @@ void GameOverUILayer::setMaxDistance(float maxDistance)
 void GameOverUILayer::setTaxCoinMap(const TaxCoinMap &taxCoinMap)
 {
     auto taxCoinListView = static_cast<ListView*>(UIHelper::seekNodeByName(this, "taxCoinListView"));
-    taxCoinListView->setClippingEnabled(true);
-    taxCoinListView->setClippingType(Layout::ClippingType::SCISSOR);
+//    taxCoinListView->setClippingEnabled(true);
+//    taxCoinListView->setClippingType(Layout::ClippingType::SCISSOR);
     int i = 0;
     for (TaxCoinPair taxCoinPair : taxCoinMap)
     {
@@ -193,11 +193,12 @@ void GameOverUILayer::setTaxCoinMap(const TaxCoinMap &taxCoinMap)
 
 void GameOverUILayer::shareButtonClicked(cocos2d::Ref *sender)
 {
-    std::string message = "我爱冲上云霄！！！！！";
-    message += "获得";
-    message += this->_distanceLabel->getString();
-    message += "分！！！";
-    SocialManager::getInstance()->shareMessageToWeChat(message);
+    std::string imagePath = "share.jpg";
+    RenderTexture *renderTexture = RenderTexture::create(designResolutionSize.width, designResolutionSize.height);
+    renderTexture->begin();
+    Director::getInstance()->getRunningScene()->visit();
+    renderTexture->end();
+    renderTexture->saveToFile(imagePath, false, CC_CALLBACK_2(GameOverUILayer::captured, this));
 }
 
 void GameOverUILayer::retryButtonClicked(cocos2d::Ref *sender)
@@ -285,4 +286,9 @@ void GameOverUILayer::scoreSubmitted(void *resultData)
     {
         this->_myNameLabel->setTextColor(Color4B::YELLOW);
     }
+}
+
+void GameOverUILayer::captured(cocos2d::RenderTexture *renderTexture, const std::string &imagePath)
+{
+    SocialManager::getInstance()->sharePhotoToWeChat(imagePath);
 }

@@ -13,11 +13,12 @@ class GameConfigData
 class GameSaveData
 {
 public:
-    GameSaveData() : _leaderboardID(-1), _lotteryID(-1), _name(), _phone(), _totalCoinAmount(0), _maxTaxCoinAmount(0), _maxDistance(0), _needShowJoinLotteryUI(true), _soundEnabled(true), _musicEnabled(true) {};
+    GameSaveData() : _leaderboardID(-1), _lotteryID(-1), _lotteryInfoSynchronized(true), _name("Username"), _phone(""), _totalCoinAmount(0), _maxTaxCoinAmount(0), _maxDistance(0), _needShowJoinLotteryUI(true), _soundEnabled(true), _musicEnabled(true) {};
     bool isDefaultName();
     
     CC_SYNTHESIZE(int, _leaderboardID, LeaderboardID);
     CC_SYNTHESIZE(int, _lotteryID, LotteryID);
+    CC_SYNTHESIZE(bool, _lotteryInfoSynchronized, LotteryInfoSynchronized);
     CC_SYNTHESIZE(std::string, _name, Name);
     CC_SYNTHESIZE(std::string, _phone, Phone);
     CC_SYNTHESIZE(int, _totalCoinAmount, TotalCoinAmount);

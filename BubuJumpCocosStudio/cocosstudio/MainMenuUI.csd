@@ -12,16 +12,6 @@
         <PrePosition X="0.0000" Y="0.0000" />
         <PreSize X="0.0000" Y="0.0000" />
         <Children>
-          <NodeObjectData Name="MainMenuUIBackground" ActionTag="-709591948" FrameEvent="" Tag="52" ObjectIndex="4" ctype="SpriteObjectData">
-            <Position X="360.0000" Y="639.9999" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="720.0000" Y="1280.0000" />
-            <PrePosition X="0.5000" Y="0.5000" />
-            <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="MainMenuUIBackground.png" />
-          </NodeObjectData>
           <NodeObjectData Name="playButton" ActionTag="-2012239773" FrameEvent="" Tag="53" ObjectIndex="4" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="311" Scale9Height="107" ctype="ButtonObjectData">
             <Position X="359.9963" Y="196.9986" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />

@@ -85,6 +85,11 @@ bool GamePlayUILayer::init()
     readyNode->runAction(actionTimeline);
     actionTimeline->gotoFrameAndPlay(0, false);
 
+    auto eventListener = EventListenerTouchOneByOne::create();
+    eventListener->setSwallowTouches(true);
+    eventListener->onTouchBegan = CC_CALLBACK_2(GamePlayUILayer::touchBegan, this);
+    this->_eventDispatcher->addEventListenerWithSceneGraphPriority(eventListener, this);
+
     return true;
 }
 
@@ -203,6 +208,12 @@ void GamePlayUILayer::gameUpdate(float delta)
     {
         this->_propSprite->setVisible(false);
     }
+}
+
+bool GamePlayUILayer::touchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+    this->_shouldJump = true;
+    return true;
 }
 
 void GamePlayUILayer::pauseButtonClicked(cocos2d::Ref *sender)

@@ -37,6 +37,11 @@ HelpUILayer::~HelpUILayer()
         this->_pageNode4->release();
         this->_pageNode4 = nullptr;
     }
+    if (nullptr != this->_pageNode5)
+    {
+        this->_pageNode5->release();
+        this->_pageNode5 = nullptr;
+    }
     if (nullptr != this->_lotteryNode)
     {
         this->_lotteryNode->release();
@@ -83,6 +88,8 @@ bool HelpUILayer::init()
     this->_pageNode3->retain();
     this->_pageNode4 = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "pageNode4"));
     this->_pageNode4->retain();
+    this->_pageNode5 = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "pageNode5"));
+    this->_pageNode5->retain();
     this->_lotteryNode = static_cast<Text*>(UIHelper::seekNodeByName(uiNode, "lotteryNode"));
     this->_lotteryNode->retain();
     this->_leftArrowButton = static_cast<Button*>(UIHelper::seekNodeByName(uiNode, "leftArrowButton"));
@@ -269,9 +276,9 @@ void HelpUILayer::showPage(int index)
     {
         index = 0;
     }
-    if (index > 3)
+    if (index > 4)
     {
-        index = 3;
+        index = 4;
     }
     
     this->_currentPageIndex = index;
@@ -283,7 +290,7 @@ void HelpUILayer::showPage(int index)
     {
         this->_leftArrowButton->setVisible(false);
     }
-    if (3 == this->_currentPageIndex)
+    if (4 == this->_currentPageIndex)
     {
         this->_rightArrowButton->setVisible(false);
     }
@@ -294,24 +301,35 @@ void HelpUILayer::showPage(int index)
             this->_pageNode2->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode3->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode4->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode5->setPosition(Vec2(-1000.0f, -1000.0f));
             break;
         case 1:
             this->_pageNode1->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode2->setPosition(Vec2::ZERO);
             this->_pageNode3->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode4->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode5->setPosition(Vec2(-1000.0f, -1000.0f));
             break;
         case 2:
             this->_pageNode1->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode2->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode3->setPosition(Vec2::ZERO);
             this->_pageNode4->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode5->setPosition(Vec2(-1000.0f, -1000.0f));
             break;
         case 3:
             this->_pageNode1->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode2->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode3->setPosition(Vec2(-1000.0f, -1000.0f));
             this->_pageNode4->setPosition(Vec2::ZERO);
+            this->_pageNode5->setPosition(Vec2(-1000.0f, -1000.0f));
+            break;
+        case 4:
+            this->_pageNode1->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode2->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode3->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode4->setPosition(Vec2(-1000.0f, -1000.0f));
+            this->_pageNode5->setPosition(Vec2::ZERO);
             break;
             
         default:

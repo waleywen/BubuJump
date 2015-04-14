@@ -28,8 +28,14 @@ void AudioManager::playEffect(const char *pszFilePath)
 {
     if (SimpleAudioEngine::getInstance()->getEffectsVolume() > 0.5)
     {
-//        AudioEngine::play2d(pszFilePath);
-        SimpleAudioEngine::getInstance()->playEffect(pszFilePath);
+        if (std::string(pszFilePath) != "Sound/sfx-coin-pickup.wav")
+        {
+            AudioEngine::play2d(pszFilePath, false, this->getLowEffectVolume() ? 0.3f : 1.0f);
+        }
+        else
+        {
+            SimpleAudioEngine::getInstance()->playEffect(pszFilePath, false, 1.0 , 0.0f, this->getLowEffectVolume() ? 0.3f : 1.0f);
+        }
     }
 }
 

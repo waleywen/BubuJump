@@ -24,6 +24,8 @@ private:
     void optionButtonClicked(cocos2d::Ref* sender);
     void shareButtonClicked(cocos2d::Ref* sender);
     void drawButtonClicked(cocos2d::Ref* sender);
+    
+    void captured(cocos2d::RenderTexture* renderTexture, const std::string& imagePath);
 };
 
 #endif // _MainMenuUILayer_H_

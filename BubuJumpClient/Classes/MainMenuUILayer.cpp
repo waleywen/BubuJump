@@ -34,6 +34,12 @@ bool MainMenuUILayer::init()
         return false;
     }
     
+    auto uiAnimationNode = CSLoader::createNode("MainMenuUIAnimation.csb");
+    this->addChild(uiAnimationNode);
+    auto actionTimeline = CSLoader::createTimeline("MainMenuUIAnimation.csb");
+    actionTimeline->gotoFrameAndPlay(0, true);
+    uiAnimationNode->runAction(actionTimeline);
+
     auto uiNode = CSLoader::createNode("MainMenuUI.csb");
     this->addChild(uiNode);
 
@@ -53,7 +59,7 @@ bool MainMenuUILayer::init()
     drawButton->addClickEventListener(CC_CALLBACK_1(MainMenuUILayer::drawButtonClicked, this));
 
     GameSaveData& gameSaveData = LoaclManager::getInstance()->getGameSaveData();
-    if (gameSaveData.getLotteryID() == -1 && gameSaveData.getPhone().length() > 0)
+    if (false == gameSaveData.getLotteryInfoSynchronized())
     {
         NetworkManager::getInstance()->joinLottery();
     }
@@ -63,18 +69,18 @@ bool MainMenuUILayer::init()
     
     AudioManager::getInstance()->playBackgroundMusic("music.mp3", true);
     
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-button.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-coin-pickup.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-count-down.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-fly-boot.aac");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-cloud.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-move.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-magnet.wav");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-player-die.aac");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-rocket.aac");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-soft-cloud.aac");
-    SimpleAudioEngine::getInstance()->preloadEffect("sfx-thorn-footboard.aac");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-button.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-coin-pickup.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-count-down.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-fly-boot.aac");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-cloud.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard-move.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-footboard.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-magnet.wav");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-player-die.aac");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-rocket.aac");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-soft-cloud.aac");
+//    SimpleAudioEngine::getInstance()->preloadEffect("sfx-thorn-footboard.aac");
 
     return true;
 }
@@ -87,7 +93,17 @@ void MainMenuUILayer::playButtonClicked(cocos2d::Ref *sender)
 
 void MainMenuUILayer::taxButtonClicked(cocos2d::Ref *sender)
 {
-    auto scene = TaxBibleUILayer::createScene();
+//    auto scene = TaxBibleUILayer::createScene();
+//    Director::getInstance()->pushScene(scene);
+
+    TaxBibleContentUILayer* layer = TaxBibleContentUILayer::create();
+    auto scene = Scene::create();
+    scene->addChild(layer);
+    
+    std::string contentString = "";
+    
+    layer->setContentString(contentString);
+    
     Director::getInstance()->pushScene(scene);
 }
 
@@ -111,10 +127,22 @@ void MainMenuUILayer::optionButtonClicked(cocos2d::Ref *sender)
 
 void MainMenuUILayer::shareButtonClicked(cocos2d::Ref *sender)
 {
-    SocialManager::getInstance()->shareMessageToWeChat("我爱冲上云霄！！！！！");
+//    FileUtils::getInstance()->getWritablePath();
+//    log("%s", FileUtils::getInstance()->getWritablePath().c_str());
+    std::string imagePath = "share.jpg";
+    RenderTexture *renderTexture = RenderTexture::create(designResolutionSize.width, designResolutionSize.height);
+    renderTexture->begin();
+    Director::getInstance()->getRunningScene()->visit();
+    renderTexture->end();
+    renderTexture->saveToFile(imagePath, false, CC_CALLBACK_2(MainMenuUILayer::captured, this));
 }
 
 void MainMenuUILayer::drawButtonClicked(cocos2d::Ref *sender)
 {
     this->addChild(JoinLotteryUILayer::create());
+}
+
+void MainMenuUILayer::captured(cocos2d::RenderTexture *renderTexture, const std::string &imagePath)
+{
+    SocialManager::getInstance()->sharePhotoToWeChat(imagePath);
 }

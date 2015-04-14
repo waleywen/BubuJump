@@ -76,6 +76,12 @@ void GameResuscitationUILayer::update(float delta)
         coinButton->setBright(false);
         coinButton->setEnabled(false);
     }
+    if (this->getGamePlayLayer()->getQAReviveCount() >= 3)
+    {
+        auto qaButton = static_cast<Button*>(UIHelper::seekNodeByName(this, "qaButton"));
+        qaButton->setBright(false);
+        qaButton->setEnabled(false);
+    }
     
     this->_countDownSprite->setTexture(std::string("ready") + CommonUtility::convertToString(((int)(this->_countDown + 1))) + ".png");
 }
@@ -119,14 +125,22 @@ int GameResuscitationUILayer::getCurrentFee()
     int phase = this->getGamePlayLayer()->getTransitionPhase();
     if (0 == phase)
     {
-        return 8000;
+        return 3000;
+//        return 0;
     }
     else if (1 == phase)
     {
-        return 16000;
+        return 5000;
+//        return 0;
+    }
+    else if (2 == phase)
+    {
+        return 8000;
+//        return 0;
     }
     else
     {
-        return 25000;
+        return 12000;
+//        return 0;
     }
 }

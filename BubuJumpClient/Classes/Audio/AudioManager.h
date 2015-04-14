@@ -10,11 +10,13 @@ class AudioManager
 public:
     static AudioManager* getInstance();
     
-    AudioManager() {};
+    AudioManager() : _lowEffectVolume(false) {};
     
     void playBackgroundMusic(const char* pszFilePath, bool bLoop);
     void playEffect(const char* pszFilePath);
     void stopAll();
+    
+    CC_SYNTHESIZE(bool, _lowEffectVolume, LowEffectVolume);
 };
 
 #endif // _AudioManager_H_

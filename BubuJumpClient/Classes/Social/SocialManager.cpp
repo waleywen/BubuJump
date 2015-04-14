@@ -32,3 +32,8 @@ void SocialManager::shareMessageToWeChat(std::string message)
 {
     this->_weChatClient->sendMessage(message);
 }
+
+void SocialManager::sharePhotoToWeChat(std::string imagePath)
+{
+    this->_weChatClient->sendPhoto(imagePath);
+}

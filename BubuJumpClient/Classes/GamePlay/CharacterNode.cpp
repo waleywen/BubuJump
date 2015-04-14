@@ -180,11 +180,36 @@ void CharacterNode::gameUpdate(float delta)
             }
         }
     }
+    else if (this->getMode() == Dead)
+    {
+        if (this->getCurrentSpeed() > 0.0f)
+        {
+            this->setCurrentSpeed(0.0f);
+        }
+
+        float newYOffset = this->getCurrentSpeed() * delta + (this->getCurrentAcceleration() * delta * delta) / 2;
+        
+        this->_currentSpeed = this->getCurrentSpeed() + this->getCurrentAcceleration() * delta;
+        
+        auto currentPosition = this->getPosition();
+        float newY = currentPosition.y + newYOffset;
+        
+        this->setPosition(Vec2(this->getPosition().x, newY));
+        
+        if (this->getActionState() != Downing)
+        {
+            this->setActionState(Downing);
+            this->playDownAnimation();
+        }
+        
+        this->_characterSpriteNode->setVisible(true);
+    }
 }
 
 void CharacterNode::startPlay()
 {
     this->setMode(Playing);
+    this->setScaleX(1.0f);
     this->setCurrentSpeed(this->getMaxVerticalSpeed());
     this->setActionState(Jumping);
     this->playJumpAnimation();
@@ -192,11 +217,20 @@ void CharacterNode::startPlay()
 
 void CharacterNode::revive()
 {
+    this->setMode(Playing);
     this->_heartCount = 3;
     BaseEffect* effect = EffectFactory::getInstance()->getEffect(RocketEffectType);
     effect->setCharacterNode(this);
     this->setEffect(effect);
     this->setCurrentSpeed(0.0f);
+}
+
+void CharacterNode::goJump()
+{
+    if (false == this->_jumped && this->getMode() != Dead)
+    {
+        this->setCurrentSpeed(this->getMaxVerticalSpeed(), true);
+    }
 }
 
 void CharacterNode::addHeart(int count)
@@ -219,7 +253,25 @@ void CharacterNode::dropHeart(int count)
     }
     this->_heartCount -= count;
     
-    this->_hurtDuration = 2.0f;
+    if (this->_heartCount <= 0)
+    {
+        this->setMode(Dead);
+        if (nullptr != this->getEffect())
+        {
+            this->_effect->reset();
+            this->_effect->setState(InactivatedEffectState);
+        }
+        if (this->getCurrentSpeed() > 0.0f)
+        {
+            this->setCurrentSpeed(0.0f);
+        }
+        
+        this->_heartCount = 0;
+    }
+    else
+    {
+        this->_hurtDuration = 2.0f;
+    }
 }
 
 int CharacterNode::getHeartCount()
@@ -294,13 +346,21 @@ float CharacterNode::getCurrentSpeed()
     return this->_currentSpeed;
 }
 
-void CharacterNode::setCurrentSpeed(float currentSpeed)
+void CharacterNode::setCurrentSpeed(float currentSpeed, bool jumped)
 {
-    if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
+    if (this->getMode() == Dead)
     {
-        currentSpeed = this->_effect->changeSpeed(currentSpeed);
+        this->_currentSpeed = 0;
     }
-    this->_currentSpeed = currentSpeed;
+    else
+    {
+        if (nullptr != this->getEffect() && this->getEffect()->getState() == ActivatedEffectState)
+        {
+            currentSpeed = this->_effect->changeSpeed(currentSpeed);
+        }
+        this->_currentSpeed = currentSpeed;
+        this->_jumped = jumped;
+    }
 }
 
 void CharacterNode::setHorizontalSpeedPercentage(float percentage)

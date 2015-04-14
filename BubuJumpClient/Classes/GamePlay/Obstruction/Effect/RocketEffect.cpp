@@ -46,6 +46,7 @@ void RocketEffect::reset()
     this->setState(ActivatedEffectState);
     this->setDuration(0.0f);
     this->_particleSystemQuad->stopSystem();
+    this->_particleSystemQuad->removeFromParent();
 }
 
 float RocketEffect::changeSpeed(float speed)

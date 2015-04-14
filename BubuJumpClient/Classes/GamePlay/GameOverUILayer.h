@@ -27,6 +27,8 @@ private:
 
     void scoreSubmitted(void* resultData);
     
+    void captured(cocos2d::RenderTexture* renderTexture, const std::string& imagePath);
+
     cocos2d::Sprite* _loadingSprite;
     cocos2d::ui::Text* _taxCoinAmountLabel;
     cocos2d::ui::Text* _distanceLabel;

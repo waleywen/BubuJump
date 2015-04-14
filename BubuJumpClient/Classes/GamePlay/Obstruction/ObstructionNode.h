@@ -29,6 +29,7 @@ enum ObstructionNodeType
     FootboardCloudNodeType,
     FootboardMoveNodeType,
     ThornFootboardNodeType,
+    ThornFootboardMoveNodeType,
     SoftCloudNodeType,
     HeartNodeType,
     FlyBootNodeType,
@@ -38,6 +39,8 @@ enum ObstructionNodeType
     EvilCloudNodeType,
     VortexNodeType,
     UFONodeType,
+    TaxBalloonNodeType,
+    MeteoriteNodeType,
 };
 
 enum ObstructionNodeState

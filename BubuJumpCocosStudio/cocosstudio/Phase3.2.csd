@@ -22,7 +22,7 @@
         <PreSize X="0.0000" Y="0.0000" />
         <Children>
           <NodeObjectData Name="Phase3Moon" ActionTag="-453765501" FrameEvent="" Tag="295" ObjectIndex="1" ctype="SpriteObjectData">
-            <Position X="127.7869" Y="1984.5421" />
+            <Position X="-150.4224" Y="2172.9175" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
@@ -32,14 +32,14 @@
             <FileData Type="Normal" Path="Phase3Moon.png" />
           </NodeObjectData>
           <NodeObjectData Name="Phase3Satellite" ActionTag="-1167968414" FrameEvent="" Tag="296" ObjectIndex="2" ctype="SpriteObjectData">
-            <Position X="620.3705" Y="1336.2509" />
+            <Position X="927.9116" Y="1217.0844" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <Size X="246.0000" Y="55.0000" />
+            <Size X="273.0000" Y="179.0000" />
             <PrePosition X="-0.2645" Y="0.6447" />
             <PreSize X="0.0000" Y="0.0000" />
-            <FileData Type="Normal" Path="Phase3Satellite.png" />
+            <FileData Type="Normal" Path="Phase3SpaceCity.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

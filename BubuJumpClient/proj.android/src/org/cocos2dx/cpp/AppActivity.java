@@ -32,6 +32,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -70,6 +71,8 @@ public class AppActivity extends Cocos2dxActivity {
 		api = WXAPIFactory.createWXAPI(this, APP_ID, false);
 		api.registerApp(APP_ID);
 
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
 		_sCurrentInstance = this;
 	}
 

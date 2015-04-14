@@ -57,7 +57,7 @@
             <PrePosition X="0.5000" Y="0.4586" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
-            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+            <DisabledFileData Type="Normal" Path="GameResuscitationUIQAButtonD.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Normal" Path="GameResuscitationUIQAButton.png" />
           </NodeObjectData>

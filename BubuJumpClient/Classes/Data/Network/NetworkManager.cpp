@@ -16,9 +16,9 @@ using namespace cocos2d::network;
 const std::string SERVER_ADDRESS = "http://touchthesky.sinaapp.com/";
 const std::string MD5_KEY = "1234567890";
 
-std::string md5SumString(const std::string& type, const std::string& id, const std::string& name, const std::string& score)
+std::string md5SumString(const std::string& type, const std::string& id, const std::string& name, const std::string& score, const std::string& lotteryID)
 {
-    std::string originalString = MD5_KEY + type + id + name + score;
+    std::string originalString = MD5_KEY + type + id + name + score + lotteryID;
     MD5 md5(originalString);
     return md5.md5();
 }
@@ -62,7 +62,7 @@ int NetworkManager::requestLeaderboard(NetworkCallback callback)
     }
     url += "&sum=";
     
-    url += md5SumString("0", idString, "", "");
+    url += md5SumString("0", idString, "", "", "");
     
     NetworkCallbackObject& callbackObject = this->generateCallbackObject(callback);
     
@@ -92,6 +92,12 @@ int NetworkManager::submitScore(int score, int resultSize, NetworkCallback callb
     
     std::string nameString = gameSaveData.getName();
     
+    std::string lotteryID = "";
+    if (-1 != gameSaveData.getLotteryID())
+    {
+        lotteryID = CommonUtility::convertToString(gameSaveData.getLotteryID());
+    }
+
     std::string url = SERVER_ADDRESS + "leaderboard.php";
     url += "?type=1";
     if (-1 != gameSaveData.getLeaderboardID())
@@ -103,9 +109,14 @@ int NetworkManager::submitScore(int score, int resultSize, NetworkCallback callb
     url += nameString;
     url += "&score=";
     url += scoreString;
+    if (-1 != gameSaveData.getLotteryID())
+    {
+        url += "&lottery_id=";
+        url += lotteryID;
+    }
     url += "&sum=";
     
-    url += md5SumString("1", idString, nameString, scoreString);
+    url += md5SumString("1", idString, nameString, scoreString, lotteryID);
     
     NetworkCallbackObject& callbackObject = this->generateCallbackObject(callback);
     
@@ -157,7 +168,7 @@ void NetworkManager::joinLottery()
         url += idString;
     }
     url += "&sum=";
-    url += md5SumString("", idString, nameString, phoneString);
+    url += md5SumString("", idString, nameString, phoneString, "");
     
     HttpRequest* request = new HttpRequest();
     request->setUrl(url.c_str());
@@ -166,6 +177,9 @@ void NetworkManager::joinLottery()
     request->setTag("syncMyInfo");
     HttpClient::getInstance()->send(request);
     request->release();
+    
+    gameSaveData.setLotteryInfoSynchronized(false);
+    LoaclManager::getInstance()->save();
 }
 
 NetworkManager::NetworkCallbackObject& NetworkManager::generateCallbackObject(NetworkCallback callback)
@@ -197,7 +211,10 @@ void NetworkManager::errorReturnMyRecord(NetworkManager::NetworkCallbackObject *
         record->setPlace(1);
         resultRecordVector.pushBack(record);
 
-        callbackObject->callback(&resultRecordVector);
+        if (nullptr != callbackObject->callback)
+        {
+            callbackObject->callback(&resultRecordVector);
+        }
     }
 }
 
@@ -241,6 +258,10 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
     }
     
     log("%s", json.c_str());
+    if ((int)json.find("<script") != -1)
+    {
+        json = json.substr(0, json.find("<script"));
+    }
     
     rapidjson::Document document;
     document.Parse<0>(json.c_str());
@@ -306,7 +327,10 @@ void NetworkManager::leaderboardRequested(cocos2d::network::HttpClient *sender, 
     
     if (false == callbackObject->canceled)
     {
-        callbackObject->callback(&resultRecordVector);
+        if (nullptr != callbackObject->callback)
+        {
+            callbackObject->callback(&resultRecordVector);
+        }
     }
 }
 
@@ -360,6 +384,10 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     }
     
     log("%s", json.c_str());
+    if ((int)json.find("<script") != -1)
+    {
+        json = json.substr(0, json.find("<script"));
+    }
     
     rapidjson::Document document;
     document.Parse<0>(json.c_str());
@@ -462,7 +490,10 @@ void NetworkManager::scoreSubmitted(cocos2d::network::HttpClient *sender, cocos2
     
     if (false == callbackObject->canceled)
     {
-        callbackObject->callback(&resultRecordVector);
+        if (nullptr != callbackObject->callback)
+        {
+            callbackObject->callback(&resultRecordVector);
+        }
     }
 }
 
@@ -498,6 +529,10 @@ void NetworkManager::lotteryJoined(cocos2d::network::HttpClient *sender, cocos2d
     }
     
     log("%s", json.c_str());
+    if ((int)json.find("<script") != -1)
+    {
+        json = json.substr(0, json.find("<script"));
+    }
     
     rapidjson::Document document;
     document.Parse<0>(json.c_str());
@@ -510,5 +545,8 @@ void NetworkManager::lotteryJoined(cocos2d::network::HttpClient *sender, cocos2d
     gameSaveData.setLotteryID(myID);
     gameSaveData.setName(name);
     gameSaveData.setPhone(phone);
+    gameSaveData.setLotteryInfoSynchronized(true);
     LoaclManager::getInstance()->save();
+    
+    this->submitScore(0, 3, nullptr);
 }

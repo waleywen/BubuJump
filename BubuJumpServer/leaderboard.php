@@ -115,6 +115,7 @@
         $id = '';
         $name = '';
         $score = 0;
+        $lotteryID = -1;
         
         if (isset($_GET['id']))
         {
@@ -135,7 +136,12 @@
         {
             die('{"error":"2"}');
         }
-        
+        if (isset($_GET['lottery_id']))
+        {
+            $lotteryID = $_GET['lottery_id'];
+            $md5Sum .= $_GET['lottery_id'];
+        }
+
         if (md5($md5Sum) == $clientSum)
 //      if (md5($md5Sum) != $clientSum)
         {
@@ -144,11 +150,21 @@
             
             if ('' != $id)
             {
-                $findIDResult = mysql_query("SELECT * FROM `leaderboard` WHERE id = ".$id);
+                $findIDResult = mysql_query("SELECT name, lottery_id FROM `leaderboard` WHERE id = ".$id);
                 $numRows = mysql_num_rows($findIDResult);
                 if (1 != $numRows)
                 {
                     $id = '';
+                }
+                else
+                {
+                    $row = mysql_fetch_row($findIDResult);
+                    $oldName = $row[0];
+                    $oldLotteryID = $row[1];
+                    if ($name != $oldName || $lotteryID != $oldLotteryID)
+                    {
+                        mysql_query("UPDATE leaderboard SET name = '".$name."', lottery_id = ".$lotteryID." WHERE id = ".$id);
+                    }
                 }
                 mysql_free_result($findIDResult);
             }
@@ -156,7 +172,7 @@
             if ('' != $id)
             {
                 //Update
-                $updated = mysql_query("UPDATE leaderboard SET score = ".$score.", name = '".$name."' WHERE id = ".$id." and score < ".$score);
+                $updated = mysql_query("UPDATE leaderboard SET score = ".$score." WHERE id = ".$id." and score < ".$score);
                 if (0 != $updated && mysql_affected_rows() == 0)
                 {
                     $currentScoreResult = mysql_query("SELECT score AS count FROM `leaderboard` WHERE id = ".$id);
@@ -168,7 +184,7 @@
             else
             {
                 //Insert
-                mysql_query("INSERT INTO leaderboard (name, score) VALUES ('".$name."', ".$score.")");
+                mysql_query("INSERT INTO leaderboard (name, score, lottery_id) VALUES ('".$name."', ".$score.", ".$lotteryID.")");
                 $id = mysql_insert_id();
             }
             

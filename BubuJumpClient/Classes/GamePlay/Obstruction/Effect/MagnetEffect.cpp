@@ -23,9 +23,10 @@ bool MagnetEffect::init()
 
 void MagnetEffect::gameUpdate(float delta)
 {
-    if (this->_duration == 0.0f)
+    if (false == this->_effectSprite->isVisible())
     {
         this->_effectSprite->stopAllActions();
+        this->_effectSprite->setRotation(0.0f);
         auto sequenceAction = Sequence::create(RotateTo::create(2, 180), RotateTo::create(2, 360), NULL);
         this->_effectSprite->runAction(Repeat::create(sequenceAction, pow(2,30)));
     }

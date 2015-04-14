@@ -19,16 +19,23 @@ LoaclManager::LoaclManager() : _configData(), _saveData()
 {
     UserDefault* userDefault = UserDefault::getInstance();
     
-    _saveData.setLeaderboardID(userDefault->getIntegerForKey("leaderboardID", -1));
-    _saveData.setLotteryID(userDefault->getIntegerForKey("lotteryID", -1));
-    _saveData.setName(userDefault->getStringForKey("name", "Username"));
-    _saveData.setPhone(userDefault->getStringForKey("phone", ""));
-    _saveData.setTotalCoinAmount(userDefault->getIntegerForKey("totalCoinAmount", 0));
-    _saveData.setMaxTaxCoinAmount(userDefault->getIntegerForKey("maxTaxCoinAmount", 0));
-    _saveData.setMaxDistance(userDefault->getIntegerForKey("maxDistance", 0));
-    _saveData.setNeedShowJoinLotteryUI(userDefault->getBoolForKey("needShowJoinLotteryUI", true));
-    _saveData.setSoundEnabled(userDefault->getBoolForKey("soundEnabled", true));
-    _saveData.setMusicEnabled(userDefault->getBoolForKey("musicEnabled", true));
+//    if (userDefault->getIntegerForKey("Version", -1) != 1)
+//    {
+//        this->save();
+//        userDefault->setIntegerForKey("Version", 1);
+//    }
+    
+    _saveData.setLeaderboardID(userDefault->getIntegerForKey("leaderboardID", _saveData.getLeaderboardID()));
+    _saveData.setLotteryID(userDefault->getIntegerForKey("lotteryID", _saveData.getLotteryID()));
+    _saveData.setLotteryInfoSynchronized(userDefault->getBoolForKey("lotteryInfoSynchronized", _saveData.getLotteryInfoSynchronized()));
+    _saveData.setName(userDefault->getStringForKey("name", _saveData.getName()));
+    _saveData.setPhone(userDefault->getStringForKey("phone", _saveData.getPhone()));
+    _saveData.setTotalCoinAmount(userDefault->getIntegerForKey("totalCoinAmount", _saveData.getTotalCoinAmount()));
+    _saveData.setMaxTaxCoinAmount(userDefault->getIntegerForKey("maxTaxCoinAmount", _saveData.getMaxTaxCoinAmount()));
+    _saveData.setMaxDistance(userDefault->getIntegerForKey("maxDistance", _saveData.getMaxDistance()));
+    _saveData.setNeedShowJoinLotteryUI(userDefault->getBoolForKey("needShowJoinLotteryUI", _saveData.getNeedShowJoinLotteryUI()));
+    _saveData.setSoundEnabled(userDefault->getBoolForKey("soundEnabled", _saveData.getSoundEnabled()));
+    _saveData.setMusicEnabled(userDefault->getBoolForKey("musicEnabled", _saveData.getMusicEnabled()));
     
 //    std::string filePath = "/mnt/sdcard/BubuJump/Config.plist";
 //    auto sharedFileUtils = FileUtils::getInstance();
@@ -54,6 +61,7 @@ void LoaclManager::save()
 
     userDefault->setIntegerForKey("leaderboardID", _saveData.getLeaderboardID());
     userDefault->setIntegerForKey("lotteryID", _saveData.getLotteryID());
+    userDefault->setBoolForKey("lotteryInfoSynchronized", _saveData.getLotteryInfoSynchronized());
     userDefault->setStringForKey("name", _saveData.getName());
     userDefault->setStringForKey("phone", _saveData.getPhone());
     userDefault->setIntegerForKey("totalCoinAmount", _saveData.getTotalCoinAmount());

@@ -2,6 +2,8 @@
 
 #include "cocostudio/CocoStudio.h"
 
+#include "../Audio/AudioManager.h"
+
 #include "../AppMacros.h"
 #include "../UIHelper.h"
 #include "../CommonUtility.h"
@@ -158,19 +160,28 @@ void GameTaxQAUILayer::cellButtonClicked(cocos2d::Ref *sender)
     if (1 == this->_currentAnswer && static_cast<Button*>(sender)->getName() == "cellButton1")
     {
         ++(this->_score);
+        AudioManager::getInstance()->playEffect("Sound/sfx-correct.wav");
     }
     else if (2 == this->_currentAnswer && static_cast<Button*>(sender)->getName() == "cellButton2")
     {
         ++(this->_score);
+        AudioManager::getInstance()->playEffect("Sound/sfx-correct.wav");
     }
     else if (3 == this->_currentAnswer && static_cast<Button*>(sender)->getName() == "cellButton3")
     {
         ++(this->_score);
+        AudioManager::getInstance()->playEffect("Sound/sfx-correct.wav");
     }
     else if (4 == this->_currentAnswer && static_cast<Button*>(sender)->getName() == "cellButton4")
     {
         ++(this->_score);
+        AudioManager::getInstance()->playEffect("Sound/sfx-correct.wav");
     }
+    else
+    {
+        AudioManager::getInstance()->playEffect("Sound/sfx-wrong.wav");
+    }
+    
     if (-1 != this->_qa3Index)
     {
         this->_resultLabel->getParent()->setPosition(Vec2::ZERO);

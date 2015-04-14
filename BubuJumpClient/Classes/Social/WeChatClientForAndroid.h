@@ -21,6 +21,7 @@ public:
     virtual ~WeChatClientForAndroid();
     
     virtual void sendMessage(std::string message) override;
+    virtual void sendPhoto(std::string imagePath) override;
 private:
     cocos2d::JniMethodInfo _info;
     jobject _javaClient;
