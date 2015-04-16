@@ -22,6 +22,49 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="LeaderboardUIBackground.png" />
           </NodeObjectData>
+          <NodeObjectData Name="LeaderboardUIBackground2" ActionTag="1028546944" FrameEvent="" Tag="40" ObjectIndex="5" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="160.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="480.0000" />
+            <PrePosition X="0.0000" Y="0.1250" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="LeaderboardUIBackground2.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="leaderboardListView" ActionTag="-297990412" FrameEvent="" Tag="65" ObjectIndex="2" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" VerticalType="0" ctype="ListViewObjectData">
+            <Position X="35.0000" Y="160.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="645.0000" Y="480.0000" />
+            <PrePosition X="0.0486" Y="0.1250" />
+            <PreSize X="0.8958" Y="0.3750" />
+            <SingleColor A="255" R="150" G="150" B="255" />
+            <FirstColor A="255" R="150" G="150" B="255" />
+            <EndColor A="255" R="255" G="255" B="255" />
+            <ColorVector ScaleY="1.0000" />
+          </NodeObjectData>
+          <NodeObjectData Name="LeaderboardUIBackground1" ActionTag="1903381853" FrameEvent="" Tag="41" ObjectIndex="6" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="640.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="640.0000" />
+            <PrePosition X="0.0000" Y="0.5000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="LeaderboardUIBackground1.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="LeaderboardUIBackground3" ActionTag="-1703159826" FrameEvent="" Tag="39" ObjectIndex="4" ctype="SpriteObjectData">
+            <Position X="0.0000" Y="0.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="720.0000" Y="160.0000" />
+            <PrePosition X="0.0000" Y="0.0000" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <FileData Type="Normal" Path="LeaderboardUIBackground3.png" />
+          </NodeObjectData>
           <NodeObjectData Name="distanceLabel" ActionTag="-1355858403" FrameEvent="" Tag="23" ObjectIndex="1" FontSize="48" LabelText="0" ctype="TextObjectData">
             <Position X="177.0000" Y="895.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
@@ -100,19 +143,6 @@
             <PrePosition X="0.1458" Y="0.5582" />
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="MaxTaxIcon.png" />
-          </NodeObjectData>
-          <NodeObjectData Name="leaderboardListView" ActionTag="-297990412" FrameEvent="" Tag="65" ObjectIndex="2" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" IsBounceEnabled="True" ScrollDirectionType="0" DirectionType="Vertical" VerticalType="0" ctype="ListViewObjectData">
-            <Position X="35.0000" Y="160.0000" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="645.0000" Y="480.0000" />
-            <PrePosition X="0.0486" Y="0.1250" />
-            <PreSize X="0.8958" Y="0.3750" />
-            <SingleColor A="255" R="150" G="150" B="255" />
-            <FirstColor A="255" R="150" G="150" B="255" />
-            <EndColor A="255" R="255" G="255" B="255" />
-            <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
           <NodeObjectData Name="drawButton" ActionTag="494877868" FrameEvent="" Tag="93" ObjectIndex="4" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="313" Scale9Height="109" ctype="ButtonObjectData">
             <Position X="326.9998" Y="76.0000" />

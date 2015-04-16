@@ -105,7 +105,12 @@ void LeaderboardUILayer::setMaxDistance(float maxDistance)
 
 void LeaderboardUILayer::shareButtonClicked(cocos2d::Ref *sender)
 {
-    SocialManager::getInstance()->shareMessageToWeChat("我爱冲上云霄！！！！！");
+    std::string imagePath = "share.jpg";
+    RenderTexture *renderTexture = RenderTexture::create(designResolutionSize.width, designResolutionSize.height);
+    renderTexture->begin();
+    Director::getInstance()->getRunningScene()->visit();
+    renderTexture->end();
+    renderTexture->saveToFile(imagePath, false, CC_CALLBACK_2(LeaderboardUILayer::captured, this));
 }
 
 void LeaderboardUILayer::okButtonClicked(cocos2d::Ref *sender)
@@ -134,8 +139,8 @@ void LeaderboardUILayer::leaderboardRequested(void *resultData)
     LeaderboardRecordVector* recordVector = static_cast<LeaderboardRecordVector*>(resultData);
     
     auto leaderboardListView = static_cast<ListView*>(UIHelper::seekNodeByName(this, "leaderboardListView"));
-    leaderboardListView->setClippingEnabled(true);
-    leaderboardListView->setClippingType(Layout::ClippingType::SCISSOR);
+//    leaderboardListView->setClippingEnabled(true);
+//    leaderboardListView->setClippingType(Layout::ClippingType::SCISSOR);
 
     for (int i = 0; i < recordVector->size(); ++i)
     {
@@ -200,4 +205,9 @@ void LeaderboardUILayer::leaderboardRequested(void *resultData)
     }
     
     leaderboardListView->refreshView();
+}
+
+void LeaderboardUILayer::captured(cocos2d::RenderTexture *renderTexture, const std::string &imagePath)
+{
+    SocialManager::getInstance()->sharePhotoToWeChat(imagePath);
 }
